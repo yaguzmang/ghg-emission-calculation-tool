@@ -151,10 +151,8 @@
         ]
       ],
       "list": [
-        "id",
-        "title",
-        "options",
-        "systemName"
+        "systemName",
+        "title"
       ]
     }
   },
