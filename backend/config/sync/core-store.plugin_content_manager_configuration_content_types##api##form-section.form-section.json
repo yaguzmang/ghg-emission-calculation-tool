@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "system_name",
-      "defaultSortBy": "system_name",
+      "mainField": "systemName",
+      "defaultSortBy": "systemName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "system_name": {
+      "systemName": {
         "edit": {
           "label": "System name",
-          "description": "This will be only used to identify the form section here in the admin area. It will not be shown to users.",
+          "description": "Only displayed here in the admin area. Not visible to users.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "system_name",
+          "label": "systemName",
           "searchable": true,
           "sortable": true
         }
@@ -62,7 +62,7 @@
           "sortable": false
         }
       },
-      "select_label": {
+      "selectLabel": {
         "edit": {
           "label": "Select label",
           "description": "The label of the emission type selector.",
@@ -71,12 +71,12 @@
           "editable": true
         },
         "list": {
-          "label": "select_label",
+          "label": "selectLabel",
           "searchable": true,
           "sortable": true
         }
       },
-      "value_label": {
+      "valueLabel": {
         "edit": {
           "label": "Value label",
           "description": "The label of the value input field.",
@@ -85,7 +85,7 @@
           "editable": true
         },
         "list": {
-          "label": "value_label",
+          "label": "valueLabel",
           "searchable": true,
           "sortable": true
         }
@@ -123,7 +123,7 @@
       "edit": [
         [
           {
-            "name": "system_name",
+            "name": "systemName",
             "size": 12
           }
         ],
@@ -135,11 +135,11 @@
         ],
         [
           {
-            "name": "select_label",
+            "name": "selectLabel",
             "size": 6
           },
           {
-            "name": "value_label",
+            "name": "valueLabel",
             "size": 6
           }
         ],
@@ -152,9 +152,9 @@
       ],
       "list": [
         "id",
-        "system_name",
         "title",
-        "options"
+        "options",
+        "systemName"
       ]
     }
   },

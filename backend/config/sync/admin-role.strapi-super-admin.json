@@ -8,11 +8,11 @@
       "subject": "api::form-section.form-section",
       "properties": {
         "fields": [
-          "system_name",
+          "systemName",
           "title",
           "options.efid",
-          "select_label",
-          "value_label"
+          "selectLabel",
+          "valueLabel"
         ],
         "locales": [
           "en",
@@ -37,11 +37,11 @@
       "subject": "api::form-section.form-section",
       "properties": {
         "fields": [
-          "system_name",
+          "systemName",
           "title",
           "options.efid",
-          "select_label",
-          "value_label"
+          "selectLabel",
+          "valueLabel"
         ],
         "locales": [
           "en",
@@ -55,11 +55,11 @@
       "subject": "api::form-section.form-section",
       "properties": {
         "fields": [
-          "system_name",
+          "systemName",
           "title",
           "options.efid",
-          "select_label",
-          "value_label"
+          "selectLabel",
+          "valueLabel"
         ],
         "locales": [
           "en",
@@ -73,11 +73,12 @@
       "subject": "api::form.form",
       "properties": {
         "fields": [
-          "system_name",
-          "short_title",
-          "long_title",
+          "systemName",
+          "shortTitle",
+          "longTitle",
           "scope",
-          "sections"
+          "sections",
+          "slug"
         ],
         "locales": [
           "en",
@@ -102,11 +103,12 @@
       "subject": "api::form.form",
       "properties": {
         "fields": [
-          "system_name",
-          "short_title",
-          "long_title",
+          "systemName",
+          "shortTitle",
+          "longTitle",
           "scope",
-          "sections"
+          "sections",
+          "slug"
         ],
         "locales": [
           "en",
@@ -120,11 +122,12 @@
       "subject": "api::form.form",
       "properties": {
         "fields": [
-          "system_name",
-          "short_title",
-          "long_title",
+          "systemName",
+          "shortTitle",
+          "longTitle",
           "scope",
-          "sections"
+          "sections",
+          "slug"
         ],
         "locales": [
           "en",

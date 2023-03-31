@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "system_name": {
+    "systemName": {
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -26,7 +26,7 @@
       "required": true,
       "unique": false
     },
-    "short_title": {
+    "shortTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -35,7 +35,7 @@
       "type": "string",
       "required": true
     },
-    "long_title": {
+    "longTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -62,6 +62,17 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::form-section.form-section"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[a-z0-9-]+$"
     }
   }
 }

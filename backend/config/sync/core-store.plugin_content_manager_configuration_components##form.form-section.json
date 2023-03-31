@@ -27,7 +27,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "system_name"
+          "mainField": "systemName"
         },
         "list": {
           "label": "section",

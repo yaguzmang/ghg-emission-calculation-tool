@@ -2023,7 +2023,7 @@
         }
       },
       "attributes": {
-        "system_name": {
+        "systemName": {
           "pluginOptions": {
             "i18n": {
               "localized": false
@@ -2033,7 +2033,7 @@
           "required": true,
           "unique": false
         },
-        "short_title": {
+        "shortTitle": {
           "pluginOptions": {
             "i18n": {
               "localized": true
@@ -2042,7 +2042,7 @@
           "type": "string",
           "required": true
         },
-        "long_title": {
+        "longTitle": {
           "pluginOptions": {
             "i18n": {
               "localized": true
@@ -2069,6 +2069,17 @@
           "type": "relation",
           "relation": "oneToMany",
           "target": "api::form-section.form-section"
+        },
+        "slug": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "regex": "^[a-z0-9-]+$"
         },
         "createdAt": {
           "type": "datetime"
@@ -2130,7 +2141,7 @@
           }
         },
         "attributes": {
-          "system_name": {
+          "systemName": {
             "pluginOptions": {
               "i18n": {
                 "localized": false
@@ -2140,7 +2151,7 @@
             "required": true,
             "unique": false
           },
-          "short_title": {
+          "shortTitle": {
             "pluginOptions": {
               "i18n": {
                 "localized": true
@@ -2149,7 +2160,7 @@
             "type": "string",
             "required": true
           },
-          "long_title": {
+          "longTitle": {
             "pluginOptions": {
               "i18n": {
                 "localized": true
@@ -2176,6 +2187,17 @@
             "type": "relation",
             "relation": "oneToMany",
             "target": "api::form-section.form-section"
+          },
+          "slug": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "regex": "^[a-z0-9-]+$"
           }
         },
         "kind": "collectionType"
@@ -2207,7 +2229,7 @@
         }
       },
       "attributes": {
-        "system_name": {
+        "systemName": {
           "pluginOptions": {
             "i18n": {
               "localized": false
@@ -2236,7 +2258,7 @@
           },
           "component": "form.form-options"
         },
-        "select_label": {
+        "selectLabel": {
           "pluginOptions": {
             "i18n": {
               "localized": true
@@ -2245,7 +2267,7 @@
           "type": "string",
           "required": true
         },
-        "value_label": {
+        "valueLabel": {
           "pluginOptions": {
             "i18n": {
               "localized": true
@@ -2314,7 +2336,7 @@
           }
         },
         "attributes": {
-          "system_name": {
+          "systemName": {
             "pluginOptions": {
               "i18n": {
                 "localized": false
@@ -2343,7 +2365,7 @@
             },
             "component": "form.form-options"
           },
-          "select_label": {
+          "selectLabel": {
             "pluginOptions": {
               "i18n": {
                 "localized": true
@@ -2352,7 +2374,7 @@
             "type": "string",
             "required": true
           },
-          "value_label": {
+          "valueLabel": {
             "pluginOptions": {
               "i18n": {
                 "localized": true

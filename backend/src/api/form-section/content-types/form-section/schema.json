@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "system_name": {
+    "systemName": {
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -45,7 +45,7 @@
       },
       "component": "form.form-options"
     },
-    "select_label": {
+    "selectLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -54,7 +54,7 @@
       "type": "string",
       "required": true
     },
-    "value_label": {
+    "valueLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true

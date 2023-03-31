@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "system_name",
-      "defaultSortBy": "short_title",
+      "mainField": "systemName",
+      "defaultSortBy": "systemName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,51 +20,51 @@
           "sortable": true
         }
       },
-      "system_name": {
+      "systemName": {
         "edit": {
-          "label": "system_name",
-          "description": "This will be only used to identify the form here in the admin area. It will not be shown to users.",
+          "label": "System name",
+          "description": "Only displayed here in the admin area. Not visible to users.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "system_name",
+          "label": "systemName",
           "searchable": true,
           "sortable": true
         }
       },
-      "short_title": {
+      "shortTitle": {
         "edit": {
-          "label": "short_title",
-          "description": "This will be shown in the navigation.",
+          "label": "Short title",
+          "description": "Shown in navigation links and other areas where space is limited.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "short_title",
+          "label": "shortTitle",
           "searchable": true,
           "sortable": true
         }
       },
-      "long_title": {
+      "longTitle": {
         "edit": {
-          "label": "long_title",
-          "description": "This will be shown on the form page.",
+          "label": "Long title",
+          "description": "Shown on the form page.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "long_title",
+          "label": "longTitle",
           "searchable": true,
           "sortable": true
         }
       },
       "scope": {
         "edit": {
-          "label": "scope",
+          "label": "Scope",
           "description": "The emissions scope this form is associated with.",
           "placeholder": "",
           "visible": true,
@@ -78,17 +78,31 @@
       },
       "sections": {
         "edit": {
-          "label": "sections",
-          "description": "The form sections in this form.",
+          "label": "Sections",
+          "description": "The sections in this form.",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "system_name"
+          "mainField": "systemName"
         },
         "list": {
           "label": "sections",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "Slug",
+          "description": "The URL slug of the form. Only lowercase alphabets (a-z), numbers (0-9) and hyphens (-) are allowed.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -124,7 +138,7 @@
       "edit": [
         [
           {
-            "name": "system_name",
+            "name": "systemName",
             "size": 12
           }
         ],
@@ -132,17 +146,21 @@
           {
             "name": "scope",
             "size": 6
-          }
-        ],
-        [
+          },
           {
-            "name": "short_title",
+            "name": "slug",
             "size": 6
           }
         ],
         [
           {
-            "name": "long_title",
+            "name": "shortTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "longTitle",
             "size": 12
           }
         ],
@@ -155,10 +173,9 @@
       ],
       "list": [
         "id",
-        "system_name",
-        "short_title",
         "scope",
-        "sections"
+        "sections",
+        "systemName"
       ]
     }
   },
