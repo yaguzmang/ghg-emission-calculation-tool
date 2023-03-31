@@ -172,10 +172,9 @@
         ]
       ],
       "list": [
-        "id",
+        "systemName",
         "scope",
-        "sections",
-        "systemName"
+        "shortTitle"
       ]
     }
   },
