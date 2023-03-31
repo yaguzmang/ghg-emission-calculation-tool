@@ -23,7 +23,7 @@
       "system_name": {
         "edit": {
           "label": "system_name",
-          "description": "",
+          "description": "This will be only used to identify the form here in the admin area. It will not be shown to users.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -37,7 +37,7 @@
       "short_title": {
         "edit": {
           "label": "short_title",
-          "description": "",
+          "description": "This will be shown in the navigation.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -51,7 +51,7 @@
       "long_title": {
         "edit": {
           "label": "long_title",
-          "description": "",
+          "description": "This will be shown on the form page.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -65,7 +65,7 @@
       "scope": {
         "edit": {
           "label": "scope",
-          "description": "",
+          "description": "The emissions scope this form is associated with.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -79,7 +79,7 @@
       "sections": {
         "edit": {
           "label": "sections",
-          "description": "",
+          "description": "The form sections in this form.",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -121,14 +121,13 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "system_name",
-        "short_title",
-        "scope",
-        "sections"
-      ],
       "edit": [
+        [
+          {
+            "name": "system_name",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "scope",
@@ -139,10 +138,12 @@
           {
             "name": "short_title",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "long_title",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -150,13 +151,14 @@
             "name": "sections",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "system_name",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "system_name",
+        "short_title",
+        "scope",
+        "sections"
       ]
     }
   },
