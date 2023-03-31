@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_form_form_options",
+  "info": {
+    "displayName": "Form options"
+  },
+  "options": {},
+  "attributes": {
+    "efid": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
