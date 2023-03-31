@@ -1,0 +1,166 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::form.form",
+  "value": {
+    "uid": "api::form.form",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "short_title",
+      "defaultSortBy": "short_title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "system_name": {
+        "edit": {
+          "label": "system_name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "system_name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "short_title": {
+        "edit": {
+          "label": "short_title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "short_title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "long_title": {
+        "edit": {
+          "label": "long_title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "long_title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "scope": {
+        "edit": {
+          "label": "scope",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "scope",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "sections": {
+        "edit": {
+          "label": "sections",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "system_name"
+        },
+        "list": {
+          "label": "sections",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "system_name",
+        "short_title",
+        "scope",
+        "sections"
+      ],
+      "edit": [
+        [
+          {
+            "name": "scope",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "short_title",
+            "size": 6
+          },
+          {
+            "name": "long_title",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "sections",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "system_name",
+            "size": 6
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
