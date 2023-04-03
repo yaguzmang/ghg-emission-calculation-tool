@@ -8,7 +8,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "export": "strapi export --file data --no-encrypt"
+    "export": "strapi export --file data --no-encrypt",
+    "import": "strapi import --file data.tar.gz"
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.9.0",
