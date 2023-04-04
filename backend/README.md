@@ -94,14 +94,42 @@ npm run export
 
 You can find the admin documentation [here](https://docs.google.com/document/d/1-E18h0reI6fIBbrsh9C1KQadoSTGeZJT11NWxKx5iEc/edit#heading=h.fumehj96yk45).
 
-## Test users
+## Authentication
+
+### Login
+
+POST http://localhost:1337/api/auth/local
+
+```json
+{
+  "identifier": "user1@example.com",
+  "password": "user1pw"
+}
+```
+
+In the response object, you'll receive a JWT token for authenticating requests:
+
+```json
+{
+  "jwt": "...",
+  "user": { ... }
+}
+```
+
+### Authenticated requests
+
+For example:<br>
+GET http://localhost:1337/api/users/me<br>
+Authorization: Bearer `<jwt>`
+
+### Test users
 
 When running `npm run strapi import`, two test users will be added for development purposes:
 
-### user1
+#### user1
 - Email: user1@example.com
 - Password: user1pw
 
-### user2
+#### user2
 - Email: user2@example.com
 - Password: user2pw
