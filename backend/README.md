@@ -1,5 +1,17 @@
 # Strapi Backend
 
+## First time setup
+
+```bash
+cd backend
+npm install
+cp .env.example .env  # Set environment variables
+npm run import        # Import data
+npm run develop       # Run the development server
+```
+
+You are directed to http://localhost:1337/admin to set up your admin user.
+
 ## 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
