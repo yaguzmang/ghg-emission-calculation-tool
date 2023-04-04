@@ -77,3 +77,7 @@ Export your current database content to version control.
 ```
 npm run export
 ```
+
+## Admin documentation
+
+You can find the admin documentation [here](https://docs.google.com/document/d/1-E18h0reI6fIBbrsh9C1KQadoSTGeZJT11NWxKx5iEc/edit#heading=h.fumehj96yk45).
