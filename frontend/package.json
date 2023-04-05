@@ -10,27 +10,25 @@
     "prepare": "cd ../ && husky install ./frontend/.husky"
   },
   "dependencies": {
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
     "@types/node": "18.15.11",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
-    "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "next": "13.2.4",
     "prettier": "^2.8.7",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.3"
-  },
-  "devDependencies": {
+    "typescript": "5.0.3",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "autoprefixer": "10.4.14",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
