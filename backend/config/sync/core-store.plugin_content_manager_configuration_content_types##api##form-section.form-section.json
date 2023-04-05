@@ -1,0 +1,162 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::form-section.form-section",
+  "value": {
+    "uid": "api::form-section.form-section",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "systemName",
+      "defaultSortBy": "systemName",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "systemName": {
+        "edit": {
+          "label": "System name",
+          "description": "Only displayed here in the admin area. Not visible to users.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "systemName",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Title",
+          "description": "The title of the form section.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "options": {
+        "edit": {
+          "label": "Options",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "options",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "selectLabel": {
+        "edit": {
+          "label": "Select label",
+          "description": "The label of the emission type selector.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "selectLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "valueLabel": {
+        "edit": {
+          "label": "Value label",
+          "description": "The label of the value input field.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "valueLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "systemName",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "selectLabel",
+            "size": 6
+          },
+          {
+            "name": "valueLabel",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "options",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "systemName",
+        "title"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
