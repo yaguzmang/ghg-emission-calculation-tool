@@ -36,12 +36,12 @@
       },
       "users": {
         "edit": {
-          "label": "users",
-          "description": "",
+          "label": "Users",
+          "description": "Users that have access to this organization",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "username"
+          "mainField": "email"
         },
         "list": {
           "label": "users",
@@ -79,23 +79,25 @@
       }
     },
     "layouts": {
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "users",
+            "size": 8
+          }
+        ]
+      ],
       "list": [
         "id",
         "name",
         "createdAt",
         "updatedAt"
-      ],
-      "edit": [
-        [
-          {
-            "name": "name",
-            "size": 6
-          },
-          {
-            "name": "users",
-            "size": 6
-          }
-        ]
       ]
     }
   },
