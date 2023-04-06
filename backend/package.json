@@ -10,7 +10,9 @@
     "strapi": "strapi",
     "export": "strapi export --file data --no-encrypt",
     "import": "strapi import --file data.tar.gz",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.9.0",
