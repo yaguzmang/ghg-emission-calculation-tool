@@ -36,10 +36,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "efid"
-      ],
+      "list": ["id", "efid"],
       "edit": [
         [
           {

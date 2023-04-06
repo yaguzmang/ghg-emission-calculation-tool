@@ -171,11 +171,7 @@
           }
         ]
       ],
-      "list": [
-        "systemName",
-        "scope",
-        "shortTitle"
-      ]
+      "list": ["systemName", "scope", "shortTitle"]
     }
   },
   "type": "object",
