@@ -22,8 +22,8 @@
       },
       "systemName": {
         "edit": {
-          "label": "System name",
-          "description": "Only displayed here in the admin area. Not visible to users.",
+          "label": "systemName",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -36,8 +36,8 @@
       },
       "title": {
         "edit": {
-          "label": "Title",
-          "description": "The title of the form section.",
+          "label": "title",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,7 +50,7 @@
       },
       "options": {
         "edit": {
-          "label": "Options",
+          "label": "options",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,8 +64,8 @@
       },
       "selectLabel": {
         "edit": {
-          "label": "Select label",
-          "description": "The label of the emission type selector.",
+          "label": "selectLabel",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -78,8 +78,8 @@
       },
       "valueLabel": {
         "edit": {
-          "label": "Value label",
-          "description": "The label of the value input field.",
+          "label": "valueLabel",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -120,16 +120,26 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "systemName",
+        "title",
+        "options"
+      ],
       "edit": [
         [
           {
             "name": "systemName",
-            "size": 12
+            "size": 6
+          },
+          {
+            "name": "title",
+            "size": 6
           }
         ],
         [
           {
-            "name": "title",
+            "name": "options",
             "size": 12
           }
         ],
@@ -142,17 +152,7 @@
             "name": "valueLabel",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "options",
-            "size": 12
-          }
         ]
-      ],
-      "list": [
-        "systemName",
-        "title"
       ]
     }
   },

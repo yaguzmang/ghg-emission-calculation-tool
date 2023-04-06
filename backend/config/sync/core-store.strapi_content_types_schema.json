@@ -2394,6 +2394,78 @@
       "globalId": "FormSection",
       "actions": {},
       "lifecycles": {}
+    },
+    "api::organization.organization": {
+      "kind": "collectionType",
+      "collectionName": "organizations",
+      "info": {
+        "singularName": "organization",
+        "pluralName": "organizations",
+        "displayName": "Organization"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "organizations",
+        "info": {
+          "singularName": "organization",
+          "pluralName": "organizations",
+          "displayName": "Organization"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "organization",
+      "connection": "default",
+      "uid": "api::organization.organization",
+      "apiName": "organization",
+      "globalId": "Organization",
+      "actions": {},
+      "lifecycles": {}
     }
   },
   "type": "object",
