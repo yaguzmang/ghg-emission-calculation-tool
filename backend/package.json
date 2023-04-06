@@ -9,7 +9,8 @@
     "build": "strapi build",
     "strapi": "strapi",
     "export": "strapi export --file data --no-encrypt",
-    "import": "strapi import --file data.tar.gz"
+    "import": "strapi import --file data.tar.gz",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.9.0",
