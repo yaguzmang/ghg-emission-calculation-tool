@@ -34,6 +34,21 @@
           "sortable": true
         }
       },
+      "users": {
+        "edit": {
+          "label": "users",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "username"
+        },
+        "list": {
+          "label": "users",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -64,19 +79,23 @@
       }
     },
     "layouts": {
-      "edit": [
-        [
-          {
-            "name": "name",
-            "size": 6
-          }
-        ]
-      ],
       "list": [
         "id",
         "name",
         "createdAt",
         "updatedAt"
+      ],
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "users",
+            "size": 6
+          }
+        ]
       ]
     }
   },

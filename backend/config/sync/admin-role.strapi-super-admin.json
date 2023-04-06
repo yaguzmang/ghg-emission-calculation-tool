@@ -141,7 +141,8 @@
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "users"
         ]
       },
       "conditions": []
@@ -157,7 +158,8 @@
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "users"
         ]
       },
       "conditions": []
@@ -167,7 +169,8 @@
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "users"
         ]
       },
       "conditions": []
@@ -371,7 +374,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "organizations"
         ]
       },
       "conditions": []
@@ -395,7 +399,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "organizations"
         ]
       },
       "conditions": []
@@ -413,7 +418,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "organizations"
         ]
       },
       "conditions": []

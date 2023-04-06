@@ -14,6 +14,12 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "organizations"
     }
   }
 }

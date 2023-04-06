@@ -1055,6 +1055,480 @@
       "plugin": "admin",
       "globalId": "AdminTransferTokenPermission"
     },
+    "api::form.form": {
+      "kind": "collectionType",
+      "collectionName": "forms",
+      "info": {
+        "singularName": "form",
+        "pluralName": "forms",
+        "displayName": "Form",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "systemName": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "string",
+          "required": true,
+          "unique": false
+        },
+        "shortTitle": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "longTitle": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "scope": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "enumeration",
+          "enum": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "required": true
+        },
+        "sections": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::form-section.form-section"
+        },
+        "slug": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "regex": "^[a-z0-9-]+$"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::form.form"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "forms",
+        "info": {
+          "singularName": "form",
+          "pluralName": "forms",
+          "displayName": "Form",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "systemName": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "string",
+            "required": true,
+            "unique": false
+          },
+          "shortTitle": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          },
+          "longTitle": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          },
+          "scope": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "enumeration",
+            "enum": [
+              "S1",
+              "S2",
+              "S3"
+            ],
+            "required": true
+          },
+          "sections": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::form-section.form-section"
+          },
+          "slug": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "regex": "^[a-z0-9-]+$"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "form",
+      "connection": "default",
+      "uid": "api::form.form",
+      "apiName": "form",
+      "globalId": "Form",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::form-section.form-section": {
+      "kind": "collectionType",
+      "collectionName": "form_sections",
+      "info": {
+        "singularName": "form-section",
+        "pluralName": "form-sections",
+        "displayName": "Form section",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "systemName": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "string",
+          "required": true,
+          "unique": false
+        },
+        "title": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "options": {
+          "type": "component",
+          "repeatable": true,
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "component": "form.form-options"
+        },
+        "selectLabel": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "valueLabel": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::form-section.form-section"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "form_sections",
+        "info": {
+          "singularName": "form-section",
+          "pluralName": "form-sections",
+          "displayName": "Form section",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "systemName": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "string",
+            "required": true,
+            "unique": false
+          },
+          "title": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          },
+          "options": {
+            "type": "component",
+            "repeatable": true,
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "component": "form.form-options"
+          },
+          "selectLabel": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          },
+          "valueLabel": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "form-section",
+      "connection": "default",
+      "uid": "api::form-section.form-section",
+      "apiName": "form-section",
+      "globalId": "FormSection",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::organization.organization": {
+      "kind": "collectionType",
+      "collectionName": "organizations",
+      "info": {
+        "singularName": "organization",
+        "pluralName": "organizations",
+        "displayName": "Organization"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "users": {
+          "type": "relation",
+          "relation": "manyToMany",
+          "target": "plugin::users-permissions.user",
+          "mappedBy": "organizations"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "organizations",
+        "info": {
+          "singularName": "organization",
+          "pluralName": "organizations",
+          "displayName": "Organization"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "users": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "organizations"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "organization",
+      "connection": "default",
+      "uid": "api::organization.organization",
+      "apiName": "organization",
+      "globalId": "Organization",
+      "actions": {},
+      "lifecycles": {}
+    },
     "plugin::upload.file": {
       "collectionName": "files",
       "info": {
@@ -1887,6 +2361,12 @@
           "inversedBy": "users",
           "configurable": false
         },
+        "organizations": {
+          "type": "relation",
+          "relation": "manyToMany",
+          "target": "api::organization.organization",
+          "inversedBy": "users"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -1928,6 +2408,7 @@
         }
       },
       "kind": "collectionType",
+      "__filename__": "schema.json",
       "__schema__": {
         "collectionName": "up_users",
         "info": {
@@ -1994,6 +2475,12 @@
             "target": "plugin::users-permissions.role",
             "inversedBy": "users",
             "configurable": false
+          },
+          "organizations": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::organization.organization",
+            "inversedBy": "users"
           }
         },
         "kind": "collectionType"
@@ -2004,468 +2491,6 @@
       "uid": "plugin::users-permissions.user",
       "plugin": "users-permissions",
       "globalId": "UsersPermissionsUser"
-    },
-    "api::form.form": {
-      "kind": "collectionType",
-      "collectionName": "forms",
-      "info": {
-        "singularName": "form",
-        "pluralName": "forms",
-        "displayName": "Form",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "attributes": {
-        "systemName": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "type": "string",
-          "required": true,
-          "unique": false
-        },
-        "shortTitle": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
-        "longTitle": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
-        "scope": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "type": "enumeration",
-          "enum": [
-            "S1",
-            "S2",
-            "S3"
-          ],
-          "required": true
-        },
-        "sections": {
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::form-section.form-section"
-        },
-        "slug": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true,
-          "unique": true,
-          "regex": "^[a-z0-9-]+$"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::form.form"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        }
-      },
-      "__schema__": {
-        "collectionName": "forms",
-        "info": {
-          "singularName": "form",
-          "pluralName": "forms",
-          "displayName": "Form",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
-        "attributes": {
-          "systemName": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "type": "string",
-            "required": true,
-            "unique": false
-          },
-          "shortTitle": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          },
-          "longTitle": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          },
-          "scope": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "type": "enumeration",
-            "enum": [
-              "S1",
-              "S2",
-              "S3"
-            ],
-            "required": true
-          },
-          "sections": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::form-section.form-section"
-          },
-          "slug": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true,
-            "unique": true,
-            "regex": "^[a-z0-9-]+$"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "form",
-      "connection": "default",
-      "uid": "api::form.form",
-      "apiName": "form",
-      "globalId": "Form",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::form-section.form-section": {
-      "kind": "collectionType",
-      "collectionName": "form_sections",
-      "info": {
-        "singularName": "form-section",
-        "pluralName": "form-sections",
-        "displayName": "Form section",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "attributes": {
-        "systemName": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "type": "string",
-          "required": true,
-          "unique": false
-        },
-        "title": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
-        "options": {
-          "type": "component",
-          "repeatable": true,
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "component": "form.form-options"
-        },
-        "selectLabel": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
-        "valueLabel": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::form-section.form-section"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        }
-      },
-      "__schema__": {
-        "collectionName": "form_sections",
-        "info": {
-          "singularName": "form-section",
-          "pluralName": "form-sections",
-          "displayName": "Form section",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
-        "attributes": {
-          "systemName": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "type": "string",
-            "required": true,
-            "unique": false
-          },
-          "title": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          },
-          "options": {
-            "type": "component",
-            "repeatable": true,
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "component": "form.form-options"
-          },
-          "selectLabel": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          },
-          "valueLabel": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "form-section",
-      "connection": "default",
-      "uid": "api::form-section.form-section",
-      "apiName": "form-section",
-      "globalId": "FormSection",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::organization.organization": {
-      "kind": "collectionType",
-      "collectionName": "organizations",
-      "info": {
-        "singularName": "organization",
-        "pluralName": "organizations",
-        "displayName": "Organization"
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "name": {
-          "type": "string",
-          "required": true
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "__schema__": {
-        "collectionName": "organizations",
-        "info": {
-          "singularName": "organization",
-          "pluralName": "organizations",
-          "displayName": "Organization"
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "name": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "organization",
-      "connection": "default",
-      "uid": "api::organization.organization",
-      "apiName": "organization",
-      "globalId": "Organization",
-      "actions": {},
-      "lifecycles": {}
     }
   },
   "type": "object",
