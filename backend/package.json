@@ -9,7 +9,10 @@
     "build": "strapi build",
     "strapi": "strapi",
     "export": "strapi export --file data --no-encrypt",
-    "import": "strapi import --file data.tar.gz"
+    "import": "strapi import --file data.tar.gz",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.9.0",
@@ -28,5 +31,12 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "2.8.7"
+  }
 }

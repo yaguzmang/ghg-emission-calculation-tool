@@ -14,10 +14,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -25,10 +22,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form-section.form-section",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -43,10 +37,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -61,10 +52,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -80,10 +68,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -91,10 +76,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form.form",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -110,10 +92,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -129,10 +108,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },

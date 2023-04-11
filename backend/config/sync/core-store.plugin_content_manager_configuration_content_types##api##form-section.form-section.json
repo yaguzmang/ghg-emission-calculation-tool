@@ -120,12 +120,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "systemName",
-        "title",
-        "options"
-      ],
       "edit": [
         [
           {
@@ -153,7 +147,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "list": ["systemName", "title"]
     }
   },
   "type": "object",

@@ -230,13 +230,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "username",
-        "email",
-        "confirmed",
-        "organizations"
-      ]
+      "list": ["id", "username", "email", "confirmed", "organizations"]
     }
   },
   "type": "object",

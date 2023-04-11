@@ -135,12 +135,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "systemName",
-        "shortTitle",
-        "longTitle"
-      ],
       "edit": [
         [
           {
@@ -172,7 +166,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "list": ["systemName", "scope", "shortTitle"]
     }
   },
   "type": "object",

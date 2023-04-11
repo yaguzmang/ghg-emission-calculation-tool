@@ -1,8 +1,8 @@
 export default ({ env }) => ({
-  'config-sync': {
+  "config-sync": {
     enabled: true,
     config: {
       importOnBootstrap: true,
     },
   },
-})
+});
