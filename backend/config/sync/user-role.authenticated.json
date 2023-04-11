@@ -4,6 +4,12 @@
   "type": "authenticated",
   "permissions": [
     {
+      "action": "api::organization.organization.find"
+    },
+    {
+      "action": "api::organization.organization.findOne"
+    },
+    {
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {
