@@ -1,0 +1,54 @@
+{
+  "key": "plugin_content_manager_configuration_components::form.form-options",
+  "value": {
+    "uid": "form.form-options",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "efid",
+      "defaultSortBy": "efid",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "efid": {
+        "edit": {
+          "label": "efid",
+          "description": "An EF database row ID. The emission type option will be automatically generated based on this.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "efid",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": ["id", "efid"],
+      "edit": [
+        [
+          {
+            "name": "efid",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

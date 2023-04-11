@@ -1118,6 +1118,17 @@
     "@emotion/weak-memoize" "^0.3.0"
     stylis "4.1.3"
 
+"@emotion/css@^11.10.5":
+  version "11.10.6"
+  resolved "https://registry.npmjs.org/@emotion/css/-/css-11.10.6.tgz"
+  integrity sha512-88Sr+3heKAKpj9PCqq5A1hAmAkoSIvwEq1O2TwDij7fUtsJpdkV4jMTISSTouFeRvsGvXIpuSuDQ4C1YdfNGXw==
+  dependencies:
+    "@emotion/babel-plugin" "^11.10.6"
+    "@emotion/cache" "^11.10.5"
+    "@emotion/serialize" "^1.1.1"
+    "@emotion/sheet" "^1.2.1"
+    "@emotion/utils" "^1.2.0"
+
 "@emotion/hash@^0.9.0":
   version "0.9.0"
   resolved "https://registry.npmjs.org/@emotion/hash/-/hash-0.9.0.tgz"
@@ -1935,7 +1946,7 @@
     "@strapi/utils" "4.9.0"
     fs-extra "10.0.0"
 
-"@strapi/strapi@^4.3.4", "@strapi/strapi@4.9.0":
+"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.9.0":
   version "4.9.0"
   resolved "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.9.0.tgz"
   integrity sha512-Aei28ALvdEzeeagL9EmIZjVR3Gyr1Xa4r82vXt0hyfdeKq8cDgUxiuMNkeWzQij8aZJub+Qq7PK0g1AZT66yGg==
@@ -3178,6 +3189,15 @@ chalk@^2.0.1:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+chalk@^2.3.2:
+  version "2.4.2"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
+  integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
 chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -3284,6 +3304,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.3.1:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
+
 clean-css@^5.2.2:
   version "5.3.2"
   resolved "https://registry.npmjs.org/clean-css/-/clean-css-5.3.2.tgz"
@@ -3326,6 +3351,13 @@ cli-spinners@^2.0.0, cli-spinners@^2.5.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.7.0.tgz"
   integrity sha512-qu3pN8Y3qHNgE2AFweciB1IfMnmZ/fsNTEE+NOFjmGB2F/7rLhnhzppvpCnN4FovtP26k8lHyy9ptEbNwWFLzw==
+
+cli-table@^0.3.6:
+  version "0.3.11"
+  resolved "https://registry.npmjs.org/cli-table/-/cli-table-0.3.11.tgz"
+  integrity sha512-IqLQi4lO0nIB4tcdTpN4LCB9FI3uqrJZK7RC515EnhZ6qBaglkIgICb1wjeAqpdoOabm1+SuQtkXIPdYC93jhQ==
+  dependencies:
+    colors "1.0.3"
 
 cli-table3@0.6.2:
   version "0.6.2"
@@ -3460,6 +3492,11 @@ colors@~1.2.1:
   version "1.2.5"
   resolved "https://registry.npmjs.org/colors/-/colors-1.2.5.tgz"
   integrity sha512-erNRLao/Y3Fv54qUa0LBB+//Uf3YwMUmdJinN20yMXm9zdKKqH9wt7R9IIVZ+K7ShzfpLV/Zg8+VyrBJYB4lpg==
+
+colors@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz"
+  integrity sha512-pFGrxThWcWQ2MsAz6RtgeWe4NK2kUE1WfsrvvlctdII745EW9I0yflqhe7++M5LEc7bV2c/9/5zc8sFcpL0Drw==
 
 colorspace@1.1.x:
   version "1.1.4"
@@ -3946,6 +3983,16 @@ detect-node@^2.0.4, detect-node@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/detect-node/-/detect-node-2.1.0.tgz"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
+
+diff@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/diff/-/diff-3.5.0.tgz"
+  integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
+
+diff@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/diff/-/diff-5.1.0.tgz"
+  integrity sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==
 
 dir-glob@^3.0.1:
   version "3.0.1"
@@ -4810,6 +4857,17 @@ getopts@2.3.0:
   resolved "https://registry.npmjs.org/getopts/-/getopts-2.3.0.tgz"
   integrity sha512-5eDf9fuSXwxBL6q5HX+dhDj+dslFGWzU5thZ9kNKUkcPtaPdatmUFKwHFrLb/uf/WpA4BHET+AX3Scl56cAjpA==
 
+git-diff@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npmjs.org/git-diff/-/git-diff-2.0.6.tgz"
+  integrity sha512-/Iu4prUrydE3Pb3lCBMbcSNIf81tgGt0W1ZwknnyF62t3tHmtiJTRj0f+1ZIhp3+Rh0ktz1pJVoa7ZXUCskivA==
+  dependencies:
+    chalk "^2.3.2"
+    diff "^3.5.0"
+    loglevel "^1.6.1"
+    shelljs "^0.8.1"
+    shelljs.exec "^1.1.7"
+
 github-from-package@0.0.0:
   version "0.0.0"
   resolved "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz"
@@ -4827,7 +4885,7 @@ glob-to-regexp@^0.4.1:
   resolved "https://registry.npmjs.org/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz"
   integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
-glob@^7.1.3, glob@^7.1.6:
+glob@^7.0.0, glob@^7.1.3, glob@^7.1.6:
   version "7.2.3"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
@@ -5303,6 +5361,11 @@ immer@9.0.19:
   resolved "https://registry.npmjs.org/immer/-/immer-9.0.19.tgz"
   integrity sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==
 
+"immutable@^3.8.1 || ^4.0.0-rc.1", immutable@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.npmjs.org/immutable/-/immutable-3.8.2.tgz"
+  integrity sha512-15gZoQ38eYjEjxkorfbcgBKBL6R7T459OuK+CpcWt7O3KF4uPCx2tD0uFETlUDIyo+1789crbMhTvQBSR5yBMg==
+
 import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.0.tgz"
@@ -5376,7 +5439,7 @@ inquirer@^7.1.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
-inquirer@8.2.5:
+inquirer@^8.2.0, inquirer@8.2.5:
   version "8.2.5"
   resolved "https://registry.npmjs.org/inquirer/-/inquirer-8.2.5.tgz"
   integrity sha512-QAgPDQMEgrDssk1XiwwHoOGYF9BAbUcc1+j+FhEvaOt8/cKRqyLn0U5qA6F74fGhTMGxf92pOvPBeh29jQJDTQ==
@@ -5397,7 +5460,7 @@ inquirer@8.2.5:
     through "^2.3.6"
     wrap-ansi "^7.0.0"
 
-interpret@^1.2.0:
+interpret@^1.0.0, interpret@^1.2.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/interpret/-/interpret-1.4.0.tgz"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
@@ -6252,6 +6315,11 @@ logform@^2.2.0, logform@^2.3.2:
     ms "^2.1.1"
     safe-stable-stringify "^2.3.1"
     triple-beam "^1.3.0"
+
+loglevel@^1.6.1:
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/loglevel/-/loglevel-1.8.1.tgz"
+  integrity sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==
 
 long-timeout@0.1.1:
   version "0.1.1"
@@ -7515,6 +7583,17 @@ react-copy-to-clipboard@^5.1.0:
     copy-to-clipboard "^3.3.1"
     prop-types "^15.8.1"
 
+react-diff-viewer-continued@^3.2.3:
+  version "3.2.6"
+  resolved "https://registry.npmjs.org/react-diff-viewer-continued/-/react-diff-viewer-continued-3.2.6.tgz"
+  integrity sha512-GrzyqQnjIMoej+jMjWvtVSsQqhXgzEGqpXlJ2dAGfOk7Q26qcm8Gu6xtI430PBUyZsERe8BJSQf+7VZZo8IBNQ==
+  dependencies:
+    "@emotion/css" "^11.10.5"
+    classnames "^2.3.1"
+    diff "^5.1.0"
+    memoize-one "^6.0.0"
+    prop-types "^15.8.1"
+
 react-dnd-html5-backend@15.1.3:
   version "15.1.3"
   resolved "https://registry.npmjs.org/react-dnd-html5-backend/-/react-dnd-html5-backend-15.1.3.tgz"
@@ -7533,7 +7612,7 @@ react-dnd@15.1.2:
     fast-deep-equal "^3.1.3"
     hoist-non-react-statics "^3.3.2"
 
-"react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^17.0.1, react-dom@^17.0.2, "react-dom@>= 16.8.0", react-dom@>=16.6.0, react-dom@>=16.8.0:
+"react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^17.0.1, react-dom@^17.0.2, "react-dom@>= 16.8.0", react-dom@>=16.6.0, react-dom@>=16.8.0:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -7695,7 +7774,7 @@ react-window@1.8.8:
     "@babel/runtime" "^7.0.0"
     memoize-one ">=3.1.1 <6"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.6.0 || 17 || 18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^17.0.1, react@^17.0.2, "react@>= 16.14", "react@>= 16.8.0", react@>=15, react@>=16.13.1, react@>=16.3.0, react@>=16.6.0, react@>=16.8.0, react@17.0.2:
+"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.6.0 || 17 || 18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^17.0.1, react@^17.0.2, "react@>= 16.14", "react@>= 16.8.0", react@>=15, react@>=16.13.1, react@>=16.3.0, react@>=16.6.0, react@>=16.8.0, react@17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -7745,6 +7824,16 @@ rechoir@^0.8.0:
   integrity sha512-/vxpCXddiX8NGfGO/mTafwjq4aFa/71pvamip0++IQk3zG8cbCj0fifNPrjjF1XMXUne91jL9OoxmdykoEtifQ==
   dependencies:
     resolve "^1.20.0"
+
+redux-immutable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/redux-immutable/-/redux-immutable-4.0.0.tgz"
+  integrity sha512-SchSn/DWfGb3oAejd+1hhHx01xUoxY+V7TeK0BKqpkLKiQPVFf7DYzEaKmrEVxsWxielKfSK9/Xq66YyxgR1cg==
+
+redux-thunk@^2.3.0:
+  version "2.4.2"
+  resolved "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.4.2.tgz"
+  integrity sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==
 
 redux@^4, redux@^4.1.2, redux@^4.2.1:
   version "4.2.1"
@@ -8310,6 +8399,20 @@ shell-quote@^1.7.3:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.8.0.tgz"
   integrity sha512-QHsz8GgQIGKlRi24yFc6a6lN69Idnx634w49ay6+jA5yFh7a1UY+4Rp6HPx/L/1zcEDPEij8cIsiqR6bQsE5VQ==
 
+shelljs.exec@^1.1.7:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/shelljs.exec/-/shelljs.exec-1.1.8.tgz"
+  integrity sha512-vFILCw+lzUtiwBAHV8/Ex8JsFjelFMdhONIsgKNLgTzeRckp2AOYRQtHJE/9LhNvdMmE27AGtzWx0+DHpwIwSw==
+
+shelljs@^0.8.1:
+  version "0.8.5"
+  resolved "https://registry.npmjs.org/shelljs/-/shelljs-0.8.5.tgz"
+  integrity sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"
@@ -8537,6 +8640,21 @@ std-env@^3.0.1:
   version "3.3.2"
   resolved "https://registry.npmjs.org/std-env/-/std-env-3.3.2.tgz"
   integrity sha512-uUZI65yrV2Qva5gqE0+A7uVAvO40iPo6jGhs7s8keRfHCmtg+uB2X6EiLGCI9IgL1J17xGhvoOqSz79lzICPTA==
+
+strapi-plugin-config-sync@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/strapi-plugin-config-sync/-/strapi-plugin-config-sync-1.1.1.tgz"
+  integrity sha512-BA09Q+4T3aew9pS1AgmZvb8fiQJSTnRHzjk2Kzj0Cvu+MugnDCR2klYlIOUxEuShYnhzFxH+RNTflarTlnxPcg==
+  dependencies:
+    chalk "^4.1.2"
+    cli-table "^0.3.6"
+    commander "^8.3.0"
+    git-diff "^2.0.6"
+    immutable "^3.8.2"
+    inquirer "^8.2.0"
+    react-diff-viewer-continued "^3.2.3"
+    redux-immutable "^4.0.0"
+    redux-thunk "^2.3.0"
 
 stream-chain@^2.2.5, stream-chain@2.2.5:
   version "2.2.5"
