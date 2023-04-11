@@ -127,9 +127,11 @@ Authorization: Bearer `<jwt>`
 When running `npm run strapi import`, two test users will be added for development purposes:
 
 #### user1
+
 - Email: user1@example.com
 - Password: user1pw
 
 #### user2
+
 - Email: user2@example.com
 - Password: user2pw
