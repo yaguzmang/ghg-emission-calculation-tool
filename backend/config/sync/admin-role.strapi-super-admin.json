@@ -116,10 +116,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users"
-        ]
+        "fields": ["name", "users"]
       },
       "conditions": []
     },
@@ -133,10 +130,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users"
-        ]
+        "fields": ["name", "users"]
       },
       "conditions": []
     },
@@ -144,10 +138,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users"
-        ]
+        "fields": ["name", "users"]
       },
       "conditions": []
     },
