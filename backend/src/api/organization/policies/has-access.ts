@@ -17,7 +17,6 @@ const hasAccess = async (
   config,
   { strapi }: { strapi: Strapi }
 ) => {
-  strapi.log.info("In has-access policy.");
   const userId = policyContext.state.user?.id;
 
   // Require login
