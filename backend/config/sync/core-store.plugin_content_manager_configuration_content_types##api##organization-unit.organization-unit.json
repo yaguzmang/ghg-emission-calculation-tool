@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::organization.organization",
+  "key": "plugin_content_manager_configuration_content_types::api::organization-unit.organization-unit",
   "value": {
-    "uid": "api::organization.organization",
+    "uid": "api::organization-unit.organization-unit",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -23,7 +23,7 @@
       "name": {
         "edit": {
           "label": "Name",
-          "description": "Name of the organization",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -34,24 +34,9 @@
           "sortable": true
         }
       },
-      "users": {
+      "organization": {
         "edit": {
-          "label": "Users",
-          "description": "Users that have access to this organization",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "email"
-        },
-        "list": {
-          "label": "users",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "organizationUnits": {
-        "edit": {
-          "label": "Organization units",
+          "label": "Organization",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -59,9 +44,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "organizationUnits",
-          "searchable": false,
-          "sortable": false
+          "label": "organization",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -98,18 +83,10 @@
         [
           {
             "name": "name",
-            "size": 12
-          }
-        ],
-        [
+            "size": 6
+          },
           {
-            "name": "users",
-            "size": 8
-          }
-        ],
-        [
-          {
-            "name": "organizationUnits",
+            "name": "organization",
             "size": 6
           }
         ]
@@ -117,8 +94,8 @@
       "list": [
         "id",
         "name",
-        "createdAt",
-        "updatedAt"
+        "organization",
+        "createdAt"
       ]
     }
   },

@@ -4,6 +4,12 @@
   "type": "authenticated",
   "permissions": [
     {
+      "action": "api::organization-unit.organization-unit.find"
+    },
+    {
+      "action": "api::organization-unit.organization-unit.findOne"
+    },
+    {
       "action": "api::organization.organization.find"
     },
     {
