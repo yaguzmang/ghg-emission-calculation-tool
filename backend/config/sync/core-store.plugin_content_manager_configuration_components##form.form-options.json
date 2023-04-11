@@ -23,7 +23,7 @@
       "efid": {
         "edit": {
           "label": "efid",
-          "description": "An EF database row ID. The emission type option will be automatically generated based on this.",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -41,7 +41,7 @@
         [
           {
             "name": "efid",
-            "size": 12
+            "size": 6
           }
         ]
       ]
