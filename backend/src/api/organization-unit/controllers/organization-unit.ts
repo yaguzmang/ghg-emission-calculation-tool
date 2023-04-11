@@ -11,14 +11,9 @@ export default factories.createCoreController(
       // List only the authenticated user's own organization units
 
       const { data, meta } = await super.find(ctx);
-      const user = await strapi.entityService.findOne(
-        "plugin::users-permissions.user",
-        ctx.state.user.id,
-        {
-          populate: { organizations: true },
-        }
-      );
-      const ownOrganizationIds = user.organizations.map((org) => org.id);
+      const ownOrganizationIds = await strapi
+        .service("api::organization.organization")
+        .findForUser(ctx.state.user.id);
       const filteredData = data.filter((orgUnit) =>
         ownOrganizationIds.includes(orgUnit.attributes.organization.data.id)
       );
