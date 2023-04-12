@@ -2,15 +2,7 @@
  * has-access policy
  */
 import type { Strapi } from "@strapi/strapi";
-
-interface PolicyContext {
-  state: {
-    user?: {
-      id: number;
-    };
-  };
-  captures: string[];
-}
+import type { PolicyContext } from "../../api.types";
 
 const hasAccess = async (
   policyContext: PolicyContext,
