@@ -10,6 +10,12 @@ export default factories.createCoreController(
     async find(ctx) {
       // List only the authenticated user's own organization units
 
+      // Force population to authorize based on associated organization
+      ctx.query = {
+        ...ctx.query,
+        populate: "*",
+      };
+
       const { data, meta } = await super.find(ctx);
       const ownOrganizationIds = await strapi
         .service("api::organization.organization")
