@@ -22,8 +22,8 @@
       },
       "systemName": {
         "edit": {
-          "label": "systemName",
-          "description": "",
+          "label": "System name",
+          "description": "Only displayed here in the admin dashboard. Not visible to users.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -36,8 +36,8 @@
       },
       "shortTitle": {
         "edit": {
-          "label": "shortTitle",
-          "description": "",
+          "label": "Short title",
+          "description": "Shown in navigation links and other areas where space is limited.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,8 +50,8 @@
       },
       "longTitle": {
         "edit": {
-          "label": "longTitle",
-          "description": "",
+          "label": "Long title",
+          "description": "Shown on the form page",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -64,8 +64,8 @@
       },
       "scope": {
         "edit": {
-          "label": "scope",
-          "description": "",
+          "label": "Scope",
+          "description": "The emissions scope this form is associated with.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -78,8 +78,8 @@
       },
       "sections": {
         "edit": {
-          "label": "sections",
-          "description": "",
+          "label": "Sections",
+          "description": "The sections in this form",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -93,8 +93,8 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
-          "description": "",
+          "label": "Slug",
+          "description": "The URL slug of the form. Only lowercase alphabets (a-z), numbers (0-9) and hyphens (-) are allowed.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -139,8 +139,20 @@
         [
           {
             "name": "systemName",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "scope",
             "size": 6
           },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "shortTitle",
             "size": 6
@@ -149,21 +161,13 @@
         [
           {
             "name": "longTitle",
-            "size": 6
-          },
-          {
-            "name": "scope",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "sections",
-            "size": 6
-          },
-          {
-            "name": "slug",
-            "size": 6
+            "size": 8
           }
         ]
       ],
