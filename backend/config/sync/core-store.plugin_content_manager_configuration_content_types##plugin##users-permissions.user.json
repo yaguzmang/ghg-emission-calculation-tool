@@ -22,7 +22,7 @@
       },
       "username": {
         "edit": {
-          "label": "username",
+          "label": "Username",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "email": {
         "edit": {
-          "label": "email",
+          "label": "Email",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "password": {
         "edit": {
-          "label": "password",
+          "label": "Password",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -106,7 +106,7 @@
       },
       "confirmed": {
         "edit": {
-          "label": "confirmed",
+          "label": "Confirmed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -120,7 +120,7 @@
       },
       "blocked": {
         "edit": {
-          "label": "blocked",
+          "label": "Blocked",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -134,7 +134,7 @@
       },
       "role": {
         "edit": {
-          "label": "role",
+          "label": "Role",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -145,6 +145,21 @@
           "label": "role",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "organizations": {
+        "edit": {
+          "label": "Organizations",
+          "description": "The organizations the user has access to",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "organizations",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -177,7 +192,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "username", "email", "confirmed"],
       "edit": [
         [
           {
@@ -201,15 +215,22 @@
         ],
         [
           {
-            "name": "blocked",
-            "size": 4
+            "name": "role",
+            "size": 6
           },
           {
-            "name": "role",
+            "name": "blocked",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "organizations",
             "size": 6
           }
         ]
-      ]
+      ],
+      "list": ["id", "username", "email", "confirmed", "organizations"]
     }
   },
   "type": "object",
