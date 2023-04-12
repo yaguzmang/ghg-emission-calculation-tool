@@ -2,6 +2,8 @@
  * organization-unit service
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreService('api::organization-unit.organization-unit');
+export default factories.createCoreService(
+  "api::organization-unit.organization-unit"
+);

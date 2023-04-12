@@ -91,12 +91,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "organization",
-        "createdAt"
-      ]
+      "list": ["id", "name", "organization", "createdAt"]
     }
   },
   "type": "object",

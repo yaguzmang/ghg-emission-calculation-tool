@@ -114,12 +114,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
-      ]
+      "list": ["id", "name", "createdAt", "updatedAt"]
     }
   },
   "type": "object",

@@ -14,10 +14,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -25,10 +22,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form-section.form-section",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -43,10 +37,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -61,10 +52,7 @@
           "selectLabel",
           "valueLabel"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -80,10 +68,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -91,10 +76,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form.form",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -110,10 +92,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -129,10 +108,7 @@
           "sections",
           "slug"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -140,10 +116,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization"
-        ]
+        "fields": ["name", "organization"]
       },
       "conditions": []
     },
@@ -157,10 +130,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization"
-        ]
+        "fields": ["name", "organization"]
       },
       "conditions": []
     },
@@ -168,10 +138,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization"
-        ]
+        "fields": ["name", "organization"]
       },
       "conditions": []
     },
@@ -179,11 +146,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users",
-          "organizationUnits"
-        ]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },
@@ -197,11 +160,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users",
-          "organizationUnits"
-        ]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },
@@ -209,11 +168,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": [
-          "name",
-          "users",
-          "organizationUnits"
-        ]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },
