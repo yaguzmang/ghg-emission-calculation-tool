@@ -10,11 +10,14 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -22,7 +25,10 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form-section.form-section",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -33,11 +39,14 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -48,11 +57,14 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -68,7 +80,10 @@
           "sections",
           "slug"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -76,7 +91,10 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::form.form",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -92,7 +110,10 @@
           "sections",
           "slug"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -108,7 +129,10 @@
           "sections",
           "slug"
         ],
-        "locales": ["en", "fi"]
+        "locales": [
+          "en",
+          "fi"
+        ]
       },
       "conditions": []
     },
@@ -116,7 +140,10 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": [
+          "name",
+          "users"
+        ]
       },
       "conditions": []
     },
@@ -130,7 +157,10 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": [
+          "name",
+          "users"
+        ]
       },
       "conditions": []
     },
@@ -138,7 +168,10 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": [
+          "name",
+          "users"
+        ]
       },
       "conditions": []
     },

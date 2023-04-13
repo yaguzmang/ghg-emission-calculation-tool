@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "efid",
-      "defaultSortBy": "efid",
+      "mainField": "emissionFactorId",
+      "defaultSortBy": "emissionFactorId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,27 +20,30 @@
           "sortable": false
         }
       },
-      "efid": {
+      "emissionFactorId": {
         "edit": {
-          "label": "efid",
-          "description": "An EF database row ID. The emission type option will be automatically generated based on this.",
+          "label": "Emission factor ID",
+          "description": "An emission factor database row ID. The emission type option will be automatically generated based on this.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "efid",
+          "label": "emissionFactorId",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
-      "list": ["id", "efid"],
+      "list": [
+        "id",
+        "emissionFactorId"
+      ],
       "edit": [
         [
           {
-            "name": "efid",
+            "name": "emissionFactorId",
             "size": 12
           }
         ]
