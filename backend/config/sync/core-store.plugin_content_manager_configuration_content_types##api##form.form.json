@@ -151,10 +151,7 @@
           }
         ]
       ],
-      "list": [
-        "systemName",
-        "shortTitle"
-      ]
+      "list": ["systemName", "shortTitle"]
     }
   },
   "type": "object",

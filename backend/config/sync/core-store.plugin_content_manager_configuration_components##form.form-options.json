@@ -36,10 +36,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "emissionFactorId"
-      ],
+      "list": ["id", "emissionFactorId"],
       "edit": [
         [
           {
