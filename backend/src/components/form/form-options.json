@@ -1,11 +1,12 @@
 {
   "collectionName": "components_form_form_options",
   "info": {
-    "displayName": "Form options"
+    "displayName": "Form options",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "efid": {
+    "emissionFactorId": {
       "type": "string",
       "required": true
     }
