@@ -62,20 +62,6 @@
           "sortable": true
         }
       },
-      "scope": {
-        "edit": {
-          "label": "Scope",
-          "description": "The emissions scope this form is associated with.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "scope",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "sections": {
         "edit": {
           "label": "Sections",
@@ -144,17 +130,11 @@
         ],
         [
           {
-            "name": "scope",
+            "name": "shortTitle",
             "size": 6
           },
           {
             "name": "slug",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "shortTitle",
             "size": 6
           }
         ],
@@ -171,7 +151,10 @@
           }
         ]
       ],
-      "list": ["systemName", "scope", "shortTitle"]
+      "list": [
+        "systemName",
+        "shortTitle"
+      ]
     }
   },
   "type": "object",
