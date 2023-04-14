@@ -20,6 +20,12 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "organizations"
+    },
+    "organizationUnits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::organization-unit.organization-unit",
+      "mappedBy": "organization"
     }
   }
 }

@@ -22,8 +22,8 @@
       },
       "systemName": {
         "edit": {
-          "label": "systemName",
-          "description": "",
+          "label": "System name",
+          "description": "Only displayed here in the admin dashboard. Not visible to users.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -36,8 +36,8 @@
       },
       "title": {
         "edit": {
-          "label": "title",
-          "description": "",
+          "label": "Title",
+          "description": "The title of the form section.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,7 +50,7 @@
       },
       "options": {
         "edit": {
-          "label": "options",
+          "label": "Options",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,8 +64,8 @@
       },
       "selectLabel": {
         "edit": {
-          "label": "selectLabel",
-          "description": "",
+          "label": "Select label",
+          "description": "The label of the emission type selector",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -78,8 +78,8 @@
       },
       "valueLabel": {
         "edit": {
-          "label": "valueLabel",
-          "description": "",
+          "label": "Value label",
+          "description": "The label of the value input field.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -124,16 +124,12 @@
         [
           {
             "name": "systemName",
-            "size": 6
-          },
-          {
-            "name": "title",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "options",
+            "name": "title",
             "size": 12
           }
         ],
@@ -146,9 +142,18 @@
             "name": "valueLabel",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "options",
+            "size": 12
+          }
         ]
       ],
-      "list": ["systemName", "title"]
+      "list": [
+        "systemName",
+        "title"
+      ]
     }
   },
   "type": "object",
