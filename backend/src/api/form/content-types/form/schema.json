@@ -44,16 +44,6 @@
       "type": "string",
       "required": true
     },
-    "scope": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": ["S1", "S2", "S3"],
-      "required": true
-    },
     "sections": {
       "type": "relation",
       "relation": "oneToMany",

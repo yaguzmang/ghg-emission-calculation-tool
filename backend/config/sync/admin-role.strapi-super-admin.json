@@ -10,7 +10,7 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
@@ -33,7 +33,7 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
@@ -48,7 +48,7 @@
         "fields": [
           "systemName",
           "title",
-          "options.efid",
+          "options.emissionFactorId",
           "selectLabel",
           "valueLabel"
         ],
@@ -60,14 +60,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::form.form",
       "properties": {
-        "fields": [
-          "systemName",
-          "shortTitle",
-          "longTitle",
-          "scope",
-          "sections",
-          "slug"
-        ],
+        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -84,14 +77,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::form.form",
       "properties": {
-        "fields": [
-          "systemName",
-          "shortTitle",
-          "longTitle",
-          "scope",
-          "sections",
-          "slug"
-        ],
+        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -100,14 +86,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::form.form",
       "properties": {
-        "fields": [
-          "systemName",
-          "shortTitle",
-          "longTitle",
-          "scope",
-          "sections",
-          "slug"
-        ],
+        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
         "locales": ["en", "fi"]
       },
       "conditions": []
