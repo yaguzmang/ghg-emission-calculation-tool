@@ -93,9 +93,39 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },
@@ -109,7 +139,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },
@@ -117,7 +147,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users"]
+        "fields": ["name", "users", "organizationUnits"]
       },
       "conditions": []
     },

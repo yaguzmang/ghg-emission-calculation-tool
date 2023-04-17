@@ -150,7 +150,10 @@
           }
         ]
       ],
-      "list": ["systemName", "title"]
+      "list": [
+        "systemName",
+        "title"
+      ]
     }
   },
   "type": "object",
