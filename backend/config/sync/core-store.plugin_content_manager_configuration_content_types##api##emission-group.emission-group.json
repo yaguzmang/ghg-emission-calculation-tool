@@ -72,10 +72,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title"
-      ]
+      "list": ["id", "title"]
     }
   },
   "type": "object",
