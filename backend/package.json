@@ -15,9 +15,9 @@
     "format:write": "prettier --write ."
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.9.1",
-    "@strapi/plugin-users-permissions": "4.9.1",
-    "@strapi/strapi": "4.9.1",
+    "@strapi/plugin-i18n": "4.9.2",
+    "@strapi/plugin-users-permissions": "4.9.2",
+    "@strapi/strapi": "4.9.2",
     "better-sqlite3": "8.0.1",
     "strapi-plugin-config-sync": "^1.1.1"
   },
