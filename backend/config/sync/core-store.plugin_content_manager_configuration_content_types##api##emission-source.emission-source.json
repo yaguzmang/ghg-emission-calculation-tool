@@ -22,21 +22,21 @@
       },
       "apiId": {
         "edit": {
-          "label": "apiId",
-          "description": "",
+          "label": "API ID",
+          "description": "The ID of the associated emission source in the emission source API.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "apiId",
+          "label": "API id",
           "searchable": true,
           "sortable": true
         }
       },
       "emissionCategory": {
         "edit": {
-          "label": "emissionCategory",
+          "label": "Emission category",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,7 +44,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionCategory",
+          "label": "Emission category",
           "searchable": true,
           "sortable": true
         }
@@ -58,7 +58,7 @@
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "Created at",
           "searchable": true,
           "sortable": true
         }
@@ -79,12 +79,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "apiId",
-        "emissionCategory",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -96,6 +90,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "apiId",
+        "emissionCategory",
+        "createdAt"
       ]
     }
   },
