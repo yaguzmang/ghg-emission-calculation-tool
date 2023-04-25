@@ -2069,6 +2069,12 @@
           "target": "api::emission-group.emission-group",
           "inversedBy": "emissionCategories"
         },
+        "emissionSources": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-source.emission-source",
+          "mappedBy": "emissionCategory"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2161,6 +2167,12 @@
             "relation": "manyToOne",
             "target": "api::emission-group.emission-group",
             "inversedBy": "emissionCategories"
+          },
+          "emissionSources": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-source.emission-source",
+            "mappedBy": "emissionCategory"
           }
         },
         "kind": "collectionType"
@@ -2293,6 +2305,92 @@
       "uid": "api::emission-group.emission-group",
       "apiName": "emission-group",
       "globalId": "EmissionGroup",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::emission-source.emission-source": {
+      "kind": "collectionType",
+      "collectionName": "emission_sources",
+      "info": {
+        "singularName": "emission-source",
+        "pluralName": "emission-sources",
+        "displayName": "App / Emission source",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "apiId": {
+          "type": "string",
+          "required": true
+        },
+        "emissionCategory": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::emission-category.emission-category",
+          "inversedBy": "emissionSources"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_sources",
+        "info": {
+          "singularName": "emission-source",
+          "pluralName": "emission-sources",
+          "displayName": "App / Emission source",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "apiId": {
+            "type": "string",
+            "required": true
+          },
+          "emissionCategory": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::emission-category.emission-category",
+            "inversedBy": "emissionSources"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-source",
+      "connection": "default",
+      "uid": "api::emission-source.emission-source",
+      "apiName": "emission-source",
+      "globalId": "EmissionSource",
       "actions": {},
       "lifecycles": {}
     },

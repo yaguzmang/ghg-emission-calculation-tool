@@ -11,7 +11,8 @@
           "title",
           "description",
           "emissionSourceLabel",
-          "emissionGroup"
+          "emissionGroup",
+          "emissionSources"
         ],
         "locales": [
           "en",
@@ -39,7 +40,8 @@
           "title",
           "description",
           "emissionSourceLabel",
-          "emissionGroup"
+          "emissionGroup",
+          "emissionSources"
         ],
         "locales": [
           "en",
@@ -56,7 +58,8 @@
           "title",
           "description",
           "emissionSourceLabel",
-          "emissionGroup"
+          "emissionGroup",
+          "emissionSources"
         ],
         "locales": [
           "en",
@@ -117,6 +120,45 @@
         "locales": [
           "en",
           "fi"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": [
+          "apiId",
+          "emissionCategory"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source.emission-source",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": [
+          "apiId",
+          "emissionCategory"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": [
+          "apiId",
+          "emissionCategory"
         ]
       },
       "conditions": []

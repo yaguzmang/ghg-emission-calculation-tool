@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_sources",
+  "info": {
+    "singularName": "emission-source",
+    "pluralName": "emission-sources",
+    "displayName": "App / Emission source",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "apiId": {
+      "type": "string",
+      "required": true
+    },
+    "emissionCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::emission-category.emission-category",
+      "inversedBy": "emissionSources"
+    }
+  }
+}
