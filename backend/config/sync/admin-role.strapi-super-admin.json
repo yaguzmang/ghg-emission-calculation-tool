@@ -5,22 +5,16 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::form-section.form-section",
+      "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "systemName",
-          "title",
-          "options.emissionFactorId",
-          "selectLabel",
-          "valueLabel"
-        ],
+        "fields": ["title"],
         "locales": ["en", "fi"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::form-section.form-section",
+      "subject": "api::emission-group.emission-group",
       "properties": {
         "locales": ["en", "fi"]
       },
@@ -28,46 +22,40 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::form-section.form-section",
+      "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "systemName",
-          "title",
-          "options.emissionFactorId",
-          "selectLabel",
-          "valueLabel"
-        ],
+        "fields": ["title"],
         "locales": ["en", "fi"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::form-section.form-section",
+      "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "systemName",
-          "title",
-          "options.emissionFactorId",
-          "selectLabel",
-          "valueLabel"
-        ],
+        "fields": ["title"],
         "locales": ["en", "fi"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::form.form",
+      "subject": "api::form-section.form-section",
       "properties": {
-        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
+        "fields": [
+          "systemName",
+          "title",
+          "options.emissionFactorId",
+          "selectLabel",
+          "valueLabel"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::form.form",
+      "subject": "api::form-section.form-section",
       "properties": {
         "locales": ["en", "fi"]
       },
@@ -75,18 +63,30 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::form.form",
+      "subject": "api::form-section.form-section",
       "properties": {
-        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
+        "fields": [
+          "systemName",
+          "title",
+          "options.emissionFactorId",
+          "selectLabel",
+          "valueLabel"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::form.form",
+      "subject": "api::form-section.form-section",
       "properties": {
-        "fields": ["systemName", "shortTitle", "longTitle", "sections", "slug"],
+        "fields": [
+          "systemName",
+          "title",
+          "options.emissionFactorId",
+          "selectLabel",
+          "valueLabel"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
