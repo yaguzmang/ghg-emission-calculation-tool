@@ -16,12 +16,6 @@
       "action": "api::emission-group.emission-group.findOne"
     },
     {
-      "action": "api::form-section.form-section.find"
-    },
-    {
-      "action": "api::form-section.form-section.findOne"
-    },
-    {
       "action": "plugin::i18n.locales.listLocales"
     },
     {
