@@ -4,6 +4,18 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::emission-category.emission-category.find"
+    },
+    {
+      "action": "api::emission-category.emission-category.findOne"
+    },
+    {
+      "action": "api::emission-group.emission-group.find"
+    },
+    {
+      "action": "api::emission-group.emission-group.findOne"
+    },
+    {
       "action": "api::form-section.form-section.find"
     },
     {
