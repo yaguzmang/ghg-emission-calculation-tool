@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,8 +50,8 @@
       },
       "emissionSourceLabel": {
         "edit": {
-          "label": "emissionSourceLabel",
-          "description": "",
+          "label": "Emission source label",
+          "description": "The label for the emission source dropdown.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -64,7 +64,7 @@
       },
       "emissionGroup": {
         "edit": {
-          "label": "emissionGroup",
+          "label": "Emission group",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -72,7 +72,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionGroup",
+          "label": "Emission group",
           "searchable": true,
           "sortable": true
         }
@@ -107,12 +107,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "emissionSourceLabel",
-        "emissionGroup"
-      ],
       "edit": [
         [
           {
@@ -136,6 +130,11 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "emissionGroup"
       ]
     }
   },

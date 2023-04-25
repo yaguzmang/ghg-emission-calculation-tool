@@ -36,7 +36,7 @@
       },
       "emissionCategories": {
         "edit": {
-          "label": "emissionCategories",
+          "label": "Emission categories",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,7 +44,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionCategories",
+          "label": "Emission categories",
           "searchable": false,
           "sortable": false
         }
@@ -79,11 +79,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "emissionCategories"
-      ],
       "edit": [
         [
           {
@@ -95,6 +90,11 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "emissionCategories"
       ]
     }
   },
