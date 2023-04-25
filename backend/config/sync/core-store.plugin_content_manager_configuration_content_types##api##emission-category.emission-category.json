@@ -79,8 +79,8 @@
       },
       "emissionSources": {
         "edit": {
-          "label": "emissionSources",
-          "description": "",
+          "label": "Emission sources",
+          "description": "❗️ Set these only for the **English (en)** locale. For other locales, leave empty.",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -122,12 +122,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "emissionGroup",
-        "emissionSources"
-      ],
       "edit": [
         [
           {
@@ -157,6 +151,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "emissionGroup",
+        "emissionSources"
       ]
     }
   },

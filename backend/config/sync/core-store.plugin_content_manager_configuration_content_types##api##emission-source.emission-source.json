@@ -37,7 +37,7 @@
       "emissionCategory": {
         "edit": {
           "label": "Emission category",
-          "description": "",
+          "description": "❗️ Only link to an **English (en)** locale.",
           "placeholder": "",
           "visible": true,
           "editable": true,
