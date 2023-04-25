@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::emission-group.emission-group",
+  "key": "plugin_content_manager_configuration_content_types::api::emission-category.emission-category",
   "value": {
-    "uid": "api::emission-group.emission-group",
+    "uid": "api::emission-category.emission-category",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -34,9 +34,37 @@
           "sortable": true
         }
       },
-      "emissionCategories": {
+      "description": {
         "edit": {
-          "label": "emissionCategories",
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "emissionSourceLabel": {
+        "edit": {
+          "label": "emissionSourceLabel",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "emissionSourceLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "emissionGroup": {
+        "edit": {
+          "label": "emissionGroup",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,9 +72,9 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionCategories",
-          "searchable": false,
-          "sortable": false
+          "label": "emissionGroup",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -82,16 +110,29 @@
       "list": [
         "id",
         "title",
-        "emissionCategories"
+        "emissionSourceLabel",
+        "emissionGroup"
       ],
       "edit": [
         [
           {
             "name": "title",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "emissionSourceLabel",
+            "size": 6
           },
           {
-            "name": "emissionCategories",
+            "name": "emissionGroup",
             "size": 6
           }
         ]
