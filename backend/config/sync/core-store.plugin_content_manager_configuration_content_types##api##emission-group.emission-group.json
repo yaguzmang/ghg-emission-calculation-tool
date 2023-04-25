@@ -91,11 +91,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "emissionCategories"
-      ]
+      "list": ["id", "title", "emissionCategories"]
     }
   },
   "type": "object",

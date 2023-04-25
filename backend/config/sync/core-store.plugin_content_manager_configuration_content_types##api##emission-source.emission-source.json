@@ -91,12 +91,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "apiId",
-        "emissionCategory",
-        "createdAt"
-      ]
+      "list": ["id", "apiId", "emissionCategory", "createdAt"]
     }
   },
   "type": "object",
