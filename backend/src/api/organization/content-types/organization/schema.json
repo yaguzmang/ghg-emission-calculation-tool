@@ -26,6 +26,12 @@
       "relation": "oneToMany",
       "target": "api::organization-unit.organization-unit",
       "mappedBy": "organization"
+    },
+    "reportingPeriods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reporting-period.reporting-period",
+      "mappedBy": "organization"
     }
   }
 }

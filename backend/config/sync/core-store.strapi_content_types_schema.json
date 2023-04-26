@@ -538,7 +538,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -636,7 +640,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1176,32 +1184,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": ["updated_at"],
+          "columns": [
+            "updated_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": ["size"],
+          "columns": [
+            "size"
+          ],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": ["ext"],
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1395,12 +1415,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],
@@ -2399,6 +2423,12 @@
           "target": "api::organization-unit.organization-unit",
           "mappedBy": "organization"
         },
+        "reportingPeriods": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::reporting-period.reporting-period",
+          "mappedBy": "organization"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2452,6 +2482,12 @@
             "type": "relation",
             "relation": "oneToMany",
             "target": "api::organization-unit.organization-unit",
+            "mappedBy": "organization"
+          },
+          "reportingPeriods": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::reporting-period.reporting-period",
             "mappedBy": "organization"
           }
         },
@@ -2547,6 +2583,100 @@
       "uid": "api::organization-unit.organization-unit",
       "apiName": "organization-unit",
       "globalId": "OrganizationUnit",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::reporting-period.reporting-period": {
+      "kind": "collectionType",
+      "collectionName": "reporting_periods",
+      "info": {
+        "singularName": "reporting-period",
+        "pluralName": "reporting-periods",
+        "displayName": "Data / Reporting period",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "startDate": {
+          "type": "date",
+          "required": true
+        },
+        "endDate": {
+          "type": "date",
+          "required": true
+        },
+        "organization": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::organization.organization",
+          "inversedBy": "reportingPeriods"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "reporting_periods",
+        "info": {
+          "singularName": "reporting-period",
+          "pluralName": "reporting-periods",
+          "displayName": "Data / Reporting period",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "startDate": {
+            "type": "date",
+            "required": true
+          },
+          "endDate": {
+            "type": "date",
+            "required": true
+          },
+          "organization": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::organization.organization",
+            "inversedBy": "reportingPeriods"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "reporting-period",
+      "connection": "default",
+      "uid": "api::reporting-period.reporting-period",
+      "apiName": "reporting-period",
+      "globalId": "ReportingPeriod",
       "actions": {},
       "lifecycles": {}
     }
