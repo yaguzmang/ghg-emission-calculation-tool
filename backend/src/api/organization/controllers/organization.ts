@@ -22,7 +22,6 @@ export default factories.createCoreController(
     },
 
     async findReportingPeriods(ctx) {
-      console.log("findReportingPeriods");
       const organizationId = Number(ctx.params.id);
 
       if (Number.isNaN(organizationId) || organizationId < 1) {
@@ -48,8 +47,6 @@ export default factories.createCoreController(
           populate: { organizationUnits: true },
         }
       );
-
-      console.log(organizationUnits);
 
       return organizationUnits;
     },
