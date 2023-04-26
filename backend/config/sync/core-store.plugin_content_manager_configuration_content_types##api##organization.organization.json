@@ -66,8 +66,8 @@
       },
       "reportingPeriods": {
         "edit": {
-          "label": "reportingPeriods",
-          "description": "",
+          "label": "Reporting periods",
+          "description": "The reporting periods defined by this organization",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -109,12 +109,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -138,6 +132,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
       ]
     }
   },

@@ -22,35 +22,35 @@
       },
       "startDate": {
         "edit": {
-          "label": "startDate",
-          "description": "",
+          "label": "Start date",
+          "description": "The start date (inclusive) of the reporting period",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "startDate",
+          "label": "Start date",
           "searchable": true,
           "sortable": true
         }
       },
       "endDate": {
         "edit": {
-          "label": "endDate",
-          "description": "",
+          "label": "End date",
+          "description": "The end date (inclusive) of the reporting period",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "endDate",
+          "label": "End date",
           "searchable": true,
           "sortable": true
         }
       },
       "organization": {
         "edit": {
-          "label": "organization",
+          "label": "Organization",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -93,12 +93,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "startDate",
-        "endDate",
-        "organization"
-      ],
       "edit": [
         [
           {
@@ -116,6 +110,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "startDate",
+        "endDate",
+        "organization"
       ]
     }
   },
