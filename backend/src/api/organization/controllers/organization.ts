@@ -24,12 +24,6 @@ export default factories.createCoreController(
     async findReportingPeriods(ctx) {
       const organizationId = Number(ctx.params.id);
 
-      if (Number.isNaN(organizationId) || organizationId < 1) {
-        ctx.response.status = 400;
-        ctx.response.message = "Organization ID must be a positive integer";
-        return;
-      }
-
       const isAllowed = await strapi
         .service("api::organization.organization")
         .isAllowedForUser(organizationId, ctx.state.user.id);
