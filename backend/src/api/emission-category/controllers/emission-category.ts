@@ -8,7 +8,10 @@ export default factories.createCoreController(
   "api::emission-category.emission-category",
   ({ strapi }) => ({
     async findOne(ctx) {
-      const { data, meta } = await super.findOne(ctx);
+      const res = await super.findOne(ctx);
+      if (!res) return null;
+
+      const { data, meta } = res;
       const { populate } = ctx.query;
 
       if (
