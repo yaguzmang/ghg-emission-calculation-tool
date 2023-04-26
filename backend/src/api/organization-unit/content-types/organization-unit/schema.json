@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organization-unit",
     "pluralName": "organization-units",
-    "displayName": "Organization unit"
+    "displayName": "Data / Organization unit",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
