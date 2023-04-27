@@ -24,25 +24,16 @@ export default factories.createCoreController(
     async findReportingPeriods(ctx) {
       const organizationId = Number(ctx.params.id);
 
-      const isAllowed = await strapi
-        .service("api::organization.organization")
-        .isAllowedForUser(organizationId, ctx.state.user.id);
-
-      if (!isAllowed) {
-        ctx.response.status = 403;
-        return;
-      }
-
-      const { organizationUnits } = await strapi.entityService.findOne(
+      const { reportingPeriods } = await strapi.entityService.findOne(
         "api::organization.organization",
         organizationId,
         {
           fields: [],
-          populate: { organizationUnits: true },
+          populate: { reportingPeriods: true },
         }
       );
 
-      return organizationUnits;
+      return { data: reportingPeriods };
     },
   })
 );
