@@ -111,12 +111,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "startDate",
-        "endDate",
-        "organization"
-      ]
+      "list": ["id", "startDate", "endDate", "organization"]
     }
   },
   "type": "object",
