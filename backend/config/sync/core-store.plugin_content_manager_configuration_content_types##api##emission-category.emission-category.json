@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::form-section.form-section",
+  "key": "plugin_content_manager_configuration_content_types::api::emission-category.emission-category",
   "value": {
-    "uid": "api::form-section.form-section",
+    "uid": "api::emission-category.emission-category",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "systemName",
-      "defaultSortBy": "systemName",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,24 +20,10 @@
           "sortable": true
         }
       },
-      "systemName": {
-        "edit": {
-          "label": "System name",
-          "description": "Only displayed here in the admin dashboard. Not visible to users.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "systemName",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "title": {
         "edit": {
           "label": "Title",
-          "description": "The title of the form section.",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -48,44 +34,45 @@
           "sortable": true
         }
       },
-      "options": {
+      "description": {
         "edit": {
-          "label": "Options",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "options",
+          "label": "description",
           "searchable": false,
           "sortable": false
         }
       },
-      "selectLabel": {
+      "emissionSourceLabel": {
         "edit": {
-          "label": "Select label",
-          "description": "The label of the emission type selector",
+          "label": "Emission source label",
+          "description": "The label for the emission source dropdown.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "selectLabel",
+          "label": "emissionSourceLabel",
           "searchable": true,
           "sortable": true
         }
       },
-      "valueLabel": {
+      "emissionGroup": {
         "edit": {
-          "label": "Value label",
-          "description": "The label of the value input field.",
+          "label": "Emission group",
+          "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
-          "label": "valueLabel",
+          "label": "Emission group",
           "searchable": true,
           "sortable": true
         }
@@ -123,34 +110,32 @@
       "edit": [
         [
           {
-            "name": "systemName",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "title",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
             "size": 12
           }
         ],
         [
           {
-            "name": "selectLabel",
+            "name": "emissionSourceLabel",
             "size": 6
           },
           {
-            "name": "valueLabel",
+            "name": "emissionGroup",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "options",
-            "size": 12
           }
         ]
       ],
-      "list": ["systemName", "title"]
+      "list": [
+        "id",
+        "title",
+        "emissionGroup"
+      ]
     }
   },
   "type": "object",

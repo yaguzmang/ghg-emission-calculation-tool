@@ -12,12 +12,13 @@
     "import": "strapi import --file data.tar.gz",
     "lint": "eslint .",
     "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:write": "prettier --write .",
+    "cs": "config-sync"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.9.1",
-    "@strapi/plugin-users-permissions": "4.9.1",
-    "@strapi/strapi": "4.9.1",
+    "@strapi/plugin-i18n": "4.9.2",
+    "@strapi/plugin-users-permissions": "4.9.2",
+    "@strapi/strapi": "4.9.2",
     "better-sqlite3": "8.0.1",
     "strapi-plugin-config-sync": "^1.1.1"
   },

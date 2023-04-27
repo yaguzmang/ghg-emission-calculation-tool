@@ -34,6 +34,21 @@
           "sortable": true
         }
       },
+      "emissionCategories": {
+        "edit": {
+          "label": "Emission categories",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "Emission categories",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -69,10 +84,18 @@
           {
             "name": "title",
             "size": 6
+          },
+          {
+            "name": "emissionCategories",
+            "size": 6
           }
         ]
       ],
-      "list": ["id", "title"]
+      "list": [
+        "id",
+        "title",
+        "emissionCategories"
+      ]
     }
   },
   "type": "object",

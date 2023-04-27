@@ -4,10 +4,16 @@
   "type": "public",
   "permissions": [
     {
-      "action": "api::form-section.form-section.find"
+      "action": "api::emission-category.emission-category.find"
     },
     {
-      "action": "api::form-section.form-section.findOne"
+      "action": "api::emission-category.emission-category.findOne"
+    },
+    {
+      "action": "api::emission-group.emission-group.find"
+    },
+    {
+      "action": "api::emission-group.emission-group.findOne"
     },
     {
       "action": "plugin::i18n.locales.listLocales"

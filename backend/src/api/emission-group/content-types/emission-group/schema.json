@@ -25,6 +25,12 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "emissionCategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::emission-category.emission-category",
+      "mappedBy": "emissionGroup"
     }
   }
 }

@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_categories",
+  "info": {
+    "singularName": "emission-category",
+    "pluralName": "emission-categories",
+    "displayName": "App / Emission category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "emissionSourceLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "emissionGroup": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::emission-group.emission-group",
+      "inversedBy": "emissionCategories"
+    }
+  }
+}
