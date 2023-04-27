@@ -13,12 +13,12 @@ import { Strapi } from "@strapi/strapi";
  */
 export default (config, { strapi }: { strapi: Strapi }) => {
   return async (ctx, next) => {
-    const organizationId = Number(ctx.params.id);
+    const entryId = Number(ctx.params.id);
     const userId = ctx.state.user.id;
 
     const isAllowed = await strapi
       .service(config.uid)
-      .isAllowedForUser(organizationId, userId);
+      .isAllowedForUser(entryId, userId);
 
     if (!isAllowed) {
       return ctx.forbidden();
