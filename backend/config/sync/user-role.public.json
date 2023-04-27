@@ -16,6 +16,12 @@
       "action": "api::emission-group.emission-group.findOne"
     },
     {
+      "action": "api::emission-source.emission-source.find"
+    },
+    {
+      "action": "api::emission-source.emission-source.findOne"
+    },
+    {
       "action": "plugin::i18n.locales.listLocales"
     },
     {

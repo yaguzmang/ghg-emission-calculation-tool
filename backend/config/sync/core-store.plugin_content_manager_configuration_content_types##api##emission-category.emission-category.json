@@ -77,6 +77,21 @@
           "sortable": true
         }
       },
+      "emissionSources": {
+        "edit": {
+          "label": "Emission sources",
+          "description": "❗️ Set these only for the **English (en)** locale. For other locales, leave empty.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "apiId"
+        },
+        "list": {
+          "label": "emissionSources",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -129,13 +144,15 @@
             "name": "emissionGroup",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "emissionSources",
+            "size": 6
+          }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "emissionGroup"
-      ]
+      "list": ["id", "title", "emissionGroup", "emissionSources"]
     }
   },
   "type": "object",

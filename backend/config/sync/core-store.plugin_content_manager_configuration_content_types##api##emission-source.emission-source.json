@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::emission-group.emission-group",
+  "key": "plugin_content_manager_configuration_content_types::api::emission-source.emission-source",
   "value": {
-    "uid": "api::emission-group.emission-group",
+    "uid": "api::emission-source.emission-source",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "apiId",
+      "defaultSortBy": "apiId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,33 +20,33 @@
           "sortable": true
         }
       },
-      "title": {
+      "apiId": {
         "edit": {
-          "label": "Title",
-          "description": "",
+          "label": "API ID",
+          "description": "The ID of the associated emission source in the emission source API.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "API id",
           "searchable": true,
           "sortable": true
         }
       },
-      "emissionCategories": {
+      "emissionCategory": {
         "edit": {
-          "label": "Emission categories",
-          "description": "",
+          "label": "Emission category",
+          "description": "❗️ Only link to an **English (en)** locale.",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "title"
         },
         "list": {
-          "label": "Emission categories",
-          "searchable": false,
-          "sortable": false
+          "label": "Emission category",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -58,7 +58,7 @@
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "Created at",
           "searchable": true,
           "sortable": true
         }
@@ -82,16 +82,16 @@
       "edit": [
         [
           {
-            "name": "title",
+            "name": "apiId",
             "size": 6
           },
           {
-            "name": "emissionCategories",
+            "name": "emissionCategory",
             "size": 6
           }
         ]
       ],
-      "list": ["id", "title", "emissionCategories"]
+      "list": ["id", "apiId", "emissionCategory", "createdAt"]
     }
   },
   "type": "object",

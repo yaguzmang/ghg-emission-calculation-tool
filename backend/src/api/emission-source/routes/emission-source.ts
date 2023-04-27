@@ -1,9 +1,9 @@
 /**
- * emission-category router
+ * emission-source router
  */
 
 import { factories } from "@strapi/strapi";
 
 export default factories.createCoreRouter(
-  "api::emission-category.emission-category"
+  "api::emission-source.emission-source"
 );

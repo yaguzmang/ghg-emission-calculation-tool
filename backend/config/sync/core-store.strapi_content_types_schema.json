@@ -538,11 +538,7 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": [
-            "read-only",
-            "full-access",
-            "custom"
-          ],
+          "enum": ["read-only", "full-access", "custom"],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -640,11 +636,7 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": [
-              "read-only",
-              "full-access",
-              "custom"
-            ],
+            "enum": ["read-only", "full-access", "custom"],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1184,44 +1176,32 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": [
-            "folder_path"
-          ],
+          "columns": ["folder_path"],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": [
-            "created_at"
-          ],
+          "columns": ["created_at"],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": [
-            "updated_at"
-          ],
+          "columns": ["updated_at"],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": [
-            "size"
-          ],
+          "columns": ["size"],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": [
-            "ext"
-          ],
+          "columns": ["ext"],
           "type": null
         }
       ],
@@ -1415,16 +1395,12 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": [
-            "path_id"
-          ],
+          "columns": ["path_id"],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": [
-            "path"
-          ],
+          "columns": ["path"],
           "type": "unique"
         }
       ],
@@ -2069,6 +2045,12 @@
           "target": "api::emission-group.emission-group",
           "inversedBy": "emissionCategories"
         },
+        "emissionSources": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-source.emission-source",
+          "mappedBy": "emissionCategory"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2161,6 +2143,12 @@
             "relation": "manyToOne",
             "target": "api::emission-group.emission-group",
             "inversedBy": "emissionCategories"
+          },
+          "emissionSources": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-source.emission-source",
+            "mappedBy": "emissionCategory"
           }
         },
         "kind": "collectionType"
@@ -2293,6 +2281,92 @@
       "uid": "api::emission-group.emission-group",
       "apiName": "emission-group",
       "globalId": "EmissionGroup",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::emission-source.emission-source": {
+      "kind": "collectionType",
+      "collectionName": "emission_sources",
+      "info": {
+        "singularName": "emission-source",
+        "pluralName": "emission-sources",
+        "displayName": "App / Emission source",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "apiId": {
+          "type": "string",
+          "required": true
+        },
+        "emissionCategory": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::emission-category.emission-category",
+          "inversedBy": "emissionSources"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_sources",
+        "info": {
+          "singularName": "emission-source",
+          "pluralName": "emission-sources",
+          "displayName": "App / Emission source",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "apiId": {
+            "type": "string",
+            "required": true
+          },
+          "emissionCategory": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::emission-category.emission-category",
+            "inversedBy": "emissionSources"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-source",
+      "connection": "default",
+      "uid": "api::emission-source.emission-source",
+      "apiName": "emission-source",
+      "globalId": "EmissionSource",
       "actions": {},
       "lifecycles": {}
     },
