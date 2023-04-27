@@ -12,9 +12,7 @@ export default (config, { strapi }: { strapi: Strapi }) => {
     const id = Number(ctx.params.id);
 
     if (Number.isNaN(id) || id < 1) {
-      ctx.response.status = 400;
-      ctx.response.message = "Organization ID must be a positive integer";
-      return;
+      return ctx.badRequest("Organization ID must be a positive integer");
     }
 
     await next();
