@@ -2400,7 +2400,8 @@
       "info": {
         "singularName": "organization",
         "pluralName": "organizations",
-        "displayName": "Organization"
+        "displayName": "Data / Organization",
+        "description": ""
       },
       "options": {
         "draftAndPublish": false
@@ -2461,7 +2462,8 @@
         "info": {
           "singularName": "organization",
           "pluralName": "organizations",
-          "displayName": "Organization"
+          "displayName": "Data / Organization",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false
@@ -2508,7 +2510,8 @@
       "info": {
         "singularName": "organization-unit",
         "pluralName": "organization-units",
-        "displayName": "Organization unit"
+        "displayName": "Data / Organization unit",
+        "description": ""
       },
       "options": {
         "draftAndPublish": false
@@ -2557,7 +2560,8 @@
         "info": {
           "singularName": "organization-unit",
           "pluralName": "organization-units",
-          "displayName": "Organization unit"
+          "displayName": "Data / Organization unit",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false

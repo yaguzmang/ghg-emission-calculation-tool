@@ -16,6 +16,9 @@
       "action": "api::organization.organization.findOne"
     },
     {
+      "action": "api::organization.organization.findReportingPeriods"
+    },
+    {
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {
