@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::organization.organization",
+  "key": "plugin_content_manager_configuration_content_types::api::reporting-period.reporting-period",
   "value": {
-    "uid": "api::organization.organization",
+    "uid": "api::reporting-period.reporting-period",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,38 +20,37 @@
           "sortable": true
         }
       },
-      "name": {
+      "startDate": {
         "edit": {
-          "label": "Name",
-          "description": "Name of the organization",
+          "label": "Start date",
+          "description": "The start date (inclusive) of the reporting period",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Start date",
           "searchable": true,
           "sortable": true
         }
       },
-      "users": {
+      "endDate": {
         "edit": {
-          "label": "Users",
-          "description": "Users that have access to this organization",
+          "label": "End date",
+          "description": "The end date (inclusive) of the reporting period",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "email"
+          "editable": true
         },
         "list": {
-          "label": "users",
-          "searchable": false,
-          "sortable": false
+          "label": "End date",
+          "searchable": true,
+          "sortable": true
         }
       },
-      "organizationUnits": {
+      "organization": {
         "edit": {
-          "label": "Organization units",
+          "label": "Organization",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -59,24 +58,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "organizationUnits",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "reportingPeriods": {
-        "edit": {
-          "label": "Reporting periods",
-          "description": "The reporting periods defined by this organization",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "id"
-        },
-        "list": {
-          "label": "reportingPeriods",
-          "searchable": false,
-          "sortable": false
+          "label": "organization",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -112,28 +96,22 @@
       "edit": [
         [
           {
-            "name": "name",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "users",
-            "size": 8
-          }
-        ],
-        [
-          {
-            "name": "organizationUnits",
-            "size": 6
+            "name": "startDate",
+            "size": 4
           },
           {
-            "name": "reportingPeriods",
+            "name": "endDate",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "organization",
             "size": 6
           }
         ]
       ],
-      "list": ["id", "name", "createdAt", "updatedAt"]
+      "list": ["id", "startDate", "endDate", "organization"]
     }
   },
   "type": "object",

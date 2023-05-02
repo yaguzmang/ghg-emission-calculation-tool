@@ -2376,7 +2376,8 @@
       "info": {
         "singularName": "organization",
         "pluralName": "organizations",
-        "displayName": "Organization"
+        "displayName": "Data / Organization",
+        "description": ""
       },
       "options": {
         "draftAndPublish": false
@@ -2397,6 +2398,12 @@
           "type": "relation",
           "relation": "oneToMany",
           "target": "api::organization-unit.organization-unit",
+          "mappedBy": "organization"
+        },
+        "reportingPeriods": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::reporting-period.reporting-period",
           "mappedBy": "organization"
         },
         "createdAt": {
@@ -2431,7 +2438,8 @@
         "info": {
           "singularName": "organization",
           "pluralName": "organizations",
-          "displayName": "Organization"
+          "displayName": "Data / Organization",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false
@@ -2453,6 +2461,12 @@
             "relation": "oneToMany",
             "target": "api::organization-unit.organization-unit",
             "mappedBy": "organization"
+          },
+          "reportingPeriods": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::reporting-period.reporting-period",
+            "mappedBy": "organization"
           }
         },
         "kind": "collectionType"
@@ -2472,7 +2486,8 @@
       "info": {
         "singularName": "organization-unit",
         "pluralName": "organization-units",
-        "displayName": "Organization unit"
+        "displayName": "Data / Organization unit",
+        "description": ""
       },
       "options": {
         "draftAndPublish": false
@@ -2521,7 +2536,8 @@
         "info": {
           "singularName": "organization-unit",
           "pluralName": "organization-units",
-          "displayName": "Organization unit"
+          "displayName": "Data / Organization unit",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false
@@ -2547,6 +2563,100 @@
       "uid": "api::organization-unit.organization-unit",
       "apiName": "organization-unit",
       "globalId": "OrganizationUnit",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::reporting-period.reporting-period": {
+      "kind": "collectionType",
+      "collectionName": "reporting_periods",
+      "info": {
+        "singularName": "reporting-period",
+        "pluralName": "reporting-periods",
+        "displayName": "Data / Reporting period",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "startDate": {
+          "type": "date",
+          "required": true
+        },
+        "endDate": {
+          "type": "date",
+          "required": true
+        },
+        "organization": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::organization.organization",
+          "inversedBy": "reportingPeriods"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "reporting_periods",
+        "info": {
+          "singularName": "reporting-period",
+          "pluralName": "reporting-periods",
+          "displayName": "Data / Reporting period",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "startDate": {
+            "type": "date",
+            "required": true
+          },
+          "endDate": {
+            "type": "date",
+            "required": true
+          },
+          "organization": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::organization.organization",
+            "inversedBy": "reportingPeriods"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "reporting-period",
+      "connection": "default",
+      "uid": "api::reporting-period.reporting-period",
+      "apiName": "reporting-period",
+      "globalId": "ReportingPeriod",
       "actions": {},
       "lifecycles": {}
     }

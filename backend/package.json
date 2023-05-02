@@ -19,6 +19,7 @@
     "@strapi/plugin-i18n": "4.9.2",
     "@strapi/plugin-users-permissions": "4.9.2",
     "@strapi/strapi": "4.9.2",
+    "@types/koa": "^2.13.6",
     "better-sqlite3": "8.0.1",
     "strapi-plugin-config-sync": "^1.1.1"
   },
@@ -32,6 +33,5 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "devDependencies": {}
+  "license": "MIT"
 }

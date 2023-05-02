@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organization",
     "pluralName": "organizations",
-    "displayName": "Organization"
+    "displayName": "Data / Organization",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -25,6 +26,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::organization-unit.organization-unit",
+      "mappedBy": "organization"
+    },
+    "reportingPeriods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reporting-period.reporting-period",
       "mappedBy": "organization"
     }
   }

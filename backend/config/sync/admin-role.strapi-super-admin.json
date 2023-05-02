@@ -155,7 +155,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits"]
+        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
       },
       "conditions": []
     },
@@ -169,7 +169,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits"]
+        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
       },
       "conditions": []
     },
@@ -177,7 +177,37 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits"]
+        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization"]
       },
       "conditions": []
     },

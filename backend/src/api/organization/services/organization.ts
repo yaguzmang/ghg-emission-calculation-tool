@@ -17,5 +17,13 @@ export default factories.createCoreService(
       );
       return user.organizations.map((org) => org.id);
     },
+
+    async isAllowedForUser(
+      organizationId: number,
+      userId: number
+    ): Promise<boolean> {
+      const ownOrganizationIds = await this.findForUser(userId);
+      return ownOrganizationIds.includes(organizationId);
+    },
   })
 );

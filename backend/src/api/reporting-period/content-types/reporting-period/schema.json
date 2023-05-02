@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "organization_units",
+  "collectionName": "reporting_periods",
   "info": {
-    "singularName": "organization-unit",
-    "pluralName": "organization-units",
-    "displayName": "Data / Organization unit",
+    "singularName": "reporting-period",
+    "pluralName": "reporting-periods",
+    "displayName": "Data / Reporting period",
     "description": ""
   },
   "options": {
@@ -12,15 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date",
       "required": true
     },
     "organization": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::organization.organization",
-      "inversedBy": "organizationUnits"
+      "inversedBy": "reportingPeriods"
     }
   }
 }
