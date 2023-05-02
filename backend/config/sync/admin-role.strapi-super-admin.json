@@ -58,6 +58,36 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],
@@ -155,7 +185,13 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
       },
       "conditions": []
     },
@@ -169,7 +205,13 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
       },
       "conditions": []
     },
@@ -177,7 +219,13 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
-        "fields": ["name", "users", "organizationUnits", "reportingPeriods"]
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
       },
       "conditions": []
     },
