@@ -18,6 +18,8 @@ export default factories.createCoreController(
         ownOrganizationIds.includes(org.id)
       );
 
+      meta.pagination.total = filteredData.length;
+
       return { data: filteredData, meta };
     },
   })
