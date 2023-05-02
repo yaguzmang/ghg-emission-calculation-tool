@@ -10,6 +10,12 @@
       "action": "api::emission-category.emission-category.findOne"
     },
     {
+      "action": "api::emission-factor-dataset.emission-factor-dataset.find"
+    },
+    {
+      "action": "api::emission-factor-dataset.emission-factor-dataset.findOne"
+    },
+    {
       "action": "api::emission-group.emission-group.find"
     },
     {
