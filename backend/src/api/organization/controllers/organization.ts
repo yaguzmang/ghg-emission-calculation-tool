@@ -20,20 +20,5 @@ export default factories.createCoreController(
 
       return { data: filteredData, meta };
     },
-
-    async findReportingPeriods(ctx) {
-      const organizationId = Number(ctx.params.id);
-
-      const { reportingPeriods } = await strapi.entityService.findOne(
-        "api::organization.organization",
-        organizationId,
-        {
-          fields: [],
-          populate: { reportingPeriods: true },
-        }
-      );
-
-      return { data: reportingPeriods };
-    },
   })
 );
