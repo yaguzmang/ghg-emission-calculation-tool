@@ -16,7 +16,7 @@
       "action": "api::organization.organization.findOne"
     },
     {
-      "action": "api::organization.organization.findReportingPeriods"
+      "action": "api::reporting-period.reporting-period.find"
     },
     {
       "action": "api::reporting-period.reporting-period.findOne"
