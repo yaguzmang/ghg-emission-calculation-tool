@@ -9,7 +9,12 @@ export default factories.createCoreRouter(
   {
     config: {
       findOne: {
-        policies: ["has-access"],
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-unit.organization-unit" },
+          },
+        ],
       },
     },
   }
