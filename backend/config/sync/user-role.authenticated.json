@@ -4,6 +4,30 @@
   "type": "authenticated",
   "permissions": [
     {
+      "action": "api::emission-category.emission-category.find"
+    },
+    {
+      "action": "api::emission-category.emission-category.findOne"
+    },
+    {
+      "action": "api::emission-factor-dataset.emission-factor-dataset.find"
+    },
+    {
+      "action": "api::emission-factor-dataset.emission-factor-dataset.findOne"
+    },
+    {
+      "action": "api::emission-group.emission-group.find"
+    },
+    {
+      "action": "api::emission-group.emission-group.findOne"
+    },
+    {
+      "action": "api::emission-source.emission-source.find"
+    },
+    {
+      "action": "api::emission-source.emission-source.findOne"
+    },
+    {
       "action": "api::organization-unit.organization-unit.find"
     },
     {
