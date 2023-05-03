@@ -49,7 +49,7 @@
     },
     "customEmissionFactorScope3": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "emission-entry.custom-emission-factor"
     },
     "reportingPeriod": {
