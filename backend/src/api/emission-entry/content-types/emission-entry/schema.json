@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_entries",
+  "info": {
+    "singularName": "emission-entry",
+    "pluralName": "emission-entries",
+    "displayName": "Data / Emission entry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "organizationUnit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization-unit.organization-unit",
+      "inversedBy": "emissionEntries"
+    },
+    "emissionSource": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emission-source.emission-source"
+    },
+    "quantity": {
+      "type": "decimal",
+      "required": true
+    },
+    "tier": {
+      "type": "integer",
+      "required": true,
+      "max": 3,
+      "min": 0
+    },
+    "quantitySource": {
+      "type": "text"
+    },
+    "customEmissionFactorScope1": {
+      "displayName": "Custom emission factor",
+      "type": "component",
+      "repeatable": false,
+      "component": "emission-entry.custom-emission-factor"
+    },
+    "customEmissionFactorScope2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "emission-entry.custom-emission-factor"
+    },
+    "customEmissionFactorScope3": {
+      "type": "component",
+      "repeatable": true,
+      "component": "emission-entry.custom-emission-factor"
+    },
+    "reportingPeriod": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::reporting-period.reporting-period",
+      "inversedBy": "emissionEntries"
+    }
+  }
+}

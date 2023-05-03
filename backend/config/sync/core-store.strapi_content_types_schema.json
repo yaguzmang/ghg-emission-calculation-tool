@@ -538,7 +538,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -636,7 +640,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1176,32 +1184,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": ["updated_at"],
+          "columns": [
+            "updated_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": ["size"],
+          "columns": [
+            "size"
+          ],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": ["ext"],
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1395,12 +1415,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],
@@ -2162,6 +2186,164 @@
       "actions": {},
       "lifecycles": {}
     },
+    "api::emission-entry.emission-entry": {
+      "kind": "collectionType",
+      "collectionName": "emission_entries",
+      "info": {
+        "singularName": "emission-entry",
+        "pluralName": "emission-entries",
+        "displayName": "Data / Emission entry",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "organizationUnit": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::organization-unit.organization-unit",
+          "inversedBy": "emissionEntries"
+        },
+        "emissionSource": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "api::emission-source.emission-source"
+        },
+        "quantity": {
+          "type": "decimal",
+          "required": true
+        },
+        "tier": {
+          "type": "integer",
+          "required": true,
+          "max": 3,
+          "min": 0
+        },
+        "quantitySource": {
+          "type": "text"
+        },
+        "customEmissionFactorScope1": {
+          "displayName": "Custom emission factor",
+          "type": "component",
+          "repeatable": false,
+          "component": "emission-entry.custom-emission-factor"
+        },
+        "customEmissionFactorScope2": {
+          "type": "component",
+          "repeatable": false,
+          "component": "emission-entry.custom-emission-factor"
+        },
+        "customEmissionFactorScope3": {
+          "type": "component",
+          "repeatable": true,
+          "component": "emission-entry.custom-emission-factor"
+        },
+        "reportingPeriod": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::reporting-period.reporting-period",
+          "inversedBy": "emissionEntries"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_entries",
+        "info": {
+          "singularName": "emission-entry",
+          "pluralName": "emission-entries",
+          "displayName": "Data / Emission entry",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "organizationUnit": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::organization-unit.organization-unit",
+            "inversedBy": "emissionEntries"
+          },
+          "emissionSource": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::emission-source.emission-source"
+          },
+          "quantity": {
+            "type": "decimal",
+            "required": true
+          },
+          "tier": {
+            "type": "integer",
+            "required": true,
+            "max": 3,
+            "min": 0
+          },
+          "quantitySource": {
+            "type": "text"
+          },
+          "customEmissionFactorScope1": {
+            "displayName": "Custom emission factor",
+            "type": "component",
+            "repeatable": false,
+            "component": "emission-entry.custom-emission-factor"
+          },
+          "customEmissionFactorScope2": {
+            "type": "component",
+            "repeatable": false,
+            "component": "emission-entry.custom-emission-factor"
+          },
+          "customEmissionFactorScope3": {
+            "type": "component",
+            "repeatable": true,
+            "component": "emission-entry.custom-emission-factor"
+          },
+          "reportingPeriod": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::reporting-period.reporting-period",
+            "inversedBy": "emissionEntries"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-entry",
+      "connection": "default",
+      "uid": "api::emission-entry.emission-entry",
+      "apiName": "emission-entry",
+      "globalId": "EmissionEntry",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::emission-factor-dataset.emission-factor-dataset": {
       "kind": "collectionType",
       "collectionName": "emission_factor_datasets",
@@ -2590,6 +2772,12 @@
           "target": "api::organization.organization",
           "inversedBy": "organizationUnits"
         },
+        "emissionEntries": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-entry.emission-entry",
+          "mappedBy": "organizationUnit"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2639,6 +2827,12 @@
             "relation": "manyToOne",
             "target": "api::organization.organization",
             "inversedBy": "organizationUnits"
+          },
+          "emissionEntries": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-entry.emission-entry",
+            "mappedBy": "organizationUnit"
           }
         },
         "kind": "collectionType"
@@ -2679,6 +2873,12 @@
           "relation": "manyToOne",
           "target": "api::organization.organization",
           "inversedBy": "reportingPeriods"
+        },
+        "emissionEntries": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-entry.emission-entry",
+          "mappedBy": "reportingPeriod"
         },
         "createdAt": {
           "type": "datetime"
@@ -2733,6 +2933,12 @@
             "relation": "manyToOne",
             "target": "api::organization.organization",
             "inversedBy": "reportingPeriods"
+          },
+          "emissionEntries": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-entry.emission-entry",
+            "mappedBy": "reportingPeriod"
           }
         },
         "kind": "collectionType"

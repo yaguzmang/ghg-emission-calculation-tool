@@ -1,0 +1,245 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::emission-entry.emission-entry",
+  "value": {
+    "uid": "api::emission-entry.emission-entry",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "organizationUnit": {
+        "edit": {
+          "label": "Organization unit",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Organization unit",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "emissionSource": {
+        "edit": {
+          "label": "Emission source",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "apiId"
+        },
+        "list": {
+          "label": "Emission source",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "quantity": {
+        "edit": {
+          "label": "Quantity",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Quantity",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "tier": {
+        "edit": {
+          "label": "Tier",
+          "description": "",
+          "placeholder": "0, 1, 2 or 3",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "tier",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "quantitySource": {
+        "edit": {
+          "label": "Source of quantity",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "quantitySource",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "customEmissionFactorScope1": {
+        "edit": {
+          "label": "Custom emission factor (Scope 1)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorScope1",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "customEmissionFactorScope2": {
+        "edit": {
+          "label": "Custom emission factor (Scope 2)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorScope2",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "customEmissionFactorScope3": {
+        "edit": {
+          "label": "Custom emission factor (Scope 3)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorScope3",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "reportingPeriod": {
+        "edit": {
+          "label": "Reporting period",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "id"
+        },
+        "list": {
+          "label": "Reporting period",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "organizationUnit",
+            "size": 6
+          },
+          {
+            "name": "reportingPeriod",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "emissionSource",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "quantity",
+            "size": 4
+          },
+          {
+            "name": "tier",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "quantitySource",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "customEmissionFactorScope1",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "customEmissionFactorScope2",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "customEmissionFactorScope3",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "reportingPeriod",
+        "organizationUnit",
+        "emissionSource"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

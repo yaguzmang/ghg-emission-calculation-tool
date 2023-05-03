@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_emission_entry_custom_emission_factors",
+  "info": {
+    "displayName": "Custom emission factor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "decimal",
+      "required": true
+    },
+    "source": {
+      "type": "text"
+    }
+  }
+}

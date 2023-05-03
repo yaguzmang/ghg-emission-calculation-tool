@@ -1,0 +1,76 @@
+{
+  "key": "plugin_content_manager_configuration_components::emission-entry.custom-emission-factor",
+  "value": {
+    "uid": "emission-entry.custom-emission-factor",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "value",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "value": {
+        "edit": {
+          "label": "Value",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "value",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "source": {
+        "edit": {
+          "label": "Source",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "source",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "value",
+        "source"
+      ],
+      "edit": [
+        [
+          {
+            "name": "value",
+            "size": 4
+          },
+          {
+            "name": "source",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
