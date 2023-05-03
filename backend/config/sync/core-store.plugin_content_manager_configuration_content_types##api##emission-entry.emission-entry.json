@@ -149,6 +149,20 @@
           "sortable": true
         }
       },
+      "customEmissionFactorBiogenic": {
+        "edit": {
+          "label": "Custom emission factor (Biogenic)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorBiogenic",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -227,6 +241,12 @@
         [
           {
             "name": "customEmissionFactorScope3",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "customEmissionFactorBiogenic",
             "size": 12
           }
         ]

@@ -2246,6 +2246,11 @@
           "target": "api::reporting-period.reporting-period",
           "inversedBy": "emissionEntries"
         },
+        "customEmissionFactorBiogenic": {
+          "type": "component",
+          "repeatable": false,
+          "component": "emission-entry.custom-emission-factor"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2331,6 +2336,11 @@
             "relation": "manyToOne",
             "target": "api::reporting-period.reporting-period",
             "inversedBy": "emissionEntries"
+          },
+          "customEmissionFactorBiogenic": {
+            "type": "component",
+            "repeatable": false,
+            "component": "emission-entry.custom-emission-factor"
           }
         },
         "kind": "collectionType"

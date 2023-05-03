@@ -84,7 +84,9 @@
           "customEmissionFactorScope2.source",
           "customEmissionFactorScope3.value",
           "customEmissionFactorScope3.source",
-          "reportingPeriod"
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
         ]
       },
       "conditions": []
@@ -111,7 +113,9 @@
           "customEmissionFactorScope2.source",
           "customEmissionFactorScope3.value",
           "customEmissionFactorScope3.source",
-          "reportingPeriod"
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
         ]
       },
       "conditions": []
@@ -132,7 +136,9 @@
           "customEmissionFactorScope2.source",
           "customEmissionFactorScope3.value",
           "customEmissionFactorScope3.source",
-          "reportingPeriod"
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
         ]
       },
       "conditions": []
