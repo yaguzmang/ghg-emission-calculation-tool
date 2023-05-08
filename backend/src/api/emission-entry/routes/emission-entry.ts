@@ -14,6 +14,9 @@ export default factories.createCoreRouter(
       update: {
         middlewares: ["api::emission-entry.has-access-to-relations"],
       },
+      find: {
+        policies: ["global::block-access"],
+      },
     },
   }
 );
