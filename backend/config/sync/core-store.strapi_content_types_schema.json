@@ -2162,6 +2162,82 @@
       "actions": {},
       "lifecycles": {}
     },
+    "api::emission-factor-dataset.emission-factor-dataset": {
+      "kind": "collectionType",
+      "collectionName": "emission_factor_datasets",
+      "info": {
+        "singularName": "emission-factor-dataset",
+        "pluralName": "emission-factor-datasets",
+        "displayName": "App / Emission factor dataset",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "apiName": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_factor_datasets",
+        "info": {
+          "singularName": "emission-factor-dataset",
+          "pluralName": "emission-factor-datasets",
+          "displayName": "App / Emission factor dataset",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "apiName": {
+            "type": "string",
+            "required": true,
+            "unique": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-factor-dataset",
+      "connection": "default",
+      "uid": "api::emission-factor-dataset.emission-factor-dataset",
+      "apiName": "emission-factor-dataset",
+      "globalId": "EmissionFactorDataset",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::emission-group.emission-group": {
       "kind": "collectionType",
       "collectionName": "emission_groups",
@@ -2406,6 +2482,11 @@
           "target": "api::reporting-period.reporting-period",
           "mappedBy": "organization"
         },
+        "emissionFactorDataset": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "api::emission-factor-dataset.emission-factor-dataset"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2467,6 +2548,11 @@
             "relation": "oneToMany",
             "target": "api::reporting-period.reporting-period",
             "mappedBy": "organization"
+          },
+          "emissionFactorDataset": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::emission-factor-dataset.emission-factor-dataset"
           }
         },
         "kind": "collectionType"

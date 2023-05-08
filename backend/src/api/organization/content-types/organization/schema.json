@@ -33,6 +33,11 @@
       "relation": "oneToMany",
       "target": "api::reporting-period.reporting-period",
       "mappedBy": "organization"
+    },
+    "emissionFactorDataset": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emission-factor-dataset.emission-factor-dataset"
     }
   }
 }

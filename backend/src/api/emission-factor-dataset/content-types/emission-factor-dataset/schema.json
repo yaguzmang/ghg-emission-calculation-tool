@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_factor_datasets",
+  "info": {
+    "singularName": "emission-factor-dataset",
+    "pluralName": "emission-factor-datasets",
+    "displayName": "App / Emission factor dataset",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "apiName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

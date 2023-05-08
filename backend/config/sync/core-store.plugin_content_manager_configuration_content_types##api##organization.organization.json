@@ -79,6 +79,21 @@
           "sortable": false
         }
       },
+      "emissionFactorDataset": {
+        "edit": {
+          "label": "Emission factor dataset",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "apiName"
+        },
+        "list": {
+          "label": "emissionFactorDataset",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -129,6 +144,12 @@
           },
           {
             "name": "reportingPeriods",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "emissionFactorDataset",
             "size": 6
           }
         ]
