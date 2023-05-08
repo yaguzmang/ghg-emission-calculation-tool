@@ -18,6 +18,9 @@ export default factories.createCoreRouter(
           },
         ],
       },
+      find: {
+        policies: ["global::block-access"],
+      },
     },
   }
 );

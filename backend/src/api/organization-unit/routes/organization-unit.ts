@@ -8,8 +8,16 @@ export default factories.createCoreRouter(
   "api::organization-unit.organization-unit",
   {
     config: {
+      find: {
+        policies: ["global::block-access"],
+      },
       findOne: {
-        policies: ["has-access"],
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-unit.organization-unit" },
+          },
+        ],
       },
     },
   }
