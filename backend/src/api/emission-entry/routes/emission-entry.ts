@@ -11,6 +11,9 @@ export default factories.createCoreRouter(
       create: {
         middlewares: ["api::emission-entry.has-access-to-relations"],
       },
+      update: {
+        middlewares: ["api::emission-entry.has-access-to-relations"],
+      },
     },
   }
 );

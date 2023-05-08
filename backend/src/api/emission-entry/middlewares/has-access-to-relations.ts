@@ -33,10 +33,16 @@ export default (config, { strapi }: { strapi: Strapi }) => {
       const camelCaseKey = apiNameToCamelCase(key);
       const relationId = ctx.request.body.data[camelCaseKey];
 
-      if (!relationId) {
+      // Require the relation when creating a new entry.
+      if (ctx.method === "POST" && !relationId) {
         return ctx.badRequest(
           `Missing "${camelCaseKey}" payload in the request body`
         );
+      }
+
+      // Bypass checks if not updating this relation.
+      if (ctx.method === "PUT" && !relationId) {
+        continue;
       }
 
       const uid = apiNameToStrapiUid(key);
