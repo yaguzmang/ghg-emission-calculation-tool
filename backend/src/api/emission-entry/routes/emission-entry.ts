@@ -17,6 +17,14 @@ export default factories.createCoreRouter(
       find: {
         policies: ["global::block-access"],
       },
+      findOne: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::emission-entry.emission-entry" },
+          },
+        ],
+      },
     },
   }
 );
