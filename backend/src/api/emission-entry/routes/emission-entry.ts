@@ -12,7 +12,13 @@ export default factories.createCoreRouter(
         middlewares: ["api::emission-entry.has-access-to-relations"],
       },
       update: {
-        middlewares: ["api::emission-entry.has-access-to-relations"],
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::emission-entry.emission-entry" },
+          },
+          "api::emission-entry.has-access-to-relations",
+        ],
       },
       find: {
         policies: ["global::block-access"],
