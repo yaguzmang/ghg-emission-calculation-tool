@@ -50,11 +50,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "value",
-        "source"
-      ],
+      "list": ["id", "value", "source"],
       "edit": [
         [
           {
