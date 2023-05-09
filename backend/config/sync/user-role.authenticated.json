@@ -10,6 +10,21 @@
       "action": "api::emission-category.emission-category.findOne"
     },
     {
+      "action": "api::emission-entry.emission-entry.create"
+    },
+    {
+      "action": "api::emission-entry.emission-entry.delete"
+    },
+    {
+      "action": "api::emission-entry.emission-entry.find"
+    },
+    {
+      "action": "api::emission-entry.emission-entry.findOne"
+    },
+    {
+      "action": "api::emission-entry.emission-entry.update"
+    },
+    {
       "action": "api::emission-factor-dataset.emission-factor-dataset.find"
     },
     {
