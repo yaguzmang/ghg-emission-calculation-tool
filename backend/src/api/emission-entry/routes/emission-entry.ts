@@ -25,6 +25,14 @@ export default factories.createCoreRouter(
           },
         ],
       },
+      delete: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::emission-entry.emission-entry" },
+          },
+        ],
+      },
     },
   }
 );
