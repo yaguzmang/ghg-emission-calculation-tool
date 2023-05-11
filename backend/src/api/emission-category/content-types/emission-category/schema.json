@@ -34,15 +34,6 @@
       },
       "type": "richtext"
     },
-    "emissionSourceLabel": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
     "emissionGroup": {
       "type": "relation",
       "relation": "manyToOne",
