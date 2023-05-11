@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "emission_categories",
+  "collectionName": "emission_source_groups",
   "info": {
-    "singularName": "emission-category",
-    "pluralName": "emission-categories",
-    "displayName": "App / Emission category",
+    "singularName": "emission-source-group",
+    "pluralName": "emission-source-groups",
+    "displayName": "App / Emission source group",
     "description": ""
   },
   "options": {
@@ -16,23 +16,15 @@
     }
   },
   "attributes": {
-    "title": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "string",
-      "unique": true,
-      "required": true
-    },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
+      "required": true,
+      "unique": true
     },
     "emissionSourceLabel": {
       "pluginOptions": {
@@ -43,11 +35,17 @@
       "type": "string",
       "required": true
     },
-    "emissionGroup": {
+    "emissionSources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::emission-source.emission-source",
+      "mappedBy": "emissionSourceGroup"
+    },
+    "emissionEntry": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::emission-group.emission-group",
-      "inversedBy": "emissionCategories"
+      "target": "api::emission-entry.emission-entry",
+      "inversedBy": "emissionSourceGroups"
     }
   }
 }
