@@ -39,6 +39,12 @@
       "relation": "manyToOne",
       "target": "api::emission-group.emission-group",
       "inversedBy": "emissionCategories"
+    },
+    "emissionSourceGroups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::emission-source-group.emission-source-group",
+      "mappedBy": "emissionCategory"
     }
   }
 }
