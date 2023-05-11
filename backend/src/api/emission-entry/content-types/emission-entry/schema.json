@@ -62,12 +62,6 @@
       "type": "component",
       "repeatable": false,
       "component": "emission-entry.custom-emission-factor"
-    },
-    "emissionSourceGroups": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::emission-source-group.emission-source-group",
-      "mappedBy": "emissionEntry"
     }
   }
 }
