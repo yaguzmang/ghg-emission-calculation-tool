@@ -34,17 +34,31 @@
           "sortable": true
         }
       },
-      "emissionCategory": {
+      "emissionSourceGroup": {
         "edit": {
-          "label": "Emission category",
-          "description": "❗️ Only link to an **English (en)** locale.",
+          "label": "emissionSourceGroup",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
-          "label": "Emission category",
+          "label": "emissionSourceGroup",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -79,6 +93,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "apiId",
+        "createdAt",
+        "emissionSourceGroup"
+      ],
       "edit": [
         [
           {
@@ -86,12 +106,17 @@
             "size": 6
           },
           {
-            "name": "emissionCategory",
+            "name": "emissionSourceGroup",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "name",
             "size": 6
           }
         ]
-      ],
-      "list": ["id", "apiId", "emissionCategory", "createdAt"]
+      ]
     }
   },
   "type": "object",

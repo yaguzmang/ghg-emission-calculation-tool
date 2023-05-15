@@ -538,7 +538,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -636,7 +640,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1176,32 +1184,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": ["updated_at"],
+          "columns": [
+            "updated_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": ["size"],
+          "columns": [
+            "size"
+          ],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": ["ext"],
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1395,12 +1415,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],
@@ -2030,25 +2054,16 @@
           },
           "type": "richtext"
         },
-        "emissionSourceLabel": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "string",
-          "required": true
-        },
         "emissionGroup": {
           "type": "relation",
           "relation": "manyToOne",
           "target": "api::emission-group.emission-group",
           "inversedBy": "emissionCategories"
         },
-        "emissionSources": {
+        "emissionSourceGroups": {
           "type": "relation",
           "relation": "oneToMany",
-          "target": "api::emission-source.emission-source",
+          "target": "api::emission-source-group.emission-source-group",
           "mappedBy": "emissionCategory"
         },
         "createdAt": {
@@ -2129,25 +2144,16 @@
             },
             "type": "richtext"
           },
-          "emissionSourceLabel": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "string",
-            "required": true
-          },
           "emissionGroup": {
             "type": "relation",
             "relation": "manyToOne",
             "target": "api::emission-group.emission-group",
             "inversedBy": "emissionCategories"
           },
-          "emissionSources": {
+          "emissionSourceGroups": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::emission-source.emission-source",
+            "target": "api::emission-source-group.emission-source-group",
             "mappedBy": "emissionCategory"
           }
         },
@@ -2546,11 +2552,17 @@
           "type": "string",
           "required": true
         },
-        "emissionCategory": {
+        "emissionSourceGroup": {
           "type": "relation",
           "relation": "manyToOne",
-          "target": "api::emission-category.emission-category",
+          "target": "api::emission-source-group.emission-source-group",
           "inversedBy": "emissionSources"
+        },
+        "name": {
+          "type": "string",
+          "private": true,
+          "required": true,
+          "unique": true
         },
         "createdAt": {
           "type": "datetime"
@@ -2596,11 +2608,17 @@
             "type": "string",
             "required": true
           },
-          "emissionCategory": {
+          "emissionSourceGroup": {
             "type": "relation",
             "relation": "manyToOne",
-            "target": "api::emission-category.emission-category",
+            "target": "api::emission-source-group.emission-source-group",
             "inversedBy": "emissionSources"
+          },
+          "name": {
+            "type": "string",
+            "private": true,
+            "required": true,
+            "unique": true
           }
         },
         "kind": "collectionType"
@@ -2611,6 +2629,158 @@
       "uid": "api::emission-source.emission-source",
       "apiName": "emission-source",
       "globalId": "EmissionSource",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::emission-source-group.emission-source-group": {
+      "kind": "collectionType",
+      "collectionName": "emission_source_groups",
+      "info": {
+        "singularName": "emission-source-group",
+        "pluralName": "emission-source-groups",
+        "displayName": "App / Emission source group",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "name": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "emissionSourceLabel": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "emissionSources": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-source.emission-source",
+          "mappedBy": "emissionSourceGroup"
+        },
+        "emissionCategory": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::emission-category.emission-category",
+          "inversedBy": "emissionSourceGroups"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-source-group.emission-source-group"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_source_groups",
+        "info": {
+          "singularName": "emission-source-group",
+          "pluralName": "emission-source-groups",
+          "displayName": "App / Emission source group",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "name": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true,
+            "unique": true
+          },
+          "emissionSourceLabel": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          },
+          "emissionSources": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-source.emission-source",
+            "mappedBy": "emissionSourceGroup"
+          },
+          "emissionCategory": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::emission-category.emission-category",
+            "inversedBy": "emissionSourceGroups"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-source-group",
+      "connection": "default",
+      "uid": "api::emission-source-group.emission-source-group",
+      "apiName": "emission-source-group",
+      "globalId": "EmissionSourceGroup",
       "actions": {},
       "lifecycles": {}
     },
