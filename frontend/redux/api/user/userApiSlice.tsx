@@ -1,5 +1,4 @@
-import { apiSlice } from '../api/apiSlice';
-
+import { apiSlice } from '@/redux/api/apiSlice';
 import { User } from '@/types/user';
 
 export const userApiSlice = apiSlice.injectEndpoints({
