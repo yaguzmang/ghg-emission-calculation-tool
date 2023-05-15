@@ -58,6 +58,81 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {
         "fields": ["apiName"]
@@ -155,7 +230,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization"]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -169,7 +244,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization"]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -177,7 +252,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization"]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -233,7 +308,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization"]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -247,7 +322,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization"]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -255,7 +330,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization"]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },

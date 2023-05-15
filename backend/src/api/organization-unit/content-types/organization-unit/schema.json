@@ -21,6 +21,12 @@
       "relation": "manyToOne",
       "target": "api::organization.organization",
       "inversedBy": "organizationUnits"
+    },
+    "emissionEntries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::emission-entry.emission-entry",
+      "mappedBy": "organizationUnit"
     }
   }
 }
