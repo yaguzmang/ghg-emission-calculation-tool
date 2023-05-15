@@ -6,6 +6,7 @@ const protectedEndpoints = [
   'getReportingPeriodsByOrganization',
   'getUserOrganizations',
   'getOrganizationUnitsByOrganization',
+  'getEmissionFactorDatasetByOrganization',
 ];
 
 export const apiSlice = createApi({
@@ -22,6 +23,12 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['User', 'ReportingPeriod', 'Organization', 'OrganizationUnit'],
+  tagTypes: [
+    'User',
+    'ReportingPeriod',
+    'Organization',
+    'OrganizationUnit',
+    'EmissionFactorDataset',
+  ],
   endpoints: () => ({}),
 });
