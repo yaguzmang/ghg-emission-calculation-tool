@@ -1,7 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getSession } from 'next-auth/react';
 
-const protectedEndpoints = ['getUser', 'getReportingPeriodsByOrganization'];
+const protectedEndpoints = [
+  'getUser',
+  'getReportingPeriodsByOrganization',
+  'getUserOrganizations',
+  'getOrganizationUnitsByOrganization',
+];
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -17,6 +22,6 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['User', 'ReportingPeriod'],
+  tagTypes: ['User', 'ReportingPeriod', 'Organization', 'OrganizationUnit'],
   endpoints: () => ({}),
 });
