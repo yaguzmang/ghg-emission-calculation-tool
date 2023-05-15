@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getSession } from 'next-auth/react';
 
-const protectedEndpoints = ['getUser'];
+const protectedEndpoints = ['getUser', 'getReportingPeriodsByOrganization'];
 
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/`,
+    baseUrl: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api`,
     prepareHeaders: async (headers, { endpoint }) => {
       if (protectedEndpoints.includes(endpoint)) {
         const session = await getSession();
@@ -17,6 +17,6 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['User'],
+  tagTypes: ['User', 'ReportingPeriod'],
   endpoints: () => ({}),
 });
