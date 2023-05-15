@@ -2,13 +2,11 @@
 
 import React from 'react';
 
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
-
-import { useGetUserQuery } from '@/features/user/userSlice';
 
 export default function LandingPage() {
   const { data: session } = useSession();
-  const userData = useGetUserQuery();
 
   return (
     <main>
@@ -29,19 +27,13 @@ export default function LandingPage() {
           <button
             type="button"
             className="text-green-600"
-            onClick={() => signIn()}
+            onClick={() => signIn('Log in', { callbackUrl: '/dashboard' })}
           >
             Sign In
           </button>
         )}
-
-        {userData && userData.currentData ? (
-          <div>
-            <h3>User data</h3>
-            <p>{JSON.stringify(userData.currentData)}</p>
-          </div>
-        ) : null}
       </div>
+      <Link href="/dashboard">Go to dashboard</Link>
     </main>
   );
 }
