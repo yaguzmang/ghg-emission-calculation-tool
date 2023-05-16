@@ -59,7 +59,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "organizationUnits",
+          "label": "Organization units",
           "searchable": false,
           "sortable": false
         }
@@ -154,7 +154,12 @@
           }
         ]
       ],
-      "list": ["id", "name", "createdAt", "updatedAt"]
+      "list": [
+        "id",
+        "name",
+        "organizationUnits",
+        "users"
+      ]
     }
   },
   "type": "object",

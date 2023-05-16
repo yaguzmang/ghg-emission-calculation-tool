@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "apiId",
+      "mainField": "name",
       "defaultSortBy": "apiId",
       "defaultSortOrder": "ASC"
     },
@@ -36,23 +36,23 @@
       },
       "emissionSourceGroup": {
         "edit": {
-          "label": "emissionSourceGroup",
-          "description": "",
+          "label": "Emission source group",
+          "description": "❗️Only link to an **English (en)** locale",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "name"
         },
         "list": {
-          "label": "emissionSourceGroup",
+          "label": "Emission source group",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
-          "description": "",
+          "label": "Name",
+          "description": "A unique name that identifies the emission source. Not displayed to the user.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -93,29 +93,29 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "apiId",
-        "createdAt",
-        "emissionSourceGroup"
-      ],
       "edit": [
         [
           {
-            "name": "apiId",
+            "name": "name",
             "size": 6
           },
           {
-            "name": "emissionSourceGroup",
+            "name": "apiId",
             "size": 6
           }
         ],
         [
           {
-            "name": "name",
+            "name": "emissionSourceGroup",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "emissionSourceGroup",
+        "apiId"
       ]
     }
   },

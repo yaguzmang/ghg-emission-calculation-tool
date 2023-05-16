@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,8 +36,8 @@
       },
       "emissionSourceLabel": {
         "edit": {
-          "label": "emissionSourceLabel",
-          "description": "",
+          "label": "Emission source label",
+          "description": "The label of the emission source dropdown menu",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,22 +50,22 @@
       },
       "emissionSources": {
         "edit": {
-          "label": "emissionSources",
-          "description": "",
+          "label": "Emission sources",
+          "description": "❗️Set these only for the **English (en)** locale. For other locales, leave empty.",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "apiId"
+          "mainField": "name"
         },
         "list": {
-          "label": "emissionSources",
+          "label": "emission sources",
           "searchable": false,
           "sortable": false
         }
       },
       "emissionCategory": {
         "edit": {
-          "label": "emissionCategory",
+          "label": "Emission category",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -73,7 +73,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionCategory",
+          "label": "Emission category",
           "searchable": true,
           "sortable": true
         }
@@ -108,12 +108,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "emissionSourceLabel",
-        "emissionSources"
-      ],
       "edit": [
         [
           {
@@ -127,14 +121,22 @@
         ],
         [
           {
-            "name": "emissionSources",
-            "size": 6
-          },
-          {
             "name": "emissionCategory",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "emissionSources",
+            "size": 8
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "emissionCategory",
+        "emissionSources"
       ]
     }
   },

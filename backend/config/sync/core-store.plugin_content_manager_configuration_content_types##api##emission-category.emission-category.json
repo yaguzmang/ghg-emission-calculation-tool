@@ -58,7 +58,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "emissionGroup",
+          "label": "emission group",
           "searchable": true,
           "sortable": true
         }
@@ -73,7 +73,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "emissionSourceGroups",
+          "label": "emission source groups",
           "searchable": false,
           "sortable": false
         }
