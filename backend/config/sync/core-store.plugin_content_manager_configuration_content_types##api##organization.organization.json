@@ -154,12 +154,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "organizationUnits",
-        "users"
-      ]
+      "list": ["id", "name", "organizationUnits", "users"]
     }
   },
   "type": "object",

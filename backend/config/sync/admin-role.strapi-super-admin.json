@@ -13,10 +13,7 @@
           "emissionGroup",
           "emissionSourceGroups"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -24,10 +21,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -41,10 +35,7 @@
           "emissionGroup",
           "emissionSourceGroups"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -58,10 +49,7 @@
           "emissionGroup",
           "emissionSourceGroups"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -144,9 +132,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {
-        "fields": [
-          "apiName"
-        ]
+        "fields": ["apiName"]
       },
       "conditions": []
     },
@@ -160,9 +146,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {
-        "fields": [
-          "apiName"
-        ]
+        "fields": ["apiName"]
       },
       "conditions": []
     },
@@ -170,9 +154,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {
-        "fields": [
-          "apiName"
-        ]
+        "fields": ["apiName"]
       },
       "conditions": []
     },
@@ -180,14 +162,8 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "title",
-          "emissionCategories"
-        ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -195,10 +171,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-group.emission-group",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -206,14 +179,8 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "title",
-          "emissionCategories"
-        ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -221,14 +188,8 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-group.emission-group",
       "properties": {
-        "fields": [
-          "title",
-          "emissionCategories"
-        ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -242,10 +203,7 @@
           "emissionSources",
           "emissionCategory"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -253,10 +211,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -270,10 +225,7 @@
           "emissionSources",
           "emissionCategory"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -287,10 +239,7 @@
           "emissionSources",
           "emissionCategory"
         ],
-        "locales": [
-          "en",
-          "fi"
-        ]
+        "locales": ["en", "fi"]
       },
       "conditions": []
     },
@@ -298,11 +247,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-source.emission-source",
       "properties": {
-        "fields": [
-          "apiId",
-          "emissionSourceGroup",
-          "name"
-        ]
+        "fields": ["apiId", "emissionSourceGroup", "name"]
       },
       "conditions": []
     },
@@ -316,11 +261,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-source.emission-source",
       "properties": {
-        "fields": [
-          "apiId",
-          "emissionSourceGroup",
-          "name"
-        ]
+        "fields": ["apiId", "emissionSourceGroup", "name"]
       },
       "conditions": []
     },
@@ -328,11 +269,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-source.emission-source",
       "properties": {
-        "fields": [
-          "apiId",
-          "emissionSourceGroup",
-          "name"
-        ]
+        "fields": ["apiId", "emissionSourceGroup", "name"]
       },
       "conditions": []
     },
@@ -340,11 +277,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -358,11 +291,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -370,11 +299,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": [
-          "name",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["name", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -430,12 +355,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": [
-          "startDate",
-          "endDate",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -449,12 +369,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": [
-          "startDate",
-          "endDate",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },
@@ -462,12 +377,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": [
-          "startDate",
-          "endDate",
-          "organization",
-          "emissionEntries"
-        ]
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
       },
       "conditions": []
     },

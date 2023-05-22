@@ -132,12 +132,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "emissionCategory",
-        "emissionSources"
-      ]
+      "list": ["id", "name", "emissionCategory", "emissionSources"]
     }
   },
   "type": "object",

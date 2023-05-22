@@ -111,12 +111,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "emissionSourceGroup",
-        "apiId"
-      ]
+      "list": ["id", "name", "emissionSourceGroup", "apiId"]
     }
   },
   "type": "object",
