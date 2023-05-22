@@ -37,6 +37,12 @@
       "action": "api::emission-group.emission-group.findOne"
     },
     {
+      "action": "api::emission-source-group.emission-source-group.find"
+    },
+    {
+      "action": "api::emission-source-group.emission-source-group.findOne"
+    },
+    {
       "action": "api::emission-source.emission-source.find"
     },
     {
