@@ -67,6 +67,12 @@
       "action": "api::reporting-period.reporting-period.findOne"
     },
     {
+      "action": "api::translation.translation.find"
+    },
+    {
+      "action": "api::translation.translation.findOne"
+    },
+    {
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {
