@@ -41,12 +41,16 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories?populate=*",
+                      "raw": "http://localhost:1337/api/emission-categories?locale=en&populate=*",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
                       "path": ["api", "emission-categories"],
                       "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
                         {
                           "key": "populate",
                           "value": "*"
@@ -123,12 +127,16 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-groups?populate=*",
+                      "raw": "http://localhost:1337/api/emission-groups?locale=en&populate=*",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
                       "path": ["api", "emission-groups"],
                       "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
                         {
                           "key": "populate",
                           "value": "*"
@@ -201,11 +209,83 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-source-groups",
+                      "raw": "http://localhost:1337/api/emission-source-groups?locale=en",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "emission-source-groups"]
+                      "path": ["api", "emission-source-groups"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Translation",
+              "item": [
+                {
+                  "name": "Get translation by id",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get translations by locale",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations?locale=fi",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get translations by locale and key",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations?locale=fi&filters[key][$eq]=form.description.read_more",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        },
+                        {
+                          "key": "filters[key][$eq]",
+                          "value": "form.description.read_more"
+                        }
+                      ]
                     }
                   },
                   "response": []
