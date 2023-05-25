@@ -44,7 +44,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "Emission categories",
+          "label": "emission categories",
           "searchable": false,
           "sortable": false
         }

@@ -6,3 +6,17 @@ export interface PolicyContext {
   };
   captures: string[];
 }
+
+export interface ApiServiceEntry {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LocalizedApiServiceEntry extends ApiServiceEntry {
+  locale: string;
+}
+
+export interface ServiceParams {
+  [key: string]: unknown;
+}

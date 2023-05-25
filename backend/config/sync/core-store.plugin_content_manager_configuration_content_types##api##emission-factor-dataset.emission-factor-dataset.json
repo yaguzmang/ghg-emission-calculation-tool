@@ -29,7 +29,7 @@
           "editable": true
         },
         "list": {
-          "label": "apiName",
+          "label": "api name",
           "searchable": true,
           "sortable": true
         }
@@ -72,7 +72,7 @@
           }
         ]
       ],
-      "list": ["id", "apiName", "createdAt", "updatedAt"]
+      "list": ["id", "apiName"]
     }
   },
   "type": "object",

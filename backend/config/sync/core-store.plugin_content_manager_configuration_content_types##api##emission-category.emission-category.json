@@ -48,20 +48,6 @@
           "sortable": false
         }
       },
-      "emissionSourceLabel": {
-        "edit": {
-          "label": "Emission source label",
-          "description": "The label for the emission source dropdown.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "emissionSourceLabel",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "emissionGroup": {
         "edit": {
           "label": "Emission group",
@@ -72,22 +58,22 @@
           "mainField": "title"
         },
         "list": {
-          "label": "Emission group",
+          "label": "emission group",
           "searchable": true,
           "sortable": true
         }
       },
-      "emissionSources": {
+      "emissionSourceGroups": {
         "edit": {
-          "label": "Emission sources",
-          "description": "❗️ Set these only for the **English (en)** locale. For other locales, leave empty.",
+          "label": "Emission source groups",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "apiId"
+          "mainField": "name"
         },
         "list": {
-          "label": "emissionSources",
+          "label": "emission source groups",
           "searchable": false,
           "sortable": false
         }
@@ -137,22 +123,16 @@
         ],
         [
           {
-            "name": "emissionSourceLabel",
+            "name": "emissionGroup",
             "size": 6
           },
           {
-            "name": "emissionGroup",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "emissionSources",
+            "name": "emissionSourceGroups",
             "size": 6
           }
         ]
       ],
-      "list": ["id", "title", "emissionGroup", "emissionSources"]
+      "list": ["id", "title", "emissionGroup", "emissionSourceGroups"]
     }
   },
   "type": "object",

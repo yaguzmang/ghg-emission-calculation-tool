@@ -16,11 +16,17 @@
       "type": "string",
       "required": true
     },
-    "emissionCategory": {
+    "emissionSourceGroup": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::emission-category.emission-category",
+      "target": "api::emission-source-group.emission-source-group",
       "inversedBy": "emissionSources"
+    },
+    "name": {
+      "type": "string",
+      "private": true,
+      "required": true,
+      "unique": true
     }
   }
 }
