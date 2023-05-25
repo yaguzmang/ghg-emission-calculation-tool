@@ -12,14 +12,24 @@
     "prepare": "cd ../ && husky install ./frontend/.husky"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-popover": "^1.0.5",
+    "@radix-ui/react-select": "^1.2.1",
+    "@radix-ui/react-slot": "^1.0.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "cmdk": "^0.2.0",
     "next": "^13.4.1",
     "next-auth": "^4.22.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
