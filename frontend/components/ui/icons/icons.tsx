@@ -9,13 +9,13 @@ import UserAvatar from './user-avatar.svg';
 import X from './x.svg';
 
 export const Icons = {
-  close: X,
-  questionMark: QuestionMark,
-  search: Search,
-  chevronDown: ChevronDown,
-  check: Check,
-  tallinnaTehnikaulikool: TallinnaTehnikaulikool,
-  userAvatar: UserAvatar,
-  notchDown: NotchDown,
-  helpCircleFilled: HelpCircleFilled,
+  Close: X,
+  QuestionMark,
+  Search,
+  ChevronDown,
+  Check,
+  TallinnaTehnikaulikool,
+  UserAvatar,
+  NotchDown,
+  HelpCircleFilled,
 };
