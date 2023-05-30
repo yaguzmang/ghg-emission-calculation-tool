@@ -538,7 +538,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -636,7 +640,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1176,32 +1184,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": ["updated_at"],
+          "columns": [
+            "updated_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": ["size"],
+          "columns": [
+            "size"
+          ],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": ["ext"],
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1395,12 +1415,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],
@@ -2036,10 +2060,10 @@
           "target": "api::emission-group.emission-group",
           "inversedBy": "emissionCategories"
         },
-        "emissionSourceGroups": {
+        "emissionSources": {
           "type": "relation",
           "relation": "oneToMany",
-          "target": "api::emission-source-group.emission-source-group",
+          "target": "api::emission-source.emission-source",
           "mappedBy": "emissionCategory"
         },
         "createdAt": {
@@ -2126,10 +2150,10 @@
             "target": "api::emission-group.emission-group",
             "inversedBy": "emissionCategories"
           },
-          "emissionSourceGroups": {
+          "emissionSources": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::emission-source-group.emission-source-group",
+            "target": "api::emission-source.emission-source",
             "mappedBy": "emissionCategory"
           }
         },
@@ -2530,15 +2554,20 @@
         },
         "emissionSourceGroup": {
           "type": "relation",
-          "relation": "manyToOne",
-          "target": "api::emission-source-group.emission-source-group",
-          "inversedBy": "emissionSources"
+          "relation": "oneToOne",
+          "target": "api::emission-source-group.emission-source-group"
         },
         "name": {
           "type": "string",
           "private": true,
           "required": true,
           "unique": true
+        },
+        "emissionCategory": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::emission-category.emission-category",
+          "inversedBy": "emissionSources"
         },
         "createdAt": {
           "type": "datetime"
@@ -2586,15 +2615,20 @@
           },
           "emissionSourceGroup": {
             "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::emission-source-group.emission-source-group",
-            "inversedBy": "emissionSources"
+            "relation": "oneToOne",
+            "target": "api::emission-source-group.emission-source-group"
           },
           "name": {
             "type": "string",
             "private": true,
             "required": true,
             "unique": true
+          },
+          "emissionCategory": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::emission-category.emission-category",
+            "inversedBy": "emissionSources"
           }
         },
         "kind": "collectionType"
@@ -2644,18 +2678,6 @@
           },
           "type": "string",
           "required": true
-        },
-        "emissionSources": {
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::emission-source.emission-source",
-          "mappedBy": "emissionSourceGroup"
-        },
-        "emissionCategory": {
-          "type": "relation",
-          "relation": "manyToOne",
-          "target": "api::emission-category.emission-category",
-          "inversedBy": "emissionSourceGroups"
         },
         "createdAt": {
           "type": "datetime"
@@ -2735,18 +2757,6 @@
             },
             "type": "string",
             "required": true
-          },
-          "emissionSources": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::emission-source.emission-source",
-            "mappedBy": "emissionSourceGroup"
-          },
-          "emissionCategory": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::emission-category.emission-category",
-            "inversedBy": "emissionSourceGroups"
           }
         },
         "kind": "collectionType"

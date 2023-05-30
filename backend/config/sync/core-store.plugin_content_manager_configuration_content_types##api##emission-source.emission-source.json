@@ -63,6 +63,21 @@
           "sortable": true
         }
       },
+      "emissionCategory": {
+        "edit": {
+          "label": "Emission category",
+          "description": "❗️Only link to an **English (en)** locale",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "Emission category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -108,10 +123,20 @@
           {
             "name": "emissionSourceGroup",
             "size": 6
+          },
+          {
+            "name": "emissionCategory",
+            "size": 6
           }
         ]
       ],
-      "list": ["id", "name", "emissionSourceGroup", "apiId"]
+      "list": [
+        "id",
+        "name",
+        "apiId",
+        "emissionCategory",
+        "emissionSourceGroup"
+      ]
     }
   },
   "type": "object",

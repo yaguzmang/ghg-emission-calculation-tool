@@ -63,17 +63,17 @@
           "sortable": true
         }
       },
-      "emissionSourceGroups": {
+      "emissionSources": {
         "edit": {
-          "label": "Emission source groups",
-          "description": "",
+          "label": "Emission sources",
+          "description": "❗️Set these only for the **English (en)** locale. For other locales, leave empty.",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "name"
         },
         "list": {
-          "label": "emission source groups",
+          "label": "emissionSources",
           "searchable": false,
           "sortable": false
         }
@@ -127,12 +127,16 @@
             "size": 6
           },
           {
-            "name": "emissionSourceGroups",
+            "name": "emissionSources",
             "size": 6
           }
         ]
       ],
-      "list": ["id", "title", "emissionGroup", "emissionSourceGroups"]
+      "list": [
+        "id",
+        "title",
+        "emissionGroup"
+      ]
     }
   },
   "type": "object",
