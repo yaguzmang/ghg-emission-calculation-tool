@@ -132,11 +132,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "emissionGroup"
-      ]
+      "list": ["id", "title", "emissionGroup"]
     }
   },
   "type": "object",

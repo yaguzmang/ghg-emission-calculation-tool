@@ -130,13 +130,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "apiId",
-        "emissionCategory",
-        "emissionSourceGroup"
-      ]
+      "list": ["id", "name", "apiId", "emissionCategory", "emissionSourceGroup"]
     }
   },
   "type": "object",
