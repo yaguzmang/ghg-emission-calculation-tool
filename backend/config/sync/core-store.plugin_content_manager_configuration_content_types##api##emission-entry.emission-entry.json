@@ -92,48 +92,6 @@
           "sortable": true
         }
       },
-      "customEmissionFactorScope1": {
-        "edit": {
-          "label": "Custom emission factor (Scope 1)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "customEmissionFactorScope1",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "customEmissionFactorScope2": {
-        "edit": {
-          "label": "Custom emission factor (Scope 2)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "customEmissionFactorScope2",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "customEmissionFactorScope3": {
-        "edit": {
-          "label": "Custom emission factor (Scope 3)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "customEmissionFactorScope3",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "reportingPeriod": {
         "edit": {
           "label": "Reporting period",
@@ -159,6 +117,34 @@
         },
         "list": {
           "label": "customEmissionFactorBiogenic",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "customEmissionFactorDirect": {
+        "edit": {
+          "label": "Custom emission factor (Direct)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorDirect",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "customEmissionFactorIndirect": {
+        "edit": {
+          "label": "Custom emission factor (Indirect)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customEmissionFactorIndirect",
           "searchable": false,
           "sortable": false
         }
@@ -228,19 +214,13 @@
         ],
         [
           {
-            "name": "customEmissionFactorScope1",
+            "name": "customEmissionFactorDirect",
             "size": 12
           }
         ],
         [
           {
-            "name": "customEmissionFactorScope2",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "customEmissionFactorScope3",
+            "name": "customEmissionFactorIndirect",
             "size": 12
           }
         ],
@@ -251,7 +231,12 @@
           }
         ]
       ],
-      "list": ["id", "reportingPeriod", "organizationUnit", "emissionSource"]
+      "list": [
+        "id",
+        "reportingPeriod",
+        "organizationUnit",
+        "emissionSource"
+      ]
     }
   },
   "type": "object",
