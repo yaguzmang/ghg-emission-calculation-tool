@@ -231,12 +231,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "reportingPeriod",
-        "organizationUnit",
-        "emissionSource"
-      ]
+      "list": ["id", "reportingPeriod", "organizationUnit", "emissionSource"]
     }
   },
   "type": "object",
