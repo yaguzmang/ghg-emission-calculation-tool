@@ -1830,8 +1830,7 @@
         "displayName": "User"
       },
       "options": {
-        "draftAndPublish": false,
-        "timestamps": true
+        "draftAndPublish": false
       },
       "attributes": {
         "username": {
@@ -1893,6 +1892,9 @@
           "target": "api::organization.organization",
           "inversedBy": "users"
         },
+        "locale": {
+          "type": "string"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -1945,8 +1947,7 @@
           "displayName": "User"
         },
         "options": {
-          "draftAndPublish": false,
-          "timestamps": true
+          "draftAndPublish": false
         },
         "attributes": {
           "username": {
@@ -2007,6 +2008,9 @@
             "relation": "manyToMany",
             "target": "api::organization.organization",
             "inversedBy": "users"
+          },
+          "locale": {
+            "type": "string"
           }
         },
         "kind": "collectionType"
