@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -71,6 +70,9 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "users"
+    },
+    "locale": {
+      "type": "string"
     }
   }
 }
