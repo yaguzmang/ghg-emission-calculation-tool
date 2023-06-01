@@ -538,7 +538,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -636,7 +640,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1176,32 +1184,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": ["updated_at"],
+          "columns": [
+            "updated_at"
+          ],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": ["size"],
+          "columns": [
+            "size"
+          ],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": ["ext"],
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1395,12 +1415,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],
@@ -2377,6 +2401,140 @@
       "uid": "api::emission-factor-dataset.emission-factor-dataset",
       "apiName": "emission-factor-dataset",
       "globalId": "EmissionFactorDataset",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::emission-factor-datum.emission-factor-datum": {
+      "kind": "collectionType",
+      "collectionName": "emission_factor_data",
+      "info": {
+        "singularName": "emission-factor-datum",
+        "pluralName": "emission-factor-data",
+        "displayName": "App / Emission factor data",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "json": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "json"
+        },
+        "dataset": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "api::emission-factor-dataset.emission-factor-dataset"
+        },
+        "year": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-factor-datum.emission-factor-datum"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "emission_factor_data",
+        "info": {
+          "singularName": "emission-factor-datum",
+          "pluralName": "emission-factor-data",
+          "displayName": "App / Emission factor data",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "json": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "json"
+          },
+          "dataset": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::emission-factor-dataset.emission-factor-dataset"
+          },
+          "year": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "required": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "emission-factor-datum",
+      "connection": "default",
+      "uid": "api::emission-factor-datum.emission-factor-datum",
+      "apiName": "emission-factor-datum",
+      "globalId": "EmissionFactorDatum",
       "actions": {},
       "lifecycles": {}
     },
