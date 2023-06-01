@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_factor_data",
+  "info": {
+    "singularName": "emission-factor-datum",
+    "pluralName": "emission-factor-data",
+    "displayName": "App / Emission factor data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "json": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
+    },
+    "dataset": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emission-factor-dataset.emission-factor-dataset"
+    },
+    "year": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    }
+  }
+}
