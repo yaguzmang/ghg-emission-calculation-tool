@@ -3086,6 +3086,104 @@
       "actions": {},
       "lifecycles": {}
     },
+    "api::settings-dashboard.settings-dashboard": {
+      "kind": "singleType",
+      "collectionName": "settings_dashboards",
+      "info": {
+        "singularName": "settings-dashboard",
+        "pluralName": "settings-dashboards",
+        "displayName": "Settings / Dashboard"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "emissionCategories": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::emission-category.emission-category"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::settings-dashboard.settings-dashboard"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "settings_dashboards",
+        "info": {
+          "singularName": "settings-dashboard",
+          "pluralName": "settings-dashboards",
+          "displayName": "Settings / Dashboard"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "emissionCategories": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::emission-category.emission-category"
+          }
+        },
+        "kind": "singleType"
+      },
+      "modelType": "contentType",
+      "modelName": "settings-dashboard",
+      "connection": "default",
+      "uid": "api::settings-dashboard.settings-dashboard",
+      "apiName": "settings-dashboard",
+      "globalId": "SettingsDashboard",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::settings-general.settings-general": {
       "kind": "singleType",
       "collectionName": "settings_generals",

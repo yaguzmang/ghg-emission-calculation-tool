@@ -464,6 +464,59 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::settings-dashboard.settings-dashboard",
+      "properties": {
+        "fields": [
+          "emissionCategories"
+        ],
+        "locales": [
+          "en",
+          "fi"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::settings-dashboard.settings-dashboard",
+      "properties": {
+        "locales": [
+          "en",
+          "fi"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::settings-dashboard.settings-dashboard",
+      "properties": {
+        "fields": [
+          "emissionCategories"
+        ],
+        "locales": [
+          "en",
+          "fi"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::settings-dashboard.settings-dashboard",
+      "properties": {
+        "fields": [
+          "emissionCategories"
+        ],
+        "locales": [
+          "en",
+          "fi"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::settings-general.settings-general",
       "properties": {
         "fields": [
