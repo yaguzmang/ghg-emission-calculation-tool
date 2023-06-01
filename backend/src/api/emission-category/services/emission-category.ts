@@ -26,8 +26,6 @@ export default factories.createCoreService(
 
       if (!res) return null;
 
-      console.log(params.populate);
-
       if (
         (res.locale !== "en" &&
           ((typeof params.populate === "string" &&
