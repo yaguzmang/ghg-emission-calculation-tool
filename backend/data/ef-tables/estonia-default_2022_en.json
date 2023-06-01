@@ -1,0 +1,49 @@
+{
+  "name": "estonia-default",
+  "year": 2022,
+  "language": "en",
+  "emission_sources": {
+    "biomass_kg": {
+      "label": "Biomass (e.g. wood chips, sawdust)",
+      "unit": "kg",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.00084,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value 11.9 MJ/kg",
+            "url": "https://example.com"
+          }
+        },
+        "biogenic": {
+          "value": 1.333,
+          "data_source": {
+            "description": null,
+            "url": null
+          }
+        }
+      }
+    },
+    "petrol_medium_km": {
+      "label": "Petrol, medium (1,4-2,0 litre)",
+      "unit": "km",
+      "scope": 1,
+      "value": {
+        "direct": {
+          "value": 0.00025,
+          "data_source": {
+            "description": "Petrol, medium (1,4-2,0 litres)",
+            "url": null
+          }
+        },
+        "indirect": {
+          "value": 0.0368,
+          "data_source": {
+            "description": "Zemo Partnership - Well-to-tank",
+            "url": "https://www.zemo.org.uk/work-with-us/buses-coaches/low-emission-buses/well-to-tank.htm"
+          }
+        }
+      }
+    }
+  }
+}
