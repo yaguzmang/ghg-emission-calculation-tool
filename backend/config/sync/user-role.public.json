@@ -34,6 +34,9 @@
       "action": "api::emission-source.emission-source.findOne"
     },
     {
+      "action": "api::settings-general.settings-general.find"
+    },
+    {
       "action": "api::translation.translation.find"
     },
     {
