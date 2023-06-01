@@ -2182,22 +2182,6 @@
         "quantitySource": {
           "type": "text"
         },
-        "customEmissionFactorScope1": {
-          "displayName": "Custom emission factor",
-          "type": "component",
-          "repeatable": false,
-          "component": "emission-entry.custom-emission-factor"
-        },
-        "customEmissionFactorScope2": {
-          "type": "component",
-          "repeatable": false,
-          "component": "emission-entry.custom-emission-factor"
-        },
-        "customEmissionFactorScope3": {
-          "type": "component",
-          "repeatable": false,
-          "component": "emission-entry.custom-emission-factor"
-        },
         "reportingPeriod": {
           "type": "relation",
           "relation": "manyToOne",
@@ -2205,6 +2189,16 @@
           "inversedBy": "emissionEntries"
         },
         "customEmissionFactorBiogenic": {
+          "type": "component",
+          "repeatable": false,
+          "component": "emission-entry.custom-emission-factor"
+        },
+        "customEmissionFactorDirect": {
+          "type": "component",
+          "repeatable": false,
+          "component": "emission-entry.custom-emission-factor"
+        },
+        "customEmissionFactorIndirect": {
           "type": "component",
           "repeatable": false,
           "component": "emission-entry.custom-emission-factor"
@@ -2273,22 +2267,6 @@
           "quantitySource": {
             "type": "text"
           },
-          "customEmissionFactorScope1": {
-            "displayName": "Custom emission factor",
-            "type": "component",
-            "repeatable": false,
-            "component": "emission-entry.custom-emission-factor"
-          },
-          "customEmissionFactorScope2": {
-            "type": "component",
-            "repeatable": false,
-            "component": "emission-entry.custom-emission-factor"
-          },
-          "customEmissionFactorScope3": {
-            "type": "component",
-            "repeatable": false,
-            "component": "emission-entry.custom-emission-factor"
-          },
           "reportingPeriod": {
             "type": "relation",
             "relation": "manyToOne",
@@ -2296,6 +2274,16 @@
             "inversedBy": "emissionEntries"
           },
           "customEmissionFactorBiogenic": {
+            "type": "component",
+            "repeatable": false,
+            "component": "emission-entry.custom-emission-factor"
+          },
+          "customEmissionFactorDirect": {
+            "type": "component",
+            "repeatable": false,
+            "component": "emission-entry.custom-emission-factor"
+          },
+          "customEmissionFactorIndirect": {
             "type": "component",
             "repeatable": false,
             "component": "emission-entry.custom-emission-factor"
