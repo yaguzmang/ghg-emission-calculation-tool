@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings_generals",
+  "info": {
+    "singularName": "settings-general",
+    "pluralName": "settings-generals",
+    "displayName": "Settings / General"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "appName": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    }
+  }
+}
