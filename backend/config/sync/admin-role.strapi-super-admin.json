@@ -7,12 +7,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -21,12 +16,58 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -51,12 +92,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -65,12 +101,34 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -79,12 +137,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -93,13 +146,104 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSourceGroups"
-        ],
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
         "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": ["title", "description", "emissionGroup", "emissionSources"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
       },
       "conditions": []
     },
@@ -162,6 +306,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-entry.emission-entry",
       "properties": {
@@ -186,6 +348,144 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-entry.emission-entry",
+      "properties": {
+        "fields": [
+          "organizationUnit",
+          "emissionSource",
+          "quantity",
+          "tier",
+          "quantitySource",
+          "customEmissionFactorScope1.value",
+          "customEmissionFactorScope1.source",
+          "customEmissionFactorScope2.value",
+          "customEmissionFactorScope2.source",
+          "customEmissionFactorScope3.value",
+          "customEmissionFactorScope3.source",
+          "reportingPeriod",
+          "customEmissionFactorBiogenic.value",
+          "customEmissionFactorBiogenic.source"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-entry.emission-entry",
       "properties": {
         "fields": [
@@ -270,6 +570,48 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {},
@@ -298,6 +640,54 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-factor-dataset.emission-factor-dataset",
+      "properties": {
+        "fields": ["apiName"]
+      },
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-factor-dataset.emission-factor-dataset",
       "properties": {
@@ -332,6 +722,57 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-group.emission-group",
       "properties": {
@@ -358,6 +799,60 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-group.emission-group",
+      "properties": {
+        "fields": ["title", "emissionCategories"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],
@@ -387,12 +882,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -401,12 +891,58 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -431,12 +967,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -445,12 +976,34 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -459,12 +1012,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -473,12 +1021,34 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": [
-          "name",
-          "emissionSourceLabel",
-          "emissionSources",
-          "emissionCategory"
-        ],
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source-group.emission-source-group",
+      "properties": {
+        "fields": ["name", "emissionSourceLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -495,7 +1065,31 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-source.emission-source",
       "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
         "fields": ["apiId", "emissionSourceGroup", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
       },
       "conditions": []
     },
@@ -512,6 +1106,40 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source.emission-source",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source.emission-source",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-source.emission-source",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
+      },
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-source.emission-source",
       "properties": {
@@ -528,6 +1156,30 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
+      },
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-source.emission-source",
       "properties": {
@@ -540,6 +1192,14 @@
       "subject": "api::emission-source.emission-source",
       "properties": {
         "fields": ["apiId", "emissionSourceGroup", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-source.emission-source",
+      "properties": {
+        "fields": ["apiId", "emissionSourceGroup", "name", "emissionCategory"]
       },
       "conditions": []
     },
@@ -560,6 +1220,48 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::organization-unit.organization-unit",
       "properties": {},
@@ -581,6 +1283,54 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-unit.organization-unit",
+      "properties": {
+        "fields": ["name", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
         "fields": ["name", "organization", "emissionEntries"]
@@ -632,6 +1382,66 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization.organization",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization.organization",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization.organization",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::organization.organization",
       "properties": {},
@@ -659,6 +1469,90 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "users",
+          "organizationUnits",
+          "reportingPeriods",
+          "emissionFactorDataset"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -716,6 +1610,48 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::reporting-period.reporting-period",
       "properties": {},
@@ -737,6 +1673,54 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::reporting-period.reporting-period",
+      "properties": {
+        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
         "fields": ["startDate", "endDate", "organization", "emissionEntries"]
@@ -769,6 +1753,40 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::translation.translation",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::translation.translation",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::translation.translation",
       "properties": {
@@ -778,6 +1796,42 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::translation.translation",
+      "properties": {
+        "fields": ["key", "translation"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "api::translation.translation",
       "properties": {
         "fields": ["key", "translation"],
@@ -807,6 +1861,24 @@
       "conditions": []
     },
     {
+      "action": "admin::api-tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::api-tokens.create",
       "subject": null,
       "properties": {},
@@ -814,6 +1886,42 @@
     },
     {
       "action": "admin::api-tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.delete",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -843,6 +1951,24 @@
       "conditions": []
     },
     {
+      "action": "admin::api-tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::api-tokens.regenerate",
       "subject": null,
       "properties": {},
@@ -850,6 +1976,42 @@
     },
     {
       "action": "admin::api-tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.update",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -879,6 +2041,24 @@
       "conditions": []
     },
     {
+      "action": "admin::marketplace.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::marketplace.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::marketplace.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::project-settings.read",
       "subject": null,
       "properties": {},
@@ -886,6 +2066,42 @@
     },
     {
       "action": "admin::project-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::project-settings.update",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -915,6 +2131,24 @@
       "conditions": []
     },
     {
+      "action": "admin::roles.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::roles.delete",
       "subject": null,
       "properties": {},
@@ -922,6 +2156,42 @@
     },
     {
       "action": "admin::roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.read",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -951,6 +2221,24 @@
       "conditions": []
     },
     {
+      "action": "admin::roles.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::roles.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::transfer.tokens.access",
       "subject": null,
       "properties": {},
@@ -958,6 +2246,42 @@
     },
     {
       "action": "admin::transfer.tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.access",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.create",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -987,6 +2311,24 @@
       "conditions": []
     },
     {
+      "action": "admin::transfer.tokens.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::transfer.tokens.read",
       "subject": null,
       "properties": {},
@@ -994,6 +2336,42 @@
     },
     {
       "action": "admin::transfer.tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.regenerate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.regenerate",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1023,6 +2401,24 @@
       "conditions": []
     },
     {
+      "action": "admin::transfer.tokens.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::transfer.tokens.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::users.create",
       "subject": null,
       "properties": {},
@@ -1030,6 +2426,42 @@
     },
     {
       "action": "admin::users.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.delete",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1059,6 +2491,24 @@
       "conditions": []
     },
     {
+      "action": "admin::users.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::users.update",
       "subject": null,
       "properties": {},
@@ -1066,6 +2516,42 @@
     },
     {
       "action": "admin::users.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::users.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.create",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1095,6 +2581,24 @@
       "conditions": []
     },
     {
+      "action": "admin::webhooks.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "admin::webhooks.read",
       "subject": null,
       "properties": {},
@@ -1102,6 +2606,42 @@
     },
     {
       "action": "admin::webhooks.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::webhooks.update",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1131,6 +2671,42 @@
       "conditions": []
     },
     {
+      "action": "plugin::config-sync.menu-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::config-sync.menu-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::config-sync.menu-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::config-sync.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::config-sync.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::config-sync.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::config-sync.settings.read",
       "subject": null,
       "properties": {},
@@ -1150,6 +2726,42 @@
     },
     {
       "action": "plugin::content-manager.collection-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.collection-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.collection-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.collection-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.components.configure-layout",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.components.configure-layout",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.components.configure-layout",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1205,6 +2817,81 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "plugin::users-permissions.user",
       "properties": {},
@@ -1237,6 +2924,120 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::users-permissions.user",
       "properties": {
         "fields": [
@@ -1305,6 +3106,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.single-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.single-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.single-types.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-type-builder.read",
       "subject": null,
       "properties": {},
@@ -1312,6 +3131,42 @@
     },
     {
       "action": "plugin::content-type-builder.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-type-builder.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-type-builder.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-type-builder.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::email.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::email.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::email.settings.read",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1341,6 +3196,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::i18n.locale.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::i18n.locale.delete",
       "subject": null,
       "properties": {},
@@ -1348,6 +3221,42 @@
     },
     {
       "action": "plugin::i18n.locale.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.read",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1377,6 +3286,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::i18n.locale.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
@@ -1384,6 +3311,42 @@
     },
     {
       "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1413,6 +3376,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::upload.assets.update",
       "subject": null,
       "properties": {},
@@ -1420,6 +3401,42 @@
     },
     {
       "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1449,6 +3466,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::upload.settings.read",
       "subject": null,
       "properties": {},
@@ -1456,6 +3491,42 @@
     },
     {
       "action": "plugin::upload.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.advanced-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.advanced-settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.advanced-settings.read",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1485,6 +3556,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::users-permissions.advanced-settings.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.advanced-settings.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.advanced-settings.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::users-permissions.email-templates.read",
       "subject": null,
       "properties": {},
@@ -1492,6 +3581,42 @@
     },
     {
       "action": "plugin::users-permissions.email-templates.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.email-templates.update",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1521,6 +3646,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::users-permissions.providers.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.providers.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.providers.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::users-permissions.providers.update",
       "subject": null,
       "properties": {},
@@ -1528,6 +3671,42 @@
     },
     {
       "action": "plugin::users-permissions.providers.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.providers.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.providers.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.providers.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.create",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -1557,6 +3736,24 @@
       "conditions": []
     },
     {
+      "action": "plugin::users-permissions.roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::users-permissions.roles.read",
       "subject": null,
       "properties": {},
@@ -1564,6 +3761,42 @@
     },
     {
       "action": "plugin::users-permissions.roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::users-permissions.roles.update",
       "subject": null,
       "properties": {},
       "conditions": []

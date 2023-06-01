@@ -157,15 +157,15 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/6?populate=*",
+                      "raw": "http://localhost:1337/api/emission-categories/2?populate[emissionSources][populate][emissionSourceGroup][populate]=localizations",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "emission-categories", "6"],
+                      "path": ["api", "emission-categories", "2"],
                       "query": [
                         {
-                          "key": "populate",
-                          "value": "*"
+                          "key": "populate[emissionSources][populate][emissionSourceGroup][populate]",
+                          "value": "localizations"
                         }
                       ]
                     }
@@ -183,22 +183,11 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-source-groups/2?populate=emissionSources",
+                      "raw": "http://localhost:1337/api/emission-source-groups/2",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "emission-source-groups", "2"],
-                      "query": [
-                        {
-                          "key": "populate",
-                          "value": "emissionSources"
-                        },
-                        {
-                          "key": "populate",
-                          "value": "emissionCategory",
-                          "disabled": true
-                        }
-                      ]
+                      "path": ["api", "emission-source-groups", "2"]
                     }
                   },
                   "response": []
@@ -531,7 +520,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 7,\n        \"reportingPeriod\": 2,\n        \"emissionSource\": 3,\n        \"quantity\": 50,\n        \"tier\": 3\n    }\n}",
+                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 19,\n        \"reportingPeriod\": 11,\n        \"emissionSource\": 27,\n        \"quantity\": 20,\n        \"tier\": 3,\n        \"quantitySource\": \"head\",\n        \"customEmissionFactorBiogenic\": {\n            \"value\": 0.0011,\n            \"source\": \"some cool research report\"\n        }\n    }\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -618,11 +607,11 @@
                       }
                     },
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-entries/5",
+                      "raw": "http://localhost:1337/api/emission-entries/7",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "emission-entries", "5"]
+                      "path": ["api", "emission-entries", "7"]
                     }
                   },
                   "response": []
@@ -650,7 +639,7 @@
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzNTQwMjcyLCJleHAiOjE2ODYxMzIyNzJ9.4xVnnYUkrCcKxNk3iGwr3X_0rh7cGLkDQabyhrBcY-Q",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY4NDkwMDczNSwiZXhwIjoxNjg3NDkyNzM1fQ.Op5uxwXc8CeMKXZTC6EaTm94uYxWUlvMMbSqi0knoyA",
                 "type": "string"
               }
             ]
@@ -692,6 +681,21 @@
               "host": ["localhost"],
               "port": "1337",
               "path": ["api", "auth", "local"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get locales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/api/i18n/locales",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["api", "i18n", "locales"]
             }
           },
           "response": []

@@ -18,15 +18,20 @@
     },
     "emissionSourceGroup": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::emission-source-group.emission-source-group",
-      "inversedBy": "emissionSources"
+      "relation": "oneToOne",
+      "target": "api::emission-source-group.emission-source-group"
     },
     "name": {
       "type": "string",
       "private": true,
       "required": true,
       "unique": true
+    },
+    "emissionCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::emission-category.emission-category",
+      "inversedBy": "emissionSources"
     }
   }
 }

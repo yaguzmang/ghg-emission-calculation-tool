@@ -2036,10 +2036,10 @@
           "target": "api::emission-group.emission-group",
           "inversedBy": "emissionCategories"
         },
-        "emissionSourceGroups": {
+        "emissionSources": {
           "type": "relation",
           "relation": "oneToMany",
-          "target": "api::emission-source-group.emission-source-group",
+          "target": "api::emission-source.emission-source",
           "mappedBy": "emissionCategory"
         },
         "createdAt": {
@@ -2126,10 +2126,10 @@
             "target": "api::emission-group.emission-group",
             "inversedBy": "emissionCategories"
           },
-          "emissionSourceGroups": {
+          "emissionSources": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::emission-source-group.emission-source-group",
+            "target": "api::emission-source.emission-source",
             "mappedBy": "emissionCategory"
           }
         },
@@ -2530,15 +2530,20 @@
         },
         "emissionSourceGroup": {
           "type": "relation",
-          "relation": "manyToOne",
-          "target": "api::emission-source-group.emission-source-group",
-          "inversedBy": "emissionSources"
+          "relation": "oneToOne",
+          "target": "api::emission-source-group.emission-source-group"
         },
         "name": {
           "type": "string",
           "private": true,
           "required": true,
           "unique": true
+        },
+        "emissionCategory": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::emission-category.emission-category",
+          "inversedBy": "emissionSources"
         },
         "createdAt": {
           "type": "datetime"
@@ -2586,15 +2591,20 @@
           },
           "emissionSourceGroup": {
             "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::emission-source-group.emission-source-group",
-            "inversedBy": "emissionSources"
+            "relation": "oneToOne",
+            "target": "api::emission-source-group.emission-source-group"
           },
           "name": {
             "type": "string",
             "private": true,
             "required": true,
             "unique": true
+          },
+          "emissionCategory": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::emission-category.emission-category",
+            "inversedBy": "emissionSources"
           }
         },
         "kind": "collectionType"
@@ -2644,18 +2654,6 @@
           },
           "type": "string",
           "required": true
-        },
-        "emissionSources": {
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::emission-source.emission-source",
-          "mappedBy": "emissionSourceGroup"
-        },
-        "emissionCategory": {
-          "type": "relation",
-          "relation": "manyToOne",
-          "target": "api::emission-category.emission-category",
-          "inversedBy": "emissionSourceGroups"
         },
         "createdAt": {
           "type": "datetime"
@@ -2735,18 +2733,6 @@
             },
             "type": "string",
             "required": true
-          },
-          "emissionSources": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::emission-source.emission-source",
-            "mappedBy": "emissionSourceGroup"
-          },
-          "emissionCategory": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::emission-category.emission-category",
-            "inversedBy": "emissionSourceGroups"
           }
         },
         "kind": "collectionType"

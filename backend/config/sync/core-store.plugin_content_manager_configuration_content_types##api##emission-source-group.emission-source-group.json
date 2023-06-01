@@ -48,36 +48,6 @@
           "sortable": true
         }
       },
-      "emissionSources": {
-        "edit": {
-          "label": "Emission sources",
-          "description": "❗️Set these only for the **English (en)** locale. For other locales, leave empty.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "emission sources",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "emissionCategory": {
-        "edit": {
-          "label": "Emission category",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "Emission category",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -108,6 +78,7 @@
       }
     },
     "layouts": {
+      "list": ["id", "name"],
       "edit": [
         [
           {
@@ -118,21 +89,8 @@
             "name": "emissionSourceLabel",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "emissionCategory",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "emissionSources",
-            "size": 8
-          }
         ]
-      ],
-      "list": ["id", "name", "emissionCategory", "emissionSources"]
+      ]
     }
   },
   "type": "object",
