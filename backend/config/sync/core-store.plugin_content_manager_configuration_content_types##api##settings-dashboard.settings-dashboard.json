@@ -73,12 +73,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "emissionCategories",
-        "createdAt",
-        "updatedAt"
-      ]
+      "list": ["id", "emissionCategories", "createdAt", "updatedAt"]
     }
   },
   "type": "object",

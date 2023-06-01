@@ -72,12 +72,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "appName",
-        "createdAt",
-        "updatedAt"
-      ]
+      "list": ["id", "appName", "createdAt", "updatedAt"]
     }
   },
   "type": "object",

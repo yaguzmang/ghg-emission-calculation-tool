@@ -2,6 +2,8 @@
  * settings-general controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::settings-general.settings-general');
+export default factories.createCoreController(
+  "api::settings-general.settings-general"
+);
