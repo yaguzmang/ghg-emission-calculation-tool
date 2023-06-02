@@ -21,7 +21,8 @@
     "@strapi/strapi": "4.10.7",
     "@types/koa": "^2.13.6",
     "better-sqlite3": "8.0.1",
-    "strapi-plugin-config-sync": "^1.1.1"
+    "strapi-plugin-config-sync": "^1.1.1",
+    "yup": "^1.2.0"
   },
   "author": {
     "name": "A Strapi developer"
