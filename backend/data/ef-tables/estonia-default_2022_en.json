@@ -28,7 +28,7 @@
       "label": "Petrol, medium (1,4-2,0 litre)",
       "unit": "km",
       "scope": 1,
-      "value": {
+      "factors": {
         "direct": {
           "value": 0.00025,
           "data_source": {
