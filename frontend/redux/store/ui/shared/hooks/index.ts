@@ -5,3 +5,6 @@ export const useSelectedOrganizationId = (): number | undefined =>
 
 export const useSelectedReportingPeriodId = (): number | undefined =>
   useAppSelector((state) => state.ui?.shared.selectedReportingPeriodId);
+
+export const useSelectedLocale = (): string | undefined =>
+  useAppSelector((state) => state.ui?.shared.selectedLocale);

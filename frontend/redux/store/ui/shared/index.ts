@@ -1,4 +1,5 @@
 export {
+  useSelectedLocale,
   useSelectedOrganizationId,
   useSelectedReportingPeriodId,
 } from './hooks';

@@ -9,6 +9,7 @@ import { userApiSlice } from '@/redux/api/user/userApiSlice';
 const initialState: SharedUIState = {
   selectedOrganizationId: undefined,
   selectedReportingPeriodId: undefined,
+  selectedLocale: undefined,
 };
 
 export const sharedUISlice = createSlice({
@@ -33,6 +34,15 @@ export const sharedUISlice = createSlice({
       const { selectedOrganizationId } = action.payload;
       state.selectedOrganizationId = selectedOrganizationId;
     },
+    setSelectedLocale: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        locale: string;
+      }>
+    ) => {
+      const { locale } = action.payload;
+      state.selectedLocale = locale;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,6 +54,10 @@ export const sharedUISlice = createSlice({
             if (organizations !== undefined && organizations.length > 0) {
               state.selectedOrganizationId = organizations[0].id;
             }
+          }
+          if (state.selectedLocale === undefined) {
+            const { locale } = payload;
+            state.selectedLocale = locale;
           }
         }
       )

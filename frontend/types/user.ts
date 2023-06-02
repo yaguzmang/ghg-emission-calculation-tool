@@ -6,6 +6,7 @@ export type User = {
   email: string;
   provider: string;
   confirmed: boolean;
+  locale: string;
   blocked: boolean;
   createdAt: string;
   updatedAt: string;

@@ -29,6 +29,7 @@ export const apiSlice = createApi({
     'Organization',
     'OrganizationUnit',
     'EmissionFactorDataset',
+    'Locale',
   ],
   endpoints: () => ({}),
 });

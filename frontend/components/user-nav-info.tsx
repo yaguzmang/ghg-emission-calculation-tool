@@ -12,15 +12,22 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 import { Icons } from './ui/icons/icons';
 
+import { useGetUserQuery } from '@/redux/api/user/userApiSlice';
+
 export function UserNavInfo() {
   const { data: session } = useSession();
+  const userData = useGetUserQuery(undefined, {
+    skip: session?.user === undefined,
+  });
 
   return (
     <>
       <div className="flex-col">
-        {session?.user?.username && (
+        {userData?.currentData && (
           <>
-            <p className="text-xs font-bold">{session.user.username}</p>
+            <p className="text-xs font-bold">
+              {userData?.currentData.username}
+            </p>
             <p className="text-xs font-bold">XXXX</p>
           </>
         )}
