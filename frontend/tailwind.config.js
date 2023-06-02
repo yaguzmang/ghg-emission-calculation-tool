@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -25,6 +27,11 @@ module.exports = {
         border: 'hsl(var(--border))',
         'taltech-green': 'hsl(var(--taltech-green))',
         'gray-lighten': 'hsl(var(--gray-lighten))',
+        overlay: 'hsl(var(--overlay))',
+        loader: {
+          light: 'hsl(var(--loader-light))',
+          dark: 'hsl(var(--loader-dark))',
+        },
         'text-regular': 'hsl(var(--text-regular))',
         'select-item-hover': 'hsl(var(--select-item-hover))',
         'select-content-popover': 'hsl(var(--select-content-popover))',
@@ -131,12 +138,42 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
+        'fade-grow-shrink': {
+          '0%, 100%': {
+            opacity: 0,
+            transform: 'scale(0)',
+          },
+          '20%, 80%': {
+            opacity: 1,
+          },
+          '50%': {
+            opacity: 1,
+            transform: 'scale(1)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'loader-box': 'fade-grow-shrink 2s ease-in-out infinite',
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          'animation-delay': (value) => {
+            return {
+              'animation-delay': value,
+            };
+          },
+        },
+        {
+          values: theme('transitionDelay'),
+        }
+      );
+    }),
+  ],
 };
