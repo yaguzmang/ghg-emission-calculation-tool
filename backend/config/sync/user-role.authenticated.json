@@ -67,6 +67,12 @@
       "action": "api::reporting-period.reporting-period.findOne"
     },
     {
+      "action": "api::settings-dashboard.settings-dashboard.find"
+    },
+    {
+      "action": "api::settings-general.settings-general.find"
+    },
+    {
       "action": "api::translation.translation.find"
     },
     {

@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings_dashboards",
+  "info": {
+    "singularName": "settings-dashboard",
+    "pluralName": "settings-dashboards",
+    "displayName": "Settings / Dashboard"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "emissionCategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::emission-category.emission-category"
+    }
+  }
+}

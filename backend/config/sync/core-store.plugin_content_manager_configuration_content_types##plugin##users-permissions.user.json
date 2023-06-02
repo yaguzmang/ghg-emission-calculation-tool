@@ -162,6 +162,20 @@
           "sortable": false
         }
       },
+      "locale": {
+        "edit": {
+          "label": "Locale",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "locale",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -226,6 +240,10 @@
         [
           {
             "name": "organizations",
+            "size": 6
+          },
+          {
+            "name": "locale",
             "size": 6
           }
         ]
