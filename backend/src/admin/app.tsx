@@ -21,6 +21,10 @@ const PullDataButton = () => {
       `http://localhost:1337/api/emission-factor-data/${id}/pull`,
       {
         method: "POST",
+        headers: {
+          "Custom-Endpoint-Secret":
+            process.env.STRAPI_ADMIN_CUSTOM_ENDPOINT_SECRET,
+        },
       }
     );
 
