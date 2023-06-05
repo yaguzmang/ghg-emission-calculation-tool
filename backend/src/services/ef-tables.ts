@@ -2,7 +2,7 @@ import type { Strapi } from "@strapi/strapi";
 import * as yup from "yup";
 import estoniaDefault2022En from "../../data/ef-tables/estonia-default_2022_en.json";
 import estoniaDefault2022Fi from "../../data/ef-tables/estonia-default_2022_fi.json";
-import { InternalServerError, NotFoundError } from "../api/api.errors";
+import utils from "@strapi/utils";
 import { validate } from "./utils";
 
 const data = {
@@ -32,7 +32,7 @@ export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
     { populate: "dataset" }
   );
 
-  if (!entry) throw new NotFoundError();
+  if (!entry) throw new utils.errors.NotFoundError();
 
   const entrySchema = yup.object({
     year: yup.string(),
@@ -52,7 +52,8 @@ export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
 
   const emissionFactorData = await getEmissionFactorData(dataset, year, locale);
 
-  if (!emissionFactorData) throw new InternalServerError("data not found");
+  if (!emissionFactorData)
+    throw new utils.errors.ApplicationError("data not found");
 
   // Store emission factor data
 
