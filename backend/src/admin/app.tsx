@@ -1,19 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { LinkButton } from "@strapi/helper-plugin";
 
 const PullDataButton = () => {
+  const [loading, setLoading] = useState(false);
   const [uid, id] = window.location.pathname.split("/").slice(-2);
+
+  const handleClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (
+      !window.confirm(
+        "Are you sure? The existing emission factor data will be overwritten."
+      )
+    ) {
+      return;
+    }
+
+    setLoading(true);
+
+    const res = await fetch(
+      `http://localhost:1337/api/emission-factor-data/${id}/pull`,
+      {
+        method: "POST",
+      }
+    );
+
+    setLoading(false);
+
+    if (!res.ok) {
+      const body = await res.json();
+      window.alert(
+        `Emission factor data could not be loaded. Error message: ${body.error.message}`
+      );
+      return;
+    }
+    window.location.reload();
+  };
 
   return (
     uid === "api::emission-factor-datum.emission-factor-datum" && (
-      <LinkButton to="#">Pull data from EF API</LinkButton>
+      <LinkButton onClick={handleClick} to="#" disabled={loading}>
+        {loading ? "Loading..." : "Pull data from EF API"}
+      </LinkButton>
     )
   );
 };
 
 export default {
   bootstrap(app) {
-    console.log("bootstrap");
     app.injectContentManagerComponent("editView", "right-links", {
       name: "pull-ef-data",
       Component: () => <PullDataButton />,
