@@ -16,6 +16,9 @@
       "action": "api::emission-factor-dataset.emission-factor-dataset.findOne"
     },
     {
+      "action": "api::emission-factor-datum.emission-factor-datum.pull"
+    },
+    {
       "action": "api::emission-group.emission-group.find"
     },
     {
