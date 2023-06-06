@@ -78,6 +78,20 @@
           "sortable": false
         }
       },
+      "primaryScope": {
+        "edit": {
+          "label": "Primary scope",
+          "description": "The scope where the emissions of this category will be primarily assigned.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "primary scope",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -123,16 +137,27 @@
         ],
         [
           {
+            "name": "primaryScope",
+            "size": 4
+          },
+          {
             "name": "emissionGroup",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "emissionSources",
             "size": 6
           }
         ]
       ],
-      "list": ["id", "title", "emissionGroup"]
+      "list": [
+        "id",
+        "title",
+        "primaryScope",
+        "emissionGroup"
+      ]
     }
   },
   "type": "object",
