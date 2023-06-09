@@ -18,7 +18,7 @@ export interface EmissionEntry extends ApiServiceEntry {
   tier: 1 | 2 | 3;
   quantitySource?: string;
   customEmissionFactorDirect?: CustomEmissionFactor;
-  customEmissionFactorInirect?: CustomEmissionFactor;
+  customEmissionFactorIndirect?: CustomEmissionFactor;
   customEmissionFactorBiogenic?: CustomEmissionFactor;
   emissions?: Emissions;
 }
