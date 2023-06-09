@@ -51,7 +51,7 @@ export default factories.createCoreService<EmissionEntryService>(
     /**
      * Find emission entries of a reportingPeriod and populate with their emissions
      * @param reportingPeriodId The id of the reporting period whose entries to find
-     * @param locale The locale of the emission factor data to use
+     * @param locale The locale of the emission factor data to use, defaults to "en"
      * @returns Promise<EmissionEntry[]>
      */
     async findWithEmissions(reportingPeriodId, locale = "en") {
