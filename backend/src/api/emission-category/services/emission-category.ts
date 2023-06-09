@@ -16,6 +16,12 @@ export type EmissionCategoryService = GenericService & {
 export default factories.createCoreService<EmissionCategoryService>(
   "api::emission-category.emission-category",
   ({ strapi }) => ({
+    /**
+     * Overwrite default findOne service by including emissionSources in all locales
+     * @param id The id of the emission category to find
+     * @param params Additional params included in the request
+     * @returns Promise<EmissionCategory>
+     */
     async findOne(id: string, params: ServiceParams) {
       const res = (await super.findOne(id, params)) as EmissionCategory | null;
 
@@ -45,6 +51,11 @@ export default factories.createCoreService<EmissionCategoryService>(
       return res;
     },
 
+    /**
+     * Find emission categories as ordered in dashboard settings
+     * @param locale The locale to use
+     * @returns Promise<EmissionCategory>
+     */
     async findOrdered(locale) {
       const dashboardSettings: DashboardSettings | null =
         await strapi.entityService.findMany(
@@ -76,6 +87,8 @@ export default factories.createCoreService<EmissionCategoryService>(
           return cat;
         });
       }
+
+      // If a non-English locale, populate emission sources from the English locale
 
       return emissionCategories.map(({ localizations, ...category }) => {
         if (locale === "en") return category;

@@ -19,6 +19,12 @@ export type EmissionEntryService = GenericService & {
 export default factories.createCoreService<EmissionEntryService>(
   "api::emission-entry.emission-entry",
   ({ strapi }) => ({
+    /**
+     * Check whether an emission entry is allowed for a given user
+     * @param emissionEntryId The id of the emission entry to check
+     * @param userId The id of the user to check
+     * @returns Promise<boolean>
+     */
     async isAllowedForUser(emissionEntryId, userId) {
       const user = await strapi.entityService.findOne(
         "plugin::users-permissions.user",
@@ -42,7 +48,17 @@ export default factories.createCoreService<EmissionEntryService>(
       return ownEmissionEntries.some((unit) => unit.id === emissionEntryId);
     },
 
+    /**
+     * Find emission entries of a reportingPeriod and populate with their emissions
+     * @param reportingPeriodId The id of the reporting period whose entries to find
+     * @param locale The locale of the emission factor data to use
+     * @returns Promise<EmissionEntry[]>
+     */
     async findWithEmissions(reportingPeriodId, locale = "en") {
+      // Concurrently perform the following:
+      // 1. Find the emissionEntries of the reportingPeriod
+      // 2. Find emissionFactorDatum for the reportingPeriod and locale
+
       const getEmissionEntries: EmissionEntry[] = strapi.entityService.findMany(
         "api::emission-entry.emission-entry",
         {
@@ -64,11 +80,16 @@ export default factories.createCoreService<EmissionEntryService>(
         getEmissionFactorDatum,
       ]);
 
+      // Validate emissionFactorDatum JSON content
+
       const json = await strapi
         .service<EmissionFactorDatumService>(
           "api::emission-factor-datum.emission-factor-datum"
         )
         .validateJson(emissionFactorDatum.json);
+
+      // Calculate the direct, indirect and biogenic emissions of each emission entry
+      // If emission factor data is not available for a given entry, default to zero
 
       const entriesWithEmissions = emissionEntries.map((entry) => {
         const q = entry.quantity;

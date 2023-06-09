@@ -49,7 +49,15 @@ const { ApplicationError, NotFoundError } = utils.errors;
 export default factories.createCoreService<EmissionFactorDatumService>(
   "api::emission-factor-datum.emission-factor-datum",
   ({ strapi }) => ({
+    /**
+     * Find the most recently updated emissionDatum entry for a reportingPeriod
+     * @param reportingPeriodId The id of the reportingPeriod
+     * @param params Additional params to pass to the Entity Service API
+     * @returns Promise<EmissionFactorDatum>
+     */
     async findOneByReportingPeriod(reportingPeriodId, params) {
+      // Determine emission factor dataset based on reporting period
+
       const reportingPeriod: ReportingPeriod =
         await strapi.entityService.findOne(
           "api::reporting-period.reporting-period",
@@ -79,8 +87,12 @@ export default factories.createCoreService<EmissionFactorDatumService>(
         );
       }
 
+      // Determine emission factor year based on the end date
+
       const endDate = parse(endDateString, "y-MM-dd", new Date());
       const year = format(endDate, "y");
+
+      // Find emission factor data that match the dataset and year
 
       const emissionFactorData: EmissionFactorDatum[] =
         await strapi.entityService.findMany(
@@ -99,9 +111,16 @@ export default factories.createCoreService<EmissionFactorDatumService>(
         throw new NotFoundError("emission factor data not found");
       }
 
+      // Return the most recently updated emission factor datum
+
       return emissionFactorData[0];
     },
 
+    /**
+     * Validate emission factor datum JSON content
+     * @param json Emission factor datum JSON to validate
+     * @returns Validated JSON
+     */
     async validateJson(json) {
       const jsonSchema = yup.object({
         emission_sources: yup.lazy((obj) => {

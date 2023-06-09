@@ -10,11 +10,20 @@ import { EmissionEntryService } from "../../emission-entry/services/emission-ent
 import { Emissions } from "../../emission-entry";
 import { EmissionCategoryService } from "../services/emission-category";
 
+const { ValidationError } = utils.errors;
+
 export default factories.createCoreController(
   "api::emission-category.emission-category",
   ({ strapi }) => {
     return {
+      /**
+       * Find ordered emission categories with emissions
+       * @param ctx The Strapi context
+       * @returns object
+       */
       async findWithEmissions(ctx) {
+        // Validate query
+
         const querySchema = yup.object({
           locale: yup.string().required(),
           reportingPeriod: yup.number().required(),
@@ -23,16 +32,16 @@ export default factories.createCoreController(
         const { locale, reportingPeriod } = await validate(
           ctx.query,
           querySchema,
-          utils.errors.ValidationError
+          ValidationError
         );
 
-        // 1a. Get emission entries with emissions for reporting period
+        // Concurrently get:
+        // 1. emissionEntries for reportingPeriod and locale, populated with emissions
+        // 2. ordered emissionCategories, populated with emissionSources
 
         const getEmissionEntries = strapi
           .service<EmissionEntryService>("api::emission-entry.emission-entry")
           .findWithEmissions(reportingPeriod, locale);
-
-        // 1b. Get all emission categories populated with emissionSources
 
         const getEmissionCategories = strapi
           .service<EmissionCategoryService>(
@@ -45,7 +54,7 @@ export default factories.createCoreController(
           getEmissionCategories,
         ]);
 
-        // 2. Group the calculated emissions by emission source
+        // Group the calculated emissions by emission source
 
         const emissionsBySource = emissionEntries.reduce<{
           [key: string]: Emissions;
@@ -69,7 +78,7 @@ export default factories.createCoreController(
           };
         }, {});
 
-        // 3. For each emissionCategory (from 1b), calculate its direct, indirect and biogenic emissions
+        // For each emissionCategory, sum up the emissions of its emissionSources
 
         const categoriesWithEmissions = emissionCategories.map((category) => {
           const emissions = category.emissionSources.reduce(
