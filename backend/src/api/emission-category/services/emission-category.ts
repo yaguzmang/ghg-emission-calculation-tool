@@ -4,21 +4,16 @@
 
 import { factories } from "@strapi/strapi";
 
-import {
-  ApiServiceEntry,
-  LocalizedApiServiceEntry,
-  ServiceParams,
-} from "../../api.types";
+import { ServiceParams } from "../../api.types";
+import { EmissionCategory } from "..";
+import { GenericService } from "@strapi/strapi/lib/core-api/service";
+import { DashboardSettings } from "../../settings-dashboard";
 
-interface EmissionCategory extends LocalizedApiServiceEntry {
-  title: string;
-  description?: string;
-  emissionGroup?: LocalizedApiServiceEntry;
-  emissionSources?: ApiServiceEntry[];
-  localizations?: EmissionCategory[];
-}
+export type EmissionCategoryService = GenericService & {
+  findOrdered(locale: string): Promise<EmissionCategory[]>;
+};
 
-export default factories.createCoreService(
+export default factories.createCoreService<EmissionCategoryService>(
   "api::emission-category.emission-category",
   ({ strapi }) => ({
     async findOne(id: string, params: ServiceParams) {
@@ -48,6 +43,52 @@ export default factories.createCoreService(
       }
 
       return res;
+    },
+
+    async findOrdered(locale) {
+      const dashboardSettings: DashboardSettings | null =
+        await strapi.entityService.findMany(
+          "api::settings-dashboard.settings-dashboard",
+          {
+            locale,
+            populate: {
+              emissionCategories: {
+                populate: {
+                  emissionSources: true,
+                  localizations: {
+                    populate: ["emissionSources"],
+                  },
+                },
+              },
+            },
+          }
+        );
+
+      if (!dashboardSettings) return [];
+
+      const { emissionCategories } = dashboardSettings;
+
+      if (!emissionCategories || emissionCategories.length < 0) return [];
+
+      if (locale === "en") {
+        return emissionCategories.map((category) => {
+          const { localizations, ...cat } = category;
+          return cat;
+        });
+      }
+
+      return emissionCategories.map(({ localizations, ...category }) => {
+        if (locale === "en") return category;
+
+        const enCategory = localizations.find(({ locale }) => locale === "en");
+
+        if (!enCategory) return category;
+
+        return {
+          ...category,
+          emissionSources: enCategory.emissionSources,
+        };
+      });
     },
   })
 );
