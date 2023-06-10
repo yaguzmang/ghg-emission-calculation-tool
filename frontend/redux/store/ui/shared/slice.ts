@@ -3,6 +3,7 @@ import { createSlice, Reducer } from '@reduxjs/toolkit';
 
 import { SharedUIState } from './stateType';
 
+import i18n from '@/i18n/i18n';
 import { reportingPeriodsApiSlice } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
 import { userApiSlice } from '@/redux/api/user/userApiSlice';
 
@@ -42,6 +43,7 @@ export const sharedUISlice = createSlice({
     ) => {
       const { locale } = action.payload;
       state.selectedLocale = locale;
+      i18n.changeLanguage(locale);
     },
   },
   extraReducers: (builder) => {
