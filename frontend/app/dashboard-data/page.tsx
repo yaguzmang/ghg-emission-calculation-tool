@@ -6,10 +6,14 @@ import { useGetEmissionFactorDatasetByOrganizationQuery } from '@/redux/api/emis
 import { useGetOrganizationUnitsByOrganizationQuery } from '@/redux/api/organization-units/organizationUnitsApiSlice';
 import { useLazyGetUserOrganizationsQuery } from '@/redux/api/organizations/organizationsApiSlice';
 import { useGetReportingPeriodsByOrganizationQuery } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
+import { useGetDashboardEmissionCategoriesByLocaleQuery } from '@/redux/api/settings/dashboardSettingsApiSlice';
+import { useGetGeneralSettingsByLocaleQuery } from '@/redux/api/settings/generalSettingsApiSlice';
+import { useGetLocalesQuery } from '@/redux/api/translations/localesApiSlice';
 import { useGetUserQuery } from '@/redux/api/user/userApiSlice';
 import { useAppDispatch } from '@/redux/store';
 import {
   SharedUIActions,
+  useSelectedLocale,
   useSelectedOrganizationId,
 } from '@/redux/store/ui/shared';
 
@@ -47,8 +51,18 @@ function Select({ options, value, onChange }: SelectProps) {
 export default function Dashboard() {
   const dispatch = useAppDispatch();
   const userData = useGetUserQuery();
+  const locales = useGetLocalesQuery();
   const selectedOrganizationId = useSelectedOrganizationId();
-
+  const selectedLocale = useSelectedLocale();
+  const dashboardEmissionCategories =
+    useGetDashboardEmissionCategoriesByLocaleQuery(
+      selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
+      { skip: selectedLocale === undefined }
+    );
+  const generalSettings = useGetGeneralSettingsByLocaleQuery(
+    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
+    { skip: selectedLocale === undefined }
+  );
   const userOrgs = userData.currentData?.organizations ?? [];
   const [triggerGetUserOrganizations, { data: userOrganizationsFetched }] =
     useLazyGetUserOrganizationsQuery();
@@ -83,6 +97,33 @@ export default function Dashboard() {
   return (
     <main>
       <h1 className="bg-green-500 text-2xl underline">DASHBOARD</h1>
+      <div>
+        {generalSettings && generalSettings.currentData ? (
+          <div>
+            <h3 className="text-red-700">generalSettings</h3>
+            <pre>{JSON.stringify(generalSettings.currentData, null, 2)} </pre>
+          </div>
+        ) : null}
+      </div>
+      <div>
+        {dashboardEmissionCategories &&
+        dashboardEmissionCategories.currentData ? (
+          <div>
+            <h3 className="text-red-700">dashboardEmissionCategories</h3>
+            <pre>
+              {JSON.stringify(dashboardEmissionCategories.currentData, null, 2)}{' '}
+            </pre>
+          </div>
+        ) : null}
+      </div>
+      <div>
+        {locales && locales.currentData ? (
+          <div>
+            <h3 className="text-red-700">locales</h3>
+            <pre>{JSON.stringify(locales.currentData, null, 2)} </pre>
+          </div>
+        ) : null}
+      </div>
       <div>
         {userData && userData.currentData ? (
           <div>
