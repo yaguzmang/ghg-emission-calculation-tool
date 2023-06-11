@@ -28,11 +28,11 @@ i18next
         return translations;
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
     // allow keys to be phrases having `:`, `.`
     nsSeparator: false,
     keySeparator: false,
-    lng: 'en',
+    lng: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
     debug: true,
   });
 
