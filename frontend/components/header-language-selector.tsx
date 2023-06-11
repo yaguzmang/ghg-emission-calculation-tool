@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Separator } from './ui/separator';
+import { Skeleton } from './ui/skeleton';
 
 import { cn } from '@/lib/utils';
 import { useGetLocalesQuery } from '@/redux/api/translations/localesApiSlice';
@@ -16,7 +17,7 @@ export function HeaderLanguageSelector() {
 
   return (
     <div className="flex h-5 items-center space-x-2">
-      {locales.currentData !== undefined &&
+      {locales.currentData !== undefined ? (
         locales.currentData.map((locale, index) => (
           <React.Fragment key={locale.code}>
             <button
@@ -37,7 +38,10 @@ export function HeaderLanguageSelector() {
                 <Separator orientation="vertical" className="h-4" />
               )}
           </React.Fragment>
-        ))}
+        ))
+      ) : (
+        <Skeleton className="inline-block h-5 w-16" />
+      )}
     </div>
   );
 }

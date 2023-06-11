@@ -11,6 +11,7 @@ import {
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import { Icons } from './ui/icons/icons';
+import { Skeleton } from './ui/skeleton';
 
 import { useGetUserQuery } from '@/redux/api/user/userApiSlice';
 
@@ -23,13 +24,15 @@ export function UserNavInfo() {
   return (
     <>
       <div className="flex-col">
-        {userData?.currentData && (
+        {userData?.currentData?.username ? (
           <>
             <p className="text-xs font-bold">
-              {userData?.currentData.username}
+              {userData?.currentData?.username}
             </p>
             <p className="text-xs font-bold">XXXX</p>
           </>
+        ) : (
+          <Skeleton className="inline-block h-8 w-10" />
         )}
       </div>
 
