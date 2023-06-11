@@ -28,6 +28,11 @@ i18next
         return translations;
       },
     },
+    react: {
+      transEmptyNodeValue: '',
+      transSupportBasicHtmlNodes: true,
+      transKeepBasicHtmlNodesFor: ['sub', 'br', 'strong', 'i'],
+    },
     fallbackLng: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
     // allow keys to be phrases having `:`, `.`
     nsSeparator: false,
