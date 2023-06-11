@@ -29,11 +29,11 @@ export const sharedUISlice = createSlice({
     setSelectedReportingPeriodId: (
       state: Draft<SharedUIState>,
       action: PayloadAction<{
-        selectedOrganizationId: number;
+        selectedReportingPeriodId: number;
       }>
     ) => {
-      const { selectedOrganizationId } = action.payload;
-      state.selectedOrganizationId = selectedOrganizationId;
+      const { selectedReportingPeriodId } = action.payload;
+      state.selectedReportingPeriodId = selectedReportingPeriodId;
     },
     setSelectedLocale: (
       state: Draft<SharedUIState>,
