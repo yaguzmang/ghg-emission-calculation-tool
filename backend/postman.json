@@ -63,6 +63,35 @@
               ]
             },
             {
+              "name": "Emission factor data",
+              "item": [
+                {
+                  "name": "Pull emission factor data",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Custom-Endpoint-Secret",
+                        "value": "{{incomingWebhookToken}}",
+                        "type": "default"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-factor-data/3/pull",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-factor-data", "3", "pull"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
               "name": "Emission factor dataset",
               "item": [
                 {

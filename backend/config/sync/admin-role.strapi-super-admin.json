@@ -139,6 +139,41 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::emission-factor-datum.emission-factor-datum",
+      "properties": {
+        "fields": ["json", "dataset", "year"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::emission-factor-datum.emission-factor-datum",
+      "properties": {
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::emission-factor-datum.emission-factor-datum",
+      "properties": {
+        "fields": ["json", "dataset", "year"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-factor-datum.emission-factor-datum",
+      "properties": {
+        "fields": ["json", "dataset", "year"],
+        "locales": ["en", "fi"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],

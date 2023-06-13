@@ -1,0 +1,111 @@
+{
+  "name": "estonia-default",
+  "year": 2022,
+  "language": "fi",
+  "emission_sources": {
+    "biomass_kg": {
+      "label": "Biomassa (esim. puulastut, sahajauho)",
+      "unit": "kg",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.00084,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value 11.9 MJ/kg"
+          }
+        },
+        "biogenic": {
+          "value": 1.333,
+          "data_source": {
+            "description": "GHG inventory report 2022 (AR4), calorific value 11.9 MJ/kg on average."
+          }
+        }
+      }
+    },
+    "biomass_kwh": {
+      "label": "Biomassa (esim. puulastut, sahajauho)",
+      "unit": "kWh",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.00025,
+          "data_source": {
+            "description": "GHG inventory report 2022, boilers 1-50MW"
+          }
+        },
+        "biogenic": {
+          "value": 0.403,
+          "data_source": {
+            "description": "GHG inventory report 2022"
+          }
+        }
+      }
+    },
+    "biomethane_kwh": {
+      "label": "Biometaani",
+      "unit": "kWh",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.00013,
+          "data_source": {
+            "description": "GHG inventory report 2022, boilers 1-50MW"
+          }
+        },
+        "biogenic": {
+          "value": 0.197,
+          "data_source": {
+            "description": "GHG inventory report 2022"
+          }
+        }
+      }
+    },
+    "biomethane_m3": {
+      "label": "Biometaani",
+      "unit": "m3",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.00122,
+          "data_source": {
+            "description": "CHG inventory report 2022, boilers 1-50MW, average net calorific value of natural gas in 2020 approx. 34.13 MJ/m3.",
+            "url": "https://elering.ee/vorgugaasi-kvaliteet"
+          }
+        },
+        "biogenic": {
+          "value": 1.863,
+          "data_source": {
+            "description": "GHG Inventory Report 2022, average net calorific value of natural gas in 2020 approx. 34.13 MJ/m3.",
+            "url": "https://elering.ee/vorgugaasi-kvaliteet"
+          }
+        }
+      }
+    },
+    "diesel_kwh": {
+      "label": "Diesel",
+      "unit": "kWh",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 0.264,
+          "data_source": {
+            "description": "CHG inventory report 2022"
+          }
+        }
+      }
+    },
+    "diesel_l": {
+      "label": "Diesel",
+      "unit": "l",
+      "scope": 1,
+      "factors": {
+        "direct": {
+          "value": 2.619,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value ~35,69 MJ/l"
+          }
+        }
+      }
+    }
+  }
+}
