@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { parse, format } from "date-fns";
 import { EmissionFactorDatum } from "..";
 import { ReportingPeriod } from "../../reporting-period";
+import { validate } from "../../../services/utils";
 
 const factorSchema = yup.object({
   value: yup.number(),
@@ -135,7 +136,12 @@ export default factories.createCoreService<EmissionFactorDatumService>(
         }),
       });
 
-      const validatedJson = (await jsonSchema.validate(json)) as Json;
+      const validatedJson = (await validate(
+        json,
+        jsonSchema,
+        ApplicationError,
+        "no emission factors assigned to reporting period or locale"
+      )) as Json;
 
       return validatedJson;
     },
