@@ -100,7 +100,6 @@ export default factories.createCoreService<EmissionEntryService>(
       // 3. Zero (if neither custom nor predetermined is available for a given entry)
 
       const entriesWithEmissions = emissionEntries.map((entry) => {
-        console.log(entry);
         const q = entry.quantity;
         const f = json.emission_sources[entry.emissionSource.apiId]?.factors;
         const cf = {
