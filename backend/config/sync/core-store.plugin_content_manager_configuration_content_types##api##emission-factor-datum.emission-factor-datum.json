@@ -111,11 +111,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "dataset",
-        "year"
-      ]
+      "list": ["id", "dataset", "year"]
     }
   },
   "type": "object",
