@@ -65,7 +65,12 @@ export default factories.createCoreService<EmissionEntryService>(
           filters: {
             reportingPeriod: reportingPeriodId,
           },
-          populate: ["emissionSource"],
+          populate: [
+            "emissionSource",
+            "customEmissionFactorDirect",
+            "customEmissionFactorIndirect",
+            "customEmissionFactorBiogenic",
+          ],
         }
       );
 
@@ -89,16 +94,25 @@ export default factories.createCoreService<EmissionEntryService>(
         .validateJson(emissionFactorDatum.json);
 
       // Calculate the direct, indirect and biogenic emissions of each emission entry
-      // If emission factor data is not available for a given entry, default to zero
+      // Priority of emission factors:
+      // 1. Custom emission factor
+      // 2. Predetermined emission factor
+      // 3. Zero (if neither custom nor predetermined is available for a given entry)
 
       const entriesWithEmissions = emissionEntries.map((entry) => {
+        console.log(entry);
         const q = entry.quantity;
-        const factors =
-          json.emission_sources[entry.emissionSource.apiId]?.factors;
+        const f = json.emission_sources[entry.emissionSource.apiId]?.factors;
+        const cf = {
+          direct: entry.customEmissionFactorDirect,
+          indirect: entry.customEmissionFactorIndirect,
+          biogenic: entry.customEmissionFactorBiogenic,
+        };
+
         const emissions = {
-          direct: q * (factors?.direct?.value ?? 0),
-          indirect: q * (factors?.indirect?.value ?? 0),
-          biogenic: q * (factors?.biogenic?.value ?? 0),
+          direct: q * (cf.direct?.value ?? f?.direct?.value ?? 0),
+          indirect: q * (cf.indirect?.value ?? f?.indirect?.value ?? 0),
+          biogenic: q * (cf.biogenic?.value ?? f?.biogenic?.value ?? 0),
         };
         return {
           ...entry,
