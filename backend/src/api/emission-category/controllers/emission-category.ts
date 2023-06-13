@@ -35,6 +35,16 @@ export default factories.createCoreController(
           ValidationError
         );
 
+        // Check access to reportingPeriod
+
+        const userHasAccesToReportingPeriod = await strapi
+          .service("api::reporting-period.reporting-period")
+          .isAllowedForUser(reportingPeriod, ctx.state.user.id);
+
+        if (!userHasAccesToReportingPeriod) {
+          return ctx.forbidden();
+        }
+
         // Concurrently get:
         // 1. emissionEntries for reportingPeriod and locale, populated with emissions
         // 2. ordered emissionCategories, populated with emissionSources
