@@ -67,7 +67,7 @@ export default factories.createCoreService<EmissionFactorDatumService>(
           }
         );
 
-      if (!reportingPeriodId) {
+      if (!reportingPeriod) {
         throw new NotFoundError("reporting period not found");
       }
 
