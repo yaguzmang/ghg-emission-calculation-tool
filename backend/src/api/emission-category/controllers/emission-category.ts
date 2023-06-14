@@ -16,6 +16,19 @@ export default factories.createCoreController(
   "api::emission-category.emission-category",
   ({ strapi }) => {
     return {
+      async findOneWithEmissionFactors(ctx) {
+        const paramsSchema = yup.object({
+          id: yup.number().required(),
+        });
+        const { id } = await validate(
+          ctx.params,
+          paramsSchema,
+          ValidationError
+        );
+
+        console.log(id);
+      },
+
       /**
        * Find ordered emission categories with emissions
        * @param ctx The Strapi context
