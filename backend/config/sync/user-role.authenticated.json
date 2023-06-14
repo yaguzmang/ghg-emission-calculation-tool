@@ -10,6 +10,9 @@
       "action": "api::emission-category.emission-category.findOne"
     },
     {
+      "action": "api::emission-category.emission-category.findWithEmissions"
+    },
+    {
       "action": "api::emission-entry.emission-entry.create"
     },
     {

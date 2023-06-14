@@ -340,7 +340,7 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/settings-dashboard?locale=fi&populate=emissionCategories",
+                      "raw": "http://localhost:1337/api/settings-dashboard?locale=en&populate=emissionCategories",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
@@ -348,7 +348,7 @@
                       "query": [
                         {
                           "key": "locale",
-                          "value": "fi"
+                          "value": "en"
                         },
                         {
                           "key": "populate",
@@ -707,6 +707,36 @@
                       "host": ["localhost"],
                       "port": "1337",
                       "path": ["api", "emission-entries", "6"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emissions",
+              "item": [
+                {
+                  "name": "Get emission categories with emissions",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/with-emissions?locale=en&reportingPeriod=1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-categories", "with-emissions"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
+                        {
+                          "key": "reportingPeriod",
+                          "value": "1"
+                        }
+                      ]
                     }
                   },
                   "response": []
