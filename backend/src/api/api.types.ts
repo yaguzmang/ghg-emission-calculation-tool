@@ -20,3 +20,7 @@ export interface LocalizedApiServiceEntry extends ApiServiceEntry {
 export interface ServiceParams {
   [key: string]: unknown;
 }
+
+export type AuthorizedService = {
+  isAllowedForUser: (entryId: number, userId: number) => Promise<boolean>;
+};

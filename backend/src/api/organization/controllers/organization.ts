@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
+import { OrganizationService } from "../services/organization";
 
 export default factories.createCoreController(
   "api::organization.organization",
@@ -12,7 +13,7 @@ export default factories.createCoreController(
 
       const { data, meta } = await super.find(ctx);
       const ownOrganizationIds = await strapi
-        .service("api::organization.organization")
+        .service<OrganizationService>("api::organization.organization")
         .findForUser(ctx.state.user.id);
       const filteredData = data.filter((org) =>
         ownOrganizationIds.includes(org.id)

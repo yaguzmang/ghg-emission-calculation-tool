@@ -13,6 +13,7 @@ import { EmissionCategory } from "..";
 import { EmissionFactorDatumService } from "../../emission-factor-datum/services/emission-factor-datum";
 import { EmissionSourceGroup } from "../../emission-source-group";
 import { EmissionSource } from "../../emission-source";
+import { ReportingPeriodService } from "../../reporting-period/services/reporting-period";
 
 const { ValidationError } = utils.errors;
 
@@ -37,7 +38,9 @@ export default factories.createCoreController(
         // Check access to reportingPeriod
 
         const userHasAccesToReportingPeriod = await strapi
-          .service("api::reporting-period.reporting-period")
+          .service<ReportingPeriodService>(
+            "api::reporting-period.reporting-period"
+          )
           .isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
@@ -166,7 +169,9 @@ export default factories.createCoreController(
         // Check access to reportingPeriod
 
         const userHasAccesToReportingPeriod = await strapi
-          .service("api::reporting-period.reporting-period")
+          .service<ReportingPeriodService>(
+            "api::reporting-period.reporting-period"
+          )
           .isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
