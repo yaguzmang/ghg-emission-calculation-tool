@@ -34,8 +34,18 @@ export default factories.createCoreController(
           validate(ctx.query, querySchema, ValidationError),
         ]);
 
-        // Find emission category by id, populate emission sources and emission source groups
-        // with locale logic -> re-use existing logic for locale population
+        // Check access to reportingPeriod
+
+        const userHasAccesToReportingPeriod = await strapi
+          .service("api::reporting-period.reporting-period")
+          .isAllowedForUser(reportingPeriod, ctx.state.user.id);
+
+        if (!userHasAccesToReportingPeriod) {
+          return ctx.forbidden();
+        }
+
+        // Find emission category by id, populated with emission sources and emission source groups
+
         const emissionCategory: EmissionCategory | null =
           await strapi.entityService.findOne(
             "api::emission-category.emission-category",
@@ -68,12 +78,14 @@ export default factories.createCoreController(
           )
           .populateEmissionSources(emissionCategory);
 
-        // Concurrently with the previous one, get emission factor data and validate it
+        // Get emission factor data and validate it
+
         const emissionFactorDatum = await strapi
           .service<EmissionFactorDatumService>(
             "api::emission-factor-datum.emission-factor-datum"
           )
           .findOneByReportingPeriod(reportingPeriod);
+
         const json = await strapi
           .service<EmissionFactorDatumService>(
             "api::emission-factor-datum.emission-factor-datum"
@@ -81,6 +93,7 @@ export default factories.createCoreController(
           .validateJson(emissionFactorDatum.json);
 
         // Attach emission factor data to emission sources
+
         const { emissionSources, ...plainEmissionCategory } =
           populatedEmissionCategory;
         const emissionSourcesWithFactors = emissionSources.map((source) => {
@@ -95,6 +108,7 @@ export default factories.createCoreController(
         }
 
         // Group emission sources by emission source group
+
         const emissionSourceGroups = emissionSourcesWithFactors.reduce<
           EmissionSourceGroupWithSources[]
         >((groups, { emissionSourceGroup, ...source }) => {
