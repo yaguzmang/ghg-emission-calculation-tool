@@ -58,19 +58,33 @@ export default factories.createCoreService<EmissionCategoryService>(
      * @returns EmissionCategory
      */
     populateEmissionSources(emissionCategory) {
-      if (emissionCategory.locale === "en") return emissionCategory;
+      const { localizations, ...category } = emissionCategory;
+
+      if (emissionCategory.locale === "en") return category;
 
       // If a non-English locale, populate emission sources from the English locale
-
-      const { localizations, ...category } = emissionCategory;
 
       const enCategory = localizations.find(({ locale }) => locale === "en");
 
       if (!enCategory) return category;
 
+      const emissionSources = enCategory.emissionSources.map((source) => {
+        if (source.emissionSourceGroup) {
+          const localeSourceGroup =
+            source.emissionSourceGroup.localizations.find(
+              ({ locale }) => locale === emissionCategory.locale
+            );
+          return {
+            ...source,
+            emissionSourceGroup: localeSourceGroup,
+          };
+        }
+        return source;
+      });
+
       return {
         ...category,
-        emissionSources: enCategory.emissionSources,
+        emissionSources,
       };
     },
 

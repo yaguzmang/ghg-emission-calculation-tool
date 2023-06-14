@@ -9,6 +9,10 @@ import { validate } from "../../../services/utils";
 import { EmissionEntryService } from "../../emission-entry/services/emission-entry";
 import { Emissions } from "../../emission-entry";
 import { EmissionCategoryService } from "../services/emission-category";
+import { EmissionCategory } from "..";
+import { EmissionFactorDatumService } from "../../emission-factor-datum/services/emission-factor-datum";
+import { EmissionSourceGroup } from "../../emission-source-group";
+import { EmissionSource } from "../../emission-source";
 
 const { ValidationError } = utils.errors;
 
@@ -20,13 +24,110 @@ export default factories.createCoreController(
         const paramsSchema = yup.object({
           id: yup.number().required(),
         });
-        const { id } = await validate(
-          ctx.params,
-          paramsSchema,
-          ValidationError
-        );
 
-        console.log(id);
+        const querySchema = yup.object({
+          reportingPeriod: yup.number().required(),
+        });
+
+        const [{ id }, { reportingPeriod }] = await Promise.all([
+          validate(ctx.params, paramsSchema, ValidationError),
+          validate(ctx.query, querySchema, ValidationError),
+        ]);
+
+        // Find emission category by id, populate emission sources and emission source groups
+        // with locale logic -> re-use existing logic for locale population
+        const emissionCategory: EmissionCategory | null =
+          await strapi.entityService.findOne(
+            "api::emission-category.emission-category",
+            id,
+            {
+              populate: {
+                emissionSources: {
+                  populate: "emissionSourceGroup",
+                },
+                localizations: {
+                  populate: {
+                    emissionSources: {
+                      populate: {
+                        emissionSourceGroup: {
+                          populate: "localizations",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            }
+          );
+
+        if (!emissionCategory) return ctx.notFound();
+
+        const populatedEmissionCategory = strapi
+          .service<EmissionCategoryService>(
+            "api::emission-category.emission-category"
+          )
+          .populateEmissionSources(emissionCategory);
+
+        // Concurrently with the previous one, get emission factor data and validate it
+        const emissionFactorDatum = await strapi
+          .service<EmissionFactorDatumService>(
+            "api::emission-factor-datum.emission-factor-datum"
+          )
+          .findOneByReportingPeriod(reportingPeriod);
+        const json = await strapi
+          .service<EmissionFactorDatumService>(
+            "api::emission-factor-datum.emission-factor-datum"
+          )
+          .validateJson(emissionFactorDatum.json);
+
+        // Attach emission factor data to emission sources
+        const { emissionSources, ...plainEmissionCategory } =
+          populatedEmissionCategory;
+        const emissionSourcesWithFactors = emissionSources.map((source) => {
+          return {
+            ...source,
+            factors: json.emission_sources[source.apiId]?.factors,
+          };
+        });
+
+        interface EmissionSourceGroupWithSources extends EmissionSourceGroup {
+          emissionSources: EmissionSource[];
+        }
+
+        // Group emission sources by emission source group
+        const emissionSourceGroups = emissionSourcesWithFactors.reduce<
+          EmissionSourceGroupWithSources[]
+        >((groups, { emissionSourceGroup, ...source }) => {
+          const group = emissionSourceGroup ?? {
+            id: -1,
+            createdAt: "",
+            updatedAt: "",
+            locale: emissionCategory.locale,
+            name: "default",
+            emissionSourceLabel: emissionCategory.emissionSourceLabel ?? "",
+          };
+
+          const groupLoc = groups.findIndex(({ id }) => id === group.id);
+
+          return groupLoc > -1
+            ? [
+                ...groups.slice(0, groupLoc),
+                {
+                  ...groups[groupLoc],
+                  emissionSources: [
+                    ...groups[groupLoc].emissionSources,
+                    source,
+                  ],
+                },
+                ...groups.slice(groupLoc + 1),
+              ]
+            : [...groups, { ...group, emissionSources: [source] }];
+        }, []);
+
+        return {
+          ...plainEmissionCategory,
+          emissionSourceGroups,
+        };
       },
 
       /**
