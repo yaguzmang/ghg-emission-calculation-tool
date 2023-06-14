@@ -40,7 +40,7 @@ interface Json {
 export type EmissionFactorDatumService = GenericService & {
   findOneByReportingPeriod(
     reportingPeriodId: number,
-    params: object
+    params?: object
   ): Promise<EmissionFactorDatum>;
   validateJson(json: unknown): Promise<Json>;
 };
@@ -56,7 +56,7 @@ export default factories.createCoreService<EmissionFactorDatumService>(
      * @param params Additional params to pass to the Entity Service API
      * @returns Promise<EmissionFactorDatum>
      */
-    async findOneByReportingPeriod(reportingPeriodId, params) {
+    async findOneByReportingPeriod(reportingPeriodId, params = {}) {
       // Determine emission factor dataset based on reporting period
 
       const reportingPeriod: ReportingPeriod =
