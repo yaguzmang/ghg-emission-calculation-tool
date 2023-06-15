@@ -138,8 +138,7 @@ export default factories.createCoreService<
     const validatedJson = (await validate(
       json,
       jsonSchema,
-      ApplicationError,
-      "no emission factors assigned to reporting period or locale"
+      ApplicationError
     )) as Json;
 
     return validatedJson;
