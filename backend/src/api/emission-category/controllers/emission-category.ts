@@ -87,7 +87,9 @@ export default factories.createCoreController(
           .service<EmissionFactorDatumService>(
             "api::emission-factor-datum.emission-factor-datum"
           )
-          .findOneByReportingPeriod(reportingPeriod);
+          .findOneByReportingPeriod(reportingPeriod, {
+            locale: emissionCategory.locale,
+          });
 
         const json = await strapi
           .service<EmissionFactorDatumService>(
@@ -103,6 +105,7 @@ export default factories.createCoreController(
           return {
             ...source,
             factors: json.emission_sources[source.apiId]?.factors,
+            label: json.emission_sources[source.apiId]?.label,
           };
         });
 
