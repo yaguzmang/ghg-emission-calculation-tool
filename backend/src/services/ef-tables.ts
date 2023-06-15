@@ -1,8 +1,8 @@
 import type { Strapi } from "@strapi/strapi";
+import utils from "@strapi/utils";
 import * as yup from "yup";
 import estoniaDefault2022En from "../../data/ef-tables/estonia-default_2022_en.json";
 import estoniaDefault2022Fi from "../../data/ef-tables/estonia-default_2022_fi.json";
-import utils from "@strapi/utils";
 import { validate } from "./utils";
 
 const data = {
@@ -35,10 +35,10 @@ export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
   if (!entry) throw new utils.errors.NotFoundError();
 
   const entrySchema = yup.object({
-    year: yup.string(),
-    locale: yup.string(),
+    year: yup.string().required(),
+    locale: yup.string().required(),
     dataset: yup.object({
-      apiName: yup.string(),
+      apiName: yup.string().required(),
     }),
   });
 

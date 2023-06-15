@@ -21,6 +21,9 @@ export default factories.createCoreRouter(
       find: {
         policies: ["global::block-access"],
       },
+      create: {
+        middlewares: ["api::reporting-period.has-access-to-relations"],
+      },
     },
   }
 );

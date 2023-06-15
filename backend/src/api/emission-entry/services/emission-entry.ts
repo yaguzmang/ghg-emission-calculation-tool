@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
+import utils from "@strapi/utils";
 import { EmissionEntry } from "..";
 import { EmissionFactorDatumService } from "../../emission-factor-datum/services/emission-factor-datum";
 import { AuthorizedService } from "../../api.types";
@@ -13,6 +14,8 @@ export type EmissionEntryService = AuthorizedService & {
     locale: string
   ): Promise<EmissionEntry[]>;
 };
+
+const { ApplicationError } = utils.errors;
 
 export default factories.createCoreService<
   "api::emission-entry.emission-entry",
@@ -77,7 +80,12 @@ export default factories.createCoreService<
       .service<EmissionFactorDatumService>(
         "api::emission-factor-datum.emission-factor-datum"
       )
-      .findOneByReportingPeriod(reportingPeriodId, { locale });
+      ?.findOneByReportingPeriod(reportingPeriodId, { locale });
+
+    if (!getEmissionFactorDatum)
+      throw new ApplicationError(
+        "getEmissionFactorDatum service not available"
+      );
 
     const [emissionEntries, emissionFactorDatum] = await Promise.all([
       getEmissionEntries,
@@ -90,7 +98,9 @@ export default factories.createCoreService<
       .service<EmissionFactorDatumService>(
         "api::emission-factor-datum.emission-factor-datum"
       )
-      .validateJson(emissionFactorDatum.json);
+      ?.validateJson(emissionFactorDatum.json);
+
+    if (!json) throw new ApplicationError("json not validated");
 
     // Calculate the direct, indirect and biogenic emissions of each emission entry
     // Priority of emission factors:
@@ -100,7 +110,11 @@ export default factories.createCoreService<
 
     const entriesWithEmissions = emissionEntries.map((entry) => {
       const q = entry.quantity;
-      const f = json.emission_sources[entry.emissionSource.apiId]?.factors;
+      const apiId = entry.emissionSource?.apiId;
+
+      if (!apiId) throw new ApplicationError("apiId could not be determined");
+
+      const f = json.emission_sources[apiId]?.factors;
       const cf = {
         direct: entry.customEmissionFactorDirect,
         indirect: entry.customEmissionFactorIndirect,

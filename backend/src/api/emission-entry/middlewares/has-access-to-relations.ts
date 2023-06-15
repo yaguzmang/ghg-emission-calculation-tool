@@ -51,7 +51,7 @@ export default (config, { strapi }: { strapi: Strapi }) => {
       if (
         !(await strapi
           .service<AuthorizedService>(uid)
-          .isAllowedForUser(relationId, ctx.state.user.id))
+          ?.isAllowedForUser(relationId, ctx.state.user.id))
       ) {
         return ctx.forbidden(`Forbidden "${camelCaseKey}"`);
       }

@@ -3,7 +3,10 @@
  */
 
 import { factories } from "@strapi/strapi";
+import utils from "@strapi/utils";
 import { OrganizationService } from "../services/organization";
+
+const { ApplicationError } = utils.errors;
 
 export default factories.createCoreController(
   "api::organization.organization",
@@ -14,7 +17,13 @@ export default factories.createCoreController(
       const { data, meta } = await super.find(ctx);
       const ownOrganizationIds = await strapi
         .service<OrganizationService>("api::organization.organization")
-        .findForUser(ctx.state.user.id);
+        ?.findForUser(ctx.state.user.id);
+
+      if (!ownOrganizationIds)
+        throw new ApplicationError(
+          "own organization ids could not be determined"
+        );
+
       const filteredData = data.filter((org) =>
         ownOrganizationIds.includes(org.id)
       );
