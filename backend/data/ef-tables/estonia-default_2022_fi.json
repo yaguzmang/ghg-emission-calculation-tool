@@ -149,7 +149,9 @@
       "factors": {
         "direct": {
           "value": 2.299,
-          "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+          }
         }
       }
     },
@@ -157,16 +159,24 @@
       "label": "Bensiini, pakettiauto",
       "unit": "l",
       "factors": {
-        "direct": 2.258,
-        "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+        "direct": {
+          "value": 2.258,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+          }
+        }
       }
     },
     "road_vehicle_petrol_l": {
       "label": "Bensiini, ajoneuvo",
       "unit": "l",
       "factors": {
-        "direct": 2.259,
-        "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+        "direct": {
+          "value": 2.259,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+          }
+        }
       }
     }
   }
