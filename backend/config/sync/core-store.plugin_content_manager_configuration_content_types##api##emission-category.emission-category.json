@@ -170,12 +170,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "primaryScope",
-        "emissionGroup"
-      ]
+      "list": ["id", "title", "primaryScope", "emissionGroup"]
     }
   },
   "type": "object",
