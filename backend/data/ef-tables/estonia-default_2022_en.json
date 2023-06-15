@@ -106,6 +106,68 @@
           }
         }
       }
+    },
+    "bio_cng_van_kg": {
+      "label": "Bio-CNG, van",
+      "unit": "kg",
+      "factors": {
+        "direct": {
+          "value": 0.014,
+          "data_source": {
+            "description": "The specific emission factor of the bio-CNG passenger car is used in the KHG inventory report 2022, as the KHG inventory does not distinguish the van, calorific value 49MJ/kg."
+          }
+        }
+      }
+    },
+    "biodiesel_fame_for_road_vehicles_l": {
+      "label": "Biodiesel FAME for road vehicles",
+      "unit": "l",
+      "factors": {
+        "direct": {
+          "value": 0.142,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value ~31,91 MJ/l"
+          }
+        }
+      }
+    },
+    "compressed_biomethane_bio_cng_road_kg": {
+      "label": "Compressed biomethane bio-CNG for road vehicles",
+      "unit": "kg",
+      "factors": {
+        "direct": {
+          "value": 0.014,
+          "data_source": {
+            "description": "GHG inventory report 2022, calorific value 49 MJ/kg"
+          }
+        }
+      }
+    },
+    "petrol_motorcycle_l": {
+      "label": "Petrol, motorcycle",
+      "unit": "l",
+      "factors": {
+        "direct": {
+          "value": 2.299,
+          "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+        }
+      }
+    },
+    "petrol_van_l": {
+      "label": "Petrol, van",
+      "unit": "l",
+      "factors": {
+        "direct": 2.258,
+        "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+      }
+    },
+    "road_vehicle_petrol_l": {
+      "label": "Road vehicle petrol",
+      "unit": "l",
+      "factors": {
+        "direct": 2.259,
+        "data_source": "GHG inventory report 2022, calorific value ~31,82 MJ/l"
+      }
     }
   }
 }
