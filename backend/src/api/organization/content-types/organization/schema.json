@@ -39,11 +39,11 @@
       "relation": "oneToOne",
       "target": "api::emission-factor-dataset.emission-factor-dataset"
     },
-    "dividers": {
-      "displayName": "Divider",
-      "type": "component",
-      "repeatable": true,
-      "component": "organization.divider"
+    "organizationDividers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::organization-divider.organization-divider",
+      "mappedBy": "organization"
     }
   }
 }
