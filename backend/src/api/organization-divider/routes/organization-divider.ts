@@ -19,6 +19,26 @@ export default factories.createCoreRouter(
           },
         ],
       },
+      update: {
+        middlewares: [
+          {
+            name: "global::block-mutations",
+            config: { blockedProperties: ["organization"] },
+          },
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-divider.organization-divider" },
+          },
+        ],
+      },
+      delete: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-divider.organization-divider" },
+          },
+        ],
+      },
     },
   }
 );
