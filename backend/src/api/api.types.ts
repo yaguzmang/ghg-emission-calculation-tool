@@ -1,3 +1,5 @@
+import { Organization } from "./organization";
+
 export interface PolicyContext {
   state: {
     user?: {
@@ -24,3 +26,13 @@ export interface ServiceParams {
 export type AuthorizedService = {
   isAllowedForUser: (entryId: number, userId: number) => Promise<boolean>;
 };
+
+export interface User extends ApiServiceEntry {
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  locale?: string;
+  organizations?: Organization[];
+}
