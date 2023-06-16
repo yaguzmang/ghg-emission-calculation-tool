@@ -25,6 +25,9 @@ export default (config, { strapi }: { strapi: Strapi }) => {
       data: { organization },
     } = await validate(ctx.request.body, relationSchema, ValidationError);
 
+    if (ctx.request.body.data.emissionEntries)
+      return ctx.forbidden("emissionEntries mutation forbidden");
+
     const userHasAccessToOrganization = await strapi
       .service<OrganizationService>("api::organization.organization")
       ?.isAllowedForUser(organization, ctx.state.user.id);
