@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_organization_unit_divider_values",
+  "info": {
+    "displayName": "Divider value"
+  },
+  "options": {},
+  "attributes": {
+    "divider": {
+      "type": "integer",
+      "required": true
+    },
+    "value": {
+      "type": "decimal"
+    }
+  }
+}

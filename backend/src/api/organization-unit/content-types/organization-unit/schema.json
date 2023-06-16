@@ -27,6 +27,12 @@
       "relation": "oneToMany",
       "target": "api::emission-entry.emission-entry",
       "mappedBy": "organizationUnit"
+    },
+    "dividerValues": {
+      "displayName": "Divider value",
+      "type": "component",
+      "repeatable": true,
+      "component": "organization-unit.divider-value"
     }
   }
 }
