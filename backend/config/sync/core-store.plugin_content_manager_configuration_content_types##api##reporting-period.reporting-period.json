@@ -65,17 +65,31 @@
       },
       "emissionEntries": {
         "edit": {
-          "label": "emissionEntries",
+          "label": "Emission entries",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
+          "editable": false,
           "mainField": "id"
         },
         "list": {
           "label": "emissionEntries",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -108,8 +122,13 @@
       }
     },
     "layouts": {
-      "list": ["id", "startDate", "endDate", "organization"],
       "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          }
+        ],
         [
           {
             "name": "startDate",
@@ -124,12 +143,13 @@
           {
             "name": "organization",
             "size": 6
-          },
-          {
-            "name": "emissionEntries",
-            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "organization"
       ]
     }
   },

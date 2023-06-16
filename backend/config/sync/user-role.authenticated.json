@@ -70,6 +70,9 @@
       "action": "api::organization.organization.findOne"
     },
     {
+      "action": "api::reporting-period.reporting-period.create"
+    },
+    {
       "action": "api::reporting-period.reporting-period.find"
     },
     {
