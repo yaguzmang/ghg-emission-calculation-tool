@@ -14,5 +14,8 @@ export default factories.createCoreRouter("api::organization.organization", {
         },
       ],
     },
+    update: {
+      middlewares: ["api::organization.restrict-editable-fields"],
+    },
   },
 });
