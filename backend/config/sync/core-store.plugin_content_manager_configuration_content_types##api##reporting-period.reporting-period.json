@@ -146,11 +146,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "name",
-        "organization"
-      ]
+      "list": ["id", "name", "organization"]
     }
   },
   "type": "object",
