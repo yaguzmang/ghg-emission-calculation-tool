@@ -41,6 +41,14 @@ export default factories.createCoreRouter(
           "api::organization-unit.validate-divider-values",
         ],
       },
+      delete: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-unit.organization-unit" },
+          },
+        ],
+      },
     },
   }
 );
