@@ -19,6 +19,21 @@ export default factories.createCoreRouter(
           },
         ],
       },
+      create: {
+        middlewares: [
+          {
+            name: "global::has-access-to-relations",
+            config: {
+              relations: [
+                {
+                  key: "organization",
+                  uid: "api::organization.organization",
+                },
+              ],
+            },
+          },
+        ],
+      },
     },
   }
 );
