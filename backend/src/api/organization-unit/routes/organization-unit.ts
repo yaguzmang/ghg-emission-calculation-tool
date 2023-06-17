@@ -22,6 +22,12 @@ export default factories.createCoreRouter(
       create: {
         middlewares: [
           {
+            name: "global::block-mutations",
+            config: {
+              blockedProperties: ["emissionEntries"],
+            },
+          },
+          {
             name: "global::has-access-to-relations",
             config: {
               relations: [
