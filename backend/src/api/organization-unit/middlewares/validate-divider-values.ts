@@ -30,9 +30,20 @@ export default (config, { strapi }: { strapi: Strapi }) => {
       data: { organization: organizationId, dividerValues },
     } = await validate(ctx.request.body, bodySchema, ValidationError);
 
-    // If dividerValues was provided, check that each divider belongs to the organization
-
     if (dividerValues) {
+      // Check that each divider is used at most once
+
+      dividerValues.reduce<number[]>((ids, { organizationDivider }) => {
+        if (ids.includes(organizationDivider))
+          throw new ValidationError(
+            `organizationDivider ${organizationDivider} is used more than once`
+          );
+
+        return [...ids, organizationDivider];
+      }, []);
+
+      // Check that each divider belongs to the organization
+
       const organization: Organization | undefined =
         await strapi.entityService.findOne(
           "api::organization.organization",
