@@ -38,6 +38,7 @@ export default factories.createCoreRouter(
               ],
             },
           },
+          "api::organization-unit.validate-divider-values",
         ],
       },
     },
