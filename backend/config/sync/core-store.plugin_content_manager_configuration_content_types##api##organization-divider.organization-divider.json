@@ -91,11 +91,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "label",
-        "organization"
-      ]
+      "list": ["id", "label", "organization"]
     }
   },
   "type": "object",

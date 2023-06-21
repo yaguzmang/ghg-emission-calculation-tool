@@ -51,11 +51,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "value",
-        "organizationDivider"
-      ],
+      "list": ["id", "value", "organizationDivider"],
       "edit": [
         [
           {
