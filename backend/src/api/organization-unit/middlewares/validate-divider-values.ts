@@ -9,14 +9,36 @@ import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../../../services/utils";
 import { Organization } from "../../organization";
+import { OrganizationUnit } from "..";
 
 const { ValidationError, ApplicationError } = utils.errors;
 
+const getUnitOrganization = async (
+  organizationUnitId: number
+): Promise<Organization | undefined> => {
+  const organizationUnit: OrganizationUnit | undefined =
+    await strapi.entityService.findOne(
+      "api::organization-unit.organization-unit",
+      organizationUnitId,
+      {
+        populate: {
+          organization: {
+            populate: "organizationDividers",
+          },
+        },
+      }
+    );
+
+  return organizationUnit?.organization;
+};
+
 export default (config, { strapi }: { strapi: Strapi }) => {
   return async (ctx, next) => {
+    const isPost = ctx.method === "POST";
+
     const bodySchema = yup.object({
       data: yup.object({
-        organization: yup.number().required(),
+        organization: isPost ? yup.number().required() : yup.number().oneOf([]),
         dividerValues: yup.array().of(
           yup.object({
             organizationDivider: yup.number().required(),
@@ -26,9 +48,19 @@ export default (config, { strapi }: { strapi: Strapi }) => {
       }),
     });
 
-    const {
-      data: { organization: organizationId, dividerValues },
-    } = await validate(ctx.request.body, bodySchema, ValidationError);
+    const paramsSchema = yup.object({
+      id: isPost ? yup.number().oneOf([]) : yup.number().required(),
+    });
+
+    const [
+      {
+        data: { organization: organizationId, dividerValues },
+      },
+      { id: organizationUnitId },
+    ] = await Promise.all([
+      validate(ctx.request.body, bodySchema, ValidationError),
+      validate(ctx.params, paramsSchema, ValidationError),
+    ]);
 
     if (dividerValues) {
       // Check that each divider is used at most once
@@ -44,14 +76,15 @@ export default (config, { strapi }: { strapi: Strapi }) => {
 
       // Check that each divider belongs to the organization
 
-      const organization: Organization | undefined =
-        await strapi.entityService.findOne(
-          "api::organization.organization",
-          organizationId,
-          {
-            populate: "organizationDividers",
-          }
-        );
+      const organization: Organization | undefined = isPost
+        ? await strapi.entityService.findOne(
+            "api::organization.organization",
+            organizationId,
+            {
+              populate: "organizationDividers",
+            }
+          )
+        : await getUnitOrganization(organizationUnitId as number);
 
       if (!organization) throw new ApplicationError("organization not found");
 
