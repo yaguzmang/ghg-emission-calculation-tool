@@ -7,7 +7,8 @@
   "options": {},
   "attributes": {
     "value": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "organizationDivider": {
       "type": "relation",
