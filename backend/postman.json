@@ -480,14 +480,14 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/3/with-emission-factors?reportingPeriod=1",
+                      "raw": "http://localhost:1337/api/emission-categories/4/with-emission-factors?reportingPeriod=1",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
                       "path": [
                         "api",
                         "emission-categories",
-                        "3",
+                        "4",
                         "with-emission-factors"
                       ],
                       "query": [
@@ -496,6 +496,30 @@
                           "value": "1"
                         }
                       ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create reporting period",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"organization\": 1,\n        \"name\": \"2024\",\n        \"startDate\": \"2024-01-01\",\n        \"endDate\": \"2024-12-31\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods"]
                     }
                   },
                   "response": []

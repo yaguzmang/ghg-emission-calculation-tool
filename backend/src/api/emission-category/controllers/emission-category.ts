@@ -15,7 +15,7 @@ import { EmissionSourceGroup } from "../../emission-source-group";
 import { EmissionSource } from "../../emission-source";
 import { ReportingPeriodService } from "../../reporting-period/services/reporting-period";
 
-const { ValidationError } = utils.errors;
+const { ValidationError, ApplicationError } = utils.errors;
 
 export default factories.createCoreController(
   "api::emission-category.emission-category",
@@ -41,7 +41,7 @@ export default factories.createCoreController(
           .service<ReportingPeriodService>(
             "api::reporting-period.reporting-period"
           )
-          .isAllowedForUser(reportingPeriod, ctx.state.user.id);
+          ?.isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
           return ctx.forbidden();
@@ -79,7 +79,12 @@ export default factories.createCoreController(
           .service<EmissionCategoryService>(
             "api::emission-category.emission-category"
           )
-          .populateEmissionSources(emissionCategory);
+          ?.populateEmissionSources(emissionCategory);
+
+        if (!populatedEmissionCategory)
+          throw new ApplicationError(
+            "emission cateogry could not be populated"
+          );
 
         // Get emission factor data and validate it
 
@@ -87,20 +92,29 @@ export default factories.createCoreController(
           .service<EmissionFactorDatumService>(
             "api::emission-factor-datum.emission-factor-datum"
           )
-          .findOneByReportingPeriod(reportingPeriod, {
+          ?.findOneByReportingPeriod(reportingPeriod, {
             locale: emissionCategory.locale,
           });
+
+        if (!emissionFactorDatum)
+          throw new ApplicationError("emission factor data could not be found");
 
         const json = await strapi
           .service<EmissionFactorDatumService>(
             "api::emission-factor-datum.emission-factor-datum"
           )
-          .validateJson(emissionFactorDatum.json);
+          ?.validateJson(emissionFactorDatum?.json);
+
+        if (!json) throw new ApplicationError("json could not be validated");
 
         // Attach emission factor data to emission sources
 
         const { emissionSources, ...plainEmissionCategory } =
           populatedEmissionCategory;
+
+        if (!emissionSources)
+          throw new ApplicationError("emission sources not available");
+
         const emissionSourcesWithFactors = emissionSources.map((source) => {
           return {
             ...source,
@@ -175,7 +189,7 @@ export default factories.createCoreController(
           .service<ReportingPeriodService>(
             "api::reporting-period.reporting-period"
           )
-          .isAllowedForUser(reportingPeriod, ctx.state.user.id);
+          ?.isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
           return ctx.forbidden();
@@ -187,13 +201,19 @@ export default factories.createCoreController(
 
         const getEmissionEntries = strapi
           .service<EmissionEntryService>("api::emission-entry.emission-entry")
-          .findWithEmissions(reportingPeriod, locale);
+          ?.findWithEmissions(reportingPeriod, locale);
+
+        if (!getEmissionEntries)
+          throw new ApplicationError("emission getter not available");
 
         const getEmissionCategories = strapi
           .service<EmissionCategoryService>(
             "api::emission-category.emission-category"
           )
-          .findOrdered(locale);
+          ?.findOrdered(locale);
+
+        if (!getEmissionCategories)
+          throw new ApplicationError("emission category getter not available");
 
         const [emissionEntries, emissionCategories] = await Promise.all([
           getEmissionEntries,
@@ -205,16 +225,27 @@ export default factories.createCoreController(
         const emissionsBySource = emissionEntries.reduce<{
           [key: string]: Emissions;
         }>((acc, entry) => {
-          const esid = entry.emissionSource.id;
+          const esid = entry.emissionSource?.id;
+
+          if (!esid)
+            throw new ApplicationError(
+              "emission source id could not be determined"
+            );
+
           const { emissions } = entry;
+
+          if (!emissions)
+            throw new ApplicationError("no emissions found from entry");
 
           return {
             ...acc,
             [esid]: acc[esid]
               ? {
-                  direct: acc[esid].direct + emissions.direct,
-                  indirect: acc[esid].indirect + emissions.indirect,
-                  biogenic: acc[esid].biogenic + emissions.biogenic,
+                  direct: (acc[esid]?.direct ?? 0) + (emissions.direct ?? 0),
+                  indirect:
+                    (acc[esid]?.indirect ?? 0) + (emissions.indirect ?? 0),
+                  biogenic:
+                    (acc[esid]?.biogenic ?? 0) + (emissions.biogenic ?? 0),
                 }
               : {
                   direct: emissions.direct,
@@ -227,6 +258,9 @@ export default factories.createCoreController(
         // For each emissionCategory, sum up the emissions of its emissionSources
 
         const categoriesWithEmissions = emissionCategories.map((category) => {
+          if (!Array.isArray(category.emissionSources))
+            throw new ApplicationError("emission sources not available");
+
           const emissions = category.emissionSources.reduce(
             (sum, current) => {
               const cur = emissionsBySource[current.id];

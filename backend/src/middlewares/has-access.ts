@@ -19,7 +19,7 @@ export default (config, { strapi }: { strapi: Strapi }) => {
 
     const isAllowed = await strapi
       .service<AuthorizedService>(config.uid)
-      .isAllowedForUser(entryId, userId);
+      ?.isAllowedForUser(entryId, userId);
 
     if (!isAllowed) {
       return ctx.forbidden();

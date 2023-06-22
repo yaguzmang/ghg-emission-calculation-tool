@@ -3164,6 +3164,11 @@
           "target": "api::emission-entry.emission-entry",
           "mappedBy": "reportingPeriod"
         },
+        "name": {
+          "type": "string",
+          "unique": false,
+          "required": true
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -3223,6 +3228,11 @@
             "relation": "oneToMany",
             "target": "api::emission-entry.emission-entry",
             "mappedBy": "reportingPeriod"
+          },
+          "name": {
+            "type": "string",
+            "unique": false,
+            "required": true
           }
         },
         "kind": "collectionType"

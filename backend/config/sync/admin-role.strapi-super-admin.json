@@ -375,7 +375,13 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+        "fields": [
+          "startDate",
+          "endDate",
+          "organization",
+          "emissionEntries",
+          "name"
+        ]
       },
       "conditions": []
     },
@@ -389,7 +395,13 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+        "fields": [
+          "startDate",
+          "endDate",
+          "organization",
+          "emissionEntries",
+          "name"
+        ]
       },
       "conditions": []
     },
@@ -397,7 +409,13 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::reporting-period.reporting-period",
       "properties": {
-        "fields": ["startDate", "endDate", "organization", "emissionEntries"]
+        "fields": [
+          "startDate",
+          "endDate",
+          "organization",
+          "emissionEntries",
+          "name"
+        ]
       },
       "conditions": []
     },

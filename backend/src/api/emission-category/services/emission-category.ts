@@ -3,7 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
-
+import utils from "@strapi/utils";
 import { ServiceParams } from "../../api.types";
 import { EmissionCategory } from "..";
 import { DashboardSettings } from "../../settings-dashboard";
@@ -12,6 +12,8 @@ export type EmissionCategoryService = {
   populateEmissionSources(emissionCategory: EmissionCategory): EmissionCategory;
   findOrdered(locale: string): Promise<EmissionCategory[]>;
 };
+
+const { ApplicationError } = utils.errors;
 
 export default factories.createCoreService<
   "api::emission-category.emission-category",
@@ -35,11 +37,14 @@ export default factories.createCoreService<
           (Array.isArray(params.populate) &&
             params.populate.includes("emissionSources")))) ||
       (typeof params.populate === "object" &&
-        Object.keys(params.populate).includes("emissionSources"))
+        Object.keys(params.populate ?? {}).includes("emissionSources"))
     ) {
       const { localizations } = (await super.findOne(id, {
         populate: { localizations: { populate: params.populate } },
       })) as EmissionCategory;
+
+      if (!localizations)
+        throw new ApplicationError("localizations not available");
 
       const enEmissionCategory = localizations.find(
         ({ locale }) => locale === "en"
@@ -64,12 +69,15 @@ export default factories.createCoreService<
 
     // If a non-English locale, populate emission sources from the English locale
 
+    if (!localizations)
+      throw new ApplicationError("localizations not available");
+
     const enCategory = localizations.find(({ locale }) => locale === "en");
 
-    if (!enCategory) return category;
+    if (!enCategory?.emissionSources) return category;
 
     const emissionSources = enCategory.emissionSources.map((source) => {
-      if (source.emissionSourceGroup) {
+      if (source.emissionSourceGroup?.localizations) {
         const localeSourceGroup = source.emissionSourceGroup.localizations.find(
           ({ locale }) => locale === emissionCategory.locale
         );
@@ -117,10 +125,17 @@ export default factories.createCoreService<
 
     if (!emissionCategories || emissionCategories.length < 0) return [];
 
-    return emissionCategories.map(
-      strapi.service<EmissionCategoryService>(
-        "api::emission-category.emission-category"
-      ).populateEmissionSources
-    );
+    return emissionCategories.map((category) => {
+      const populatedEmissionSources = strapi
+        .service<EmissionCategoryService>(
+          "api::emission-category.emission-category"
+        )
+        ?.populateEmissionSources(category);
+
+      if (!populatedEmissionSources)
+        throw new ApplicationError("populated emission sources not available");
+
+      return populatedEmissionSources;
+    });
   },
 }));
