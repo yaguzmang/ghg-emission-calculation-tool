@@ -2,142 +2,60 @@
 
 import React from 'react';
 
-import { useGetEmissionFactorDatasetByOrganizationQuery } from '@/redux/api/emission-factor-dataset/emissionFactorDatasetApiSlice';
-import { useGetOrganizationUnitsByOrganizationQuery } from '@/redux/api/organization-units/organizationUnitsApiSlice';
-import { useLazyGetUserOrganizationsQuery } from '@/redux/api/organizations/organizationsApiSlice';
-import { useGetReportingPeriodsByOrganizationQuery } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
-import { useGetUserQuery } from '@/redux/api/user/userApiSlice';
-import { useAppDispatch } from '@/redux/store';
-import {
-  SharedUIActions,
-  useSelectedOrganizationId,
-} from '@/redux/store/ui/shared';
-
-interface Option {
-  value: string | number;
-  label: string;
-}
-
-interface SelectProps {
-  options: Option[];
-  value: number | string | undefined;
-  onChange: (value: string) => void;
-}
-
-function Select({ options, value, onChange }: SelectProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value);
-  };
-
-  return (
-    <select
-      value={value}
-      onChange={handleChange}
-      className="border-2 border-solid border-b-teal-950"
-    >
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
 
 export default function Dashboard() {
-  const dispatch = useAppDispatch();
-  const userData = useGetUserQuery();
-  const selectedOrganizationId = useSelectedOrganizationId();
-
-  const userOrgs = userData.currentData?.organizations ?? [];
-  const [triggerGetUserOrganizations, { data: userOrganizationsFetched }] =
-    useLazyGetUserOrganizationsQuery();
-
-  const organizationSelectOptions = userOrgs.map((organization) => ({
-    value: organization.id,
-    label: organization.name,
-  }));
-
-  const reportingPeriods = useGetReportingPeriodsByOrganizationQuery(
-    selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
-  );
-
-  const organizationUnits = useGetOrganizationUnitsByOrganizationQuery(
-    selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
-  );
-
-  const emissionFactorDataset = useGetEmissionFactorDatasetByOrganizationQuery(
-    selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
-  );
-
-  const handleOrganizationChange = (selectedValue: string) => {
-    const selectedOrganizationId = parseInt(selectedValue, 10);
-    dispatch(
-      SharedUIActions.setSelectedOrganizationId({ selectedOrganizationId })
-    );
-  };
-
   return (
-    <main>
-      <h1 className="bg-green-500 text-2xl underline">DASHBOARD</h1>
+    <main className="relative mx-4 mt-10 md:mx-12">
       <div>
-        {userData && userData.currentData ? (
-          <div>
-            <h3 className="text-red-700">User data</h3>
-            <pre>{JSON.stringify(userData.currentData, null, 2)} </pre>
-          </div>
-        ) : null}
-      </div>
-      <div>
-        <h3 className="text-red-700">Select organization</h3>
-        <Select
-          options={organizationSelectOptions}
-          value={selectedOrganizationId}
-          onChange={handleOrganizationChange}
-        />
-      </div>
-
-      {reportingPeriods && reportingPeriods.currentData ? (
         <div>
-          <h3 className="text-red-700">reportingPeriods data</h3>
-
-          <pre>{JSON.stringify(reportingPeriods.currentData, null, 2)}</pre>
+          <span>XXXX</span>
+          <span className="px-2 text-secondary">/</span>
+          <span className="text-secondary">GHG calculator</span>
         </div>
-      ) : null}
-
-      {organizationUnits && organizationUnits.currentData ? (
-        <div>
-          <h3 className="text-red-700">organizationUnits data</h3>
-
-          <pre>{JSON.stringify(organizationUnits.currentData, null, 2)}</pre>
+        <h1 className="mt-3 text-3xl">GHG CALCULATOR</h1>
+        <div className="mt-6">
+          <Tabs defaultValue="xxxx" className="relative mr-auto w-full">
+            <div className="flex items-center justify-between">
+              <TabsList className="w-full justify-start rounded-none bg-transparent p-0">
+                <TabsTrigger
+                  value="xxxx"
+                  className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary md:min-w-[180px] md:px-0"
+                >
+                  <span className="pb-2 uppercase md:pl-2">XXXX</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="form"
+                  className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary md:min-w-[180px] md:px-0"
+                >
+                  <span className="pb-2 uppercase md:pl-2">Form</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="results"
+                  className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary md:min-w-[180px] md:px-0"
+                >
+                  <span className="pb-2 uppercase md:pl-2">Results</span>
+                </TabsTrigger>
+              </TabsList>
+            </div>
+            <div
+              className={cn(
+                'flex min-h-[350px] justify-center p-10 shadow-strong'
+              )}
+            >
+              <TabsContent value="xxxx">
+                <div className="flex flex-col space-y-4">XXXX</div>
+              </TabsContent>
+              <TabsContent value="form">
+                <div className="flex flex-col space-y-4">Form</div>
+              </TabsContent>
+              <TabsContent value="results">
+                <div className="flex flex-col space-y-4">Results</div>
+              </TabsContent>
+            </div>
+          </Tabs>
         </div>
-      ) : null}
-
-      {emissionFactorDataset && emissionFactorDataset.currentData ? (
-        <div>
-          <h3 className="text-red-700">emissionFactorDataset</h3>
-
-          <pre>
-            {JSON.stringify(emissionFactorDataset.currentData, null, 2)}
-          </pre>
-        </div>
-      ) : null}
-
-      <div>
-        <h3 className="text-red-700">User fetched organizations</h3>
-        <button
-          className="border-2 border-solid border-b-teal-950"
-          type="button"
-          onClick={() => triggerGetUserOrganizations()}
-        >
-          Fetch organizations for user: {userData.currentData?.username}
-        </button>
-        {userOrganizationsFetched ? (
-          <pre>{JSON.stringify(userOrganizationsFetched, null, 2)}</pre>
-        ) : null}
       </div>
     </main>
   );

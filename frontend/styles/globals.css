@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --taltech-green: 106 46% 50%; /*  #62BB46 */
+    --gray-lighten: 230 18% 93%; /* #EBECF1 */
+
+    --background: 240 23% 97%; /*  #F7F7FA */
+    --foreground: 250 38% 27%; /* #342B60 */
+
+    --text-regular: 233, 15%, 33%; /* #484B62 */
+
+    --popover: 0 0% 100%; /* #fff */
+    --popover-foreground: 250 38% 27%; /* #342B60 */
+
+    --border: 240 16% 87%; /* #DADAE4 */
+
+    --select-item-hover: 240 15% 94%; /* #ECECF1 */
+    --select-content-popover: 0 0% 100%; /* #fff */
+
+    --input: 240 16% 87%; /* #DADAE4 */
+    --input-hover: 234 16% 63%; /* #9396B0 */
+    --input-focus: 234 16% 63%; /* #9396B0 */
+    --input-disabled: 230 18% 93%; /* #EBECF1 */
+
+    --primary: 250 38% 27%; /* #342B60 */
+    --primary-foreground: 0 0% 100%; /* #fff */
+
+    --primary-hover: 251 39% 17%; /* #211b3d */
+    --primary-hover-foreground: 0 0% 100%; /* #fff  */
+
+    --primary-active: 251 39% 17%; /* #211b3d */
+    --primary-active-foreground: 0 0% 100%; /* #fff  */
+
+    --primary-disabled: 240 16% 87%; /* #DADAE4 */
+    --primary-disabled-foreground: 234 16% 63%; /* #9396B0 */
+
+    --secondary: 328 95% 46%; /* #E4067E */
+    --secondary-foreground: 0 0% 100%; /* #fff */
+
+    --secondary-hover: 327 95% 36%; /* #B20563 */
+    --secondary-hover-foreground: 0 0% 100%; /* #fff */
+
+    --secondary-active: 0 0% 100%; /* #B20563 */
+    --secondary-active-foreground: 0 0% 100%; /* #fff */
+
+    --secondary-disabled: 328 90% 96%; /* #FEEBF5 */
+    --secondary-disabled-foreground: 234 16% 63%; /* #9396B0 */
+
+    --light: 240 16% 87%; /* #DADAE4 */
+    --light-foreground: 250 38% 27%; /* #342B60 */
+
+    --light-hover: 250 38% 27%; /* #342B60 */
+    --light-hover-foreground: 0 0% 100%; /* #fff */
+
+    --light-active: 250 38% 27%; /* #342B60 */
+    --light-active-foreground: 0 0% 100%; /* #fff */
+
+    --light-disabled: 240 16% 87%; /* #DADAE4 */
+    --light-disabled-foreground: 234 16% 63%; /* #9396B0 */
+
+    --outline: 0 0% 100%; /* #fff */
+    --outline-foreground: 250 38% 27%; /* #342B60 */
+
+    --outline-hover: 240 16% 87%; /* #DADAE4 */
+    --outline-hover-foreground: 250 38% 27%; /* #342B60 */
+
+    --outline-active: 250 38% 27%; /* #342B60 */
+    --outline-active-foreground: 0 0% 100%; /* #fff */
+
+    --outline-disabled: 240 16% 87%; /* #DADAE4 */
+    --outline-disabled-foreground: 234 16% 63%; /* #9396B0 */
+
+    --link: 328 95% 46%; /* #E4067E */
+    --link-hover: 327 95% 36%; /* #B20563 */
+    --link-active: 327 95% 36%; /* #B20563 */
+    --link-disabled: 240 16% 87%; /* #DADAE4 */
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 349 76% 64%; /* #E95B75 */
+    --destructive-foreground: 349 76% 64%; /* #E95B75 not yet defined */
+
+    --ring: 234 16% 63%; /* #9396b0 */
+
+    --radius: 0rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  h1 {
+    @apply text-[1.75rem] font-black;
+  }
+  h2 {
+    @apply text-2xl font-extrabold;
+  }
+  h3 {
+    @apply text-xl font-extrabold;
+  }
+  h4 {
+    @apply text-lg font-bold;
+  }
+  h5 {
+    @apply text-base font-bold;
+  }
+}
