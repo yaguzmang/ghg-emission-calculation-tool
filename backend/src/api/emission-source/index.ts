@@ -1,10 +1,11 @@
-import { LocalizedApiServiceEntry } from "../api.types";
+import { ApiServiceEntry } from "../api.types";
 import { EmissionCategory } from "../emission-category";
+import { EmissionSourceGroup } from "../emission-source-group";
 
-export interface EmissionSource {
+export interface EmissionSource extends ApiServiceEntry {
   id: number;
   apiId: string;
-  emissionSourceGroup: LocalizedApiServiceEntry;
+  emissionSourceGroup?: EmissionSourceGroup;
   name: string;
-  emissionCategory: EmissionCategory;
+  emissionCategory?: EmissionCategory;
 }

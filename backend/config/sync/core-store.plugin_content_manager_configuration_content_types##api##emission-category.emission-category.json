@@ -92,6 +92,20 @@
           "sortable": true
         }
       },
+      "emissionSourceLabel": {
+        "edit": {
+          "label": "Emission source label",
+          "description": "The default dropdown label to use for emission sources that do not belong to an emission source group",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "emissionSourceLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -148,6 +162,10 @@
         [
           {
             "name": "emissionSources",
+            "size": 6
+          },
+          {
+            "name": "emissionSourceLabel",
             "size": 6
           }
         ]

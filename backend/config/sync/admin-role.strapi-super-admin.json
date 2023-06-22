@@ -12,7 +12,8 @@
           "description",
           "emissionGroup",
           "emissionSources",
-          "primaryScope"
+          "primaryScope",
+          "emissionSourceLabel"
         ],
         "locales": ["en", "fi"]
       },
@@ -35,7 +36,8 @@
           "description",
           "emissionGroup",
           "emissionSources",
-          "primaryScope"
+          "primaryScope",
+          "emissionSourceLabel"
         ],
         "locales": ["en", "fi"]
       },
@@ -50,7 +52,8 @@
           "description",
           "emissionGroup",
           "emissionSources",
-          "primaryScope"
+          "primaryScope",
+          "emissionSourceLabel"
         ],
         "locales": ["en", "fi"]
       },

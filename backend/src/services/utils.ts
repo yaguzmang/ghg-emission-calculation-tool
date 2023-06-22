@@ -18,6 +18,6 @@ export const validate = async <S extends yup.Schema, E extends Error>(
     return await schema.validate(data);
   } catch (err) {
     const throwable = error ?? Error;
-    throw new throwable(errorMessage ?? err.message);
+    throw new throwable(errorMessage || err.message);
   }
 };

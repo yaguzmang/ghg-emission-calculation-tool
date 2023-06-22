@@ -2058,6 +2058,14 @@
           "default": 1,
           "required": true
         },
+        "emissionSourceLabel": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2159,6 +2167,14 @@
             "max": 3,
             "default": 1,
             "required": true
+          },
+          "emissionSourceLabel": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string"
           }
         },
         "kind": "collectionType"

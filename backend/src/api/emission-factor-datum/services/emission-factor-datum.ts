@@ -3,7 +3,6 @@
  */
 
 import { factories } from "@strapi/strapi";
-import { GenericService } from "@strapi/strapi/lib/core-api/service";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { parse, format } from "date-fns";
@@ -37,113 +36,111 @@ interface Json {
   };
 }
 
-export type EmissionFactorDatumService = GenericService & {
+export type EmissionFactorDatumService = {
   findOneByReportingPeriod(
     reportingPeriodId: number,
-    params: object
+    params?: object
   ): Promise<EmissionFactorDatum>;
   validateJson(json: unknown): Promise<Json>;
 };
 
 const { ApplicationError, NotFoundError } = utils.errors;
 
-export default factories.createCoreService<EmissionFactorDatumService>(
+export default factories.createCoreService<
   "api::emission-factor-datum.emission-factor-datum",
-  ({ strapi }) => ({
-    /**
-     * Find the most recently updated emissionDatum entry for a reportingPeriod
-     * @param reportingPeriodId The id of the reportingPeriod
-     * @param params Additional params to pass to the Entity Service API
-     * @returns Promise<EmissionFactorDatum>
-     */
-    async findOneByReportingPeriod(reportingPeriodId, params) {
-      // Determine emission factor dataset based on reporting period
+  EmissionFactorDatumService
+>("api::emission-factor-datum.emission-factor-datum", ({ strapi }) => ({
+  /**
+   * Find the most recently updated emissionDatum entry for a reportingPeriod
+   * @param reportingPeriodId The id of the reportingPeriod
+   * @param params Additional params to pass to the Entity Service API
+   * @returns Promise<EmissionFactorDatum>
+   */
+  async findOneByReportingPeriod(reportingPeriodId, params = {}) {
+    // Determine emission factor dataset based on reporting period
 
-      const reportingPeriod: ReportingPeriod =
-        await strapi.entityService.findOne(
-          "api::reporting-period.reporting-period",
-          reportingPeriodId,
-          {
-            populate: { organization: { populate: ["emissionFactorDataset"] } },
-          }
-        );
-
-      if (!reportingPeriod) {
-        throw new NotFoundError("reporting period not found");
+    const reportingPeriod: ReportingPeriod = await strapi.entityService.findOne(
+      "api::reporting-period.reporting-period",
+      reportingPeriodId,
+      {
+        populate: { organization: { populate: ["emissionFactorDataset"] } },
       }
+    );
 
-      const { organization, endDate: endDateString } = reportingPeriod;
+    if (!reportingPeriod) {
+      throw new NotFoundError("reporting period not found");
+    }
 
-      if (!organization) {
-        throw new ApplicationError(
-          "no organization assigned to reporting period"
-        );
-      }
+    const { organization, endDate: endDateString } = reportingPeriod;
 
-      const { emissionFactorDataset } = organization;
+    if (!organization) {
+      throw new ApplicationError(
+        "no organization assigned to reporting period"
+      );
+    }
 
-      if (!emissionFactorDataset) {
-        throw new ApplicationError(
-          "no emission factor dataset assigned to organization"
-        );
-      }
+    const { emissionFactorDataset } = organization;
 
-      // Determine emission factor year based on the end date
+    if (!emissionFactorDataset) {
+      throw new ApplicationError(
+        "no emission factor dataset assigned to organization"
+      );
+    }
 
-      const endDate = parse(endDateString, "y-MM-dd", new Date());
-      const year = format(endDate, "y");
+    // Determine emission factor year based on the end date
 
-      // Find emission factor data that match the dataset and year
+    const endDate = parse(endDateString, "y-MM-dd", new Date());
+    const year = format(endDate, "y");
 
-      const emissionFactorData: EmissionFactorDatum[] =
-        await strapi.entityService.findMany(
-          "api::emission-factor-datum.emission-factor-datum",
-          {
-            filters: {
-              dataset: emissionFactorDataset,
-              year,
-            },
-            sort: { updatedAt: "desc" },
-            ...params,
-          }
-        );
+    // Find emission factor data that match the dataset and year
 
-      if (emissionFactorData.length < 1) {
-        throw new NotFoundError("emission factor data not found");
-      }
+    const emissionFactorData: EmissionFactorDatum[] =
+      await strapi.entityService.findMany(
+        "api::emission-factor-datum.emission-factor-datum",
+        {
+          filters: {
+            dataset: emissionFactorDataset,
+            year,
+          },
+          sort: { updatedAt: "desc" },
+          ...params,
+        }
+      );
 
-      // Return the most recently updated emission factor datum
+    if (emissionFactorData.length < 1) {
+      throw new NotFoundError("emission factor data not found");
+    }
 
-      return emissionFactorData[0];
-    },
+    // Return the most recently updated emission factor datum
 
-    /**
-     * Validate emission factor datum JSON content
-     * @param json Emission factor datum JSON to validate
-     * @returns Validated JSON
-     */
-    async validateJson(json) {
-      const jsonSchema = yup.object({
-        emission_sources: yup.lazy((obj) => {
-          if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
-            return yup.object().required();
-          }
-          const entries = Object.entries(obj).map(([key]) => {
-            return [key, emissionSourceValueSchema];
-          });
+    return emissionFactorData[0];
+  },
 
-          return yup.object(Object.fromEntries(entries));
-        }),
-      });
+  /**
+   * Validate emission factor datum JSON content
+   * @param json Emission factor datum JSON to validate
+   * @returns Validated JSON
+   */
+  async validateJson(json) {
+    const jsonSchema = yup.object({
+      emission_sources: yup.lazy((obj) => {
+        if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
+          return yup.object().required();
+        }
+        const entries = Object.entries(obj).map(([key]) => {
+          return [key, emissionSourceValueSchema];
+        });
 
-      const validatedJson = (await validate(
-        json,
-        jsonSchema,
-        ApplicationError,
-        "no emission factors assigned to reporting period or locale"
-      )) as Json;
+        return yup.object(Object.fromEntries(entries));
+      }),
+    });
 
-      return validatedJson;
-    },
-  })
-);
+    const validatedJson = (await validate(
+      json,
+      jsonSchema,
+      ApplicationError
+    )) as Json;
+
+    return validatedJson;
+  },
+}));

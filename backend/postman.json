@@ -473,6 +473,32 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "Get one emission category with emission factors",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/3/with-emission-factors?reportingPeriod=1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": [
+                        "api",
+                        "emission-categories",
+                        "3",
+                        "with-emission-factors"
+                      ],
+                      "query": [
+                        {
+                          "key": "reportingPeriod",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -722,7 +748,7 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/with-emissions?locale=en&reportingPeriod=1",
+                      "raw": "http://localhost:1337/api/emission-categories/with-emissions?locale=fi&reportingPeriod=1",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
@@ -730,7 +756,7 @@
                       "query": [
                         {
                           "key": "locale",
-                          "value": "en"
+                          "value": "fi"
                         },
                         {
                           "key": "reportingPeriod",
