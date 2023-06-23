@@ -52,7 +52,7 @@ export default function Dashboard() {
   const dispatch = useAppDispatch();
   const userData = useGetUserQuery();
   const locales = useGetLocalesQuery();
-  const selectedOrganizationId = useSelectedOrganizationId();
+  const selectedOrganizationId = useSelectedOrganizationId('form');
   const selectedLocale = useSelectedLocale();
   const dashboardEmissionCategories =
     useGetDashboardEmissionCategoriesByLocaleQuery(
@@ -90,7 +90,10 @@ export default function Dashboard() {
   const handleOrganizationChange = (selectedValue: string) => {
     const selectedOrganizationId = parseInt(selectedValue, 10);
     dispatch(
-      SharedUIActions.setSelectedOrganizationId({ selectedOrganizationId })
+      SharedUIActions.setSelectedOrganizationId({
+        selectedOrganizationId,
+        section: 'form',
+      })
     );
   };
 

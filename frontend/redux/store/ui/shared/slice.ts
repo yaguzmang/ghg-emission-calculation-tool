@@ -1,15 +1,20 @@
 import type { Draft, PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, Reducer } from '@reduxjs/toolkit';
 
-import { SharedUIState } from './stateType';
+import {
+  OrganizationAndReportingPeriodSection,
+  SharedUIState,
+} from './stateType';
 
 import i18n from '@/i18n/i18n';
 import { reportingPeriodsApiSlice } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
 import { userApiSlice } from '@/redux/api/user/userApiSlice';
 
 const initialState: SharedUIState = {
-  selectedOrganizationId: undefined,
-  selectedReportingPeriodId: undefined,
+  selectedFormOrganizationId: undefined,
+  selectedFormReportingPeriodId: undefined,
+  selectedResultsOrganizationId: undefined,
+  selectedResultsReportingPeriodId: undefined,
   selectedLocale: undefined,
 };
 
@@ -21,19 +26,37 @@ export const sharedUISlice = createSlice({
       state: Draft<SharedUIState>,
       action: PayloadAction<{
         selectedOrganizationId: number;
+        section: OrganizationAndReportingPeriodSection;
       }>
     ) => {
-      const { selectedOrganizationId } = action.payload;
-      state.selectedOrganizationId = selectedOrganizationId;
+      const { selectedOrganizationId, section } = action.payload;
+      switch (section) {
+        case 'form':
+          state.selectedFormOrganizationId = selectedOrganizationId;
+          break;
+        case 'results':
+          state.selectedResultsOrganizationId = selectedOrganizationId;
+          break;
+        default:
+      }
     },
     setSelectedReportingPeriodId: (
       state: Draft<SharedUIState>,
       action: PayloadAction<{
-        selectedReportingPeriodId: number;
+        selectedReportingPeriodId: number | undefined;
+        section: OrganizationAndReportingPeriodSection;
       }>
     ) => {
-      const { selectedReportingPeriodId } = action.payload;
-      state.selectedReportingPeriodId = selectedReportingPeriodId;
+      const { selectedReportingPeriodId, section } = action.payload;
+      switch (section) {
+        case 'form':
+          state.selectedFormReportingPeriodId = selectedReportingPeriodId;
+          break;
+        case 'results':
+          state.selectedResultsReportingPeriodId = selectedReportingPeriodId;
+          break;
+        default:
+      }
     },
     setSelectedLocale: (
       state: Draft<SharedUIState>,
@@ -51,10 +74,16 @@ export const sharedUISlice = createSlice({
       .addMatcher(
         userApiSlice.endpoints.getUser.matchFulfilled,
         (state, { payload }) => {
-          if (state.selectedOrganizationId === undefined) {
+          if (state.selectedFormOrganizationId === undefined) {
             const { organizations } = payload;
             if (organizations !== undefined && organizations.length > 0) {
-              state.selectedOrganizationId = organizations[0].id;
+              state.selectedFormOrganizationId = organizations[0].id;
+            }
+          }
+          if (state.selectedResultsOrganizationId === undefined) {
+            const { organizations } = payload;
+            if (organizations !== undefined && organizations.length > 0) {
+              state.selectedResultsOrganizationId = organizations[0].id;
             }
           }
           if (state.selectedLocale === undefined) {
@@ -67,10 +96,16 @@ export const sharedUISlice = createSlice({
         reportingPeriodsApiSlice.endpoints.getReportingPeriodsByOrganization
           .matchFulfilled,
         (state, { payload }) => {
-          if (state.selectedReportingPeriodId === undefined) {
+          if (state.selectedFormReportingPeriodId === undefined) {
             const reportingPeriods = payload;
             if (reportingPeriods !== undefined && reportingPeriods.length > 0) {
-              state.selectedReportingPeriodId = reportingPeriods[0].id;
+              state.selectedFormReportingPeriodId = reportingPeriods[0].id;
+            }
+          }
+          if (state.selectedResultsReportingPeriodId === undefined) {
+            const reportingPeriods = payload;
+            if (reportingPeriods !== undefined && reportingPeriods.length > 0) {
+              state.selectedResultsReportingPeriodId = reportingPeriods[0].id;
             }
           }
         }
