@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { useGetEmissionCategoriesWithEmissionsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
 import { useGetEmissionFactorDatasetByOrganizationQuery } from '@/redux/api/emission-factor-dataset/emissionFactorDatasetApiSlice';
 import { useGetOrganizationUnitsByOrganizationQuery } from '@/redux/api/organization-units/organizationUnitsApiSlice';
 import { useLazyGetUserOrganizationsQuery } from '@/redux/api/organizations/organizationsApiSlice';
@@ -15,6 +16,7 @@ import {
   SharedUIActions,
   useSelectedLocale,
   useSelectedOrganizationId,
+  useSelectedReportingPeriodId,
 } from '@/redux/store/ui/shared';
 
 interface Option {
@@ -87,6 +89,14 @@ export default function Dashboard() {
     { skip: selectedOrganizationId === undefined }
   );
 
+  const locale = useSelectedLocale();
+  const selectedReportingPeriodId = useSelectedReportingPeriodId('form');
+  const emissionCategoriesWithEmissions =
+    useGetEmissionCategoriesWithEmissionsQuery(
+      { locale: locale ?? '', reportingPeriod: selectedReportingPeriodId ?? 0 },
+      { skip: locale === undefined || selectedReportingPeriodId === undefined }
+    );
+
   const handleOrganizationChange = (selectedValue: string) => {
     const selectedOrganizationId = parseInt(selectedValue, 10);
     dispatch(
@@ -100,6 +110,21 @@ export default function Dashboard() {
   return (
     <main>
       <h1 className="bg-green-500 text-2xl underline">DASHBOARD</h1>
+      <div>
+        {emissionCategoriesWithEmissions &&
+        emissionCategoriesWithEmissions.currentData ? (
+          <div>
+            <h3 className="text-red-700">emissionCategoriesWithEmissions</h3>
+            <pre>
+              {JSON.stringify(
+                emissionCategoriesWithEmissions.currentData,
+                null,
+                2
+              )}
+            </pre>
+          </div>
+        ) : null}
+      </div>
       <div>
         {generalSettings && generalSettings.currentData ? (
           <div>
