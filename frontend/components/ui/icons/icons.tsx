@@ -11,6 +11,8 @@ import UserAvatar from './user-avatar.svg';
 import ValueChainEmissions from './ValueChainEmissions.svg';
 import X from './x.svg';
 
+import { EmissionScope } from '@/types/emission-scope';
+
 export const Icons = {
   Close: X,
   QuestionMark,
@@ -24,4 +26,10 @@ export const Icons = {
   DirectEmissions,
   IndirectEmissions,
   ValueChainEmissions,
+};
+
+export const EmissionIconsByScope = {
+  [EmissionScope.direct]: <Icons.DirectEmissions />,
+  [EmissionScope.indirect]: <Icons.IndirectEmissions />,
+  [EmissionScope.valueChain]: <Icons.ValueChainEmissions />,
 };
