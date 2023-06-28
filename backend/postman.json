@@ -1,1381 +1,1105 @@
 {
-	"info": {
-		"_postman_id": "d44a826f-336c-4ca4-b1fc-3b5815fd0608",
-		"name": "TalTech GHG tool",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Strapi",
-			"item": [
-				{
-					"name": "App",
-					"item": [
-						{
-							"name": "Emission category",
-							"item": [
-								{
-									"name": "Get one emission category",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-categories/1?populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-categories",
-												"1"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission categories",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-categories?locale=en&populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-categories"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "en"
-												},
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission factor data",
-							"item": [
-								{
-									"name": "Pull emission factor data",
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Custom-Endpoint-Secret",
-												"value": "{{incomingWebhookToken}}",
-												"type": "default"
-											}
-										],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-factor-data/3/pull",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-factor-data",
-												"3",
-												"pull"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission factor dataset",
-							"item": [
-								{
-									"name": "Get one emission factor dataset",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-factor-datasets/1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-factor-datasets",
-												"1"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission factor datasets",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-factor-datasets",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-factor-datasets"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission group",
-							"item": [
-								{
-									"name": "Get one emission group",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-groups/1?populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-groups",
-												"1"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission groups",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-groups?locale=en&populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-groups"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "en"
-												},
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission source",
-							"item": [
-								{
-									"name": "Get emission sources of an emission category",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-categories/2?populate[emissionSources][populate][emissionSourceGroup][populate]=localizations",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-categories",
-												"2"
-											],
-											"query": [
-												{
-													"key": "populate[emissionSources][populate][emissionSourceGroup][populate]",
-													"value": "localizations"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission source group",
-							"item": [
-								{
-									"name": "Get one emission source group",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-source-groups/2",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-source-groups",
-												"2"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission source groups",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-source-groups?locale=en",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-source-groups"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "en"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Translation",
-							"item": [
-								{
-									"name": "Get translation by id",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/translations/6",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"translations",
-												"6"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get translations by locale",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/translations?locale=fi",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"translations"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "fi"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get translations by locale and key",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/translations?locale=fi&filters[key][$eq]=dashboard.form",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"translations"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "fi"
-												},
-												{
-													"key": "filters[key][$eq]",
-													"value": "dashboard.form"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Settings",
-							"item": [
-								{
-									"name": "General settings",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/settings-general?locale=fi",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"settings-general"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "fi"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Dashboard settings",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/settings-dashboard?locale=en&populate=emissionCategories",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"settings-dashboard"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "en"
-												},
-												{
-													"key": "populate",
-													"value": "emissionCategories"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					],
-					"auth": {
-						"type": "noauth"
-					},
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "Data",
-					"item": [
-						{
-							"name": "Organization",
-							"item": [
-								{
-									"name": "Get organizations",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get organization",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/1?populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"1"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update organization",
-									"request": {
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"name\": \"TalTech\"\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"1"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Reporting period",
-							"item": [
-								{
-									"name": "Get reporting periods of an organization",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/5?populate=reportingPeriods",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"5"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "reportingPeriods"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get reporting period",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/reporting-periods/2",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"reporting-periods",
-												"2"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get reporting periods",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/reporting-periods/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"reporting-periods",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get one emission category with emission factors",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-categories/4/with-emission-factors?reportingPeriod=1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-categories",
-												"4",
-												"with-emission-factors"
-											],
-											"query": [
-												{
-													"key": "reportingPeriod",
-													"value": "1"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Create reporting period",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"organization\": 1,\n        \"name\": \"2024\",\n        \"startDate\": \"2024-01-01\",\n        \"endDate\": \"2024-12-31\"\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/reporting-periods",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"reporting-periods"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emissions of a reporting period",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/reporting-periods/5/emissions?locale=en",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"reporting-periods",
-												"5",
-												"emissions"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "en"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "User",
-							"item": [
-								{
-									"name": "Me",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "",
-												"value": "",
-												"type": "default"
-											}
-										],
-										"url": {
-											"raw": "http://localhost:1337/api/users/me?populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"users",
-												"me"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Organization unit",
-							"item": [
-								{
-									"name": "Get organization units of an organization",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/1?populate=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"1"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get organization units",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-units/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-units",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Create organization unit",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"name\": \"new unit\",\n        \"organization\": 1,\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/organization-units/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-units",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get organization unit",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-units/4?populate[dividerValues][populate]=*",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-units",
-												"4"
-											],
-											"query": [
-												{
-													"key": "populate[dividerValues][populate]",
-													"value": "*"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update organization unit",
-									"request": {
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"name\": \"Test campus 1\",\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/organization-units/4",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-units",
-												"4"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Delete organization unit",
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-units/11",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-units",
-												"11"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Organization divider",
-							"item": [
-								{
-									"name": "Get organization dividers of an organization",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/1?populate=organizationDividers",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"1"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "organizationDividers"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get organization divider",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-dividers/4",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-dividers",
-												"4"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get organization dividers",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-dividers/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-dividers",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Create organization divider",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"label\": \"Employee and student FTE\",\n        \"organization\": 1\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/organization-dividers/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-dividers",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update organization divider",
-									"request": {
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"label\": \"Floor area (m2)\"\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/organization-dividers/1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-dividers",
-												"1"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update organization divider Copy",
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organization-dividers/1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organization-dividers",
-												"1"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission factor dataset",
-							"item": [
-								{
-									"name": "Get the emission factor dataset of an organization",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/organizations/5?populate=emissionFactorDataset",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"organizations",
-												"5"
-											],
-											"query": [
-												{
-													"key": "populate",
-													"value": "emissionFactorDataset"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emission entry",
-							"item": [
-								{
-									"name": "Create emission entry",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"organizationUnit\": 5,\n        \"reportingPeriod\": 5,\n        \"emissionSource\": 11,\n        \"quantity\": 100,\n        \"tier\": 3\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/emission-entries",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-entries"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission entries",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-entries",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-entries"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission entries of a reporting period",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/reporting-periods/2?populate[emissionEntries][populate][0]=organizationUnit&populate[emissionEntries][populate][emissionSource][populate][0]=emissionCategory",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"reporting-periods",
-												"2"
-											],
-											"query": [
-												{
-													"key": "populate[emissionEntries][populate][0]",
-													"value": "organizationUnit"
-												},
-												{
-													"key": "populate[emissionEntries][populate][emissionSource][populate][0]",
-													"value": "emissionCategory"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get emission entry",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-entries/7",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-entries",
-												"7"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update emission entry",
-									"request": {
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"data\": {\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:1337/api/emission-entries/7",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-entries",
-												"7"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Delete emission entry",
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-entries/6",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-entries",
-												"6"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Emissions",
-							"item": [
-								{
-									"name": "Get emission categories with emissions",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:1337/api/emission-categories/with-emissions?locale=fi&reportingPeriod=1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "1337",
-											"path": [
-												"api",
-												"emission-categories",
-												"with-emissions"
-											],
-											"query": [
-												{
-													"key": "locale",
-													"value": "fi"
-												},
-												{
-													"key": "reportingPeriod",
-													"value": "1"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjg3ODU1OTIwLCJleHAiOjE2OTA0NDc5MjB9.qrnsd0jLGqhfUTpxxPqJL3nQGeUUrK5raKW6oHfAQ_Y",
-								"type": "string"
-							}
-						]
-					},
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "Log in",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"identifier\": \"user1@example.com\",\n    \"password\": \"user1pw\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:1337/api/auth/local",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "1337",
-							"path": [
-								"api",
-								"auth",
-								"local"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get locales",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:1337/api/i18n/locales",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "1337",
-							"path": [
-								"api",
-								"i18n",
-								"locales"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "d44a826f-336c-4ca4-b1fc-3b5815fd0608",
+    "name": "TalTech GHG tool",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Strapi",
+      "item": [
+        {
+          "name": "App",
+          "item": [
+            {
+              "name": "Emission category",
+              "item": [
+                {
+                  "name": "Get one emission category",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/1?populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-categories", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission categories",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories?locale=en&populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-categories"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission factor data",
+              "item": [
+                {
+                  "name": "Pull emission factor data",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Custom-Endpoint-Secret",
+                        "value": "{{incomingWebhookToken}}",
+                        "type": "default"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-factor-data/3/pull",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-factor-data", "3", "pull"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission factor dataset",
+              "item": [
+                {
+                  "name": "Get one emission factor dataset",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-factor-datasets/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-factor-datasets", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission factor datasets",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-factor-datasets",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-factor-datasets"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission group",
+              "item": [
+                {
+                  "name": "Get one emission group",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-groups/1?populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-groups", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission groups",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-groups?locale=en&populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-groups"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission source",
+              "item": [
+                {
+                  "name": "Get emission sources of an emission category",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/2?populate[emissionSources][populate][emissionSourceGroup][populate]=localizations",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-categories", "2"],
+                      "query": [
+                        {
+                          "key": "populate[emissionSources][populate][emissionSourceGroup][populate]",
+                          "value": "localizations"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission source group",
+              "item": [
+                {
+                  "name": "Get one emission source group",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-source-groups/2",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-source-groups", "2"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission source groups",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-source-groups?locale=en",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-source-groups"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Translation",
+              "item": [
+                {
+                  "name": "Get translation by id",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations/6",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations", "6"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get translations by locale",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations?locale=fi",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get translations by locale and key",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations?locale=fi&filters[key][$eq]=dashboard.form",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        },
+                        {
+                          "key": "filters[key][$eq]",
+                          "value": "dashboard.form"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Settings",
+              "item": [
+                {
+                  "name": "General settings",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/settings-general?locale=fi",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "settings-general"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Dashboard settings",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/settings-dashboard?locale=en&populate=emissionCategories",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "settings-dashboard"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        },
+                        {
+                          "key": "populate",
+                          "value": "emissionCategories"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "noauth"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Data",
+          "item": [
+            {
+              "name": "Organization",
+              "item": [
+                {
+                  "name": "Get organizations",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1?populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"TalTech\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Reporting period",
+              "item": [
+                {
+                  "name": "Get reporting periods of an organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/5?populate=reportingPeriods",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "5"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "reportingPeriods"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get reporting period",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/2",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", "2"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get reporting periods",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get one emission category with emission factors",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/4/with-emission-factors?reportingPeriod=1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": [
+                        "api",
+                        "emission-categories",
+                        "4",
+                        "with-emission-factors"
+                      ],
+                      "query": [
+                        {
+                          "key": "reportingPeriod",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create reporting period",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"organization\": 1,\n        \"name\": \"2024\",\n        \"startDate\": \"2024-01-01\",\n        \"endDate\": \"2024-12-31\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emissions of a reporting period",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/5/emissions?locale=en",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", "5", "emissions"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "User",
+              "item": [
+                {
+                  "name": "Me",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "",
+                        "value": "",
+                        "type": "default"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:1337/api/users/me?populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "users", "me"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Organization unit",
+              "item": [
+                {
+                  "name": "Get organization units of an organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1?populate=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization units",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create organization unit",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"new unit\",\n        \"organization\": 1,\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization unit",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/4?populate[dividerValues][populate]=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "4"],
+                      "query": [
+                        {
+                          "key": "populate[dividerValues][populate]",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization unit",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"Test campus 1\",\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/4",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "4"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete organization unit",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/11",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "11"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Organization divider",
+              "item": [
+                {
+                  "name": "Get organization dividers of an organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1?populate=organizationDividers",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "organizationDividers"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization divider",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/4",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "4"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization dividers",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create organization divider",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"label\": \"Employee and student FTE\",\n        \"organization\": 1\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization divider",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"label\": \"Floor area (m2)\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization divider Copy",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "1"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission factor dataset",
+              "item": [
+                {
+                  "name": "Get the emission factor dataset of an organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/5?populate=emissionFactorDataset",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "5"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "emissionFactorDataset"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emission entry",
+              "item": [
+                {
+                  "name": "Create emission entry",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 5,\n        \"reportingPeriod\": 5,\n        \"emissionSource\": 11,\n        \"quantity\": 100,\n        \"tier\": 3\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission entries",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission entries of a reporting period",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/2?populate[emissionEntries][populate][0]=organizationUnit&populate[emissionEntries][populate][emissionSource][populate][0]=emissionCategory",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", "2"],
+                      "query": [
+                        {
+                          "key": "populate[emissionEntries][populate][0]",
+                          "value": "organizationUnit"
+                        },
+                        {
+                          "key": "populate[emissionEntries][populate][emissionSource][populate][0]",
+                          "value": "emissionCategory"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get emission entry",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries/7",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries", "7"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update emission entry",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries/7",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries", "7"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete emission entry",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries/6",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries", "6"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Emissions",
+              "item": [
+                {
+                  "name": "Get emission categories with emissions",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-categories/with-emissions?locale=fi&reportingPeriod=1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-categories", "with-emissions"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "fi"
+                        },
+                        {
+                          "key": "reportingPeriod",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjg3ODU1OTIwLCJleHAiOjE2OTA0NDc5MjB9.qrnsd0jLGqhfUTpxxPqJL3nQGeUUrK5raKW6oHfAQ_Y",
+                "type": "string"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Log in",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifier\": \"user1@example.com\",\n    \"password\": \"user1pw\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1337/api/auth/local",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["api", "auth", "local"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get locales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/api/i18n/locales",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["api", "i18n", "locales"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }
