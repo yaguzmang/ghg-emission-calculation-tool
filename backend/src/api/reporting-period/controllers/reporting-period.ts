@@ -9,8 +9,6 @@ import { EmissionEntryService } from "../../emission-entry/services/emission-ent
 import { EmissionCategoryService } from "../../emission-category/services/emission-category";
 import { EmissionEntry, Emissions } from "../../emission-entry";
 import { validate } from "../../../services/utils";
-import { OrganizationUnitService } from "../../organization-unit/services/organization-unit";
-import { OrganizationService } from "../../organization/services/organization";
 import { ReportingPeriod } from "..";
 import { EmissionCategory } from "../../emission-category";
 
@@ -98,10 +96,9 @@ export default factories.createCoreController(
         };
       }, {});
 
-      // Group the calculated emissions by emission source
-
       const emissionsByUnitAndSource = Object.fromEntries(
         Object.entries(entriesByUnit).map(([key, entries]) => {
+          // Group the calculated emissions by emission source
           const emissionsBySource = entries.reduce<{
             [key: string]: Emissions;
           }>((acc, entry) => {
@@ -135,6 +132,7 @@ export default factories.createCoreController(
             };
           }, {});
 
+          // Populate the calculated emissions to emission categories
           const categoriesWithEmissions: EmissionCategory[] = emissionCategories
             .map((category) => {
               if (!Array.isArray(category.emissionSources))
@@ -165,6 +163,7 @@ export default factories.createCoreController(
             "id" | "title" | "emissions"
           >;
 
+          // Group the emission categories and their emissions by scope
           const emissionsByScopeAndCategory = categoriesWithEmissions.reduce<{
             scope1: ScopedEmissionCategory[];
             scope2: ScopedEmissionCategory[];
@@ -219,6 +218,7 @@ export default factories.createCoreController(
         })
       );
 
+      // Populate the scoped emissions to organization units
       const unitsWithEmissions = organizationUnits.map((unit) => {
         return {
           ...unit,
