@@ -11,4 +11,5 @@ export interface EmissionCategory extends LocalizedApiServiceEntry {
   emissionSourceLabel?: string;
   localizations?: EmissionCategory[];
   emissions?: Emissions | number;
+  color?: string;
 }

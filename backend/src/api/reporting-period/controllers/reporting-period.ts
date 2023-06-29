@@ -160,7 +160,7 @@ export default factories.createCoreController(
 
           type ScopedEmissionCategory = Pick<
             EmissionCategory,
-            "id" | "title" | "emissions"
+            "id" | "title" | "emissions" | "primaryScope" | "color"
           >;
 
           // Group the emission categories and their emissions by scope
@@ -171,7 +171,7 @@ export default factories.createCoreController(
             biogenic: ScopedEmissionCategory[];
           }>(
             (acc, category) => {
-              const { primaryScope, emissions, id, title } = category;
+              const { primaryScope, emissions, id, title, color } = category;
               const { direct, indirect, biogenic } = emissions as Emissions;
               const scope1Emissions =
                 (primaryScope === 1 && Number(direct) > 0 && direct) || 0;
@@ -182,7 +182,7 @@ export default factories.createCoreController(
                 (indirect ?? 0);
               const biogenicEmissions = biogenic ?? 0;
 
-              const strippedCategory = { id, title, primaryScope };
+              const strippedCategory = { id, title, primaryScope, color };
 
               return {
                 scope1: scope1Emissions
