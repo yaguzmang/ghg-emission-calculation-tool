@@ -2,26 +2,35 @@ import { EmissionCategoryFlattenWithEmissions } from '@/types/emission-category'
 import { EmissionScope } from '@/types/emission-scope';
 
 export function calculateTotalEmissionsOfEmissionCategory(
-  emissionCategory: EmissionCategoryFlattenWithEmissions
+  emissionCategory: EmissionCategoryFlattenWithEmissions,
+  includeBiogenic = false
 ) {
   if (emissionCategory) {
     const { emissions } = emissionCategory;
-    const sum = Object.values(emissions)
-      .filter((value) => typeof value === 'number')
-      .reduce((acc, value) => acc + value, 0);
+    const sum = Object.entries(emissions)
+      .filter(([key, value]) => {
+        if (!includeBiogenic && key === 'biogenic') {
+          return false; // Exclude biogenic emission property
+        }
+        return typeof value === 'number';
+      })
+      .reduce((acc, [, value]) => acc + value, 0);
     return sum;
   }
   return 0;
 }
 
 export function calculateTotalEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
+  includeBiogenic = false
 ): number {
   let totalEmissions = 0;
 
   emissionCategories.forEach((emissionCategory) => {
-    totalEmissions +=
-      calculateTotalEmissionsOfEmissionCategory(emissionCategory);
+    totalEmissions += calculateTotalEmissionsOfEmissionCategory(
+      emissionCategory,
+      includeBiogenic
+    );
   });
 
   return totalEmissions;
