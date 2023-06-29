@@ -106,6 +106,20 @@
           "sortable": true
         }
       },
+      "color": {
+        "edit": {
+          "label": "Color",
+          "description": "A CSS-compliant color to associate with this emission category",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "color",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -166,6 +180,12 @@
           },
           {
             "name": "emissionSourceLabel",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "color",
             "size": 6
           }
         ]
