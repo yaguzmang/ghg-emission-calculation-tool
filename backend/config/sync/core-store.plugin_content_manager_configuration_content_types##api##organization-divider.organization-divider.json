@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::organization-unit.organization-unit",
+  "key": "plugin_content_manager_configuration_content_types::api::organization-divider.organization-divider",
   "value": {
-    "uid": "api::organization-unit.organization-unit",
+    "uid": "api::organization-divider.organization-divider",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "label",
+      "defaultSortBy": "label",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "name": {
+      "label": {
         "edit": {
-          "label": "Name",
+          "label": "Label",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "label",
           "searchable": true,
           "sortable": true
         }
@@ -47,35 +47,6 @@
           "label": "organization",
           "searchable": true,
           "sortable": true
-        }
-      },
-      "emissionEntries": {
-        "edit": {
-          "label": "Emission entries",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": false,
-          "mainField": "id"
-        },
-        "list": {
-          "label": "emissionEntries",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "dividerValues": {
-        "edit": {
-          "label": "Divider values",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "dividerValues",
-          "searchable": false,
-          "sortable": false
         }
       },
       "createdAt": {
@@ -111,28 +82,16 @@
       "edit": [
         [
           {
-            "name": "name",
+            "name": "label",
             "size": 6
           },
           {
             "name": "organization",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "emissionEntries",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "dividerValues",
-            "size": 12
-          }
         ]
       ],
-      "list": ["id", "name", "organization", "createdAt"]
+      "list": ["id", "label", "organization"]
     }
   },
   "type": "object",

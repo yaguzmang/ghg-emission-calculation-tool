@@ -409,11 +409,41 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/organizations/5",
+                      "raw": "http://localhost:1337/api/organizations/1?populate=*",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "organizations", "5"]
+                      "path": ["api", "organizations", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"TalTech\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"]
                     }
                   },
                   "response": []
@@ -567,32 +597,17 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/organizations/5?populate=organizationUnits",
+                      "raw": "http://localhost:1337/api/organizations/1?populate=*",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "organizations", "5"],
+                      "path": ["api", "organizations", "1"],
                       "query": [
                         {
                           "key": "populate",
-                          "value": "organizationUnits"
+                          "value": "*"
                         }
                       ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "Get organization unit",
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "url": {
-                      "raw": "http://localhost:1337/api/organization-units/5",
-                      "protocol": "http",
-                      "host": ["localhost"],
-                      "port": "1337",
-                      "path": ["api", "organization-units", "5"]
                     }
                   },
                   "response": []
@@ -608,6 +623,209 @@
                       "host": ["localhost"],
                       "port": "1337",
                       "path": ["api", "organization-units", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create organization unit",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"new unit\",\n        \"organization\": 1,\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization unit",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/4?populate[dividerValues][populate]=*",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "4"],
+                      "query": [
+                        {
+                          "key": "populate[dividerValues][populate]",
+                          "value": "*"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization unit",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"name\": \"Test campus 1\",\n        \"dividerValues\": [\n            {\n                \"organizationDivider\": 1,\n                \"value\": 13\n            },\n            {\n                \"organizationDivider\": 2,\n                \"value\": 123\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/4",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "4"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete organization unit",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-units/10",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-units", "10"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Organization divider",
+              "item": [
+                {
+                  "name": "Get organization dividers of an organization",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organizations/1?populate=organizationDividers",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organizations", "1"],
+                      "query": [
+                        {
+                          "key": "populate",
+                          "value": "organizationDividers"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization divider",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/4",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "4"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get organization dividers",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create organization divider",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"label\": \"Employee and student FTE\",\n        \"organization\": 1\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", ""]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization divider",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"data\": {\n        \"label\": \"Floor area (m2)\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update organization divider Copy",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/organization-dividers/1",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "organization-dividers", "1"]
                     }
                   },
                   "response": []

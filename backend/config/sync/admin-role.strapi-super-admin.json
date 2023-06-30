@@ -295,9 +295,45 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-divider.organization-divider",
+      "properties": {
+        "fields": ["label", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::organization-divider.organization-divider",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-divider.organization-divider",
+      "properties": {
+        "fields": ["label", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-divider.organization-divider",
+      "properties": {
+        "fields": ["label", "organization"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization", "emissionEntries"]
+        "fields": [
+          "name",
+          "organization",
+          "emissionEntries",
+          "dividerValues.value",
+          "dividerValues.organizationDivider"
+        ]
       },
       "conditions": []
     },
@@ -311,7 +347,13 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization", "emissionEntries"]
+        "fields": [
+          "name",
+          "organization",
+          "emissionEntries",
+          "dividerValues.value",
+          "dividerValues.organizationDivider"
+        ]
       },
       "conditions": []
     },
@@ -319,7 +361,13 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::organization-unit.organization-unit",
       "properties": {
-        "fields": ["name", "organization", "emissionEntries"]
+        "fields": [
+          "name",
+          "organization",
+          "emissionEntries",
+          "dividerValues.value",
+          "dividerValues.organizationDivider"
+        ]
       },
       "conditions": []
     },
@@ -332,7 +380,8 @@
           "users",
           "organizationUnits",
           "reportingPeriods",
-          "emissionFactorDataset"
+          "emissionFactorDataset",
+          "organizationDividers"
         ]
       },
       "conditions": []
@@ -352,7 +401,8 @@
           "users",
           "organizationUnits",
           "reportingPeriods",
-          "emissionFactorDataset"
+          "emissionFactorDataset",
+          "organizationDividers"
         ]
       },
       "conditions": []
@@ -366,7 +416,8 @@
           "users",
           "organizationUnits",
           "reportingPeriods",
-          "emissionFactorDataset"
+          "emissionFactorDataset",
+          "organizationDividers"
         ]
       },
       "conditions": []

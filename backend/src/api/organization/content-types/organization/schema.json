@@ -38,6 +38,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::emission-factor-dataset.emission-factor-dataset"
+    },
+    "organizationDividers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::organization-divider.organization-divider",
+      "mappedBy": "organization"
     }
   }
 }

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_organization_dividers",
+  "info": {
+    "displayName": "Divider",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    }
+  }
+}

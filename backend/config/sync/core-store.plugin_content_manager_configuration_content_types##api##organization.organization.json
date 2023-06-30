@@ -94,6 +94,21 @@
           "sortable": true
         }
       },
+      "organizationDividers": {
+        "edit": {
+          "label": "Organization dividers",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "label"
+        },
+        "list": {
+          "label": "organizationDividers",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -150,6 +165,10 @@
         [
           {
             "name": "emissionFactorDataset",
+            "size": 6
+          },
+          {
+            "name": "organizationDividers",
             "size": 6
           }
         ]

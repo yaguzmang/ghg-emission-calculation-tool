@@ -19,6 +19,51 @@ export default factories.createCoreRouter(
           },
         ],
       },
+      create: {
+        middlewares: [
+          {
+            name: "global::block-mutations",
+            config: {
+              blockedProperties: ["emissionEntries"],
+            },
+          },
+          {
+            name: "global::has-access-to-relations",
+            config: {
+              relations: [
+                {
+                  key: "organization",
+                  uid: "api::organization.organization",
+                },
+              ],
+            },
+          },
+          "api::organization-unit.validate-divider-values",
+        ],
+      },
+      delete: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-unit.organization-unit" },
+          },
+        ],
+      },
+      update: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: { uid: "api::organization-unit.organization-unit" },
+          },
+          {
+            name: "global::block-mutations",
+            config: {
+              blockedProperties: ["emissionEntries", "organization"],
+            },
+          },
+          "api::organization-unit.validate-divider-values",
+        ],
+      },
     },
   }
 );

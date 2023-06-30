@@ -2953,6 +2953,12 @@
           "relation": "oneToOne",
           "target": "api::emission-factor-dataset.emission-factor-dataset"
         },
+        "organizationDividers": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::organization-divider.organization-divider",
+          "mappedBy": "organization"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -3019,6 +3025,12 @@
             "type": "relation",
             "relation": "oneToOne",
             "target": "api::emission-factor-dataset.emission-factor-dataset"
+          },
+          "organizationDividers": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::organization-divider.organization-divider",
+            "mappedBy": "organization"
           }
         },
         "kind": "collectionType"
@@ -3029,6 +3041,92 @@
       "uid": "api::organization.organization",
       "apiName": "organization",
       "globalId": "Organization",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::organization-divider.organization-divider": {
+      "kind": "collectionType",
+      "collectionName": "organization_dividers",
+      "info": {
+        "singularName": "organization-divider",
+        "pluralName": "organization-dividers",
+        "displayName": "Data / Organization divider",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "organization": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::organization.organization",
+          "inversedBy": "organizationDividers"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "organization_dividers",
+        "info": {
+          "singularName": "organization-divider",
+          "pluralName": "organization-dividers",
+          "displayName": "Data / Organization divider",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "label": {
+            "type": "string",
+            "required": true
+          },
+          "organization": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::organization.organization",
+            "inversedBy": "organizationDividers"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "organization-divider",
+      "connection": "default",
+      "uid": "api::organization-divider.organization-divider",
+      "apiName": "organization-divider",
+      "globalId": "OrganizationDivider",
       "actions": {},
       "lifecycles": {}
     },
@@ -3061,6 +3159,12 @@
           "relation": "oneToMany",
           "target": "api::emission-entry.emission-entry",
           "mappedBy": "organizationUnit"
+        },
+        "dividerValues": {
+          "displayName": "Divider value",
+          "type": "component",
+          "repeatable": true,
+          "component": "organization-unit.divider-value"
         },
         "createdAt": {
           "type": "datetime"
@@ -3117,6 +3221,12 @@
             "relation": "oneToMany",
             "target": "api::emission-entry.emission-entry",
             "mappedBy": "organizationUnit"
+          },
+          "dividerValues": {
+            "displayName": "Divider value",
+            "type": "component",
+            "repeatable": true,
+            "component": "organization-unit.divider-value"
           }
         },
         "kind": "collectionType"

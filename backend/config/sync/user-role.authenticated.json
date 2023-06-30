@@ -58,16 +58,43 @@
       "action": "api::emission-source.emission-source.findOne"
     },
     {
+      "action": "api::organization-divider.organization-divider.create"
+    },
+    {
+      "action": "api::organization-divider.organization-divider.delete"
+    },
+    {
+      "action": "api::organization-divider.organization-divider.find"
+    },
+    {
+      "action": "api::organization-divider.organization-divider.findOne"
+    },
+    {
+      "action": "api::organization-divider.organization-divider.update"
+    },
+    {
+      "action": "api::organization-unit.organization-unit.create"
+    },
+    {
+      "action": "api::organization-unit.organization-unit.delete"
+    },
+    {
       "action": "api::organization-unit.organization-unit.find"
     },
     {
       "action": "api::organization-unit.organization-unit.findOne"
     },
     {
+      "action": "api::organization-unit.organization-unit.update"
+    },
+    {
       "action": "api::organization.organization.find"
     },
     {
       "action": "api::organization.organization.findOne"
+    },
+    {
+      "action": "api::organization.organization.update"
     },
     {
       "action": "api::reporting-period.reporting-period.create"

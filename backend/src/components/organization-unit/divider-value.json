@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_organization_unit_divider_values",
+  "info": {
+    "displayName": "Divider value",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "decimal",
+      "required": true
+    },
+    "organizationDivider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-divider.organization-divider"
+    }
+  }
+}

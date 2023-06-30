@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organization_dividers",
+  "info": {
+    "singularName": "organization-divider",
+    "pluralName": "organization-dividers",
+    "displayName": "Data / Organization divider",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "organization": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization.organization",
+      "inversedBy": "organizationDividers"
+    }
+  }
+}
