@@ -11,7 +11,7 @@ import { AuthorizedService } from "../../api.types";
 export type EmissionEntryService = AuthorizedService & {
   findWithEmissions(
     reportingPeriodId: number,
-    locale: string
+    locale?: string
   ): Promise<EmissionEntry[]>;
 };
 
@@ -69,6 +69,7 @@ export default factories.createCoreService<
         },
         populate: [
           "emissionSource",
+          "organizationUnit",
           "customEmissionFactorDirect",
           "customEmissionFactorIndirect",
           "customEmissionFactorBiogenic",

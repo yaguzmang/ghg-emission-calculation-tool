@@ -553,6 +553,27 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "Get emissions of a reporting period",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/5/emissions?locale=en",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", "5", "emissions"],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -702,11 +723,11 @@
                     "method": "DELETE",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/organization-units/10",
+                      "raw": "http://localhost:1337/api/organization-units/11",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "organization-units", "10"]
+                      "path": ["api", "organization-units", "11"]
                     }
                   },
                   "response": []
@@ -868,7 +889,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 4,\n        \"reportingPeriod\": 2,\n        \"emissionSource\": 1,\n        \"quantity\": 20,\n        \"tier\": 3,\n        \"quantitySource\": \"head\",\n        \"customEmissionFactorBiogenic\": {\n            \"value\": 0.0011,\n            \"source\": \"some cool research report\"\n        },\n        \"customEmissionFactorDirect\": {\n            \"value\": 0.0012,\n            \"source\": \"some cool research report 2\"\n        },\n        \"customEmissionFactorIndirect\": {\n            \"value\": 0.0013,\n            \"source\": \"some cool research report 3\"\n        }\n    }\n}",
+                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 5,\n        \"reportingPeriod\": 5,\n        \"emissionSource\": 11,\n        \"quantity\": 100,\n        \"tier\": 3\n    }\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -1017,7 +1038,7 @@
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg1NTI3NTgzLCJleHAiOjE2ODgxMTk1ODN9.5QJqoIBedlArh9NfbyA2eTFonQXTNPs4BQ1RvKlcOsU",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjg3ODU1OTIwLCJleHAiOjE2OTA0NDc5MjB9.qrnsd0jLGqhfUTpxxPqJL3nQGeUUrK5raKW6oHfAQ_Y",
                 "type": "string"
               }
             ]

@@ -1,5 +1,6 @@
 import type { ApiServiceEntry } from "../api.types";
 import type { EmissionSource } from "../emission-source";
+import { OrganizationUnit } from "../organization-unit";
 
 interface CustomEmissionFactor {
   value: number;
@@ -13,6 +14,7 @@ export interface Emissions {
 }
 
 export interface EmissionEntry extends ApiServiceEntry {
+  organizationUnit?: OrganizationUnit;
   emissionSource?: EmissionSource;
   quantity: number;
   tier: 1 | 2 | 3;

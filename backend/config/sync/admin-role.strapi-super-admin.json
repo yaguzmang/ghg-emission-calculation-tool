@@ -13,7 +13,8 @@
           "emissionGroup",
           "emissionSources",
           "primaryScope",
-          "emissionSourceLabel"
+          "emissionSourceLabel",
+          "color"
         ],
         "locales": ["en", "fi"]
       },
@@ -37,7 +38,8 @@
           "emissionGroup",
           "emissionSources",
           "primaryScope",
-          "emissionSourceLabel"
+          "emissionSourceLabel",
+          "color"
         ],
         "locales": ["en", "fi"]
       },
@@ -53,7 +55,8 @@
           "emissionGroup",
           "emissionSources",
           "primaryScope",
-          "emissionSourceLabel"
+          "emissionSourceLabel",
+          "color"
         ],
         "locales": ["en", "fi"]
       },
