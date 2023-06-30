@@ -227,7 +227,7 @@ export default factories.createCoreController(
       });
 
       return {
-        data: unitsWithEmissions,
+        data: { organizationUnits: unitsWithEmissions },
       };
     },
   })
