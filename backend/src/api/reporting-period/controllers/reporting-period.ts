@@ -7,12 +7,42 @@ import utils from "@strapi/utils";
 import * as yup from "yup";
 import { EmissionEntryService } from "../../emission-entry/services/emission-entry";
 import { EmissionCategoryService } from "../../emission-category/services/emission-category";
-import { EmissionEntry, Emissions } from "../../emission-entry";
+import { EmissionEntry, EmissionsAndAccuracies } from "../../emission-entry";
 import { validate } from "../../../services/utils";
 import { ReportingPeriod } from "..";
 import { EmissionCategory } from "../../emission-category";
 
 const { ApplicationError, ValidationError } = utils.errors;
+
+/**
+ * Combine two EmissionsAndAccuracies objects
+ * @param ea1 {EmissionsAndAccuracies} 1
+ * @param ea2 {EmissionsAndAccuracies} 2
+ * @returns {EmissionsAndAccuracies}
+ */
+const combineEmissionsAndAccuracies = (
+  ea1: EmissionsAndAccuracies | undefined,
+  ea2: EmissionsAndAccuracies | undefined
+): EmissionsAndAccuracies => {
+  const emissionTypes = ["direct", "indirect", "biogenic"] as const;
+
+  const EmissionsAndAccuraciesEntries = emissionTypes.map((type) => {
+    const ea1Emissions = ea1?.[type]?.emissions ?? 0;
+    const ea1Accuracy = ea1?.[type]?.accuracy ?? 0;
+    const ea2Emissions = ea2?.[type]?.emissions ?? 0;
+    const ea2Accuracy = ea2?.[type]?.accuracy ?? 0;
+    const newEmissions = ea1Emissions + ea2Emissions;
+    const newAccuracy =
+      newEmissions > 0
+        ? (ea1Emissions / newEmissions) * ea1Accuracy +
+          (ea2Emissions / newEmissions) * ea2Accuracy
+        : 0;
+
+    return [type, { emissions: newEmissions, accuracy: newAccuracy }];
+  });
+
+  return Object.fromEntries(EmissionsAndAccuraciesEntries);
+};
 
 export default factories.createCoreController(
   "api::reporting-period.reporting-period",
@@ -100,7 +130,7 @@ export default factories.createCoreController(
         Object.entries(entriesByUnit).map(([key, entries]) => {
           // Group the calculated emissions by emission source
           const emissionsBySource = entries.reduce<{
-            [key: string]: Emissions;
+            [key: string]: EmissionsAndAccuracies;
           }>((acc, entry) => {
             const esid = entry.emissionSource?.id;
 
@@ -109,26 +139,28 @@ export default factories.createCoreController(
                 "emission source id could not be determined"
               );
 
-            const { emissions } = entry;
+            const { emissions, tier } = entry;
 
             if (!emissions)
               throw new ApplicationError("no emissions found from entry");
 
+            const entryEmissionsAndAccuracies: EmissionsAndAccuracies =
+              Object.fromEntries(
+                Object.entries(emissions).map(([key, emissionEntry]) => {
+                  const emissionEntryWithAccuracies = {
+                    emissions: emissionEntry,
+                    accuracy: tier,
+                  };
+                  return [key, emissionEntryWithAccuracies];
+                })
+              );
+
             return {
               ...acc,
-              [esid]: acc[esid]
-                ? {
-                    direct: (acc[esid]?.direct ?? 0) + (emissions.direct ?? 0),
-                    indirect:
-                      (acc[esid]?.indirect ?? 0) + (emissions.indirect ?? 0),
-                    biogenic:
-                      (acc[esid]?.biogenic ?? 0) + (emissions.biogenic ?? 0),
-                  }
-                : {
-                    direct: emissions.direct,
-                    indirect: emissions.indirect,
-                    biogenic: emissions.biogenic,
-                  },
+              [esid]: combineEmissionsAndAccuracies(
+                acc[esid],
+                entryEmissionsAndAccuracies
+              ),
             };
           }, {});
 
@@ -138,24 +170,27 @@ export default factories.createCoreController(
               if (!Array.isArray(category.emissionSources))
                 throw new ApplicationError("emission sources not available");
 
-              const emissions = category.emissionSources.reduce(
-                (sum, current) => {
-                  const cur = emissionsBySource[current.id];
-                  return {
-                    direct: sum.direct + (cur?.direct ?? 0),
-                    indirect: sum.indirect + (cur?.indirect ?? 0),
-                    biogenic: sum.biogenic + (cur?.biogenic ?? 0),
-                  };
-                },
-                { direct: 0, indirect: 0, biogenic: 0 }
-              );
+              const emissionsAndAccuracies =
+                category.emissionSources.reduce<EmissionsAndAccuracies>(
+                  (sum, current) => {
+                    const cur = emissionsBySource[current.id];
+                    return combineEmissionsAndAccuracies(sum, cur);
+                  },
+                  {
+                    direct: { emissions: 0, accuracy: 0 },
+                    indirect: { emissions: 0, accuracy: 0 },
+                    biogenic: { emissions: 0, accuracy: 0 },
+                  }
+                );
               return {
                 ...category,
-                emissions,
+                emissions: emissionsAndAccuracies,
               };
             })
             .filter(({ emissions: { direct, indirect, biogenic } }) => {
-              return [direct, indirect, biogenic].some((val) => val > 0);
+              return [direct, indirect, biogenic].some(
+                (val) => (val?.emissions ?? 0) > 0
+              );
             });
 
           type ScopedEmissionCategory = Pick<
@@ -172,41 +207,56 @@ export default factories.createCoreController(
           }>(
             (acc, category) => {
               const { primaryScope, emissions, id, title, color } = category;
-              const { direct, indirect, biogenic } = emissions as Emissions;
-              const scope1Emissions =
-                (primaryScope === 1 && Number(direct) > 0 && direct) || 0;
-              const scope2Emissions =
-                (primaryScope === 2 && Number(direct) > 0 && direct) || 0;
-              const scope3Emissions =
-                ((primaryScope === 3 && Number(direct) > 0 && direct) || 0) +
-                (indirect ?? 0);
-              const biogenicEmissions = biogenic ?? 0;
+              const { direct, indirect, biogenic } =
+                emissions as EmissionsAndAccuracies;
+              const scope1Emissions = (primaryScope === 1 &&
+                Number(direct?.emissions) > 0 &&
+                direct) || { emissions: 0, accuracy: 0 };
+              const scope2Emissions = (primaryScope === 2 &&
+                Number(direct?.emissions) > 0 &&
+                direct) || { emissions: 0, accuracy: 0 };
+              const scope3DirectEmissions = (primaryScope === 3 &&
+                Number(direct?.emissions) > 0 &&
+                direct) || { emissions: 0, accuracy: 0 };
+              const scope3IndirectEmissions = indirect ?? {
+                emissions: 0,
+                accuracy: 0,
+              };
+              const scope3TotalEmissions =
+                scope3DirectEmissions.emissions +
+                scope3IndirectEmissions.emissions;
+              const scope3Emissions = {
+                emissions: scope3TotalEmissions,
+                accuracy:
+                  scope3TotalEmissions > 0
+                    ? (scope3DirectEmissions.emissions / scope3TotalEmissions) *
+                        scope3DirectEmissions.accuracy +
+                      (scope3IndirectEmissions.emissions /
+                        scope3TotalEmissions) *
+                        scope3IndirectEmissions.accuracy
+                    : 0,
+              };
+              const biogenicEmissions = biogenic ?? {
+                emissions: 0,
+                accuracy: 0,
+              };
 
               const strippedCategory = { id, title, primaryScope, color };
 
               return {
-                scope1: scope1Emissions
-                  ? [
-                      ...acc.scope1,
-                      { ...strippedCategory, emissions: scope1Emissions },
-                    ]
+                scope1: scope1Emissions.emissions
+                  ? [...acc.scope1, { ...strippedCategory, ...scope1Emissions }]
                   : acc.scope1,
-                scope2: scope2Emissions
-                  ? [
-                      ...acc.scope2,
-                      { ...strippedCategory, emissions: scope2Emissions },
-                    ]
+                scope2: scope2Emissions.emissions
+                  ? [...acc.scope2, { ...strippedCategory, ...scope2Emissions }]
                   : acc.scope2,
-                scope3: scope3Emissions
-                  ? [
-                      ...acc.scope3,
-                      { ...strippedCategory, emissions: scope3Emissions },
-                    ]
+                scope3: scope3Emissions.emissions
+                  ? [...acc.scope3, { ...strippedCategory, ...scope3Emissions }]
                   : acc.scope3,
-                biogenic: biogenicEmissions
+                biogenic: biogenicEmissions.emissions
                   ? [
                       ...acc.biogenic,
-                      { ...strippedCategory, emissions: biogenicEmissions },
+                      { ...strippedCategory, ...biogenicEmissions },
                     ]
                   : acc.biogenic,
               };
