@@ -13,19 +13,15 @@ export interface Emissions {
   biogenic?: number;
 }
 
+export interface SingleEmissionsAndAccuracy {
+  emissions: number;
+  accuracy: number;
+}
+
 export interface EmissionsAndAccuracies {
-  direct?: {
-    emissions: number;
-    accuracy: number;
-  };
-  indirect?: {
-    emissions: number;
-    accuracy: number;
-  };
-  biogenic?: {
-    emissions: number;
-    accuracy: number;
-  };
+  direct?: SingleEmissionsAndAccuracy;
+  indirect?: SingleEmissionsAndAccuracy;
+  biogenic?: SingleEmissionsAndAccuracy;
 }
 
 export interface EmissionEntry extends ApiServiceEntry {

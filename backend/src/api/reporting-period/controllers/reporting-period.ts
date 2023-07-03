@@ -7,7 +7,11 @@ import utils from "@strapi/utils";
 import * as yup from "yup";
 import { EmissionEntryService } from "../../emission-entry/services/emission-entry";
 import { EmissionCategoryService } from "../../emission-category/services/emission-category";
-import { EmissionEntry, EmissionsAndAccuracies } from "../../emission-entry";
+import {
+  EmissionEntry,
+  EmissionsAndAccuracies,
+  SingleEmissionsAndAccuracy,
+} from "../../emission-entry";
 import { validate } from "../../../services/utils";
 import { ReportingPeriod } from "..";
 import { EmissionCategory } from "../../emission-category";
@@ -15,30 +19,49 @@ import { EmissionCategory } from "../../emission-category";
 const { ApplicationError, ValidationError } = utils.errors;
 
 /**
- * Combine two EmissionsAndAccuracies objects
+ * Combine two SingleEmissionsAndAccuracy objects
+ * @param ea1 {SingleEmissionsAndAccuracy} 1
+ * @param ea2 {SingleEmissionsAndAccuracy} 2
+ * @returns {SingleEmissionsAndAccuracy}
+ */
+const combineSingleEmissionsAndAccuracies = (
+  ea1?: SingleEmissionsAndAccuracy,
+  ea2?: SingleEmissionsAndAccuracy
+): SingleEmissionsAndAccuracy => {
+  const ea1Emissions = ea1?.emissions ?? 0;
+  const ea1Accuracy = ea1?.accuracy ?? 0;
+  const ea2Emissions = ea2?.emissions ?? 0;
+  const ea2Accuracy = ea2?.accuracy ?? 0;
+  const newEmissions = ea1Emissions + ea2Emissions;
+  const newAccuracy =
+    newEmissions > 0
+      ? (ea1Emissions / newEmissions) * ea1Accuracy +
+        (ea2Emissions / newEmissions) * ea2Accuracy
+      : 0;
+
+  return {
+    emissions: newEmissions,
+    accuracy: newAccuracy,
+  };
+};
+
+/**
+ * Combine two scoped EmissionsAndAccuracies objects
  * @param ea1 {EmissionsAndAccuracies} 1
  * @param ea2 {EmissionsAndAccuracies} 2
  * @returns {EmissionsAndAccuracies}
  */
-const combineEmissionsAndAccuracies = (
+const combineScopedEmissionsAndAccuracies = (
   ea1: EmissionsAndAccuracies | undefined,
   ea2: EmissionsAndAccuracies | undefined
 ): EmissionsAndAccuracies => {
   const emissionTypes = ["direct", "indirect", "biogenic"] as const;
 
   const EmissionsAndAccuraciesEntries = emissionTypes.map((type) => {
-    const ea1Emissions = ea1?.[type]?.emissions ?? 0;
-    const ea1Accuracy = ea1?.[type]?.accuracy ?? 0;
-    const ea2Emissions = ea2?.[type]?.emissions ?? 0;
-    const ea2Accuracy = ea2?.[type]?.accuracy ?? 0;
-    const newEmissions = ea1Emissions + ea2Emissions;
-    const newAccuracy =
-      newEmissions > 0
-        ? (ea1Emissions / newEmissions) * ea1Accuracy +
-          (ea2Emissions / newEmissions) * ea2Accuracy
-        : 0;
-
-    return [type, { emissions: newEmissions, accuracy: newAccuracy }];
+    return [
+      type,
+      combineSingleEmissionsAndAccuracies(ea1?.[type], ea2?.[type]),
+    ];
   });
 
   return Object.fromEntries(EmissionsAndAccuraciesEntries);
@@ -157,7 +180,7 @@ export default factories.createCoreController(
 
             return {
               ...acc,
-              [esid]: combineEmissionsAndAccuracies(
+              [esid]: combineScopedEmissionsAndAccuracies(
                 acc[esid],
                 entryEmissionsAndAccuracies
               ),
@@ -174,7 +197,7 @@ export default factories.createCoreController(
                 category.emissionSources.reduce<EmissionsAndAccuracies>(
                   (sum, current) => {
                     const cur = emissionsBySource[current.id];
-                    return combineEmissionsAndAccuracies(sum, cur);
+                    return combineScopedEmissionsAndAccuracies(sum, cur);
                   },
                   {
                     direct: { emissions: 0, accuracy: 0 },
@@ -196,7 +219,7 @@ export default factories.createCoreController(
           type ScopedEmissionCategory = Pick<
             EmissionCategory,
             "id" | "title" | "emissions" | "primaryScope" | "color"
-          >;
+          > & { accuracy: number };
 
           // Group the emission categories and their emissions by scope
           const emissionsByScopeAndCategory = categoriesWithEmissions.reduce<{
@@ -222,20 +245,10 @@ export default factories.createCoreController(
                 emissions: 0,
                 accuracy: 0,
               };
-              const scope3TotalEmissions =
-                scope3DirectEmissions.emissions +
-                scope3IndirectEmissions.emissions;
-              const scope3Emissions = {
-                emissions: scope3TotalEmissions,
-                accuracy:
-                  scope3TotalEmissions > 0
-                    ? (scope3DirectEmissions.emissions / scope3TotalEmissions) *
-                        scope3DirectEmissions.accuracy +
-                      (scope3IndirectEmissions.emissions /
-                        scope3TotalEmissions) *
-                        scope3IndirectEmissions.accuracy
-                    : 0,
-              };
+              const scope3Emissions = combineSingleEmissionsAndAccuracies(
+                scope3DirectEmissions,
+                scope3IndirectEmissions
+              );
               const biogenicEmissions = biogenic ?? {
                 emissions: 0,
                 accuracy: 0,
@@ -276,8 +289,51 @@ export default factories.createCoreController(
         };
       });
 
+      interface ScopedEmissionsAndAccuracies {
+        scope1: SingleEmissionsAndAccuracy;
+        scope2: SingleEmissionsAndAccuracy;
+        scope3: SingleEmissionsAndAccuracy;
+        biogenic: SingleEmissionsAndAccuracy;
+      }
+
+      const totalEmissions =
+        unitsWithEmissions.reduce<ScopedEmissionsAndAccuracies>(
+          (acc, { emissions }) => {
+            const types = ["scope1", "scope2", "scope3", "biogenic"] as const;
+            const combinedEntries = types.map((type) => {
+              const current = emissions[
+                type
+              ].reduce<SingleEmissionsAndAccuracy>(
+                (acc, { emissions: em, accuracy }) => {
+                  const emissions = em as number;
+                  return combineSingleEmissionsAndAccuracies(acc, {
+                    emissions,
+                    accuracy,
+                  });
+                },
+                {
+                  emissions: 0,
+                  accuracy: 0,
+                }
+              );
+              const combinedEntries = combineSingleEmissionsAndAccuracies(
+                acc[type],
+                current
+              );
+              return [type, combinedEntries];
+            });
+            return Object.fromEntries(combinedEntries);
+          },
+          {
+            scope1: { emissions: 0, accuracy: 0 },
+            scope2: { emissions: 0, accuracy: 0 },
+            scope3: { emissions: 0, accuracy: 0 },
+            biogenic: { emissions: 0, accuracy: 0 },
+          }
+        );
+
       return {
-        data: { organizationUnits: unitsWithEmissions },
+        data: { totalEmissions, organizationUnits: unitsWithEmissions },
       };
     },
   })
