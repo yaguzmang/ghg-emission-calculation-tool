@@ -560,11 +560,11 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/reporting-periods/5/emissions?locale=en",
+                      "raw": "http://localhost:1337/api/reporting-periods/1/emissions?locale=en",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "reporting-periods", "5", "emissions"],
+                      "path": ["api", "reporting-periods", "1", "emissions"],
                       "query": [
                         {
                           "key": "locale",
@@ -1038,7 +1038,7 @@
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjg3ODU1OTIwLCJleHAiOjE2OTA0NDc5MjB9.qrnsd0jLGqhfUTpxxPqJL3nQGeUUrK5raKW6oHfAQ_Y",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg4MTE1Mjk5LCJleHAiOjE2OTA3MDcyOTl9.uomjlDDzmTTdNU3T8dgRm_a-S0e70LH5KDi5QITgIcc",
                 "type": "string"
               }
             ]
