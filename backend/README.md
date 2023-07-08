@@ -141,12 +141,12 @@ docker run \
   --name ghg-strapi \
   -dit \
   -v ghg-db:/app/db \
-  -e APP_KEYS=D2BzJXpI3XWG46TQRZJUPw==,H5EZbyOJPbKZOyrArmmtZQ==,2x5VdmDjLvZnW6cDtyhslw==,y1ZqBoAWzI2P8lIyKL2PZA== \ # Generate your own secrets
-  -e ADMIN_JWT_SECRET=jGe4z3pnLboBXWRxze3Xig== \ # Generate your own secret
-  -e JWT_SECRET=RkqNbhWuoedYXeoRUqvtOQ== \ # Generate your own secret
-  -e API_TOKEN_SALT=kZ06bsz3Q/FWSd8bIGJFFQ== \ # Generate your own secret
+  -e APP_KEYS=D2BzJXpI3XWG46TQRZJUPw==,H5EZbyOJPbKZOyrArmmtZQ==,2x5VdmDjLvZnW6cDtyhslw==,y1ZqBoAWzI2P8lIyKL2PZA== \
+  -e ADMIN_JWT_SECRET=jGe4z3pnLboBXWRxze3Xig== \
+  -e JWT_SECRET=RkqNbhWuoedYXeoRUqvtOQ== \
+  -e API_TOKEN_SALT=kZ06bsz3Q/FWSd8bIGJFFQ== \
   -e DATABASE_FILENAME=db/data.db \
-  -e STRAPI_ADMIN_CUSTOM_ENDPOINT_SECRET=4258351b2ed030955ca6cb3717b8ec3e9bb86fda3073d3a0056c650331e2d0204fd8fb67ef3dda928e0ea4a909fcffd84da2bfcc80d155219e91f40e958753a834c472b712c385632030eb437b3e3bf26489cf8c0b23670800a77a60c735cea5fbaa3ab9490b11f757f27dbd2408348496578bed75da14b2342aff4baf5260ea \ # Generate your own secret
+  -e STRAPI_ADMIN_CUSTOM_ENDPOINT_SECRET=4258351b2ed030955ca6cb3717b8ec3e9bb86fda3073d3a0056c650331e2d0204fd8fb67ef3dda928e0ea4a909fcffd84da2bfcc80d155219e91f40e958753a834c472b712c385632030eb437b3e3bf26489cf8c0b23670800a77a60c735cea5fbaa3ab9490b11f757f27dbd2408348496578bed75da14b2342aff4baf5260ea \
   -p 1337:1337 ghg-strapi:latest
 ```
 
@@ -165,7 +165,7 @@ Important: `npm run import` overwrites the database so be careful!
 #### Create an admin user:
 
 ```bash
-docker exec -it ghg-strapi npm run strapi admin:create-user --firstname=Jane --lastname=Doe --email=jane.doe@taltech.ee --password=Admin123
+docker exec -it ghg-strapi npm run strapi admin:create-user -- --firstname=Jane --lastname=Doe --email=jane.doe@taltech.ee --password=Admin123
 ```
 
 #### Test the endpoints
