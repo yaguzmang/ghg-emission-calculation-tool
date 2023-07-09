@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   Arrow,
@@ -11,18 +12,40 @@ import {
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import { Icons } from './ui/icons/icons';
+import { Skeleton } from './ui/skeleton';
+
+import { useGetUserQuery } from '@/redux/api/user/userApiSlice';
 
 export function UserNavInfo() {
-  const { data: session } = useSession();
+  const { data: sessionData, status: sessionStatus } = useSession();
+  const userData = useGetUserQuery(undefined, {
+    skip: sessionData?.user === undefined,
+  });
+
+  const isLoading = sessionStatus === 'loading' || userData.isFetching;
+
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="flex-col">
-        {session?.user?.username && (
+        {isLoading && <Skeleton className="inline-block h-8 w-10" />}
+        {!isLoading && sessionStatus === 'authenticated' && (
           <>
-            <p className="text-xs font-bold">{session.user.username}</p>
+            <p className="text-xs font-bold">
+              {userData?.currentData?.username}
+            </p>
             <p className="text-xs font-bold">XXXX</p>
           </>
+        )}
+        {!isLoading && sessionStatus === 'unauthenticated' && (
+          <button
+            type="button"
+            className="hover:underline"
+            onClick={() => signIn('Log in', { callbackUrl: '/dashboard' })}
+          >
+            <p className="text-xs font-bold">{t('login')}</p>
+          </button>
         )}
       </div>
 
@@ -33,13 +56,13 @@ export function UserNavInfo() {
           </button>
         </PopoverTrigger>
         <PopoverContent className="z-50 mr-2 w-64 rounded-none bg-gray-lighten p-4 text-popover-foreground shadow-strong outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2">
-          {session?.user?.username ? (
+          {sessionData?.user !== undefined ? (
             <button
               type="button"
               className="text-primary hover:underline"
               onClick={() => signOut({ callbackUrl: '/' })}
             >
-              Sign Out
+              {t('signout')}
             </button>
           ) : (
             <button
@@ -47,7 +70,7 @@ export function UserNavInfo() {
               className="text-primary hover:underline"
               onClick={() => signIn('Log in', { callbackUrl: '/dashboard' })}
             >
-              Sign In
+              {t('login')}
             </button>
           )}
           <Arrow className="fill-gray-lighten" />

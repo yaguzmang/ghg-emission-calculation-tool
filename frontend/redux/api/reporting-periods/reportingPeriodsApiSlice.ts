@@ -21,6 +21,13 @@ export type ReportingPeriodsApiResponse = {
   };
 };
 
+export type CreateReportingPeriodData = {
+  organization: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+};
+
 export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getReportingPeriodsByOrganization: builder.query<ReportingPeriod[], number>(
@@ -45,8 +52,21 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
             : [{ type: 'ReportingPeriod', id: 'LIST' }],
       }
     ),
+    createReportingPeriod: builder.mutation<
+      ReportingPeriodsApiResponse,
+      CreateReportingPeriodData
+    >({
+      query: (reportingPeriodAttributes) => ({
+        url: '/reporting-periods',
+        method: 'POST',
+        body: { data: { ...reportingPeriodAttributes } },
+      }),
+      invalidatesTags: [{ type: 'ReportingPeriod', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetReportingPeriodsByOrganizationQuery } =
-  reportingPeriodsApiSlice;
+export const {
+  useGetReportingPeriodsByOrganizationQuery,
+  useCreateReportingPeriodMutation,
+} = reportingPeriodsApiSlice;
