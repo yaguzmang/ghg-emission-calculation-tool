@@ -12,7 +12,7 @@ export default function Dashboard() {
   const selectedLocale = useSelectedLocale();
 
   const generalSettings = useGetGeneralSettingsByLocaleQuery(
-    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string)
+    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
   );
 
   const appName = generalSettings?.currentData?.data?.attributes?.appName;

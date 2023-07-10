@@ -3,7 +3,7 @@ import { OrganizationAndReportingPeriodSection } from '../stateType';
 import { useAppSelector } from '@/redux/store';
 
 export const useSelectedOrganizationId = (
-  section: OrganizationAndReportingPeriodSection
+  section: OrganizationAndReportingPeriodSection,
 ): number | undefined =>
   useAppSelector((state) => {
     switch (section) {
@@ -17,7 +17,7 @@ export const useSelectedOrganizationId = (
   });
 
 export const useSelectedReportingPeriodId = (
-  section: OrganizationAndReportingPeriodSection
+  section: OrganizationAndReportingPeriodSection,
 ): number | undefined =>
   useAppSelector((state) => {
     switch (section) {

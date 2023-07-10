@@ -50,7 +50,7 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
                 { type: 'ReportingPeriod', id: 'LIST' },
               ]
             : [{ type: 'ReportingPeriod', id: 'LIST' }],
-      }
+      },
     ),
     createReportingPeriod: builder.mutation<
       ReportingPeriodsApiResponse,

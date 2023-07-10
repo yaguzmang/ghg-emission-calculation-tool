@@ -22,7 +22,7 @@ export default NextAuth({
               identifier: 'user1@example.com',
               password: 'user1pw',
             }),
-          }
+          },
         );
         const user = await res.json();
         if (user) {

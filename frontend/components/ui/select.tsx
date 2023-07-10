@@ -23,7 +23,7 @@ const SelectTrigger = React.forwardRef<
     className={cn(
       'flex h-10 w-full items-center justify-between rounded-xs border border-input bg-transparent px-3 py-2 text-base font-bold text-foreground ring-offset-background [&[data-state=open]>div>svg]:rotate-180',
       'hover:border-input-hover focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:bg-background disabled:text-primary-disabled-foreground',
-      className
+      className,
     )}
     {...props}
   >
@@ -50,7 +50,7 @@ const SelectContent = React.forwardRef<
       className={cn(
         'relative z-50 min-w-[8rem] overflow-hidden rounded-xs border-none bg-select-content-popover text-text-regular shadow-light animate-in fade-in-80',
         position === 'popper' && 'translate-y-1',
-        className
+        className,
       )}
       position={position}
       {...props}
@@ -59,7 +59,7 @@ const SelectContent = React.forwardRef<
         className={cn(
           'p-0', // hover internal padding
           position === 'popper' &&
-            'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]'
+            'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
         )}
       >
         {children}
@@ -77,7 +77,7 @@ const SelectLabel = React.forwardRef<
     ref={ref}
     className={cn(
       'py-1.5 pl-8 pr-2 text-base font-semibold text-primary-disabled-foreground',
-      className
+      className,
     )}
     {...props}
   />
@@ -92,7 +92,7 @@ const SelectItem = React.forwardRef<
     ref={ref}
     className={cn(
       'relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pl-8 pr-2 text-base font-normal text-text-regular outline-none focus:bg-select-item-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      className
+      className,
     )}
     {...props}
   >

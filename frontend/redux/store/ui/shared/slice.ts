@@ -27,7 +27,7 @@ export const sharedUISlice = createSlice({
       action: PayloadAction<{
         selectedOrganizationId: number;
         section: OrganizationAndReportingPeriodSection;
-      }>
+      }>,
     ) => {
       const { selectedOrganizationId, section } = action.payload;
       switch (section) {
@@ -45,7 +45,7 @@ export const sharedUISlice = createSlice({
       action: PayloadAction<{
         selectedReportingPeriodId: number | undefined;
         section: OrganizationAndReportingPeriodSection;
-      }>
+      }>,
     ) => {
       const { selectedReportingPeriodId, section } = action.payload;
       switch (section) {
@@ -62,7 +62,7 @@ export const sharedUISlice = createSlice({
       state: Draft<SharedUIState>,
       action: PayloadAction<{
         locale: string;
-      }>
+      }>,
     ) => {
       const { locale } = action.payload;
       state.selectedLocale = locale;
@@ -90,7 +90,7 @@ export const sharedUISlice = createSlice({
             const { locale } = payload;
             state.selectedLocale = locale;
           }
-        }
+        },
       )
       .addMatcher(
         reportingPeriodsApiSlice.endpoints.getReportingPeriodsByOrganization
@@ -108,7 +108,7 @@ export const sharedUISlice = createSlice({
               state.selectedResultsReportingPeriodId = reportingPeriods[0].id;
             }
           }
-        }
+        },
       );
   },
 });

@@ -45,7 +45,7 @@ export function OrganizationPeriodForm({
 
   const reportingPeriods = useGetReportingPeriodsByOrganizationQuery(
     selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
+    { skip: selectedOrganizationId === undefined },
   );
 
   const reportingPeriodOptions =
@@ -62,13 +62,13 @@ export function OrganizationPeriodForm({
       SharedUIActions.setSelectedOrganizationId({
         selectedOrganizationId,
         section,
-      })
+      }),
     );
     dispatch(
       SharedUIActions.setSelectedReportingPeriodId({
         selectedReportingPeriodId: undefined,
         section,
-      })
+      }),
     );
   };
 
@@ -78,7 +78,7 @@ export function OrganizationPeriodForm({
       SharedUIActions.setSelectedReportingPeriodId({
         selectedReportingPeriodId,
         section,
-      })
+      }),
     );
   };
 

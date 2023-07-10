@@ -17,7 +17,7 @@ export function FormTabContent() {
     isLoading: isEmissionCategoriesLoading,
     isFetching: isEmissionCategoriesFetching,
   } = useGetDashboardEmissionCategoriesByLocaleQuery(
-    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string)
+    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
   );
 
   return (

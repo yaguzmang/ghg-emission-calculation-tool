@@ -1,6 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { useParams, useRouter } from 'next/navigation';
 
 import { FormTabContent } from './form/form-content';
 
@@ -10,9 +13,27 @@ import { cn } from '@/lib/utils';
 
 export function DashboardTabs() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const params = useParams();
+  const [selectedTab, setSelectedTab] = useState('form');
+
+  useEffect(() => {
+    const hash =
+      window.location.hash.length > 0 ? window.location.hash.slice(1) : 'form';
+    setSelectedTab(hash);
+  }, [params]);
+
+  const handleTabChange = (tabName: string) => {
+    router.push(`#${tabName}`, { scroll: false });
+  };
+
   return (
     <div className="mt-6">
-      <Tabs defaultValue="xxxx" className="relative mr-auto w-full">
+      <Tabs
+        value={selectedTab}
+        className="relative mr-auto w-full"
+        onValueChange={handleTabChange}
+      >
         <div className="flex items-center justify-between">
           <TabsList className="w-full justify-start rounded-none bg-transparent p-0">
             <TabsTrigger

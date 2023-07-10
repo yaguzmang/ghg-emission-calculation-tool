@@ -3,7 +3,6 @@
     "next/core-web-vitals",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "env": {

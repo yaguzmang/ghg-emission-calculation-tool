@@ -44,7 +44,7 @@ const ReportingPeriodSchema: z.ZodType<CreateReportingPeriodData> = z
     {
       message: 'End date must be greater than start date.',
       path: ['endDate'],
-    }
+    },
   );
 
 interface CreateReportingPeriodFormProps {
@@ -73,7 +73,7 @@ export function CreateReportingPeriodForm({
         SharedUIActions.setSelectedReportingPeriodId({
           selectedReportingPeriodId: result.data.data.id,
           section,
-        })
+        }),
       );
       setFormVisible(false);
     }

@@ -3,7 +3,7 @@ import { EmissionScope } from '@/types/emission-scope';
 
 export function calculateTotalEmissionsOfEmissionCategory(
   emissionCategory: EmissionCategoryFlattenWithEmissions,
-  includeBiogenic = false
+  includeBiogenic = false,
 ) {
   if (emissionCategory) {
     const { emissions } = emissionCategory;
@@ -22,14 +22,14 @@ export function calculateTotalEmissionsOfEmissionCategory(
 
 export function calculateTotalEmissions(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
-  includeBiogenic = false
+  includeBiogenic = false,
 ): number {
   let totalEmissions = 0;
 
   emissionCategories.forEach((emissionCategory) => {
     totalEmissions += calculateTotalEmissionsOfEmissionCategory(
       emissionCategory,
-      includeBiogenic
+      includeBiogenic,
     );
   });
 
@@ -37,7 +37,7 @@ export function calculateTotalEmissions(
 }
 
 export function calculateTotalActivityEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalActivityEmissions = 0;
 
@@ -52,7 +52,7 @@ export function calculateTotalActivityEmissions(
 }
 
 export function calculateTotalUpstreamEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalUpstreamEmissions = 0;
 
@@ -67,7 +67,7 @@ export function calculateTotalUpstreamEmissions(
 }
 
 export function calculateTotalBiogenicEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalBiogenicEmissions = 0;
 
@@ -82,7 +82,7 @@ export function calculateTotalBiogenicEmissions(
 }
 
 export function calculateTotalDirectEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
     .filter((category) => category.primaryScope === EmissionScope.direct)
@@ -90,7 +90,7 @@ export function calculateTotalDirectEmissions(
 }
 
 export function calculateTotalIndirectEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
     .filter((category) => category.primaryScope === EmissionScope.indirect)
@@ -98,7 +98,7 @@ export function calculateTotalIndirectEmissions(
 }
 
 export function calculateTotalValueChainEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories.reduce((total, category) => {
     let categoryTotal = total + category.emissions.indirect;

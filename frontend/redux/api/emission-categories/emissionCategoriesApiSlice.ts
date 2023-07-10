@@ -28,12 +28,12 @@ export const emissionCategoriesApiSlice = apiSlice.injectEndpoints({
       query: ({ locale, reportingPeriod }) =>
         `/emission-categories/with-emissions?locale=${locale}&reportingPeriod=${reportingPeriod}`,
       transformResponse: (
-        responseData: EmissionCategoriesWithEmissionsApiResponse
+        responseData: EmissionCategoriesWithEmissionsApiResponse,
       ) => {
         const transformedData = responseData.data;
         emissionCategoriesWithEmissionsAdapter.setAll(
           emissionCategoriesWithEmissionsInitialState,
-          transformedData
+          transformedData,
         );
         return transformedData;
       },

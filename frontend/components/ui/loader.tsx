@@ -35,38 +35,38 @@ const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
           'fixed left-0 top-0 z-[1030] h-screen w-screen justify-center bg-overlay/[.66]':
             fullScreen,
         },
-        className
+        className,
       )}
     >
       <div className={cn('relative', loaderVariants({ size }))}>
         <div
           className={cn(
             'absolute h-[calc(50%_-_2px)] w-[calc(50%_-_2px)] origin-[50%_50%] animate-loader-box',
-            'left-0 top-0 bg-loader-dark animation-delay-[-400ms]'
+            'left-0 top-0 bg-loader-dark animation-delay-[-400ms]',
           )}
         />
         <div
           className={cn(
             'absolute h-[calc(50%_-_2px)] w-[calc(50%_-_2px)] origin-[50%_50%] animate-loader-box',
-            'right-0 top-0 bg-loader-light animation-delay-[-1800ms]'
+            'right-0 top-0 bg-loader-light animation-delay-[-1800ms]',
           )}
         />
         <div
           className={cn(
             'absolute h-[calc(50%_-_2px)] w-[calc(50%_-_2px)] origin-[50%_50%] animate-loader-box',
-            'bottom-0 left-0 bg-loader-light animation-delay-[-2000ms]'
+            'bottom-0 left-0 bg-loader-light animation-delay-[-2000ms]',
           )}
         />
         <div
           className={cn(
             'absolute h-[calc(50%_-_2px)] w-[calc(50%_-_2px)] origin-[50%_50%] animate-loader-box',
-            'bottom-0 right-0 bg-loader-dark animation-delay-[-1000ms]'
+            'bottom-0 right-0 bg-loader-dark animation-delay-[-1000ms]',
           )}
         />
       </div>
       <div className="" />
     </div>
-  )
+  ),
 );
 
 Loader.displayName = 'Loader';

@@ -30,13 +30,13 @@ export const dashboardSettingsApiSlice = apiSlice.injectEndpoints({
       query: (locale) =>
         `/settings-dashboard?locale=${locale}&populate=emissionCategories`,
       transformResponse: (
-        responseData: DashboardEmissionCategoriesApiResponse
+        responseData: DashboardEmissionCategoriesApiResponse,
       ) => {
         const transformedData =
           responseData.data.attributes.emissionCategories.data;
         dashboardEmissionCategoriesAdapter.setAll(
           initialState,
-          transformedData
+          transformedData,
         );
         return transformedData;
       },

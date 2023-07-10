@@ -59,11 +59,11 @@ export default function Dashboard() {
   const dashboardEmissionCategories =
     useGetDashboardEmissionCategoriesByLocaleQuery(
       selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
-      { skip: selectedLocale === undefined }
+      { skip: selectedLocale === undefined },
     );
   const generalSettings = useGetGeneralSettingsByLocaleQuery(
     selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
-    { skip: selectedLocale === undefined }
+    { skip: selectedLocale === undefined },
   );
   const userOrgs = userData.currentData?.organizations ?? [];
   const [triggerGetUserOrganizations, { data: userOrganizationsFetched }] =
@@ -76,17 +76,17 @@ export default function Dashboard() {
 
   const reportingPeriods = useGetReportingPeriodsByOrganizationQuery(
     selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
+    { skip: selectedOrganizationId === undefined },
   );
 
   const organizationUnits = useGetOrganizationUnitsByOrganizationQuery(
     selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
+    { skip: selectedOrganizationId === undefined },
   );
 
   const emissionFactorDataset = useGetEmissionFactorDatasetByOrganizationQuery(
     selectedOrganizationId ?? 0,
-    { skip: selectedOrganizationId === undefined }
+    { skip: selectedOrganizationId === undefined },
   );
 
   const locale = useSelectedLocale();
@@ -94,7 +94,7 @@ export default function Dashboard() {
   const emissionCategoriesWithEmissions =
     useGetEmissionCategoriesWithEmissionsQuery(
       { locale: locale ?? '', reportingPeriod: selectedReportingPeriodId ?? 0 },
-      { skip: locale === undefined || selectedReportingPeriodId === undefined }
+      { skip: locale === undefined || selectedReportingPeriodId === undefined },
     );
 
   const handleOrganizationChange = (selectedValue: string) => {
@@ -103,7 +103,7 @@ export default function Dashboard() {
       SharedUIActions.setSelectedOrganizationId({
         selectedOrganizationId,
         section: 'form',
-      })
+      }),
     );
   };
 
@@ -119,7 +119,7 @@ export default function Dashboard() {
               {JSON.stringify(
                 emissionCategoriesWithEmissions.currentData,
                 null,
-                2
+                2,
               )}
             </pre>
           </div>

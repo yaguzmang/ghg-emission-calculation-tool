@@ -32,20 +32,20 @@ export function EmissionsSummary() {
     {
       skip:
         selectedLocale === undefined || selectedReportingPeriodId === undefined,
-    }
+    },
   );
 
   const totalEmissions = calculateTotalEmissions(
-    emissionCategoriesWithEmissions ?? []
+    emissionCategoriesWithEmissions ?? [],
   );
   const totalDirectEmissions = calculateTotalDirectEmissions(
-    emissionCategoriesWithEmissions ?? []
+    emissionCategoriesWithEmissions ?? [],
   );
   const totalIndirectEmissions = calculateTotalIndirectEmissions(
-    emissionCategoriesWithEmissions ?? []
+    emissionCategoriesWithEmissions ?? [],
   );
   const totalBiogenicEmissions = calculateTotalValueChainEmissions(
-    emissionCategoriesWithEmissions ?? []
+    emissionCategoriesWithEmissions ?? [],
   );
 
   let errorMessage = null;
@@ -70,7 +70,7 @@ export function EmissionsSummary() {
           'flex flex-row flex-wrap gap-4 gap-y-8 rounded-[2px] bg-primary p-4 text-primary-foreground drop-shadow-[1px_2px_5px_rgba(0,0,0,0.1)]',
           {
             'mt-8': !isError,
-          }
+          },
         )}
       >
         <EmissionsSummarySection
