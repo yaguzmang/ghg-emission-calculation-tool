@@ -29,6 +29,11 @@
     ],
     "react/forbid-prop-types": 0,
     "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/no-unknown-property": [
+      "error",
+      { "ignore": ["cmdk-input-wrapper"] }
+    ],
     "import/prefer-default-export": 0,
     "import/extensions": [
       "error",
