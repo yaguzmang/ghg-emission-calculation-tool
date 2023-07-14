@@ -4,27 +4,39 @@ import { Input } from '../ui/input';
 
 export interface FormInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string | null;
   label?: string | null;
+  secondaryLabel?: string | null;
+  error?: boolean;
+  errorMessage?: string | null;
 }
 
 const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
-  ({ className, type, errorMessage, label, ...props }, ref) => {
-    const hasError =
+  (
+    { className, type, error, errorMessage, label, secondaryLabel, ...props },
+    ref,
+  ) => {
+    const hasErrorMessage =
       errorMessage !== undefined &&
       errorMessage !== null &&
       errorMessage.length > 0;
     return (
       <>
-        {label && <span className="text-sm">{label}</span>}
+        <div className="overflow-auto m-0">
+          {label !== null && (
+            <span className="text-sm float-left">{label}</span>
+          )}
+          {secondaryLabel !== null && (
+            <span className="text-sm float-right">{secondaryLabel}</span>
+          )}
+        </div>
         <Input
           className={className}
-          error={hasError}
+          error={hasErrorMessage || error}
           type={type}
           ref={ref}
           {...props}
         />
-        {hasError && (
+        {hasErrorMessage && (
           <span className="text-sm text-destructive">{errorMessage}</span>
         )}
       </>
@@ -35,8 +47,10 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
 FormInput.displayName = 'Input';
 
 FormInput.defaultProps = {
-  errorMessage: null,
   label: null,
+  secondaryLabel: null,
+  errorMessage: null,
+  error: false,
 };
 
 export default FormInput;

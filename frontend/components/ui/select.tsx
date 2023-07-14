@@ -16,28 +16,36 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      'flex h-10 w-full items-center justify-between rounded-xs border border-input bg-transparent px-3 py-2 text-base font-bold text-foreground ring-offset-background [&[data-state=open]>div>svg]:rotate-180',
-      'hover:border-input-hover focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:bg-background disabled:text-primary-disabled-foreground',
-      className,
-    )}
-    {...props}
-  >
-    <span className="overflow-hidden text-ellipsis whitespace-nowrap">
-      {children}
-    </span>
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+    error?: boolean;
+  }
+>(({ className, children, error = false, ...props }, ref) => {
+  const errorClass =
+    'text-destructive-foreground border-destructive-foreground focus:border-destructive-foreground hover:border-input-hover';
 
-    <SelectPrimitive.Icon asChild>
-      <div className="ml-2">
-        <ChevronDown className="h-4 w-4 transition-transform duration-200" />
-      </div>
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
-));
+  return (
+    <SelectPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        'flex h-10 w-full items-center justify-between rounded-xs border border-input bg-transparent px-3 py-2 text-base font-bold text-foreground ring-offset-background [&[data-state=open]>div>svg]:rotate-180',
+        'hover:border-input-hover focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:bg-background disabled:text-primary-disabled-foreground',
+        { [errorClass]: error },
+        className,
+      )}
+      {...props}
+    >
+      <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+        {children}
+      </span>
+
+      <SelectPrimitive.Icon asChild>
+        <div className="ml-2">
+          <ChevronDown className="h-4 w-4 transition-transform duration-200" />
+        </div>
+      </SelectPrimitive.Icon>
+    </SelectPrimitive.Trigger>
+  );
+});
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
