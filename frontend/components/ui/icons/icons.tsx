@@ -2,6 +2,7 @@ import Check from './check.svg';
 import ChevronDown from './chevron-down.svg';
 import DirectEmissions from './DirectEmissions.svg';
 import Edit from './edit.svg';
+import EmissionEntry from './emissionEntry.svg';
 import HelpCircleFilled from './help-circle-filled.svg';
 import IndirectEmissions from './IndirectEmissions.svg';
 import NotchDown from './notch-down.svg';
@@ -32,6 +33,7 @@ export const Icons = {
   Edit,
   Undo,
   Union,
+  EmissionEntry,
 };
 
 export const EmissionIconsByScope = {
