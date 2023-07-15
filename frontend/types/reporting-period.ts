@@ -1,3 +1,5 @@
+import { EmissionEntryWithOrganizationUnitAndEmissionSource } from './emission-entry';
+
 export type ReportingPeriod = {
   id: number;
   attributes: {
@@ -5,5 +7,13 @@ export type ReportingPeriod = {
     endDate: string;
     createdAt: string;
     updatedAt: string;
+  };
+};
+
+export type ReportingPeriodWithEmissionEntries = ReportingPeriod & {
+  attributes: {
+    emissionEntries: {
+      data: EmissionEntryWithOrganizationUnitAndEmissionSource[];
+    };
   };
 };

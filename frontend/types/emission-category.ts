@@ -8,10 +8,11 @@ export type EmissionCategory = {
     title: string;
     description: string;
     primaryScope: number;
-    emissionSourceLabel: string;
+    emissionSourceLabel: string | null;
     createdAt: string;
     updatedAt: string;
     locale: string;
+    color: string | null;
   };
 };
 
@@ -24,6 +25,7 @@ export type EmissionCategoryFlattenWithEmissions = {
   createdAt: string;
   updatedAt: string;
   locale: string;
+  color: string | null;
   emissionSources: EmissionSourceFlatten[];
   emissions: EmissionData;
 };

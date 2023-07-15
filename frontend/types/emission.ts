@@ -3,3 +3,5 @@ export type EmissionData = {
   indirect: number;
   biogenic: number;
 };
+
+export type EmissionType = 'direct' | 'indirect' | 'biogenic';
