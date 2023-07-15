@@ -15,6 +15,7 @@
     --foreground: 250 38% 27%; /* #342B60 */
 
     --text-regular: 233, 15%, 33%; /* #484B62 */
+    --text-regular-lighten: 232, 9%, 47%; /* #6E7184 */
 
     --popover: 0 0% 100%; /* #fff */
     --popover-foreground: 250 38% 27%; /* #342B60 */

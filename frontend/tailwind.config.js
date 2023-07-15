@@ -33,6 +33,7 @@ module.exports = {
           dark: 'hsl(var(--loader-dark))',
         },
         'text-regular': 'hsl(var(--text-regular))',
+        'text-regular-lighten': 'hsl(var(--text-regular-lighten))',
         'select-item-hover': 'hsl(var(--select-item-hover))',
         'select-content-popover': 'hsl(var(--select-content-popover))',
         input: {
