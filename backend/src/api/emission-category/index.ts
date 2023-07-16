@@ -1,5 +1,5 @@
 import { LocalizedApiServiceEntry } from "../api.types";
-import { Emissions } from "../emission-entry";
+import { Emissions, EmissionsAndAccuracies } from "../emission-entry";
 import { EmissionSource } from "../emission-source";
 
 export interface EmissionCategory extends LocalizedApiServiceEntry {
@@ -10,6 +10,6 @@ export interface EmissionCategory extends LocalizedApiServiceEntry {
   primaryScope: number;
   emissionSourceLabel?: string;
   localizations?: EmissionCategory[];
-  emissions?: Emissions | number;
+  emissions?: Emissions | EmissionsAndAccuracies | number;
   color?: string;
 }
