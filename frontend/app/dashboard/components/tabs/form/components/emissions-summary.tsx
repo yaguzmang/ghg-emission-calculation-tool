@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { EmissionsSummarySection } from './emissions-summary-section';
 
 import {
-  calculateTotalDirectEmissions,
-  calculateTotalEmissions,
-  calculateTotalIndirectEmissions,
-  calculateTotalValueChainEmissions,
+  calculateTotalDirectEmissionsFromEmissionCategories,
+  calculateTotalEmissionsFromEmissionCategories,
+  calculateTotalIndirectEmissionsFromEmissionCategories,
+  calculateTotalValueChainEmissionsFromEmissionCategories,
 } from '@/lib/statistics/utils';
 import { cn } from '@/lib/utils';
 import { useGetEmissionCategoriesWithEmissionsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
@@ -27,7 +27,7 @@ export function EmissionsSummary() {
   } = useGetEmissionCategoriesWithEmissionsQuery(
     {
       locale: selectedLocale ?? '',
-      reportingPeriod: selectedReportingPeriodId ?? 0,
+      reportingPeriodId: selectedReportingPeriodId ?? 0,
     },
     {
       skip:
@@ -35,18 +35,21 @@ export function EmissionsSummary() {
     },
   );
 
-  const totalEmissions = calculateTotalEmissions(
+  const totalEmissions = calculateTotalEmissionsFromEmissionCategories(
     emissionCategoriesWithEmissions ?? [],
   );
-  const totalDirectEmissions = calculateTotalDirectEmissions(
-    emissionCategoriesWithEmissions ?? [],
-  );
-  const totalIndirectEmissions = calculateTotalIndirectEmissions(
-    emissionCategoriesWithEmissions ?? [],
-  );
-  const totalBiogenicEmissions = calculateTotalValueChainEmissions(
-    emissionCategoriesWithEmissions ?? [],
-  );
+  const totalDirectEmissions =
+    calculateTotalDirectEmissionsFromEmissionCategories(
+      emissionCategoriesWithEmissions ?? [],
+    );
+  const totalIndirectEmissions =
+    calculateTotalIndirectEmissionsFromEmissionCategories(
+      emissionCategoriesWithEmissions ?? [],
+    );
+  const totalBiogenicEmissions =
+    calculateTotalValueChainEmissionsFromEmissionCategories(
+      emissionCategoriesWithEmissions ?? [],
+    );
 
   let errorMessage = null;
   // TODO: Turn this logic into a component or lib to get error messages

@@ -1,5 +1,7 @@
 import { EmissionCategoryFlattenWithEmissions } from '@/types/emission-category';
+import { EmissionEntryWithOrganizationUnitAndEmissionSource } from '@/types/emission-entry';
 import { EmissionScope } from '@/types/emission-scope';
+import { EmissionSourceFlattenWithFactors } from '@/types/emission-source';
 
 export function calculateTotalEmissionsOfEmissionCategory(
   emissionCategory: EmissionCategoryFlattenWithEmissions,
@@ -20,7 +22,7 @@ export function calculateTotalEmissionsOfEmissionCategory(
   return 0;
 }
 
-export function calculateTotalEmissions(
+export function calculateTotalEmissionsFromEmissionCategories(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
   includeBiogenic = false,
 ): number {
@@ -81,7 +83,7 @@ export function calculateTotalBiogenicEmissions(
   return totalBiogenicEmissions;
 }
 
-export function calculateTotalDirectEmissions(
+export function calculateTotalDirectEmissionsFromEmissionCategories(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
@@ -89,7 +91,7 @@ export function calculateTotalDirectEmissions(
     .reduce((total, category) => total + category.emissions.direct, 0);
 }
 
-export function calculateTotalIndirectEmissions(
+export function calculateTotalIndirectEmissionsFromEmissionCategories(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
@@ -97,7 +99,7 @@ export function calculateTotalIndirectEmissions(
     .reduce((total, category) => total + category.emissions.indirect, 0);
 }
 
-export function calculateTotalValueChainEmissions(
+export function calculateTotalValueChainEmissionsFromEmissionCategories(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories.reduce((total, category) => {
@@ -105,6 +107,98 @@ export function calculateTotalValueChainEmissions(
     if (category.primaryScope === EmissionScope.valueChain) {
       categoryTotal += category.emissions.direct;
     }
+    return categoryTotal;
+  }, 0);
+}
+
+export function calculateEmissionEntryTotalGHGEmissions(
+  emissionEntryWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource,
+  emissionSource: EmissionSourceFlattenWithFactors,
+): number {
+  const emissionQuantity = emissionEntryWithEmissionSource.attributes.quantity;
+  const { customEmissionFactorDirect, customEmissionFactorIndirect } =
+    emissionEntryWithEmissionSource.attributes;
+
+  const { indirect: emissionFactorIndirect, direct: emissionFactorDirect } =
+    emissionSource?.factors ?? {};
+
+  let total = 0;
+
+  if (typeof customEmissionFactorDirect?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorDirect.value;
+  } else if (typeof emissionFactorDirect?.value === 'number') {
+    total += emissionQuantity * emissionFactorDirect.value;
+  }
+
+  if (typeof customEmissionFactorIndirect?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorIndirect.value;
+  } else if (typeof emissionFactorIndirect?.value === 'number') {
+    total += emissionQuantity * emissionFactorIndirect.value;
+  }
+
+  return total;
+}
+
+export function calculateCategoryTotalGHGEmissions(
+  emissionEntriesWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource[],
+  emissionSourcesWithFactors: EmissionSourceFlattenWithFactors[],
+): number {
+  return emissionEntriesWithEmissionSource.reduce((total, emissionEntry) => {
+    const emissionEntrySourceId =
+      emissionEntry.attributes.emissionSource.data.id;
+    const emissionSource = emissionSourcesWithFactors.find(
+      (emissionSource) => emissionSource.id === emissionEntrySourceId,
+    );
+
+    if (!emissionSource) return total;
+
+    const categoryTotal =
+      total +
+      calculateEmissionEntryTotalGHGEmissions(emissionEntry, emissionSource);
+    return categoryTotal;
+  }, 0);
+}
+
+export function calculateEmissionEntryTotalBiogenicEmissions(
+  emissionEntryWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource,
+  emissionSource: EmissionSourceFlattenWithFactors,
+): number {
+  const emissionQuantity = emissionEntryWithEmissionSource.attributes.quantity;
+  const { customEmissionFactorBiogenic } =
+    emissionEntryWithEmissionSource.attributes;
+
+  const { biogenic: emissionFactorBiogenic } = emissionSource?.factors ?? {};
+
+  let total = 0;
+
+  if (typeof customEmissionFactorBiogenic?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorBiogenic.value;
+  } else if (typeof emissionFactorBiogenic?.value === 'number') {
+    total += emissionQuantity * emissionFactorBiogenic.value;
+  }
+
+  return total;
+}
+
+export function calculateCategoryTotalBiogenicEmissions(
+  emissionEntriesWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource[],
+  emissionSourcesWithFactors: EmissionSourceFlattenWithFactors[],
+): number {
+  return emissionEntriesWithEmissionSource.reduce((total, emissionEntry) => {
+    const emissionEntrySourceId =
+      emissionEntry.attributes.emissionSource.data.id;
+    const emissionSource = emissionSourcesWithFactors.find(
+      (emissionSource) => emissionSource.id === emissionEntrySourceId,
+    );
+
+    if (!emissionSource) return total;
+
+    const categoryTotal =
+      total +
+      calculateEmissionEntryTotalBiogenicEmissions(
+        emissionEntry,
+        emissionSource,
+      );
     return categoryTotal;
   }, 0);
 }
