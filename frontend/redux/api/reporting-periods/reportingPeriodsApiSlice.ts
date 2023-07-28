@@ -58,7 +58,8 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
     ),
     getReportingPeriod: builder.query<ReportingPeriod, number>({
       query: (reportingPeriodId) => `/reporting-periods/${reportingPeriodId}`,
-      transformResponse: (responseData: ReportingPeriodApiResponse) => responseData.data,
+      transformResponse: (responseData: ReportingPeriodApiResponse) =>
+        responseData.data,
       providesTags: (result, _error, _arg) =>
         result
           ? [{ type: 'ReportingPeriod', id: result.id }]

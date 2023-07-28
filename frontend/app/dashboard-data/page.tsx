@@ -93,7 +93,10 @@ export default function Dashboard() {
   const selectedReportingPeriodId = useSelectedReportingPeriodId('form');
   const emissionCategoriesWithEmissions =
     useGetEmissionCategoriesWithEmissionsQuery(
-      { locale: locale ?? '', reportingPeriod: selectedReportingPeriodId ?? 0 },
+      {
+        locale: locale ?? '',
+        reportingPeriodId: selectedReportingPeriodId ?? -1,
+      },
       { skip: locale === undefined || selectedReportingPeriodId === undefined },
     );
 

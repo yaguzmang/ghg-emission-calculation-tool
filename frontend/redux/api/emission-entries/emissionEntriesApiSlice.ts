@@ -61,7 +61,7 @@ export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
       number
     >({
       query: (reportingPeriodId) =>
-        `/reporting-periods/${reportingPeriodId}?populate[emissionEntries][populate][0]&populate[emissionEntries][populate][organizationUnit]=organizaionUnit&populate[emissionEntries][populate][customEmissionFactorDirect]=customEmissionFactorDirect&populate[emissionEntries][populate][customEmissionFactorIndirect]=customEmissionFactorIndirect&populate[emissionEntries][populate][customEmissionFactorBiogenic]=customEmissionFactorBiogenic&populate[emissionEntries][populate][emissionSource][populate][0]=emissionCategory`,
+        `/reporting-periods/${reportingPeriodId}?populate[emissionEntries][populate][0]&populate[emissionEntries][populate][organizationUnit]=organizationUnit&populate[emissionEntries][populate][customEmissionFactorDirect]=customEmissionFactorDirect&populate[emissionEntries][populate][customEmissionFactorIndirect]=customEmissionFactorIndirect&populate[emissionEntries][populate][customEmissionFactorBiogenic]=customEmissionFactorBiogenic&populate[emissionEntries][populate][emissionSource][populate][0]=emissionCategory`,
       transformResponse: (
         responseData: ReportingPeriodWithEmissionEntriesApiResponse,
       ) => {
@@ -93,6 +93,7 @@ export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [
         { type: 'EmissionEntry', id: 'LIST' },
         { type: 'EmissionCategoryWithEmissions', id: 'LIST' },
+        { type: 'EmissionsResults' },
       ],
     }),
     updateEmissionEntry: builder.mutation<
@@ -110,6 +111,7 @@ export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [
         { type: 'EmissionEntry', id: 'LIST' },
         { type: 'EmissionCategoryWithEmissions', id: 'LIST' },
+        { type: 'EmissionsResults' },
       ],
     }),
   }),
