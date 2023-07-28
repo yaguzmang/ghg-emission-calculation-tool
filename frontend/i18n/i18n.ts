@@ -38,7 +38,7 @@ i18next
     nsSeparator: false,
     keySeparator: false,
     lng: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
-    debug: true,
+    debug: false,
   });
 
 export default i18next;
