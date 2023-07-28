@@ -16,6 +16,17 @@ export type EmissionCategory = {
   };
 };
 
+export type EmissionCategoryWithLocalizations = Omit<
+  EmissionCategory,
+  'attributes'
+> & {
+  attributes: EmissionCategory['attributes'] & {
+    localizations: {
+      data: EmissionCategory[];
+    };
+  };
+};
+
 export type EmissionCategoryFlattenWithEmissions = {
   id: number;
   title: string;

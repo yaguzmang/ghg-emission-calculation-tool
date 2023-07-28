@@ -5,6 +5,7 @@ export type ReportingPeriod = {
   attributes: {
     startDate: string;
     endDate: string;
+    name: string;
     createdAt: string;
     updatedAt: string;
   };
