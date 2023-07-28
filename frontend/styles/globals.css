@@ -4,9 +4,12 @@
 
 @layer base {
   :root {
-    --taltech-green: 106 46% 50%; /*  #62BB46 */
+    --green: 106 46% 50%; /*  #62BB46 */
     --gray-lighten: 230 18% 93%; /* #EBECF1 */
     --overlay: 240 12% 97%; /* #F6F6F8 */
+
+    --tooltip: 232, 9%, 47%; /* #6E7184 */
+    --tooltip-foreground: 0 0% 100%; /* #fff */
 
     --loader-light: 240 16% 87%; /* #DADAE4 */
     --loader-dark: 234 16% 63%; /* #9396B0 */

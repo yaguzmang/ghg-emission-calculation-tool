@@ -25,7 +25,7 @@ module.exports = {
     extend: {
       colors: {
         border: 'hsl(var(--border))',
-        'taltech-green': 'hsl(var(--taltech-green))',
+        green: 'hsl(var(--green))',
         'gray-lighten': 'hsl(var(--gray-lighten))',
         overlay: 'hsl(var(--overlay))',
         loader: {
@@ -114,6 +114,10 @@ module.exports = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+        },
+        tooltip: {
+          DEFAULT: 'hsl(var(--tooltip))',
+          foreground: 'hsl(var(--tooltip-foreground))',
         },
       },
       boxShadow: {
