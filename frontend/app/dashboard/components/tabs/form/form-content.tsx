@@ -2,10 +2,10 @@
 
 import { nanoid } from 'nanoid';
 
-import { OrganizationPeriodForm } from '../../organization-period-form/organization-period-form';
 import { EmissionCategoryCard } from './components/emission-category-card';
 
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
+import { OrganizationPeriodForm } from '@/components/organization-period-form/organization-period-form';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetDashboardEmissionCategoriesByLocaleQuery } from '@/redux/api/settings/dashboardSettingsApiSlice';
 import {
