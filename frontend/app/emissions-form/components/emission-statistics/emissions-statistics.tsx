@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import AllCategoryEmissionsSummary from './all-category-emissions-summary';
-import EmissionsByScopeTable from './emissions-by-scope-table';
-
+import AllCategoryEmissionsSummary from '@/components/emission-results/all-category-emissions-summary';
+import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetReportingPeriodQuery } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
 
@@ -22,31 +21,31 @@ export default function EmissionsFormStatistics({
 
   return (
     <div className="flex flex-col py-6 px-12 w-full h-full">
-        <span className="text-lg text-text-regular">
-          {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
-            ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`
-            : reportingPeriod.isFetching && (
-                <Skeleton className="inline-block h-full w-64" />
-              )}
-          {reportingPeriod.isError && (
-            <h4 className="text-destructive">
-              {t('api.error.reportingPeriodGeneric')}
-            </h4>
-          )}
-        </span>
+      <span className="text-lg text-text-regular">
+        {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
+          ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`
+          : reportingPeriod.isFetching && (
+              <Skeleton className="inline-block h-full w-64" />
+            )}
+        {reportingPeriod.isError && (
+          <h4 className="text-destructive">
+            {t('api.error.reportingPeriodGeneric')}
+          </h4>
+        )}
+      </span>
 
-        <AllCategoryEmissionsSummary
-          emissionCategoryId={emissionCategoryId}
+      <AllCategoryEmissionsSummary
+        emissionCategoryId={emissionCategoryId}
+        reportingPeriodId={reportingPeriodId}
+        locale={locale}
+      />
+
+      <div className="w-full mt-16">
+        <EmissionsByScopeTable
           reportingPeriodId={reportingPeriodId}
           locale={locale}
         />
-
-        <div className="w-full mt-16">
-          <EmissionsByScopeTable
-            reportingPeriodId={reportingPeriodId}
-            locale={locale}
-          />
-        </div>
       </div>
+    </div>
   );
 }

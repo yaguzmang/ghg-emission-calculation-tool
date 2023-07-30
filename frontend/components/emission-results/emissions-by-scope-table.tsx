@@ -126,39 +126,39 @@ export default function EmissionsByScopeTable({
               </tr>
 
               {emissionsData.map((category) => (
-                  <tr className="text-text-regular" key={category.title}>
-                    <td className="text-left flex items-center gap-2 pt-4">
-                      <span
-                        style={{
-                          // Style is needed here because tailwind only loads colors that are present in the code.
-                          color: category.color
-                            ? category.color.toLocaleLowerCase()
-                            : '',
-                        }}
-                      >
-                        {
-                          EmissionIconsByScope[
-                            (category.primaryScope as keyof typeof EmissionIconsByScope) ??
-                              1
-                          ]
-                        }
-                      </span>
-                      <span>{category.title}</span>
-                    </td>
-                    <td className="pt-4">
-                      <span>
-                        {totalAllGHGEmissions !== null &&
-                          (
-                            (category.totalEmissions / totalAllGHGEmissions) *
-                            100
-                          ).toFixed(2)}
-                      </span>
-                    </td>
-                    <td className="pt-4 pl-8">
-                      <span>{category.totalEmissions.toFixed(2)}</span>
-                    </td>
-                  </tr>
-                ))}
+                <tr className="text-text-regular" key={category.title}>
+                  <td className="text-left flex items-center gap-2 pt-4">
+                    <span
+                      style={{
+                        // Style is needed here because tailwind only loads colors that are present in the code.
+                        color: category.color
+                          ? category.color.toLocaleLowerCase()
+                          : '',
+                      }}
+                    >
+                      {
+                        EmissionIconsByScope[
+                          (category.primaryScope as keyof typeof EmissionIconsByScope) ??
+                            1
+                        ]
+                      }
+                    </span>
+                    <span>{category.title}</span>
+                  </td>
+                  <td className="pt-4">
+                    <span>
+                      {totalAllGHGEmissions !== null &&
+                        (
+                          (category.totalEmissions / totalAllGHGEmissions) *
+                          100
+                        ).toFixed(2)}
+                    </span>
+                  </td>
+                  <td className="pt-4 pl-8">
+                    <span>{category.totalEmissions.toFixed(2)}</span>
+                  </td>
+                </tr>
+              ))}
             </React.Fragment>
           );
         })}
