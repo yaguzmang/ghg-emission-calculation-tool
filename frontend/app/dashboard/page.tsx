@@ -18,7 +18,7 @@ export default function Dashboard() {
   const appName = generalSettings?.currentData?.data?.attributes?.appName;
 
   return (
-    <main className="relative mt-10 mx-12">
+    <main className="relative mx-2 mt-10 sm:mx-12">
       <div>
         <div>
           <span>XXXX</span>

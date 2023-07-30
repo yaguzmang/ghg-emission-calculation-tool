@@ -32,7 +32,6 @@ const ToggleGroupItem = React.forwardRef<
       className,
     )}
     type="button"
-    defaultValue="center"
     {...props}
   >
     {children}

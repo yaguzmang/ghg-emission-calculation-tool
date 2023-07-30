@@ -202,3 +202,16 @@ export function calculateCategoryTotalBiogenicEmissions(
     return categoryTotal;
   }, 0);
 }
+
+export function getAccuracyReliability(
+  number: number,
+): 'low' | 'medium' | 'high' | '' {
+  if (number >= 0 && number <= 1) {
+    return 'low';
+  } if (number > 1 && number <= 2) {
+    return 'medium';
+  } if (number > 2) {
+    return 'high';
+  }
+  return '';
+}

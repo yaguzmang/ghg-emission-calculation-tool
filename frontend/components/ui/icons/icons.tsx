@@ -1,3 +1,5 @@
+import ArrowsDown from './arrows-down.svg';
+import ArrowsDownSmall from './arrows-down-small.svg';
 import Check from './check.svg';
 import ChevronDown from './chevron-down.svg';
 import DirectEmissions from './DirectEmissions.svg';
@@ -34,6 +36,8 @@ export const Icons = {
   Undo,
   Union,
   EmissionEntry,
+  ArrowsDown,
+  ArrowsDownSmall,
 };
 
 export const EmissionIconsByScope = {

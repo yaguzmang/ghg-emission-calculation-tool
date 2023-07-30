@@ -45,6 +45,45 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        emission: {
+          DEFAULT: 'hsl(var(--emission))',
+          foreground: {
+            DEFAULT: 'hsl(var(--emission-foreground))',
+            muted: 'hsl(var(--emission-foreground-muted))',
+          },
+          secundary: {
+            DEFAULT: 'hsl(var(--emission-secundary))',
+          },
+        },
+        // --accuracy-low-gradient-from: 79 100% 92%;/* #F2FFD6 */
+        // --accuracy-low-gradient-to: 61 100% 50%;/* #FAFF00 */
+
+        // --accuracy-medium-gradient-from: 58 93% 69%;/* #FAF468 */
+        // --accuracy-medium-gradient-to: 106 35% 72%;/* #A9D09D */
+
+        // --accuracy-high-gradient-from: 107 33% 71%;/* #A7CD9C */
+        // --accuracy-high-gradient-to: 106 96% 24%;/* #1F7903 */
+        // 'accuracy-low-gradient-from': 'hsl(var(--accuracy-low-gradient-from)',
+        accuracy: {
+          low: {
+            gradient: {
+              from: 'hsl(var(--accuracy-low-gradient-from))',
+              to: 'hsl(var(--accuracy-low-gradient-to))',
+            },
+          },
+          medium: {
+            gradient: {
+              from: 'hsl(var(--accuracy-medium-gradient-from))',
+              to: 'hsl(var(--accuracy-medium-gradient-to))',
+            },
+          },
+          high: {
+            gradient: {
+              from: 'hsl(var(--accuracy-high-gradient-from))',
+              to: 'hsl(var(--accuracy-high-gradient-to))',
+            },
+          },
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
