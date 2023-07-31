@@ -18,5 +18,6 @@ export type EmissionSourceGroupFlattenWithSources = {
   locale: string;
   name: string;
   emissionSourceLabel: string;
+  quantityLabel: string | null;
   emissionSources: EmissionSourceFlattenWithFactors[];
 };

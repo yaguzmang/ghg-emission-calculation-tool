@@ -13,6 +13,7 @@ export type EmissionCategory = {
     updatedAt: string;
     locale: string;
     color: string | null;
+    quantityLabel: string | null;
   };
 };
 
@@ -37,6 +38,7 @@ export type EmissionCategoryFlattenWithEmissions = {
   updatedAt: string;
   locale: string;
   color: string | null;
+  quantityLabel: string | null;
   emissionSources: EmissionSourceFlatten[];
   emissions: EmissionData;
 };
@@ -50,5 +52,7 @@ export type EmissionCategoryFlattenWithSourceGroups = {
   createdAt: string;
   updatedAt: string;
   locale: string;
+  color: string | null;
+  quantityLabel: string | null;
   emissionSourceGroups: EmissionSourceGroupFlattenWithSources[];
 };

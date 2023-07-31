@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Controller,FormProvider, useForm } from 'react-hook-form';
+import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -155,6 +155,11 @@ export default function EmissionsForm({
     '';
   // TODO: Handle empty categories
 
+  const emissionQuantityLabel =
+    emissionCategoryWithFactors.quantityLabel !== null
+      ? emissionCategoryWithFactors.quantityLabel
+      : t('dashboard.form.emissionEntry.quantity');
+
   const emissionSources =
     emissionCategoryWithFactors.emissionSourceGroups.flatMap(
       (emissionSourceGroup) => emissionSourceGroup.emissionSources,
@@ -210,6 +215,11 @@ export default function EmissionsForm({
       onApiSubmitError();
     }
   }
+
+  const selectedEmissionSource = findEmissionSourceById(
+    emissionCategoryWithFactors,
+    form.getValues('emissionSource'),
+  );
 
   return (
     <FormProvider {...form}>
@@ -328,8 +338,8 @@ export default function EmissionsForm({
             id="quantity"
             step="any"
             onWheel={(e) => e.currentTarget.blur()}
-            label={t('dashboard.form.emissionEntry.quantity')}
-            // secondaryLabel={'TODO: add unit'}
+            label={emissionQuantityLabel}
+            secondaryLabel={selectedEmissionSource?.unit}
             className="font-bold text-foreground"
             {...form.register('quantity', { valueAsNumber: true })}
             errorMessage={form.formState.errors.quantity?.message}
@@ -434,34 +444,27 @@ export default function EmissionsForm({
 
         <div className="mt-5">
           <EmissionFactorsForm
-              key={`${selectedEmissionSourceId}-${form.getValues(
-                'emissionSource',
-              )}`}
-              factors={
-                findEmissionSourceById(
-                  emissionCategoryWithFactors,
-                  form.getValues('emissionSource'),
-                )?.factors ?? null
-              }
-              formType={formType}
-              customEmissionFactorDirect={
-                formType === 'edit'
-                  ? emissionEntry?.attributes.customEmissionFactorDirect ?? null
-                  : undefined
-              }
-              customEmissionFactorIndirect={
-                formType === 'edit'
-                  ? emissionEntry?.attributes.customEmissionFactorIndirect ??
-                    null
-                  : undefined
-              }
-              customEmissionFactorBiogenic={
-                formType === 'edit'
-                  ? emissionEntry?.attributes.customEmissionFactorBiogenic ??
-                    null
-                  : undefined
-              }
-            />
+            key={`${selectedEmissionSourceId}-${form.getValues(
+              'emissionSource',
+            )}`}
+            factors={selectedEmissionSource?.factors ?? null}
+            formType={formType}
+            customEmissionFactorDirect={
+              formType === 'edit'
+                ? emissionEntry?.attributes.customEmissionFactorDirect ?? null
+                : undefined
+            }
+            customEmissionFactorIndirect={
+              formType === 'edit'
+                ? emissionEntry?.attributes.customEmissionFactorIndirect ?? null
+                : undefined
+            }
+            customEmissionFactorBiogenic={
+              formType === 'edit'
+                ? emissionEntry?.attributes.customEmissionFactorBiogenic ?? null
+                : undefined
+            }
+          />
         </div>
         <div className="ml-auto mt-4">
           <Popover>
