@@ -1,0 +1,6 @@
+node_modules
+.cache
+.tmp
+dist
+.strapi-updater.json
+import_error_log_*
