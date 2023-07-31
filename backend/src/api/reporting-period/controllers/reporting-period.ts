@@ -285,7 +285,12 @@ export default factories.createCoreController(
       const unitsWithEmissions = organizationUnits.map((unit) => {
         return {
           ...unit,
-          emissions: emissionsByUnitAndSource[unit.id],
+          emissions: emissionsByUnitAndSource[unit.id] ?? {
+            scope1: [],
+            scope2: [],
+            scope3: [],
+            biogenic: [],
+          },
         };
       });
 
