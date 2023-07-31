@@ -96,16 +96,16 @@ export default function EmissionsEntriesContainer({
                   </AccordionTrigger>
                   <AccordionContent className="px-2">
                     {unit.emissionEntries.map((emissionEntry) => (
-                        <EmissionsEntry
-                          key={`emissionEntryItem-${emissionEntry.id}`}
-                          reportingPeriodId={reportingPeriodId}
-                          organizationId={organizationId}
-                          emissionCategoryWithFactors={
-                            emissionCategoryWithFactors
-                          }
-                          emissionEntry={emissionEntry}
-                        />
-                      ))}
+                      <EmissionsEntry
+                        key={`emissionEntryItem-${emissionEntry.id}`}
+                        reportingPeriodId={reportingPeriodId}
+                        organizationId={organizationId}
+                        emissionCategoryWithFactors={
+                          emissionCategoryWithFactors
+                        }
+                        emissionEntry={emissionEntry}
+                      />
+                    ))}
                     <div className="pt-8" />
                   </AccordionContent>
                 </AccordionItem>

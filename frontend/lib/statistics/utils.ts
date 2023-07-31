@@ -208,9 +208,11 @@ export function getAccuracyReliability(
 ): 'low' | 'medium' | 'high' | '' {
   if (number >= 0 && number <= 1) {
     return 'low';
-  } if (number > 1 && number <= 2) {
+  }
+  if (number > 1 && number <= 2) {
     return 'medium';
-  } if (number > 2) {
+  }
+  if (number > 2) {
     return 'high';
   }
   return '';

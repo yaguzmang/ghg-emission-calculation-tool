@@ -40,7 +40,10 @@
       "ignorePackages",
       { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
     ],
-    "@typescript-eslint/no-empty-function": ["error", {"allow": ["arrowFunctions"]}],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      { "allow": ["arrowFunctions"] }
+    ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/order": 0,
     "no-unused-vars": "off",
