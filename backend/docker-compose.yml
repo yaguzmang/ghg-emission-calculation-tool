@@ -1,0 +1,11 @@
+services:
+  ghg-strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "1337:1337"
+    volumes:
+      - ghg-db:/app/db
+volumes:
+  ghg-db:

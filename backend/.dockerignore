@@ -2,6 +2,5 @@ node_modules
 .cache
 .tmp
 dist
-.env
 .strapi-updater.json
 import_error_log_*
