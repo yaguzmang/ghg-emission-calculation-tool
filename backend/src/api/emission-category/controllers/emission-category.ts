@@ -120,6 +120,7 @@ export default factories.createCoreController(
             ...source,
             factors: json.emission_sources[source.apiId]?.factors,
             label: json.emission_sources[source.apiId]?.label,
+            unit: json.emission_sources[source.apiId]?.unit,
           };
         });
 
