@@ -9,6 +9,7 @@ export interface EmissionCategory extends LocalizedApiServiceEntry {
   emissionSources?: EmissionSource[];
   primaryScope: number;
   emissionSourceLabel?: string;
+  quantityLabel?: string;
   localizations?: EmissionCategory[];
   emissions?: Emissions | EmissionsAndAccuracies | number;
   color?: string;

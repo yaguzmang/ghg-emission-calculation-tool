@@ -140,6 +140,7 @@ export default factories.createCoreController(
             locale: emissionCategory.locale,
             name: "default",
             emissionSourceLabel: emissionCategory.emissionSourceLabel ?? "",
+            quantityLabel: emissionCategory.quantityLabel ?? "",
           };
 
           const groupLoc = groups.findIndex(({ id }) => id === group.id);

@@ -73,6 +73,14 @@
         }
       },
       "type": "string"
+    },
+    "quantityLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

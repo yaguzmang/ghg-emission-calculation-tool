@@ -120,6 +120,20 @@
           "sortable": true
         }
       },
+      "quantityLabel": {
+        "edit": {
+          "label": "Quantity label",
+          "description": "The default quantity field label to use for emission sources that do not belong to an emission source group",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "quantityLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -186,6 +200,10 @@
         [
           {
             "name": "color",
+            "size": 6
+          },
+          {
+            "name": "quantityLabel",
             "size": 6
           }
         ]

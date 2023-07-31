@@ -14,7 +14,8 @@
           "emissionSources",
           "primaryScope",
           "emissionSourceLabel",
-          "color"
+          "color",
+          "quantityLabel"
         ],
         "locales": ["en", "fi"]
       },
@@ -39,7 +40,8 @@
           "emissionSources",
           "primaryScope",
           "emissionSourceLabel",
-          "color"
+          "color",
+          "quantityLabel"
         ],
         "locales": ["en", "fi"]
       },
@@ -56,7 +58,8 @@
           "emissionSources",
           "primaryScope",
           "emissionSourceLabel",
-          "color"
+          "color",
+          "quantityLabel"
         ],
         "locales": ["en", "fi"]
       },
@@ -235,7 +238,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": ["name", "emissionSourceLabel"],
+        "fields": ["name", "emissionSourceLabel", "quantityLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -252,7 +255,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": ["name", "emissionSourceLabel"],
+        "fields": ["name", "emissionSourceLabel", "quantityLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -261,7 +264,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "fields": ["name", "emissionSourceLabel"],
+        "fields": ["name", "emissionSourceLabel", "quantityLabel"],
         "locales": ["en", "fi"]
       },
       "conditions": []
