@@ -114,6 +114,17 @@ export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
         { type: 'EmissionsResults' },
       ],
     }),
+    deleteEmissionEntry: builder.mutation<EmissionEntryApiResponse, number>({
+      query: (emisionEntryId) => ({
+        url: `/emission-entries/${emisionEntryId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [
+        { type: 'EmissionEntry', id: 'LIST' },
+        { type: 'EmissionCategoryWithEmissions', id: 'LIST' },
+        { type: 'EmissionsResults' },
+      ],
+    }),
   }),
 });
 
@@ -121,4 +132,5 @@ export const {
   useGetEmissionEntriesByReportingPeriodQuery,
   useCreateEmissionEntryMutation,
   useUpdateEmissionEntryMutation,
+  useDeleteEmissionEntryMutation,
 } = emissionEntriesApiSlice;

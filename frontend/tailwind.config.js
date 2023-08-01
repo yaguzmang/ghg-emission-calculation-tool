@@ -55,15 +55,6 @@ module.exports = {
             DEFAULT: 'hsl(var(--emission-secundary))',
           },
         },
-        // --accuracy-low-gradient-from: 79 100% 92%;/* #F2FFD6 */
-        // --accuracy-low-gradient-to: 61 100% 50%;/* #FAFF00 */
-
-        // --accuracy-medium-gradient-from: 58 93% 69%;/* #FAF468 */
-        // --accuracy-medium-gradient-to: 106 35% 72%;/* #A9D09D */
-
-        // --accuracy-high-gradient-from: 107 33% 71%;/* #A7CD9C */
-        // --accuracy-high-gradient-to: 106 96% 24%;/* #1F7903 */
-        // 'accuracy-low-gradient-from': 'hsl(var(--accuracy-low-gradient-from)',
         accuracy: {
           low: {
             gradient: {
@@ -153,6 +144,11 @@ module.exports = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+          menu: {
+            DEFAULT: 'hsl(var(--popover-menu))',
+            foreground: 'hsl(var(--popover-menu-foreground))',
+            border: 'hsl(var(--popover-menu-border))',
+          },
         },
         tooltip: {
           DEFAULT: 'hsl(var(--tooltip))',

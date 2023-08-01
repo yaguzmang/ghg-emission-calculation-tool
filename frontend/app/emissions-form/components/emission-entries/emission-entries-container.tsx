@@ -122,8 +122,9 @@ export default function EmissionsEntriesContainer({
               <span className="text-lg font-bold pr-2">
                 {t('dashboard.form.emissionEntry.addNewCategoryEmissions', {
                   categoryTitle:
-                    emissionCategoryWithLocalizations.currentData?.attributes
-                      .title,
+                    originalEmissionCategoryId !== null
+                      ? emissionCategoryWithLocalizations.currentData?.attributes?.title.toLocaleLowerCase()
+                      : emissionCategoryWithFactors.title.toLocaleLowerCase(),
                 })}
               </span>
               <Icons.Union />

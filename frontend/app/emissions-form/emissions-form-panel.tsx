@@ -10,6 +10,7 @@ import EmissionsEntriesContainer from './components/emission-entries/emission-en
 import { Button } from '@/components/ui/button';
 import { EmissionIconsByScope } from '@/components/ui/icons/icons';
 import {
+  ArrowReadMore,
   Popover,
   PopoverContentReadMore,
   PopoverTrigger,
@@ -113,10 +114,11 @@ export default function EmissionsFormPanel({
               {t('dashboard.form.emissionEntry.description.readMore')}
             </Button>
           </PopoverTrigger>
-          <PopoverContentReadMore side="right" sideOffset={12}>
+          <PopoverContentReadMore side="bottom" sideOffset={12}>
             <p>
               {t('dashboard.form.emissionEntry.description.readMore.content')}
             </p>
+            <ArrowReadMore />
           </PopoverContentReadMore>
         </Popover>
       </div>

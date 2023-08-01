@@ -4,13 +4,13 @@ import Check from './check.svg';
 import ChevronDown from './chevron-down.svg';
 import DirectEmissions from './DirectEmissions.svg';
 import Edit from './edit.svg';
-import EmissionEntry from './emissionEntry.svg';
 import HelpCircleFilled from './help-circle-filled.svg';
 import IndirectEmissions from './IndirectEmissions.svg';
 import NotchDown from './notch-down.svg';
 import QuestionMark from './question-mark.svg';
 import Search from './search.svg';
 import TallinnaTehnikaulikool from './tallinna-tehnikaulikool.svg';
+import Trash from './trash.svg';
 import Undo from './undo.svg';
 import Union from './union.svg';
 import UserAvatar from './user-avatar.svg';
@@ -35,7 +35,7 @@ export const Icons = {
   Edit,
   Undo,
   Union,
-  EmissionEntry,
+  Trash,
   ArrowsDown,
   ArrowsDownSmall,
 };

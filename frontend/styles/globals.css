@@ -37,6 +37,10 @@
     --popover: 0 0% 100%; /* #fff */
     --popover-foreground: 250 38% 27%; /* #342B60 */
 
+    --popover-menu: 240 16% 87%; /* #DADAE4 */
+    --popover-menu-foreground: 235 15% 32%; /* #45475E*/
+    --popover-menu-border: 240 16% 94%; /* #EDEDF2*/
+
     --border: 240 16% 87%; /* #DADAE4 */
 
     --select-item-hover: 240 15% 94%; /* #ECECF1 */

@@ -13,6 +13,7 @@ import { FormCombobox } from '@/components/form/form-combobox';
 import FormInput from '@/components/form/form-input';
 import { Button } from '@/components/ui/button';
 import {
+  ArrowReadMore,
   Popover,
   PopoverContentReadMore,
   PopoverTrigger,
@@ -465,10 +466,11 @@ export default function EmissionsForm({
                 {t('dashboard.form.emissionEntry.accuracy.readMore')}
               </Button>
             </PopoverTrigger>
-            <PopoverContentReadMore side="right" sideOffset={12}>
+            <PopoverContentReadMore side="bottom" sideOffset={12}>
               <p>
                 {t('dashboard.form.emissionEntry.accuracy.readMore.content')}
               </p>
+              <ArrowReadMore />
             </PopoverContentReadMore>
           </Popover>
         </div>
@@ -520,12 +522,13 @@ export default function EmissionsForm({
                 {t('dashboard.form.emissionEntry.emissionFactors.readMore')}
               </Button>
             </PopoverTrigger>
-            <PopoverContentReadMore side="right" sideOffset={12}>
+            <PopoverContentReadMore side="bottom" sideOffset={12}>
               <p>
                 {t(
                   'dashboard.form.emissionEntry.emissionFactors.readMore.content',
                 )}
               </p>
+              <ArrowReadMore />
             </PopoverContentReadMore>
           </Popover>
         </div>
