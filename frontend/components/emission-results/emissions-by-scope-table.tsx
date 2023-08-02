@@ -75,6 +75,13 @@ export default function EmissionsByScopeTable({
       <tbody className="text-lg">
         {emissionsDataArray.map((emissionsData, scopeIndex) => {
           const emissionScopeKey = `scope${scopeIndex + 1}`;
+          const totalScopeEmissions =
+            emissionResults.currentData?.totalEmissions[
+              emissionScopeKey as keyof typeof emissionResults.currentData.totalEmissions
+            ]?.emissions ?? 0;
+          const totalScopeEmissionsPercentage = totalAllGHGEmissions
+            ? (totalScopeEmissions / totalAllGHGEmissions) * 100
+            : 0;
           return (
             <React.Fragment key={emissionScopeKey}>
               <tr className="border-b-ring border-b">
@@ -95,70 +102,57 @@ export default function EmissionsByScopeTable({
                 <th
                   className={cn('pb-2 text-2xl leading-7 font-normal', {
                     'pt-10': scopeIndex > 0,
+                    'text-primary-disabled-foreground':
+                      totalScopeEmissionsPercentage === 0,
                   })}
                 >
-                  {totalAllGHGEmissions !== null &&
-                  emissionResults.currentData?.totalEmissions[
-                    emissionScopeKey as keyof typeof emissionResults.currentData.totalEmissions
-                  ].emissions
-                    ? (
-                        ((emissionResults.currentData?.totalEmissions[
-                          emissionScopeKey as keyof typeof emissionResults.currentData.totalEmissions
-                        ]?.emissions ?? 0) /
-                          totalAllGHGEmissions) *
-                        100
-                      ).toFixed(2)
-                    : 0}
+                  {totalScopeEmissionsPercentage.toFixed(2)}
                 </th>
                 <th
                   className={cn('pb-2 text-2xl leading-7 font-bold pl-8', {
                     'pt-10': scopeIndex > 0,
+                    'text-primary-disabled-foreground':
+                      totalScopeEmissionsPercentage === 0,
                   })}
                 >
-                  {emissionResults.currentData?.totalEmissions[
-                    emissionScopeKey as keyof typeof emissionResults.currentData.totalEmissions
-                  ].emissions
-                    ? emissionResults.currentData?.totalEmissions[
-                        emissionScopeKey as keyof typeof emissionResults.currentData.totalEmissions
-                      ].emissions.toFixed(2)
-                    : 0}
+                  {totalScopeEmissions.toFixed(2)}
                 </th>
               </tr>
 
-              {emissionsData.map((category) => (
-                <tr className="text-text-regular" key={category.title}>
-                  <td className="text-left flex items-center gap-2 pt-4">
-                    <span
-                      style={{
-                        // Style is needed here because tailwind only loads colors that are present in the code.
-                        color: category.color
-                          ? category.color.toLocaleLowerCase()
-                          : '',
-                      }}
-                    >
-                      {
-                        EmissionIconsByScope[
-                          (category.primaryScope as keyof typeof EmissionIconsByScope) ??
-                            1
-                        ]
-                      }
-                    </span>
-                    <span>{category.title}</span>
-                  </td>
-                  <td className="pt-4">
-                    <span>
-                      {totalAllGHGEmissions !== null &&
-                        (
-                          (category.totalEmissions / totalAllGHGEmissions) *
-                          100
-                        ).toFixed(2)}
-                    </span>
-                  </td>
-                  <td className="pt-4 pl-8">
-                    <span>{category.totalEmissions.toFixed(2)}</span>
-                  </td>
-                </tr>
-              ))}
+              {emissionsData.map((category) => {
+                const categoryTotalEmissionsPercentage = totalAllGHGEmissions
+                  ? (category.totalEmissions / totalAllGHGEmissions) * 100
+                  : 0;
+
+                return (
+                  <tr className="text-text-regular" key={category.title}>
+                    <td className="text-left flex items-center gap-2 pt-4">
+                      <span
+                        style={{
+                          // Style is needed here because tailwind only loads colors that are present in the code.
+                          color: category.color
+                            ? category.color.toLocaleLowerCase()
+                            : '',
+                        }}
+                      >
+                        {
+                          EmissionIconsByScope[
+                            (category.primaryScope as keyof typeof EmissionIconsByScope) ??
+                              1
+                          ]
+                        }
+                      </span>
+                      <span>{category.title}</span>
+                    </td>
+                    <td className="pt-4">
+                      <span>{categoryTotalEmissionsPercentage.toFixed(2)}</span>
+                    </td>
+                    <td className="pt-4 pl-8">
+                      <span>{category.totalEmissions.toFixed(2)}</span>
+                    </td>
+                  </tr>
+                );
+              })}
             </React.Fragment>
           );
         })}

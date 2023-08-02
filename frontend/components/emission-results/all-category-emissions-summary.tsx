@@ -8,6 +8,7 @@ import {
   calculateEmissionEntryTotalBiogenicEmissions,
   calculateEmissionEntryTotalGHGEmissions,
 } from '@/lib/statistics/utils';
+import { cn } from '@/lib/utils';
 import {
   useGetEmissionCategoriesWithFactorsQuery,
   useGetEmissionCategoryWithLocalizationsQuery,
@@ -104,7 +105,11 @@ export default function AllCategoryEmissionsSummary({
             </h4>
           )}
 
-          <span className="text-2xl leading-7 font-bold">
+          <span
+            className={cn('text-2xl leading-7 font-bold', {
+              'text-primary-disabled-foreground': totalGHGEmissions === 0,
+            })}
+          >
             {totalGHGEmissions.toFixed(2)}
           </span>
         </div>
@@ -137,7 +142,11 @@ export default function AllCategoryEmissionsSummary({
 
         <div className="flex items-center justify-between border-b-ring border-b pb-2 mb-4 mt-16">
           <h4>{t('dashboard.form.emissionSummary.allBiogenicEmissions')}</h4>
-          <span className="text-2xl leading-7 font-bold">
+          <span
+            className={cn('text-2xl leading-7 font-bold', {
+              'text-primary-disabled-foreground': totalBiogenicEmissions === 0,
+            })}
+          >
             {totalBiogenicEmissions.toFixed(2)}
           </span>
         </div>
