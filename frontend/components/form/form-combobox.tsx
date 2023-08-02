@@ -4,6 +4,11 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@radix-ui/react-popover';
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -14,11 +19,6 @@ import {
 import Check from '@/components/ui/icons/check.svg';
 import ChevronDown from '@/components/ui/icons/chevron-down.svg';
 import Search from '@/components/ui/icons/search.svg';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 
 type Option = {
@@ -99,10 +99,7 @@ export function FormCombobox({
           </button>
         </PopoverTrigger>
         <PopoverContent className="w-[var(--radix-popover-trigger-width)] fade-in-80' rounded-xs border-none bg-select-content-popover p-0 text-text-regular shadow-light animate-in">
-          <Command
-            className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground"
-            value={localValue}
-          >
+          <Command className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
             <div
               className="flex items-center border-b px-3"
               cmdk-input-wrapper=""
