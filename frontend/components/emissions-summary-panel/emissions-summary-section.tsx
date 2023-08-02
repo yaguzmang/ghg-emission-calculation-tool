@@ -99,7 +99,10 @@ export function EmissionsSummarySection({
             <div
               className={cn(
                 'h-full w-24 rounded-full text-[8px] flex flex-col items-center justify-center align-middle text-center',
-                { hidden: accuracyReliability === null },
+                {
+                  hidden:
+                    accuracyReliability === null || sectionEmissions === 0,
+                },
                 {
                   'bg-gradient-to-r from-accuracy-low-gradient-from to-accuracy-low-gradient-to':
                     accuracyReliability === 'low',
