@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -113,6 +113,7 @@ type EmissionsFormProps = {
   onApiSubmitSucess: () => void;
   onApiSubmitError: () => void;
   onCancel: () => void;
+  scrollIntoView?: boolean;
 } & (EmissionsFormPropsCreate | EmissionsFormPropsEdit);
 
 export default function EmissionsForm({
@@ -124,6 +125,7 @@ export default function EmissionsForm({
   onApiSubmitSucess,
   onApiSubmitError,
   onCancel,
+  scrollIntoView = false,
 }: EmissionsFormProps) {
   const { t } = useTranslation();
   const form = useForm<z.infer<typeof EmissionEntrySchema>>({
@@ -244,9 +246,27 @@ export default function EmissionsForm({
     }
   }, [isSourceEEIO, emissionEntry?.attributes?.tier, form, formType]);
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const [scrolledIntoView, setScrolledIntoview] = useState(false);
+
+  useEffect(() => {
+    if (!scrollIntoView || !formRef.current || !document) {
+      return;
+    }
+    if (scrolledIntoView) {
+      return;
+    }
+    formRef.current.scrollIntoView({ behavior: 'smooth' });
+    setScrolledIntoview(true);
+  }, [formRef, scrolledIntoView, scrollIntoView]);
+
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col"
+        ref={formRef}
+      >
         <FormInput
           type="hidden"
           id="reportingPeriod"

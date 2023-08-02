@@ -140,6 +140,7 @@ export default function EmissionsEntriesContainer({
                   onApiSubmitSucess={() => setIsAddingNewEmissionOpen(false)}
                   onApiSubmitError={() => {}}
                   onCancel={() => setIsAddingNewEmissionOpen(false)}
+                  scrollIntoView
                 />
               </div>
             )}
