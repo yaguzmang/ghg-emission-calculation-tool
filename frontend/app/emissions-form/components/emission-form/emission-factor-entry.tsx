@@ -91,8 +91,14 @@ export default function EmissionFactorEntry({
                   value={value}
                   onWheel={(e) => e.currentTarget.blur()}
                   onChange={(e) => onValueEdit(emissionType, e.target.value)}
-                  onKeyUp={(event) => {
-                    if (event.key === 'Enter') {
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                    }
+                  }}
+                  onKeyUp={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
                       handleSave();
                     }
                   }}
@@ -177,6 +183,17 @@ export default function EmissionFactorEntry({
                     size="fit"
                     className="text-primary px-2"
                     onClick={() => onOpenEdit(emissionType)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                      }
+                    }}
+                    onKeyUp={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        onOpenEdit(emissionType);
+                      }
+                    }}
                   >
                     <Icons.Edit />
                   </Button>
@@ -204,6 +221,17 @@ export default function EmissionFactorEntry({
             value={source}
             onChange={(e) => {
               onSourceEdit(emissionType, e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+              }
+            }}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSave();
+              }
             }}
             error={!(source.length > 0)}
             errorMessage={sourceErrorMessage}
