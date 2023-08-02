@@ -4,7 +4,8 @@
   "info": {
     "singularName": "settings-general",
     "pluralName": "settings-generals",
-    "displayName": "Settings / General"
+    "displayName": "Settings / General",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,36 @@
         }
       },
       "type": "string"
+    },
+    "termsOfServiceLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "generic.link"
+    },
+    "userManualLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "generic.link"
+    },
+    "landingPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "generic.link"
     }
   }
 }

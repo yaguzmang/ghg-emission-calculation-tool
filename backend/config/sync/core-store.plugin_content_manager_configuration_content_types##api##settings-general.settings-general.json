@@ -34,6 +34,48 @@
           "sortable": true
         }
       },
+      "termsOfServiceLink": {
+        "edit": {
+          "label": "Terms of service link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "termsOfServiceLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "userManualLink": {
+        "edit": {
+          "label": "User manual link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "userManualLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "landingPageLink": {
+        "edit": {
+          "label": "Landing page link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "landingPageLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -69,6 +111,24 @@
           {
             "name": "appName",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "termsOfServiceLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "userManualLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "landingPageLink",
+            "size": 12
           }
         ]
       ],

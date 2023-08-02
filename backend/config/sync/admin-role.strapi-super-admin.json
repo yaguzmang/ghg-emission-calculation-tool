@@ -515,7 +515,15 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::settings-general.settings-general",
       "properties": {
-        "fields": ["appName"],
+        "fields": [
+          "appName",
+          "termsOfServiceLink.label",
+          "termsOfServiceLink.url",
+          "userManualLink.label",
+          "userManualLink.url",
+          "landingPageLink.label",
+          "landingPageLink.url"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -532,7 +540,15 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::settings-general.settings-general",
       "properties": {
-        "fields": ["appName"],
+        "fields": [
+          "appName",
+          "termsOfServiceLink.label",
+          "termsOfServiceLink.url",
+          "userManualLink.label",
+          "userManualLink.url",
+          "landingPageLink.label",
+          "landingPageLink.url"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
@@ -541,7 +557,15 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::settings-general.settings-general",
       "properties": {
-        "fields": ["appName"],
+        "fields": [
+          "appName",
+          "termsOfServiceLink.label",
+          "termsOfServiceLink.url",
+          "userManualLink.label",
+          "userManualLink.url",
+          "landingPageLink.label",
+          "landingPageLink.url"
+        ],
         "locales": ["en", "fi"]
       },
       "conditions": []
