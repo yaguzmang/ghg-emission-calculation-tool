@@ -319,7 +319,7 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/settings-general?locale=fi",
+                      "raw": "http://localhost:1337/api/settings-general?locale=en&populate=*",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
@@ -327,7 +327,11 @@
                       "query": [
                         {
                           "key": "locale",
-                          "value": "fi"
+                          "value": "en"
+                        },
+                        {
+                          "key": "populate",
+                          "value": "*"
                         }
                       ]
                     }
@@ -510,14 +514,14 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/4/with-emission-factors?reportingPeriod=1",
+                      "raw": "http://localhost:1337/api/emission-categories/3/with-emission-factors?reportingPeriod=1",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
                       "path": [
                         "api",
                         "emission-categories",
-                        "4",
+                        "3",
                         "with-emission-factors"
                       ],
                       "query": [
@@ -1038,7 +1042,7 @@
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg4MTE1Mjk5LCJleHAiOjE2OTA3MDcyOTl9.uomjlDDzmTTdNU3T8dgRm_a-S0e70LH5KDi5QITgIcc",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkwNzg0MjExLCJleHAiOjE2OTMzNzYyMTF9.6fsTefsCEIjYYNlyQiPyj6k_Ynu_Q_h55K7Y4J6CmIw",
                 "type": "string"
               }
             ]
