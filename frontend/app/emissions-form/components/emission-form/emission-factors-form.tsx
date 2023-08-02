@@ -1,7 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+  useFormContext,
+} from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import EmissionFactorEntry from './emission-factor-entry';
@@ -202,42 +207,55 @@ export default function EmissionFactorsForm({
       <span className="text-sm font-bold basis-full">
         {t('dashboard.form.emissionEntry.emissionFactors')}
       </span>
-      {Object.entries(emissionFactors).map(([emissionType, factor]) => (
-        <EmissionFactorEntry
-          key={emissionType}
-          label={t(
-            `dashboard.form.emissionEntry.emissionFactors.${emissionType}`,
-          )}
-          value={
-            factor.isEdited
-              ? factor.currentValue.toString()
-              : factor.originalValue.toString()
-          }
-          source={factor.source}
-          isValueEdited={factor.isEdited}
-          isEditing={factor.isEditing}
-          emissionType={emissionType as EmissionType}
-          valueErrorMessage={
-            (
-              formState.errors?.[
-                customEmissionFactorFieldNameMap[emissionType as EmissionType]
-              ] as any
-            )?.value?.message?.toString() ?? null
-          }
-          sourceErrorMessage={
-            (
-              formState.errors?.[
-                customEmissionFactorFieldNameMap[emissionType as EmissionType]
-              ] as any
-            )?.source?.message?.toString() ?? null
-          }
-          onValueEdit={handleEmissionFactorValueChange}
-          onSourceEdit={handleEmissionFactorSourceChange}
-          onUndoEdit={handleUndoEdit}
-          onOpenEdit={handleOpenEdit}
-          onSaveEdit={handleSaveEdit}
-        />
-      ))}
+      {formState.errors.organizationUnit?.message?.toString()}
+      {Object.entries(emissionFactors).map(([emissionType, factor]) => {
+        const valueErrorMessageKey = (
+          formState.errors?.[
+            customEmissionFactorFieldNameMap[emissionType as EmissionType]
+            // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+          ] as Merge<FieldError, FieldErrorsImpl<any>> | undefined
+        )?.value?.message as string | undefined;
+
+        const sourceErrorMessageKey = (
+          formState.errors?.[
+            customEmissionFactorFieldNameMap[emissionType as EmissionType]
+            // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+          ] as Merge<FieldError, FieldErrorsImpl<any>> | undefined
+        )?.source?.message as string | undefined;
+
+        return (
+          <EmissionFactorEntry
+            key={emissionType}
+            label={t(
+              `dashboard.form.emissionEntry.emissionFactors.${emissionType}`,
+            )}
+            value={
+              factor.isEdited
+                ? factor.currentValue.toString()
+                : factor.originalValue.toString()
+            }
+            source={factor.source}
+            isValueEdited={factor.isEdited}
+            isEditing={factor.isEditing}
+            emissionType={emissionType as EmissionType}
+            valueErrorMessage={
+              valueErrorMessageKey !== undefined
+                ? t(valueErrorMessageKey)
+                : null
+            }
+            sourceErrorMessage={
+              sourceErrorMessageKey !== undefined
+                ? t(sourceErrorMessageKey)
+                : null
+            }
+            onValueEdit={handleEmissionFactorValueChange}
+            onSourceEdit={handleEmissionFactorSourceChange}
+            onUndoEdit={handleUndoEdit}
+            onOpenEdit={handleOpenEdit}
+            onSaveEdit={handleSaveEdit}
+          />
+        );
+      })}
     </div>
   );
 }

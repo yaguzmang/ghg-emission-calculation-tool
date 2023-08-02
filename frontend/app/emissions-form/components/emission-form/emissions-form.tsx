@@ -40,53 +40,56 @@ import { EmissionEntryWithOrganizationUnitAndEmissionSource } from '@/types/emis
 
 const CustomEmissionFactorSchema: z.ZodType<CustomEmissionFactor> = z.object({
   value: z.coerce.number().nonnegative({
-    message: 'Please provide a positive value for the custom emission factor.',
+    message:
+      'dashboard.form.emissionEntry.emissionFactors.value.error.positive',
   }),
   source: z.string().min(1, {
-    message: 'Please input a source.',
+    message: 'dashboard.form.emissionEntry.emissionFactors.source.error.input',
   }),
 });
 
 const EmissionEntrySchema: z.ZodType<CreateEmissionEntryData> = z.object({
-  // TODO: Add translations for error messages
   organizationUnit: z.coerce
     .number({
-      invalid_type_error: 'Please select an organization unit.',
+      invalid_type_error:
+        'dashboard.form.emissionEntry.organizationUnit.error.select',
     })
     .int()
     .positive({
-      message: 'Please select an organization unit.',
+      message: 'dashboard.form.emissionEntry.organizationUnit.error.select',
     }),
   reportingPeriod: z.coerce
     .number({
-      invalid_type_error: 'Please select a reporting period.',
+      invalid_type_error:
+        'dashboard.form.emissionEntry.reportingPeriod.error.select',
     })
     .int()
     .positive({
-      message: 'Please select a reporting period.',
+      message: 'dashboard.form.emissionEntry.reportingPeriod.error.select',
     }),
   emissionSource: z.coerce
     .number({
-      invalid_type_error: 'Please select an emission source.',
+      invalid_type_error:
+        'dashboard.form.emissionEntry.emissionSource.error.select',
     })
     .int()
     .positive({
-      message: 'Please select an emission source.',
+      message: 'dashboard.form.emissionEntry.emissionSource.error.select',
     }),
   quantity: z.coerce
     .number({
-      invalid_type_error: 'Please input a valid quantity.',
+      invalid_type_error: 'dashboard.form.emissionEntry.quantity.error.valid',
     })
     .nonnegative({
-      message: 'Please input a valid quantity.',
+      message: 'dashboard.form.emissionEntry.quantity.error.valid',
     }),
   tier: z.coerce
     .number({
-      invalid_type_error: 'Please select a tier.',
+      invalid_type_error: 'dashboard.form.emissionEntry.tier.error.select',
     })
     .int()
     .nonnegative({
-      message: 'Please select a tier.',
+      message: 'dashboard.form.emissionEntry.tier.error.select',
     }),
   quantitySource: z.string().optional(),
   customEmissionFactorDirect: CustomEmissionFactorSchema.optional().nullable(),
@@ -271,7 +274,11 @@ export default function EmissionsForm({
           type="hidden"
           id="reportingPeriod"
           value={reportingPeriodId ?? -1}
-          errorMessage={form.formState.errors.reportingPeriod?.message}
+          errorMessage={
+            form.formState?.errors?.reportingPeriod?.message !== undefined
+              ? t(form.formState.errors.reportingPeriod.message)
+              : undefined
+          }
           {...form.register('reportingPeriod')}
         />
         <div className="gap-4">
@@ -329,7 +336,9 @@ export default function EmissionsForm({
           />
           {form.formState?.errors?.organizationUnit?.message !== undefined && (
             <span className="text-sm text-destructive">
-              {form.formState.errors.organizationUnit?.message}
+              {form.formState?.errors?.organizationUnit?.message !== undefined
+                ? t(form.formState.errors.organizationUnit.message)
+                : undefined}
             </span>
           )}
         </div>
@@ -342,7 +351,11 @@ export default function EmissionsForm({
             render={({ field }) => (
               <FormCombobox
                 comoboboxRef={field.ref}
-                errorMessage={form.formState?.errors?.emissionSource?.message}
+                errorMessage={
+                  form.formState?.errors?.emissionSource?.message !== undefined
+                    ? t(form.formState.errors.emissionSource.message)
+                    : undefined
+                }
                 label={emissionSourcesSelectLabel}
                 selectPlaceholder={
                   emissionSourcesSelectOptions.length > 0
@@ -385,7 +398,11 @@ export default function EmissionsForm({
             secondaryLabel={selectedEmissionSource?.unit}
             className="font-bold text-foreground"
             {...form.register('quantity', { valueAsNumber: true })}
-            errorMessage={form.formState.errors.quantity?.message}
+            errorMessage={
+              form.formState?.errors?.quantity?.message !== undefined
+                ? t(form.formState.errors.quantity.message)
+                : undefined
+            }
           />
         </div>
 
@@ -475,7 +492,7 @@ export default function EmissionsForm({
 
           {form.formState?.errors?.tier?.message !== undefined && (
             <span className="text-sm text-destructive basis-full">
-              {form.formState.errors.tier.message}
+              {t(form.formState.errors.tier.message)}
             </span>
           )}
         </div>
@@ -507,7 +524,11 @@ export default function EmissionsForm({
             label={t('dashboard.form.emissionEntry.accuracy.source')}
             className="font-bold text-foreground"
             {...form.register('quantitySource')}
-            errorMessage={form.formState.errors.quantitySource?.message}
+            errorMessage={
+              form.formState?.errors?.quantitySource?.message !== undefined
+                ? t(form.formState.errors.quantitySource.message)
+                : undefined
+            }
           />
         </div>
 
