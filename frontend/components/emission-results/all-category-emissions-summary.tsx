@@ -134,7 +134,7 @@ export default function AllCategoryEmissionsSummary({
               key={`${'emissionEntryTotalGHG'}-${emissionEntry.id}`}
               className="flex items-center justify-between text-text-regular text-lg"
             >
-              <span>{emissionSource?.name}</span>
+              <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
               <span>{totalEntryEmissions.toFixed(2)}</span>
             </div>
           );
@@ -172,7 +172,7 @@ export default function AllCategoryEmissionsSummary({
                 key={`${'emissionEntryTotalBiogenic'}-${emissionEntry.id}`}
                 className="flex items-center justify-between text-text-regular text-lg"
               >
-                <span>{emissionSource?.name}</span>
+                <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
                 <span>{totalEntryEmissions.toFixed(2)}</span>
               </div>
             )

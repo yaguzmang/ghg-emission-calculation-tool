@@ -16,7 +16,7 @@ export default function EmissionsStatisticsPanel({
   locale,
 }: EmissionsStatisticsPanelProps) {
   return (
-    <div className="w-full">
+    <div className="w-full py-6 px-4 sm:px-12 max-w-[720px] xl:mr-auto">
       <EmissionsFormStatistics
         emissionCategoryId={emissionCategoryId}
         reportingPeriodId={reportingPeriodId}

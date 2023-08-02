@@ -46,8 +46,8 @@ export default function MainEmissionsPage() {
   }, [validatedSearchParams.success, locale, dispatch, router]);
 
   return validatedSearchParams.success ? (
-    <div className="flex flex-col md:flex-row w-full">
-      <div className="w-full md:w-2/4 items-center min-h-screen md:h-screen bg-white md:overflow-auto pb-16">
+    <div className="flex flex-col lg:flex-row w-full">
+      <div className="w-full lg:w-2/4 items-center min-h-screen lg:h-screen bg-white lg:overflow-auto pb-16">
         <EmissionsFormPanel
           emissionCategoryId={validatedSearchParams.data.emissionCategoryId}
           reportingPeriodId={validatedSearchParams.data.reportingPeriodId}
@@ -56,7 +56,7 @@ export default function MainEmissionsPage() {
         />
       </div>
 
-      <div className="flex flex-col md:w-2/4 items-center bg-background md:h-screen md:overflow-auto pb-16">
+      <div className="lg:w-2/4 items-center bg-background lg:h-screen lg:overflow-auto pb-16">
         <EmissionsStatisticsPanel
           emissionCategoryId={validatedSearchParams.data.emissionCategoryId}
           reportingPeriodId={validatedSearchParams.data.reportingPeriodId}

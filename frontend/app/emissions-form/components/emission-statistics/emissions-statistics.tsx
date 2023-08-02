@@ -20,7 +20,7 @@ export default function EmissionsFormStatistics({
   const reportingPeriod = useGetReportingPeriodQuery(reportingPeriodId);
 
   return (
-    <div className="flex flex-col py-6 px-12 w-full h-full">
+    <div className="flex flex-col w-full h-full">
       <span className="text-lg text-text-regular">
         {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
           ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`

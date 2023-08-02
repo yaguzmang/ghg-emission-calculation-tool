@@ -54,7 +54,7 @@ export default function EmissionsFormPanel({
     ];
 
   return (
-    <div className="flex flex-col mt-10 mx-12">
+    <div className="w-full flex flex-col px-4 pt-10 sm:px-12 max-w-[720px] xl:ml-auto">
       <div>
         <span className="pr-2 text-secondary">
           {t('dashboard.form.overview')}

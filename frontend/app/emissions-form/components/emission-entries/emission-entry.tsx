@@ -151,7 +151,7 @@ export default function EmissionsEntry({
         </Button>
       </div>
       {isEditing && (
-        <div className="border border-dotted px-10 py-12">
+        <div className="border border-dotted px-2 sm:px-10 py-12">
           <EmissionsForm
             reportingPeriodId={reportingPeriodId}
             organizationId={organizationId}

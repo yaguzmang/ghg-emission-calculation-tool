@@ -26,7 +26,7 @@ export function FormTabContent() {
   );
 
   return (
-    <div className="h-full w-full flex-1 p-8">
+    <div className="h-full w-full flex-1 py-8 px-2 sm:px-8">
       <div className="flex flex-wrap justify-between gap-8 ">
         <OrganizationPeriodForm section="form" />
         <EmissionsSummaryPanel

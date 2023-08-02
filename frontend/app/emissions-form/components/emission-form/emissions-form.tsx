@@ -406,7 +406,7 @@ export default function EmissionsForm({
           />
         </div>
 
-        <div className="mt-10 flex justify-between flex-wrap">
+        <div className="mt-10 flex justify-between flex-wrap gap-y-6">
           <span className="text-sm font-bold">
             {t('dashboard.form.emissionEntry.accuracy')}
           </span>
@@ -448,6 +448,7 @@ export default function EmissionsForm({
                     const selectedTier = parseInt(selectedValue, 10);
                     field.onChange(selectedTier);
                   }}
+                  className="flex-wrap"
                 >
                   <ToggleGroupItem
                     value="1"
@@ -573,7 +574,7 @@ export default function EmissionsForm({
             </PopoverContentReadMore>
           </Popover>
         </div>
-        <div className="mt-8 flex justify-between flex-wrap items-center">
+        <div className="mt-8 flex justify-between flex-wrap items-center gap-y-6">
           <Button
             type="button"
             variant="link"

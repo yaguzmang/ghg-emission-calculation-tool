@@ -65,8 +65,8 @@ export default function EmissionFactorEntry({
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex justify-between items-center mt-1">
-        <span className="text-text-regular">{label}</span>
+      <div className="flex justify-between items-center mt-1 flex-wrap">
+        <span className="text-text-regular pt-5">{label}</span>
         <div className="flex flex-col">
           <span className="text-text-regular ml-auto pr-4 h-5">
             {isValueEdited &&
