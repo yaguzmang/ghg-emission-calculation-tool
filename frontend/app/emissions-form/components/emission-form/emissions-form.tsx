@@ -1,15 +1,19 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import EmissionFactorsForm from './emission-factors-form';
+import EmissionFactorsForm from './fields/emission-factors/emission-factors-form';
+import EmissionSourceField from './fields/emission-source';
+import OrganizationUnitField from './fields/organization-unit';
+import QuantityField from './fields/quantity';
+import QuantitySourceField from './fields/quantity-source';
+import TierField from './fields/tier';
 
-import { FormCombobox } from '@/components/form/form-combobox';
 import FormInput from '@/components/form/form-input';
 import { Button } from '@/components/ui/button';
 import {
@@ -18,86 +22,14 @@ import {
   PopoverContentReadMore,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { findEmissionSourceById } from '@/lib/data/utils';
 import {
-  CreateEmissionEntryData,
-  CustomEmissionFactor,
   useCreateEmissionEntryMutation,
   useUpdateEmissionEntryMutation,
 } from '@/redux/api/emission-entries/emissionEntriesApiSlice';
-import { useGetOrganizationUnitsByOrganizationQuery } from '@/redux/api/organization-units/organizationUnitsApiSlice';
 import { EmissionCategoryFlattenWithSourceGroups } from '@/types/emission-category';
 import { EmissionEntryWithOrganizationUnitAndEmissionSource } from '@/types/emission-entry';
-
-const CustomEmissionFactorSchema: z.ZodType<CustomEmissionFactor> = z.object({
-  value: z.coerce.number().nonnegative({
-    message:
-      'dashboard.form.emissionEntry.emissionFactors.value.error.positive',
-  }),
-  source: z.string().min(1, {
-    message: 'dashboard.form.emissionEntry.emissionFactors.source.error.input',
-  }),
-});
-
-const EmissionEntrySchema: z.ZodType<CreateEmissionEntryData> = z.object({
-  organizationUnit: z.coerce
-    .number({
-      invalid_type_error:
-        'dashboard.form.emissionEntry.organizationUnit.error.select',
-    })
-    .int()
-    .positive({
-      message: 'dashboard.form.emissionEntry.organizationUnit.error.select',
-    }),
-  reportingPeriod: z.coerce
-    .number({
-      invalid_type_error:
-        'dashboard.form.emissionEntry.reportingPeriod.error.select',
-    })
-    .int()
-    .positive({
-      message: 'dashboard.form.emissionEntry.reportingPeriod.error.select',
-    }),
-  emissionSource: z.coerce
-    .number({
-      invalid_type_error:
-        'dashboard.form.emissionEntry.emissionSource.error.select',
-    })
-    .int()
-    .positive({
-      message: 'dashboard.form.emissionEntry.emissionSource.error.select',
-    }),
-  quantity: z.coerce
-    .number({
-      invalid_type_error: 'dashboard.form.emissionEntry.quantity.error.valid',
-    })
-    .nonnegative({
-      message: 'dashboard.form.emissionEntry.quantity.error.valid',
-    }),
-  tier: z.coerce
-    .number({
-      invalid_type_error: 'dashboard.form.emissionEntry.tier.error.select',
-    })
-    .int()
-    .nonnegative({
-      message: 'dashboard.form.emissionEntry.tier.error.select',
-    }),
-  quantitySource: z.string().optional(),
-  customEmissionFactorDirect: CustomEmissionFactorSchema.optional().nullable(),
-  customEmissionFactorIndirect:
-    CustomEmissionFactorSchema.optional().nullable(),
-  customEmissionFactorBiogenic:
-    CustomEmissionFactorSchema.optional().nullable(),
-});
+import { EmissionEntrySchema } from '@/types/emission-entry-form';
 
 interface EmissionsFormPropsCreate {
   formType: 'create';
@@ -134,70 +66,15 @@ export default function EmissionsForm({
   const form = useForm<z.infer<typeof EmissionEntrySchema>>({
     resolver: zodResolver(EmissionEntrySchema),
   });
-
-  const organizationUnits = useGetOrganizationUnitsByOrganizationQuery(
-    organizationId ?? 0,
-    { skip: organizationId === undefined },
-  );
-
-  const organizationUnitsSelectOptions =
-    organizationUnits.currentData?.map((organizationUnit) => ({
-      value: organizationUnit.id,
-      label: organizationUnit.attributes.name,
-    })) ?? [];
-  const emissionEntryOrganizationUnitId =
-    emissionEntry?.attributes.organizationUnit.data.id;
-  const [selectedOrganizationUnitId, setSelectedOrganizationUnitId] = useState<
-    number | null
-  >(
-    formType === 'edit'
-      ? emissionEntry.attributes.organizationUnit.data.id
-      : null,
-  );
-
-  const emissionSourcesSelectLabel =
-    emissionCategoryWithFactors.emissionSourceLabel ??
-    emissionCategoryWithFactors.emissionSourceGroups[0]?.emissionSourceLabel ??
-    '';
   // TODO: Handle empty categories
 
-  const emissionQuantityLabel =
-    emissionCategoryWithFactors.quantityLabel !== null
-      ? emissionCategoryWithFactors.quantityLabel
-      : t('dashboard.form.emissionEntry.quantity');
-
-  const emissionSources =
-    emissionCategoryWithFactors.emissionSourceGroups.flatMap(
-      (emissionSourceGroup) => emissionSourceGroup.emissionSources,
-    );
-
-  const emissionEntrySourceId =
-    emissionEntry?.attributes.emissionSource.data.id;
-
+  // Lifting up additional state to re render emission factors form when source changes
   const [selectedEmissionSourceId, setSelectedEmissionSourceId] = useState<
     string | null
-  >(
-    formType === 'edit'
-      ? `${emissionEntrySourceId}-:-${
-          emissionSources
-            .find(
-              (emissionSource) => emissionSource.id === emissionEntrySourceId,
-            )
-            ?.name?.toLowerCase() ?? ''
-        }`
-      : null,
-  );
-
-  // In order for the search functionality of CMDK to work, the searchable label
-  // must be included in the value property. Then, to get the ID afterwards, we
-  // can split the selected option by "-:-" and get the first element of the
-  // resulting array.
-  // More on the issue: https://github.com/pacocoursey/cmdk/issues/74#issuecomment-1402272890
-  const emissionSourcesSelectOptions =
-    emissionSources?.map((emissionSource) => ({
-      value: `${emissionSource.id.toString()}-:-${emissionSource.name.toLowerCase()}`,
-      label: emissionSource.name,
-    })) ?? [];
+  >(null);
+  const handleSourceChange = (newSource: string) => {
+    setSelectedEmissionSourceId(newSource);
+  };
 
   const [createEmissionEntry, createEmissionEntryState] =
     useCreateEmissionEntryMutation();
@@ -226,28 +103,6 @@ export default function EmissionsForm({
     emissionCategoryWithFactors,
     form.getValues('emissionSource'),
   );
-
-  const isSourceEEIO = selectedEmissionSource?.unit === '€';
-
-  useEffect(() => {
-    if (isSourceEEIO) {
-      form.setValue('tier', 0);
-      form.trigger('tier');
-    } else if (formType === 'edit' && emissionEntry?.attributes?.tier === 0) {
-      // The emission entry tier is 0 but the source is not EEIO,
-      // so the Tier has to be either 1, 2, or 3. To enforce that, set to -1
-      // so the validation fails and the user needs to choose a new tier.
-      form.setValue('tier', -1);
-    } else if (formType === 'edit' && emissionEntry?.attributes?.tier !== 0) {
-      // User had switched to EEIO source, which set the tier to 0, so restore
-      // the original value.
-      form.setValue('tier', emissionEntry?.attributes?.tier ?? -1);
-    } else {
-      // User switched between EEIO and non EEIO source, so clean up the selected
-      // tier 0.
-      form.setValue('tier', -1);
-    }
-  }, [isSourceEEIO, emissionEntry?.attributes?.tier, form, formType]);
 
   const formRef = useRef<HTMLFormElement>(null);
   const [scrolledIntoView, setScrolledIntoview] = useState(false);
@@ -281,222 +136,57 @@ export default function EmissionsForm({
           }
           {...form.register('reportingPeriod')}
         />
-        <div className="gap-4">
-          <span className="text-text-regular text-sm">
-            {t('dashboard.form.emissionEntry.organizationUnit')}
-          </span>
-          <Controller
-            control={form.control}
-            name="organizationUnit"
-            defaultValue={emissionEntryOrganizationUnitId}
-            render={({ field }) => (
-              <Select
-                key={organizationUnitsSelectOptions?.[0]?.value ?? -1}
-                onValueChange={(selectedValue: string) => {
-                  const newSelectedOrganizationUnitId = parseInt(
-                    selectedValue,
-                    10,
-                  );
-                  setSelectedOrganizationUnitId(newSelectedOrganizationUnitId);
-                  field.onChange(newSelectedOrganizationUnitId);
-                }}
-                value={
-                  selectedOrganizationUnitId !== null
-                    ? selectedOrganizationUnitId.toString()
-                    : undefined
-                }
-              >
-                <SelectTrigger
-                  ref={field.ref}
-                  error={
-                    form.formState?.errors?.organizationUnit?.message !==
-                    undefined
-                  }
-                >
-                  <SelectValue
-                    placeholder={t(
-                      'dashboard.form.emissionEntry.organizationUnit.choose',
-                    )}
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {organizationUnitsSelectOptions.map((option) => (
-                      <SelectItem
-                        key={option.value}
-                        value={option.value.toString()}
-                      >
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            )}
-          />
-          {form.formState?.errors?.organizationUnit?.message !== undefined && (
-            <span className="text-sm text-destructive">
-              {form.formState?.errors?.organizationUnit?.message !== undefined
-                ? t(form.formState.errors.organizationUnit.message)
-                : undefined}
-            </span>
-          )}
-        </div>
 
-        <div className="mt-10">
-          <Controller
-            control={form.control}
-            name="emissionSource"
-            defaultValue={emissionEntrySourceId}
-            render={({ field }) => (
-              <FormCombobox
-                comoboboxRef={field.ref}
-                errorMessage={
-                  form.formState?.errors?.emissionSource?.message !== undefined
-                    ? t(form.formState.errors.emissionSource.message)
-                    : undefined
-                }
-                label={emissionSourcesSelectLabel}
-                selectPlaceholder={
-                  emissionSourcesSelectOptions.length > 0
-                    ? `${t('forms.dropdown.choose')} ${
-                        emissionSourcesSelectLabel ?? ''
-                      }`
-                    : t(
-                        'dashboard.form.emissionEntry.emissionSource.noneAvailable',
-                      )
-                }
-                searchPlaceholder={t('forms.combobox.search')}
-                searchNotFoundLabel={t('forms.combobox.search.notFound')}
-                options={emissionSourcesSelectOptions}
-                onValueChange={(selectedValue: string) => {
-                  setSelectedEmissionSourceId(selectedValue);
-                  const newSelectedEmissionSourceId = parseInt(
-                    selectedValue.split('-:-')[0],
-                    10,
-                  );
-                  field.onChange(newSelectedEmissionSourceId);
-                }}
-                selectedValue={selectedEmissionSourceId}
-              />
-            )}
-          />
-        </div>
-
-        <div className="mt-10">
-          <FormInput
-            defaultValue={
-              formType === 'edit'
-                ? emissionEntry.attributes.quantity
-                : undefined
-            }
-            type="number"
-            id="quantity"
-            step="any"
-            onWheel={(e) => e.currentTarget.blur()}
-            label={emissionQuantityLabel}
-            secondaryLabel={selectedEmissionSource?.unit}
-            className="font-bold text-foreground"
-            {...form.register('quantity', { valueAsNumber: true })}
-            errorMessage={
-              form.formState?.errors?.quantity?.message !== undefined
-                ? t(form.formState.errors.quantity.message)
-                : undefined
-            }
-          />
-        </div>
-
-        <div className="mt-10 flex justify-between flex-wrap gap-y-6">
-          <span className="text-sm font-bold">
-            {t('dashboard.form.emissionEntry.accuracy')}
-          </span>
-
-          {isSourceEEIO ? (
-            <ToggleGroup value="0" type="single" disabled>
-              <ToggleGroupItem
-                value="0"
-                className={
-                  form.formState?.errors?.tier?.message !== undefined
-                    ? 'border-destructive'
-                    : ''
-                }
-              >
-                <span className="px-3">{`${t(
-                  'dashboard.form.emissionEntry.tier',
-                )} 0`}</span>
-              </ToggleGroupItem>
-            </ToggleGroup>
-          ) : (
-            <Controller
-              defaultValue={
-                formType === 'edit'
-                  ? emissionEntry?.attributes?.tier
-                  : undefined
-              }
-              control={form.control}
-              name="tier"
-              render={({ field }) => (
-                <ToggleGroup
-                  defaultValue={
-                    formType === 'edit'
-                      ? emissionEntry?.attributes?.tier?.toString()
-                      : undefined
-                  }
-                  ref={field.ref}
-                  type="single"
-                  onValueChange={(selectedValue: string) => {
-                    const selectedTier = parseInt(selectedValue, 10);
-                    field.onChange(selectedTier);
-                  }}
-                  className="flex-wrap"
-                >
-                  <ToggleGroupItem
-                    value="1"
-                    className={
-                      form.formState?.errors?.tier?.message !== undefined
-                        ? 'border-destructive'
-                        : ''
-                    }
-                  >
-                    <span className="px-3">{`${t(
-                      'dashboard.form.emissionEntry.tier',
-                    )} 1`}</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    value="2"
-                    className={
-                      form.formState?.errors?.tier?.message !== undefined
-                        ? 'border-destructive'
-                        : ''
-                    }
-                  >
-                    <span className="px-3">{`${t(
-                      'dashboard.form.emissionEntry.tier',
-                    )} 2`}</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    value="3"
-                    className={
-                      form.formState?.errors?.tier?.message !== undefined
-                        ? 'border-destructive'
-                        : ''
-                    }
-                  >
-                    <span className="px-3">{`${t(
-                      'dashboard.form.emissionEntry.tier',
-                    )} 3`}</span>{' '}
-                  </ToggleGroupItem>
-                </ToggleGroup>
-              )}
+        {formType === 'edit' ? (
+          <>
+            <OrganizationUnitField
+              organizationId={organizationId}
+              formType={formType}
+              emissionEntry={emissionEntry}
             />
-          )}
+            <EmissionSourceField
+              formType={formType}
+              emissionEntry={emissionEntry}
+              emissionCategoryWithFactors={emissionCategoryWithFactors}
+              onSourceChange={handleSourceChange}
+            />
+            <QuantityField
+              formType={formType}
+              emissionCategoryWithFactors={emissionCategoryWithFactors}
+              selectedEmissionSource={selectedEmissionSource}
+              emissionEntry={emissionEntry}
+            />
 
-          {form.formState?.errors?.tier?.message !== undefined && (
-            <span className="text-sm text-destructive basis-full">
-              {t(form.formState.errors.tier.message)}
-            </span>
-          )}
-        </div>
+            <TierField
+              formType={formType}
+              selectedEmissionSource={selectedEmissionSource}
+              emissionEntry={emissionEntry}
+            />
+          </>
+        ) : (
+          <>
+            <OrganizationUnitField
+              organizationId={organizationId}
+              formType={formType}
+              emissionEntry={emissionEntry}
+            />
+            <EmissionSourceField
+              formType={formType}
+              emissionCategoryWithFactors={emissionCategoryWithFactors}
+              onSourceChange={handleSourceChange}
+            />
+            <QuantityField
+              formType={formType}
+              emissionCategoryWithFactors={emissionCategoryWithFactors}
+              selectedEmissionSource={selectedEmissionSource}
+            />
+            <TierField
+              formType={formType}
+              selectedEmissionSource={selectedEmissionSource}
+            />
+          </>
+        )}
+
         <div className="ml-auto mt-4">
           <Popover>
             <PopoverTrigger asChild>
@@ -513,25 +203,14 @@ export default function EmissionsForm({
           </Popover>
         </div>
 
-        <div className="mt-10">
-          <FormInput
-            defaultValue={
-              formType === 'edit'
-                ? emissionEntry?.attributes?.quantitySource ?? undefined
-                : undefined
-            }
-            type="text"
-            id="quantitySource"
-            label={t('dashboard.form.emissionEntry.accuracy.source')}
-            className="font-bold text-foreground"
-            {...form.register('quantitySource')}
-            errorMessage={
-              form.formState?.errors?.quantitySource?.message !== undefined
-                ? t(form.formState.errors.quantitySource.message)
-                : undefined
-            }
+        {formType === 'edit' ? (
+          <QuantitySourceField
+            formType={formType}
+            emissionEntry={emissionEntry}
           />
-        </div>
+        ) : (
+          <QuantitySourceField formType={formType} />
+        )}
 
         <div className="mt-5">
           <EmissionFactorsForm

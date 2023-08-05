@@ -101,7 +101,7 @@ export default function EmissionsEntry({
             </TooltipProvider>
 
             <PopoverAnchor asChild>
-              <span>{emissionSource?.label}</span>
+              <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
             </PopoverAnchor>
           </div>
 
