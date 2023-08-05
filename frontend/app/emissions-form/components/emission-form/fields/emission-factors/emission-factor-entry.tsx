@@ -103,7 +103,7 @@ export default function EmissionFactorEntry({
                     }
                   }}
                   // Autofocus is okay here because the user is opening the custom EF editor
-                  // and it could hard to notice that it is an input field.
+                  // and it could be hard to notice that it is an input field.
                   autoFocus // eslint-disable-line jsx-a11y/no-autofocus
                 />
                 <TooltipProvider>

@@ -126,9 +126,7 @@ export function FormCombobox({
                     setOpen(false);
                     onValueChange(newSelectedValue);
                   }}
-                  // 'relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pl-8 pr-2 text-base font-normal text-text-regular outline-none focus:bg-select-item-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
                   className="relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pl-2 text-base outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
-                  // className="relative flex cursor-default select-none items-center rounded-none px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                 >
                   <div>
                     <Check
