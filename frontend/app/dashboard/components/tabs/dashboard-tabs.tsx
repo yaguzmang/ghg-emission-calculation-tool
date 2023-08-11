@@ -9,6 +9,8 @@ import { FormTabContent } from './form/form-content';
 
 import { Loader } from '@/components/ui/loader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
+import { ResultsTabContent } from './results/results-content';
 
 export function DashboardTabs() {
   const { t } = useTranslation();
@@ -69,9 +71,7 @@ export function DashboardTabs() {
             <FormTabContent />
           </TabsContent>
           <TabsContent value="results" className="h-full w-full">
-            <div className="flex flex-col space-y-4">
-              {t('dashboard.results')}
-            </div>
+            <ResultsTabContent />
           </TabsContent>
         </div>
       </Tabs>
