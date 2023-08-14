@@ -29,4 +29,5 @@ export type EmissionSourceFlattenWithFactors = {
     direct: EmissionFactor;
   };
   label: string;
+  unit: string;
 };

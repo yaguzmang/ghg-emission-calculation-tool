@@ -8,10 +8,23 @@ export type EmissionCategory = {
     title: string;
     description: string;
     primaryScope: number;
-    emissionSourceLabel: string;
+    emissionSourceLabel: string | null;
     createdAt: string;
     updatedAt: string;
     locale: string;
+    color: string | null;
+    quantityLabel: string | null;
+  };
+};
+
+export type EmissionCategoryWithLocalizations = Omit<
+  EmissionCategory,
+  'attributes'
+> & {
+  attributes: EmissionCategory['attributes'] & {
+    localizations: {
+      data: EmissionCategory[];
+    };
   };
 };
 
@@ -24,6 +37,8 @@ export type EmissionCategoryFlattenWithEmissions = {
   createdAt: string;
   updatedAt: string;
   locale: string;
+  color: string | null;
+  quantityLabel: string | null;
   emissionSources: EmissionSourceFlatten[];
   emissions: EmissionData;
 };
@@ -37,5 +52,7 @@ export type EmissionCategoryFlattenWithSourceGroups = {
   createdAt: string;
   updatedAt: string;
   locale: string;
+  color: string | null;
+  quantityLabel: string | null;
   emissionSourceGroups: EmissionSourceGroupFlattenWithSources[];
 };

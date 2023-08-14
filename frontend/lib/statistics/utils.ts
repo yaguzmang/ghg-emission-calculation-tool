@@ -1,9 +1,11 @@
 import { EmissionCategoryFlattenWithEmissions } from '@/types/emission-category';
+import { EmissionEntryWithOrganizationUnitAndEmissionSource } from '@/types/emission-entry';
 import { EmissionScope } from '@/types/emission-scope';
+import { EmissionSourceFlattenWithFactors } from '@/types/emission-source';
 
 export function calculateTotalEmissionsOfEmissionCategory(
   emissionCategory: EmissionCategoryFlattenWithEmissions,
-  includeBiogenic = false
+  includeBiogenic = false,
 ) {
   if (emissionCategory) {
     const { emissions } = emissionCategory;
@@ -20,16 +22,16 @@ export function calculateTotalEmissionsOfEmissionCategory(
   return 0;
 }
 
-export function calculateTotalEmissions(
+export function calculateTotalEmissionsFromEmissionCategories(
   emissionCategories: EmissionCategoryFlattenWithEmissions[],
-  includeBiogenic = false
+  includeBiogenic = false,
 ): number {
   let totalEmissions = 0;
 
   emissionCategories.forEach((emissionCategory) => {
     totalEmissions += calculateTotalEmissionsOfEmissionCategory(
       emissionCategory,
-      includeBiogenic
+      includeBiogenic,
     );
   });
 
@@ -37,7 +39,7 @@ export function calculateTotalEmissions(
 }
 
 export function calculateTotalActivityEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalActivityEmissions = 0;
 
@@ -52,7 +54,7 @@ export function calculateTotalActivityEmissions(
 }
 
 export function calculateTotalUpstreamEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalUpstreamEmissions = 0;
 
@@ -67,7 +69,7 @@ export function calculateTotalUpstreamEmissions(
 }
 
 export function calculateTotalBiogenicEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   let totalBiogenicEmissions = 0;
 
@@ -81,24 +83,24 @@ export function calculateTotalBiogenicEmissions(
   return totalBiogenicEmissions;
 }
 
-export function calculateTotalDirectEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+export function calculateTotalDirectEmissionsFromEmissionCategories(
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
     .filter((category) => category.primaryScope === EmissionScope.direct)
     .reduce((total, category) => total + category.emissions.direct, 0);
 }
 
-export function calculateTotalIndirectEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+export function calculateTotalIndirectEmissionsFromEmissionCategories(
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories
     .filter((category) => category.primaryScope === EmissionScope.indirect)
     .reduce((total, category) => total + category.emissions.indirect, 0);
 }
 
-export function calculateTotalValueChainEmissions(
-  emissionCategories: EmissionCategoryFlattenWithEmissions[]
+export function calculateTotalValueChainEmissionsFromEmissionCategories(
+  emissionCategories: EmissionCategoryFlattenWithEmissions[],
 ): number {
   return emissionCategories.reduce((total, category) => {
     let categoryTotal = total + category.emissions.indirect;
@@ -107,4 +109,111 @@ export function calculateTotalValueChainEmissions(
     }
     return categoryTotal;
   }, 0);
+}
+
+export function calculateEmissionEntryTotalGHGEmissions(
+  emissionEntryWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource,
+  emissionSource: EmissionSourceFlattenWithFactors,
+): number {
+  const emissionQuantity = emissionEntryWithEmissionSource.attributes.quantity;
+  const { customEmissionFactorDirect, customEmissionFactorIndirect } =
+    emissionEntryWithEmissionSource.attributes;
+
+  const { indirect: emissionFactorIndirect, direct: emissionFactorDirect } =
+    emissionSource?.factors ?? {};
+
+  let total = 0;
+
+  if (typeof customEmissionFactorDirect?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorDirect.value;
+  } else if (typeof emissionFactorDirect?.value === 'number') {
+    total += emissionQuantity * emissionFactorDirect.value;
+  }
+
+  if (typeof customEmissionFactorIndirect?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorIndirect.value;
+  } else if (typeof emissionFactorIndirect?.value === 'number') {
+    total += emissionQuantity * emissionFactorIndirect.value;
+  }
+
+  return total;
+}
+
+export function calculateCategoryTotalGHGEmissions(
+  emissionEntriesWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource[],
+  emissionSourcesWithFactors: EmissionSourceFlattenWithFactors[],
+): number {
+  return emissionEntriesWithEmissionSource.reduce((total, emissionEntry) => {
+    const emissionEntrySourceId =
+      emissionEntry.attributes.emissionSource.data.id;
+    const emissionSource = emissionSourcesWithFactors.find(
+      (emissionSource) => emissionSource.id === emissionEntrySourceId,
+    );
+
+    if (!emissionSource) return total;
+
+    const categoryTotal =
+      total +
+      calculateEmissionEntryTotalGHGEmissions(emissionEntry, emissionSource);
+    return categoryTotal;
+  }, 0);
+}
+
+export function calculateEmissionEntryTotalBiogenicEmissions(
+  emissionEntryWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource,
+  emissionSource: EmissionSourceFlattenWithFactors,
+): number {
+  const emissionQuantity = emissionEntryWithEmissionSource.attributes.quantity;
+  const { customEmissionFactorBiogenic } =
+    emissionEntryWithEmissionSource.attributes;
+
+  const { biogenic: emissionFactorBiogenic } = emissionSource?.factors ?? {};
+
+  let total = 0;
+
+  if (typeof customEmissionFactorBiogenic?.value === 'number') {
+    total += emissionQuantity * customEmissionFactorBiogenic.value;
+  } else if (typeof emissionFactorBiogenic?.value === 'number') {
+    total += emissionQuantity * emissionFactorBiogenic.value;
+  }
+
+  return total;
+}
+
+export function calculateCategoryTotalBiogenicEmissions(
+  emissionEntriesWithEmissionSource: EmissionEntryWithOrganizationUnitAndEmissionSource[],
+  emissionSourcesWithFactors: EmissionSourceFlattenWithFactors[],
+): number {
+  return emissionEntriesWithEmissionSource.reduce((total, emissionEntry) => {
+    const emissionEntrySourceId =
+      emissionEntry.attributes.emissionSource.data.id;
+    const emissionSource = emissionSourcesWithFactors.find(
+      (emissionSource) => emissionSource.id === emissionEntrySourceId,
+    );
+
+    if (!emissionSource) return total;
+
+    const categoryTotal =
+      total +
+      calculateEmissionEntryTotalBiogenicEmissions(
+        emissionEntry,
+        emissionSource,
+      );
+    return categoryTotal;
+  }, 0);
+}
+
+export function getAccuracyReliability(
+  number: number,
+): 'low' | 'medium' | 'high' | '' {
+  if (number >= 0 && number <= 1) {
+    return 'low';
+  }
+  if (number > 1 && number <= 2) {
+    return 'medium';
+  }
+  if (number > 2) {
+    return 'high';
+  }
+  return '';
 }

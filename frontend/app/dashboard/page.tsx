@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { DashboardTabs } from './components/tabs/dashboard-tabs';
 
@@ -9,19 +10,20 @@ import { useGetGeneralSettingsByLocaleQuery } from '@/redux/api/settings/general
 import { useSelectedLocale } from '@/redux/store/ui/shared';
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const selectedLocale = useSelectedLocale();
 
   const generalSettings = useGetGeneralSettingsByLocaleQuery(
-    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string)
+    selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
   );
 
   const appName = generalSettings?.currentData?.data?.attributes?.appName;
 
   return (
-    <main className="relative mx-4 mt-10 sm:mx-12">
+    <main className="relative mx-2 mt-10 sm:mx-12 flex justify-center">
       <div>
         <div>
-          <span>XXXX</span>
+          <span>{t('dashboard.home')}</span>
           <span className="px-2 text-secondary">/</span>
           <span className="text-secondary">
             {appName || <Skeleton className="inline-block h-3 w-[50px]" />}

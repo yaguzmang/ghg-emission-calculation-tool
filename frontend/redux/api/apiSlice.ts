@@ -10,6 +10,13 @@ const protectedEndpoints = [
   'createReportingPeriod',
   'getEmissionCategoriesWithEmissions',
   'getEmissionCategoriesWithFactors',
+  'createEmissionEntry',
+  'getEmissionEntriesByReportingPeriod',
+  'updateEmissionEntry',
+  'getEmissionsResultsByReportingPeriod',
+  'getReportingPeriod',
+  'getEmissionCategoryWithLocalizations',
+  'deleteEmissionEntry',
 ];
 
 export const apiSlice = createApi({
@@ -37,6 +44,9 @@ export const apiSlice = createApi({
     'GeneralSettings',
     'EmissionCategoryWithEmissions',
     'EmissionCategoryWithFactors',
+    'EmissionEntry',
+    'EmissionsResults',
+    'EmissionCategory',
   ],
   endpoints: () => ({}),
 });

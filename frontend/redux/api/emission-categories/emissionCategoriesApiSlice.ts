@@ -4,6 +4,7 @@ import { apiSlice } from '@/redux/api/apiSlice';
 import {
   EmissionCategoryFlattenWithEmissions,
   EmissionCategoryFlattenWithSourceGroups,
+  EmissionCategoryWithLocalizations,
 } from '@/types/emission-category';
 
 const emissionCategoriesWithEmissionsAdapter = createEntityAdapter();
@@ -19,21 +20,25 @@ export type EmissionCategoriesWithFactorsApiResponse = {
   data: EmissionCategoryFlattenWithSourceGroups;
 };
 
+export type EmissionCategoryWithLocalizationsResponse = {
+  data: EmissionCategoryWithLocalizations;
+};
+
 export const emissionCategoriesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getEmissionCategoriesWithEmissions: builder.query<
       EmissionCategoryFlattenWithEmissions[],
-      { locale: string; reportingPeriod: number }
+      { locale: string; reportingPeriodId: number }
     >({
-      query: ({ locale, reportingPeriod }) =>
-        `/emission-categories/with-emissions?locale=${locale}&reportingPeriod=${reportingPeriod}`,
+      query: ({ locale, reportingPeriodId }) =>
+        `/emission-categories/with-emissions?locale=${locale}&reportingPeriod=${reportingPeriodId}`,
       transformResponse: (
-        responseData: EmissionCategoriesWithEmissionsApiResponse
+        responseData: EmissionCategoriesWithEmissionsApiResponse,
       ) => {
         const transformedData = responseData.data;
         emissionCategoriesWithEmissionsAdapter.setAll(
           emissionCategoriesWithEmissionsInitialState,
-          transformedData
+          transformedData,
         );
         return transformedData;
       },
@@ -50,14 +55,28 @@ export const emissionCategoriesApiSlice = apiSlice.injectEndpoints({
     }),
     getEmissionCategoriesWithFactors: builder.query<
       EmissionCategoryFlattenWithSourceGroups,
-      { emissionCategoryId: number; reportingPeriod: number }
+      { emissionCategoryId: number; reportingPeriodId: number }
     >({
-      query: ({ emissionCategoryId, reportingPeriod }) =>
-        `/emission-categories/${emissionCategoryId}/with-emission-factors?reportingPeriod=${reportingPeriod}`,
+      query: ({ emissionCategoryId, reportingPeriodId }) =>
+        `/emission-categories/${emissionCategoryId}/with-emission-factors?reportingPeriod=${reportingPeriodId}`,
       providesTags: (result, _error, _arg) =>
         result
           ? [{ type: 'EmissionCategoryWithFactors', id: result.id }]
           : [{ type: 'EmissionCategoryWithFactors', id: 'LIST' }],
+    }),
+    getEmissionCategoryWithLocalizations: builder.query<
+      EmissionCategoryWithLocalizations,
+      number
+    >({
+      query: (emissionCategoryId) =>
+        `/emission-categories/${emissionCategoryId}?populate=localizations`,
+      transformResponse: (
+        responseData: EmissionCategoryWithLocalizationsResponse,
+      ) => responseData.data,
+      providesTags: (result, _error, _arg) =>
+        result
+          ? [{ type: 'ReportingPeriod', id: result.id }]
+          : [{ type: 'ReportingPeriod', id: 'LIST' }],
     }),
   }),
 });
@@ -65,4 +84,5 @@ export const emissionCategoriesApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetEmissionCategoriesWithEmissionsQuery,
   useGetEmissionCategoriesWithFactorsQuery,
+  useGetEmissionCategoryWithLocalizationsQuery,
 } = emissionCategoriesApiSlice;

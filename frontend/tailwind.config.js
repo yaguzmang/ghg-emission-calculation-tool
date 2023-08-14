@@ -25,7 +25,7 @@ module.exports = {
     extend: {
       colors: {
         border: 'hsl(var(--border))',
-        'taltech-green': 'hsl(var(--taltech-green))',
+        green: 'hsl(var(--green))',
         'gray-lighten': 'hsl(var(--gray-lighten))',
         overlay: 'hsl(var(--overlay))',
         loader: {
@@ -33,6 +33,7 @@ module.exports = {
           dark: 'hsl(var(--loader-dark))',
         },
         'text-regular': 'hsl(var(--text-regular))',
+        'text-regular-lighten': 'hsl(var(--text-regular-lighten))',
         'select-item-hover': 'hsl(var(--select-item-hover))',
         'select-content-popover': 'hsl(var(--select-content-popover))',
         input: {
@@ -44,6 +45,36 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        emission: {
+          DEFAULT: 'hsl(var(--emission))',
+          foreground: {
+            DEFAULT: 'hsl(var(--emission-foreground))',
+            muted: 'hsl(var(--emission-foreground-muted))',
+          },
+          secundary: {
+            DEFAULT: 'hsl(var(--emission-secundary))',
+          },
+        },
+        accuracy: {
+          low: {
+            gradient: {
+              from: 'hsl(var(--accuracy-low-gradient-from))',
+              to: 'hsl(var(--accuracy-low-gradient-to))',
+            },
+          },
+          medium: {
+            gradient: {
+              from: 'hsl(var(--accuracy-medium-gradient-from))',
+              to: 'hsl(var(--accuracy-medium-gradient-to))',
+            },
+          },
+          high: {
+            gradient: {
+              from: 'hsl(var(--accuracy-high-gradient-from))',
+              to: 'hsl(var(--accuracy-high-gradient-to))',
+            },
+          },
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -113,6 +144,15 @@ module.exports = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+          menu: {
+            DEFAULT: 'hsl(var(--popover-menu))',
+            foreground: 'hsl(var(--popover-menu-foreground))',
+            border: 'hsl(var(--popover-menu-border))',
+          },
+        },
+        tooltip: {
+          DEFAULT: 'hsl(var(--tooltip))',
+          foreground: 'hsl(var(--tooltip-foreground))',
         },
       },
       boxShadow: {
@@ -172,7 +212,7 @@ module.exports = {
         },
         {
           values: theme('transitionDelay'),
-        }
+        },
       );
     }),
   ],

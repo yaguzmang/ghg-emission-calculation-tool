@@ -3,7 +3,6 @@
     "next/core-web-vitals",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "env": {
@@ -30,11 +29,20 @@
     ],
     "react/forbid-prop-types": 0,
     "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/no-unknown-property": [
+      "error",
+      { "ignore": ["cmdk-input-wrapper"] }
+    ],
     "import/prefer-default-export": 0,
     "import/extensions": [
       "error",
       "ignorePackages",
       { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      { "allow": ["arrowFunctions"] }
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/order": 0,

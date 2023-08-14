@@ -24,7 +24,7 @@ export function HeaderLanguageSelector() {
               type="button"
               onClick={() =>
                 dispatch(
-                  SharedUIActions.setSelectedLocale({ locale: locale.code })
+                  SharedUIActions.setSelectedLocale({ locale: locale.code }),
                 )
               }
               className={cn('uppercase before:font-bold', {

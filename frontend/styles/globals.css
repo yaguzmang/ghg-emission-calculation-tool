@@ -4,9 +4,26 @@
 
 @layer base {
   :root {
-    --taltech-green: 106 46% 50%; /*  #62BB46 */
+    --green: 106 46% 50%; /*  #62BB46 */
     --gray-lighten: 230 18% 93%; /* #EBECF1 */
     --overlay: 240 12% 97%; /* #F6F6F8 */
+
+    --emission: 249 37% 7%; /* #0D0B18 */
+    --emission-foreground: 0 0% 100%; /* #fff */
+    --emission-foreground-muted: 232 9% 47%; /* #6E7184 */
+    --emission-secundary: 0 0% 85%; /* #D9D9D9 */
+
+    --accuracy-low-gradient-from: 79 100% 92%; /* #F2FFD6 */
+    --accuracy-low-gradient-to: 61 100% 50%; /* #FAFF00 */
+
+    --accuracy-medium-gradient-from: 58 93% 69%; /* #FAF468 */
+    --accuracy-medium-gradient-to: 106 35% 72%; /* #A9D09D */
+
+    --accuracy-high-gradient-from: 107 33% 71%; /* #A7CD9C */
+    --accuracy-high-gradient-to: 106 96% 24%; /* #1F7903 */
+
+    --tooltip: 232 9% 47%; /* #6E7184 */
+    --tooltip-foreground: 0 0% 100%; /* #fff */
 
     --loader-light: 240 16% 87%; /* #DADAE4 */
     --loader-dark: 234 16% 63%; /* #9396B0 */
@@ -14,10 +31,15 @@
     --background: 240 23% 97%; /*  #F7F7FA */
     --foreground: 250 38% 27%; /* #342B60 */
 
-    --text-regular: 233, 15%, 33%; /* #484B62 */
+    --text-regular: 233 15% 33%; /* #484B62 */
+    --text-regular-lighten: 232 9% 47%; /* #6E7184 */
 
     --popover: 0 0% 100%; /* #fff */
     --popover-foreground: 250 38% 27%; /* #342B60 */
+
+    --popover-menu: 240 16% 87%; /* #DADAE4 */
+    --popover-menu-foreground: 235 15% 32%; /* #45475E*/
+    --popover-menu-border: 240 16% 94%; /* #EDEDF2*/
 
     --border: 240 16% 87%; /* #DADAE4 */
 
@@ -100,7 +122,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
   h1 {
     @apply text-[1.75rem] font-black;

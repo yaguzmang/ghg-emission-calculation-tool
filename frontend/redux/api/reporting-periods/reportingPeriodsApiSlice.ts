@@ -7,6 +7,10 @@ const reportingPeriodsAdapter = createEntityAdapter();
 
 const initialState = reportingPeriodsAdapter.getInitialState();
 
+export type ReportingPeriodApiResponse = {
+  data: ReportingPeriod;
+};
+
 export type ReportingPeriodsApiResponse = {
   data: {
     id: number;
@@ -50,8 +54,17 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
                 { type: 'ReportingPeriod', id: 'LIST' },
               ]
             : [{ type: 'ReportingPeriod', id: 'LIST' }],
-      }
+      },
     ),
+    getReportingPeriod: builder.query<ReportingPeriod, number>({
+      query: (reportingPeriodId) => `/reporting-periods/${reportingPeriodId}`,
+      transformResponse: (responseData: ReportingPeriodApiResponse) =>
+        responseData.data,
+      providesTags: (result, _error, _arg) =>
+        result
+          ? [{ type: 'ReportingPeriod', id: result.id }]
+          : [{ type: 'ReportingPeriod', id: 'LIST' }],
+    }),
     createReportingPeriod: builder.mutation<
       ReportingPeriodsApiResponse,
       CreateReportingPeriodData
@@ -69,4 +82,5 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetReportingPeriodsByOrganizationQuery,
   useCreateReportingPeriodMutation,
+  useGetReportingPeriodQuery,
 } = reportingPeriodsApiSlice;
