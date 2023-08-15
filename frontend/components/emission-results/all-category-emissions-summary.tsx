@@ -141,7 +141,11 @@ export default function AllCategoryEmissionsSummary({
         })}
 
         <div className="flex items-center justify-between border-b-ring border-b pb-2 mb-4 mt-16">
-          <h4>{t('dashboard.form.emissionSummary.allBiogenicEmissions')}</h4>
+          <h4>
+            {t('dashboard.form.emissionSummary.allCategoryBiogenicEmissions', {
+              categoryTitle: emissionCategoryWithFactors.currentData?.title,
+            })}
+          </h4>
           <span
             className={cn('text-2xl leading-7 font-bold', {
               'text-primary-disabled-foreground': totalBiogenicEmissions === 0,
