@@ -45,14 +45,19 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        'lollipop-value': 'hsl(var(--lollipop-value))',
+        'lollipop-label': 'hsl(var(--lollipop-label))',
+        'lollipop-line': 'hsl(var(--lollipop-line))',
+        'graph-tooltip': 'hsl(var(--graph-tooltip))',
+        'graph-tooltip-foreground': 'hsl(var(--graph-tooltip-foreground))',
         emission: {
           DEFAULT: 'hsl(var(--emission))',
           foreground: {
             DEFAULT: 'hsl(var(--emission-foreground))',
             muted: 'hsl(var(--emission-foreground-muted))',
           },
-          secundary: {
-            DEFAULT: 'hsl(var(--emission-secundary))',
+          secondary: {
+            DEFAULT: 'hsl(var(--emission-secondary))',
           },
         },
         accuracy: {

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams, useRouter } from 'next/navigation';
 
 import { FormTabContent } from './form/form-content';
+import { ResultsTabContent } from './results/results-content';
 
 import { Loader } from '@/components/ui/loader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -27,7 +28,7 @@ export function DashboardTabs() {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 w-full max-w-[1328px]">
       <Tabs
         value={selectedTab}
         className="relative mr-auto w-full"
@@ -61,7 +62,7 @@ export function DashboardTabs() {
             </TabsTrigger>
           </TabsList>
         </div>
-        <div className="flex min-h-[350px] bg-white shadow-strong max-w-[1328px]">
+        <div className="flex min-h-[350px] bg-white shadow-strong">
           <TabsContent value="home" className="h-full w-full">
             <Loader />
           </TabsContent>
@@ -69,9 +70,7 @@ export function DashboardTabs() {
             <FormTabContent />
           </TabsContent>
           <TabsContent value="results" className="h-full w-full">
-            <div className="flex flex-col space-y-4">
-              {t('dashboard.results')}
-            </div>
+            <ResultsTabContent />
           </TabsContent>
         </div>
       </Tabs>
