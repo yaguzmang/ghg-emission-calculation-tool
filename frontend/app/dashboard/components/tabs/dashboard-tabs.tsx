@@ -8,7 +8,6 @@ import { useParams, useRouter } from 'next/navigation';
 import { FormTabContent } from './form/form-content';
 import { ResultsTabContent } from './results/results-content';
 
-import { Loader } from '@/components/ui/loader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function DashboardTabs() {
@@ -37,14 +36,6 @@ export function DashboardTabs() {
         <div className="flex items-center justify-between">
           <TabsList className="w-full justify-start rounded-none bg-transparent p-0">
             <TabsTrigger
-              value="home"
-              className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:shadow-none md:min-w-[180px] md:px-0"
-            >
-              <span className="pb-2 uppercase md:pl-2">
-                {t('dashboard.home')}
-              </span>
-            </TabsTrigger>
-            <TabsTrigger
               value="form"
               className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:shadow-none md:min-w-[180px] md:px-0"
             >
@@ -63,9 +54,6 @@ export function DashboardTabs() {
           </TabsList>
         </div>
         <div className="flex min-h-[350px] bg-white shadow-strong">
-          <TabsContent value="home" className="h-full w-full">
-            <Loader />
-          </TabsContent>
           <TabsContent value="form" className="h-full w-full">
             <FormTabContent />
           </TabsContent>
