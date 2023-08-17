@@ -1,9 +1,13 @@
-import Link from 'next/link';
+'use client';
+
+import { useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 export default function LandingPage() {
-  return (
-    <main>
-      <Link href="/dashboard">Go to dashboard</Link>
-    </main>
-  );
+  const router = useRouter();
+  useEffect(() => {
+    router.push('/dashboard');
+  }, [router]);
+  return <main />;
 }

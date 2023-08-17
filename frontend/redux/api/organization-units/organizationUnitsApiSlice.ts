@@ -1,7 +1,11 @@
 import { createEntityAdapter } from '@reduxjs/toolkit';
 
 import { apiSlice } from '@/redux/api/apiSlice';
-import { OrganizationUnit } from '@/types/organization-unit';
+import {
+  OrganizationUnit,
+  OrganizationUnitsWithDividerValues,
+  OrganizationUnitWithDividerValues,
+} from '@/types/organization-unit';
 
 const organizationUnitsAdapter = createEntityAdapter();
 
@@ -20,6 +24,10 @@ export type OrganizationUnisApiResponse = {
     };
   };
   meta: Record<string, unknown>;
+};
+
+export type OrganizationUnitsWithDividerValuesApiResponse = {
+  data: OrganizationUnitsWithDividerValues;
 };
 
 export const organizationUnitsApiSlice = apiSlice.injectEndpoints({
@@ -47,8 +55,39 @@ export const organizationUnitsApiSlice = apiSlice.injectEndpoints({
             ]
           : [{ type: 'OrganizationUnit', id: 'LIST' }],
     }),
+    getOrganizationUnitsWithDividerValuesByOrganization: builder.query<
+      OrganizationUnitWithDividerValues[],
+      number
+    >({
+      query: (orgazationId) =>
+        `/organizations/${orgazationId}?populate[organizationUnits][populate][dividerValues][populate]=organizationDivider`,
+      transformResponse: (
+        responseData: OrganizationUnitsWithDividerValuesApiResponse,
+      ) => {
+        const transformedData =
+          responseData.data.attributes.organizationUnits.data;
+        organizationUnitsAdapter.setAll(initialState, transformedData);
+        return transformedData;
+      },
+      providesTags: (result, _error, _arg) =>
+        result
+          ? [
+              ...result.map((organizationUnit) => ({
+                type: 'OrganizationUnit' as const,
+                id: organizationUnit.id,
+              })),
+              { type: 'OrganizationUnit', id: 'LIST' },
+              { type: 'OrganizationDivider', id: 'LIST' },
+            ]
+          : [
+              { type: 'OrganizationUnit', id: 'LIST' },
+              { type: 'OrganizationDivider', id: 'LIST' },
+            ],
+    }),
   }),
 });
 
-export const { useGetOrganizationUnitsByOrganizationQuery } =
-  organizationUnitsApiSlice;
+export const {
+  useGetOrganizationUnitsByOrganizationQuery,
+  useGetOrganizationUnitsWithDividerValuesByOrganizationQuery,
+} = organizationUnitsApiSlice;

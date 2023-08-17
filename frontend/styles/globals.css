@@ -11,7 +11,14 @@
     --emission: 249 37% 7%; /* #0D0B18 */
     --emission-foreground: 0 0% 100%; /* #fff */
     --emission-foreground-muted: 232 9% 47%; /* #6E7184 */
-    --emission-secundary: 0 0% 85%; /* #D9D9D9 */
+    --emission-secondary: 0 0% 85%; /* #D9D9D9 */
+
+    --lollipop-value: 235 15% 32%; /* #45475E */
+    --lollipop-label: 0 0% 12%; /* #1F1F1F */
+    --lollipop-line: 234 16% 63%; /* #9396B0 */
+
+    --graph-tooltip: 0 0% 12%; /* #1F1F1F */
+    --graph-tooltip-foreground: 0 0% 100%; /* #fff */
 
     --accuracy-low-gradient-from: 79 100% 92%; /* #F2FFD6 */
     --accuracy-low-gradient-to: 61 100% 50%; /* #FAFF00 */

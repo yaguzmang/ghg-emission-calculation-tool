@@ -90,7 +90,7 @@ export function EmissionsSummarySection({
           </span>
           <div
             className={cn(
-              'h-[10px] w-full bg-emission-secundary rounded-full mt-1 flex',
+              'h-[10px] w-full bg-emission-secondary rounded-full mt-1 flex',
               { 'justify-start': accuracyReliability === 'low' },
               { 'justify-center': accuracyReliability === 'medium' },
               { 'justify-end': accuracyReliability === 'high' },

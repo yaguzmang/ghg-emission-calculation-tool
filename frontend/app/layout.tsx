@@ -8,8 +8,7 @@ import { fontProximaNova } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 
 export const metadata = {
-  title: 'Landing page',
-  description: 'This is the GHG Tool landing page',
+  title: 'GHG calculator',
 };
 
 export default function RootLayout({

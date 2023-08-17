@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 import Link from 'next/link';
 
@@ -84,26 +85,17 @@ export default function EmissionsFormPanel({
       </div>
       <div className="mt-8 text-text-regular flex flex-col">
         {isEmissionCategoryLoading ? (
-          <Skeleton className="inline-block h-3 w-full" />
-        ) : (
-          <p>
-            {emissionCategoryWithFactors.currentData?.description?.split(
-              '\n',
-            )[0] ?? ''}
-          </p>
-        )}
-
-        {isEmissionCategoryLoading ? (
           <>
+            <Skeleton className="inline-block h-3 w-full" />
             <Skeleton className="mt-4 inline-block h-3 w-full" />
             <Skeleton className="mt-1 inline-block h-3 w-10/12" />
           </>
         ) : (
-          <p className="mt-4">
+          <ReactMarkdown>
             {emissionCategoryWithFactors.currentData?.description?.split(
               '\n',
-            )[1] ?? ''}
-          </p>
+            )[0] ?? ''}
+          </ReactMarkdown>
         )}
       </div>
 
