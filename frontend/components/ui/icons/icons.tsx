@@ -4,6 +4,7 @@ import Check from './check.svg';
 import ChevronDown from './chevron-down.svg';
 import DirectEmissions from './DirectEmissions.svg';
 import Edit from './edit.svg';
+import HalfCircle from './half-circle.svg';
 import HelpCircleFilled from './help-circle-filled.svg';
 import IndirectEmissions from './IndirectEmissions.svg';
 import NotchDown from './notch-down.svg';
@@ -38,6 +39,7 @@ export const Icons = {
   Trash,
   ArrowsDown,
   ArrowsDownSmall,
+  HalfCircle,
 };
 
 export const EmissionIconsByScope = {

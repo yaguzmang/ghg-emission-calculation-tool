@@ -48,6 +48,12 @@ module.exports = {
         'lollipop-value': 'hsl(var(--lollipop-value))',
         'lollipop-label': 'hsl(var(--lollipop-label))',
         'lollipop-line': 'hsl(var(--lollipop-line))',
+
+        'proportional-area-chart-primary':
+          'hsl(var(--proportional-area-chart-primary))',
+        'proportional-area-chart-secondary':
+          'hsl(var(--proportional-area-chart-secondary))',
+
         'graph-tooltip': 'hsl(var(--graph-tooltip))',
         'graph-tooltip-foreground': 'hsl(var(--graph-tooltip-foreground))',
         emission: {

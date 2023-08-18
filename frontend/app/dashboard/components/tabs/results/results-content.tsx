@@ -1,19 +1,21 @@
 'use client';
 
 import { EmissionCategoriesLollipopChart } from './components/emission-categories-lollipop-chart';
+import { GHGEmissionsBetweenOrganizationalUnitsContainer } from './components/ghg-emissions-between-organizational-units/organizational-units-container';
 
 import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
 import { OrganizationPeriodForm } from '@/components/organization-period-form/organization-period-form';
 import {
   useSelectedLocale,
+  useSelectedOrganizationId,
   useSelectedReportingPeriodId,
 } from '@/redux/store/ui/shared';
 
 export function ResultsTabContent() {
   const selectedLocale = useSelectedLocale();
   const selectedeportingPeriodId = useSelectedReportingPeriodId('results');
-
+  const selectedOrganizationId = useSelectedOrganizationId('results');
   return (
     <div className="h-full w-full flex-1 py-8 px-2 sm:px-8 gap-12">
       <div className="flex flex-col gap-12">
@@ -38,6 +40,11 @@ export function ResultsTabContent() {
             </div>
           </div>
         )}
+        <GHGEmissionsBetweenOrganizationalUnitsContainer
+          organizationId={selectedOrganizationId}
+          reportingPeriodId={selectedeportingPeriodId}
+          locale={selectedLocale}
+        />
       </div>
     </div>
   );
