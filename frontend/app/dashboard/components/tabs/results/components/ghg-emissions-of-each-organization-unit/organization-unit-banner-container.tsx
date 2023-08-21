@@ -28,12 +28,13 @@ export function OrganizationUnitBannerContainer({
       {emissionResults.currentData &&
         emissionResults.currentData.organizationUnits.map(
           (orgUnitmissionResults) => (
-              <OrganizationUnitBanner
-                reportingPeriodId={reportingPeriodId}
-                locale={locale}
-                organizationUnitEmissionResults={orgUnitmissionResults}
-              />
-            ),
+            <OrganizationUnitBanner
+              key={`org-unit-banner-${orgUnitmissionResults.id}`}
+              reportingPeriodId={reportingPeriodId}
+              locale={locale}
+              organizationUnitEmissionResults={orgUnitmissionResults}
+            />
+          ),
         )}
     </div>
   );

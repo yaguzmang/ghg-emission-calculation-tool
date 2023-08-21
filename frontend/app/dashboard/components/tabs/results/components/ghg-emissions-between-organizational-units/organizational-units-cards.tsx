@@ -62,6 +62,7 @@ export function OrganizationalUnitsCards({
         normalizedOrganizationUnitsTotalEmissionsAndDividers.map(
           (normalizedOrgUnit) => (
             <OrganizationalUnitCard
+              key={`org-unit-card-${normalizedOrgUnit.id}`}
               title={normalizedOrgUnit.name}
               primaryLabel={t(
                 'results.ghgEmissionsBetweenUnits.totalEmissions',
