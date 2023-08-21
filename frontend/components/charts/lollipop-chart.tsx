@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react';
+'use client';
+
+import { useMemo, useRef, useState } from 'react';
 import { Trans } from 'react-i18next';
 import useMeasure from 'react-use-measure';
 
@@ -14,7 +16,7 @@ export type LollipopEntry = {
   color: null | string;
 };
 
-const MARGIN = { top: 32, right: 40, bottom: 30, left: 15 };
+const MARGIN = { top: 32, right: 15, bottom: 30, left: 15 };
 
 type LollipopChartInnerProps = {
   width: number;
@@ -31,6 +33,8 @@ export const LollipopChartInner = ({
   heightSizeType,
   unitLabel,
 }: LollipopChartInnerProps) => {
+  const tooltipContainerRef = useRef<HTMLDivElement>(null);
+
   const lollipopRadius = 10;
   const fontSize = 10;
   const labelCharWidth = 5.3; // Depends on font type and size
@@ -194,7 +198,8 @@ export const LollipopChartInner = ({
 
       {/* Tooltip */}
       <div
-        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2"
+        ref={tooltipContainerRef}
+        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2 w-full h-full"
         style={{
           marginLeft: MARGIN.left,
           marginTop: MARGIN.top,
@@ -209,6 +214,7 @@ export const LollipopChartInner = ({
                 }
               : null
           }
+          containerRef={tooltipContainerRef}
         >
           {hoveredElementData ? (
             <>
