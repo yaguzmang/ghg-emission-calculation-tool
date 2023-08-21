@@ -41,6 +41,14 @@
     --background: 240 23% 97%; /*  #F7F7FA */
     --foreground: 250 38% 27%; /* #342B60 */
 
+    --banner-primary: 250 38% 20%; /*  #272048 */
+    --banner-primary-foreground: 0 0% 100%; /* #fff */
+
+    --banner-secondary: 250 17% 45%; /* #676088 */
+    --banner-secondary-foreground: 0 0% 100%; /* #fff */
+
+    --banner-border: 249 38% 28%; /* #342C61 */
+
     --text-regular: 233 15% 33%; /* #484B62 */
     --text-regular-lighten: 232 9% 47%; /* #6E7184 */
 

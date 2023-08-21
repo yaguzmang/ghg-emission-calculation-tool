@@ -2,6 +2,7 @@
 
 import { EmissionCategoriesLollipopChart } from './components/emission-categories-lollipop-chart';
 import { GHGEmissionsBetweenOrganizationalUnitsContainer } from './components/ghg-emissions-between-organizational-units/organizational-units-container';
+import { OrganizationUnitBannerContainer } from './components/ghg-emissions-of-each-organization-unit/organization-unit-banner-container';
 
 import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
@@ -45,6 +46,12 @@ export function ResultsTabContent() {
           reportingPeriodId={selectedeportingPeriodId}
           locale={selectedLocale}
         />
+        {selectedLocale && selectedLocale && (
+          <OrganizationUnitBannerContainer
+            reportingPeriodId={selectedeportingPeriodId}
+            locale={selectedLocale}
+          />
+        )}
       </div>
     </div>
   );

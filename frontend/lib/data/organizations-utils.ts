@@ -1,4 +1,8 @@
-import { EmissionResults } from '@/types/emission-result';
+import {
+  EmissionCategoryTotalByEmissionType,
+  EmissionResults,
+  EmissionResultsByOrganizationUnit,
+} from '@/types/emission-result';
 import { OrganizationDivider } from '@/types/organization-divider';
 import {
   NormalizedOrganizationUnitWithTotalGHGEmissions,
@@ -15,7 +19,7 @@ export function getUsedDividerValuesFromOrganizationUnits(
   const addedOrganizationDividerIds = new Set<number>();
 
   organizationUnitsWithDividerValues.forEach((organizationUnit) => {
-    const {dividerValues} = organizationUnit.attributes;
+    const { dividerValues } = organizationUnit.attributes;
     dividerValues.forEach((dividerValue) => {
       if (dividerValue.organizationDivider.data === null) return;
       if (
@@ -32,28 +36,32 @@ export function getUsedDividerValuesFromOrganizationUnits(
   return usedOrganizationDivider;
 }
 
+export function calculateTotalGHGEmissionsOfOrganizationUnit(
+  orgUnit: EmissionResultsByOrganizationUnit,
+): number {
+  const scope1Emissions = orgUnit.emissions.scope1.reduce(
+    (acc, category) => acc + category.emissions,
+    0,
+  );
+  const scope2Emissions = orgUnit.emissions.scope2.reduce(
+    (acc, category) => acc + category.emissions,
+    0,
+  );
+  const scope3Emissions = orgUnit.emissions.scope3.reduce(
+    (acc, category) => acc + category.emissions,
+    0,
+  );
+  const totalGHGEmissions = scope1Emissions + scope2Emissions + scope3Emissions;
+
+  return totalGHGEmissions;
+}
+
 export function calculateTotalGHGEmissionsPerOrganizationUnit(
   data: EmissionResults,
 ): OrganizationUnitWithTotalGHGEmissions[] {
   return data.organizationUnits.map((orgUnit) => {
-    const scope1Emissions = orgUnit.emissions.scope1.reduce(
-      (acc, category) => acc + category.emissions,
-      0,
-    );
-
-    const scope2Emissions = orgUnit.emissions.scope2.reduce(
-      (acc, category) => acc + category.emissions,
-      0,
-    );
-
-    const scope3Emissions = orgUnit.emissions.scope3.reduce(
-      (acc, category) => acc + category.emissions,
-      0,
-    );
-
     const totalGHGEmissions =
-      scope1Emissions + scope2Emissions + scope3Emissions;
-
+      calculateTotalGHGEmissionsOfOrganizationUnit(orgUnit);
     return {
       id: orgUnit.id,
       name: orgUnit.name,
@@ -174,4 +182,66 @@ export function getNormalizedOrganizationUnitsTotalEmissions(
     normalizedOrgUnitsWithTotalEmissions: normalizedOrgUnits,
     totalGHGEmissionsAllUnits: totalGHGEmissionsSum,
   };
+}
+
+export function calculateOrganizationUnitTotalEmissionsByCategoryAndEmissionType(
+  organizationUnitEmissionResults: EmissionResultsByOrganizationUnit,
+  emissionType: 'scope1' | 'scope2' | 'scope3' | 'biogenic',
+): EmissionCategoryTotalByEmissionType[] {
+  const emissionCategoriesTotalEmissionsByScope: EmissionCategoryTotalByEmissionType[] =
+    [];
+
+  const emissionCategories =
+    organizationUnitEmissionResults.emissions[emissionType];
+  emissionCategories.forEach((category) => {
+    const existingCategory = emissionCategoriesTotalEmissionsByScope.find(
+      (item) => item.id === category.id,
+    );
+
+    if (existingCategory) {
+      existingCategory.totalEmissions += category.emissions;
+    } else {
+      const emissionCategoryTotal: EmissionCategoryTotalByEmissionType = {
+        ...category,
+        emissionType,
+        totalEmissions: category.emissions,
+      };
+      emissionCategoriesTotalEmissionsByScope.push(emissionCategoryTotal);
+    }
+  });
+
+  return emissionCategoriesTotalEmissionsByScope;
+}
+
+export function calculateTotalAllEmissionPerCategory(
+  emissionsDataArray: EmissionCategoryTotalByEmissionType[][],
+): EmissionCategoryTotalByEmissionType[] {
+  const totalEmissionsPerCategory: EmissionCategoryTotalByEmissionType[] = [];
+  const totalGHGEmissionsPerCategoryMap = new Map<
+    number,
+    EmissionCategoryTotalByEmissionType
+  >();
+  emissionsDataArray.forEach((emissionsData) => {
+    emissionsData.forEach((category) => {
+      let totalGHGEmissionsOfCategory = category.totalEmissions;
+      if (totalGHGEmissionsPerCategoryMap.has(category.id)) {
+        const existingCategory = totalGHGEmissionsPerCategoryMap.get(
+          category.id,
+        );
+        totalGHGEmissionsOfCategory += (existingCategory?.totalEmissions ?? 0);
+      }
+      const totalGHGEmissionsPerCategoryObject = {
+        ...category,
+        totalEmissions: totalGHGEmissionsOfCategory,
+      };
+      totalGHGEmissionsPerCategoryMap.set(
+        category.id,
+        totalGHGEmissionsPerCategoryObject,
+      );
+    });
+  });
+  totalGHGEmissionsPerCategoryMap.forEach((emissionCategory) => {
+    totalEmissionsPerCategory.push(emissionCategory);
+  });
+  return totalEmissionsPerCategory;
 }
