@@ -45,9 +45,26 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+
+        'banner-primary': 'hsl(var(--banner-primary))',
+        'banner-primary-foreground': 'hsl(var(--banner-primary-foreground))',
+        'banner-secondary': 'hsl(var(--banner-secondary))',
+        'banner-secondary-foreground':
+          'hsl(var(--banner-secondary-foreground))',
+        'banner-border': 'hsl(var(--banner-border))',
+
         'lollipop-value': 'hsl(var(--lollipop-value))',
         'lollipop-label': 'hsl(var(--lollipop-label))',
         'lollipop-line': 'hsl(var(--lollipop-line))',
+
+        'bar-axis-label': 'hsl(var(--bar-axis-label))',
+        'bar-label': 'hsl(var(--bar-label))',
+
+        'proportional-area-chart-primary':
+          'hsl(var(--proportional-area-chart-primary))',
+        'proportional-area-chart-secondary':
+          'hsl(var(--proportional-area-chart-secondary))',
+
         'graph-tooltip': 'hsl(var(--graph-tooltip))',
         'graph-tooltip-foreground': 'hsl(var(--graph-tooltip-foreground))',
         emission: {

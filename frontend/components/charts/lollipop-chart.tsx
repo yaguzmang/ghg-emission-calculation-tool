@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react';
+'use client';
+
+import { useMemo, useRef, useState } from 'react';
 import { Trans } from 'react-i18next';
 import useMeasure from 'react-use-measure';
 
@@ -14,7 +16,7 @@ export type LollipopEntry = {
   color: null | string;
 };
 
-const MARGIN = { top: 32, right: 40, bottom: 30, left: 15 };
+const MARGIN = { top: 32, right: 15, bottom: 30, left: 15 };
 
 type LollipopChartInnerProps = {
   width: number;
@@ -31,6 +33,8 @@ export const LollipopChartInner = ({
   heightSizeType,
   unitLabel,
 }: LollipopChartInnerProps) => {
+  const tooltipContainerRef = useRef<HTMLDivElement>(null);
+
   const lollipopRadius = 10;
   const fontSize = 10;
   const labelCharWidth = 5.3; // Depends on font type and size
@@ -68,116 +72,116 @@ export const LollipopChartInner = ({
       .range([0, boundsWidth]);
   }, [data, boundsWidth]);
 
-  const allShapes = data.map((d, _i) => {
-    const y = yScale(d.label) ?? 0 + yScale.bandwidth() / 2;
-    const circleStrokeColor = d.color || '#9396B0';
-    const circleFillColor = d.color || '#9396B0';
+  const allShapes = useMemo(() => data.map((d, _i) => {
+      const y = yScale(d.label) ?? 0 + yScale.bandwidth() / 2;
+      const circleStrokeColor = d.color || '#9396B0';
+      const circleFillColor = d.color || '#9396B0';
 
-    let labelAnchorX = xScale(d.value);
-    // Move label text to the left if it overflows
-    const labelAnchorWidth = d.label.length * labelCharWidth;
-    if (labelAnchorX + labelAnchorWidth > boundsWidth) {
-      labelAnchorX = boundsWidth - labelAnchorWidth;
-    }
-    return (
-      <g key={`lollipop-line-group-${y}`} className="text-lollipop-line">
-        <line
-          x1={xScale(0)}
-          y1={y}
-          y2={y}
-          x2={xScale(d.value)}
-          stroke="currentColor"
-          strokeWidth={1}
-          strokeDasharray="2 2"
-        />
-        <circle
-          cy={y}
-          cx={xScale(d.value)}
-          stroke={circleStrokeColor}
-          fill={circleFillColor}
-          strokeWidth={1}
-          r={lollipopRadius}
-          onMouseEnter={() => {
-            setHoveredElementData({
-              xPos: xScale(d.value),
-              yPos: y,
-              label: d.label,
-              value: d.value,
-            });
-          }}
-          onMouseLeave={() => setHoveredElementData(null)}
-        />
-        <g className="font-bold text-lollipop-label">
-          <text
-            x={labelAnchorX}
-            y={y - lollipopRadius - labelBottomMargin}
-            textAnchor="start"
-            alignmentBaseline="central"
-            fontSize={fontSize}
-            fill="currentColor"
-          >
-            {d.label}
-          </text>
+      let labelAnchorX = xScale(d.value);
+      // Move label text to the left if it overflows
+      const labelAnchorWidth = d.label.length * labelCharWidth;
+      if (labelAnchorX + labelAnchorWidth > boundsWidth) {
+        labelAnchorX = boundsWidth - labelAnchorWidth;
+      }
+      return (
+        <g key={`lollipop-line-group-${y}`} className="text-lollipop-line">
+          <line
+            x1={xScale(0)}
+            y1={y}
+            y2={y}
+            x2={xScale(d.value)}
+            stroke="currentColor"
+            strokeWidth={1}
+            strokeDasharray="2 2"
+          />
+          <circle
+            cy={y}
+            cx={xScale(d.value)}
+            stroke={circleStrokeColor}
+            fill={circleFillColor}
+            strokeWidth={1}
+            r={lollipopRadius}
+            onMouseEnter={() => {
+              setHoveredElementData({
+                xPos: xScale(d.value),
+                yPos: y,
+                label: d.label,
+                value: d.value,
+              });
+            }}
+            onMouseLeave={() => setHoveredElementData(null)}
+          />
+          <g className="font-bold text-lollipop-label">
+            <text
+              x={labelAnchorX}
+              y={y - lollipopRadius - labelBottomMargin}
+              textAnchor="start"
+              alignmentBaseline="central"
+              fontSize={fontSize}
+              fill="currentColor"
+            >
+              {d.label}
+            </text>
+          </g>
         </g>
-      </g>
-    );
-  });
+      );
+    }), [data, yScale, xScale, boundsWidth]);
 
-  const grid = xScale
-    .ticks(5)
-    .slice(1)
-    .map((value, i) => (
-      <g
-        key={`lollipop-grid-group-${value}`}
-        className="text-lollipop-line font-normal"
-      >
-        {i === 0 && (
-          <>
-            <line
-              x1={0}
-              x2={0}
-              y1={0}
-              y2={boundsHeight}
-              stroke="currentColor"
-              strokeWidth={1}
-            />
-            <g className="text-lollipop-value">
-              <text
-                x={0}
-                y={-24}
-                textAnchor="middle"
-                alignmentBaseline="central"
-                fontSize={18}
-                fill="currentColor"
-              >
-                0
-              </text>
-            </g>
-          </>
-        )}
-        <line
-          x1={xScale(value)}
-          x2={xScale(value)}
-          y1={0}
-          y2={boundsHeight}
-          stroke="currentColor"
-          strokeWidth={1}
-          strokeDasharray="2 2"
-        />
-        <g className="text-lollipop-value">
-          <text
-            x={xScale(value)}
-            y={-24}
-            textAnchor="middle"
-            alignmentBaseline="central"
-            fontSize={18}
-            fill="currentColor"
-          >
-            {value}
-          </text>
+  const grid = useMemo(() => xScale
+      .ticks(5)
+      .slice(1)
+      .map((value, i) => (
+        <g
+          key={`lollipop-grid-group-${value}`}
+          className="text-lollipop-line font-normal"
+        >
+          {i === 0 && (
+            <>
+              <line
+                x1={0}
+                x2={0}
+                y1={0}
+                y2={boundsHeight}
+                stroke="currentColor"
+                strokeWidth={1}
+              />
+              <g className="text-lollipop-value">
+                <text
+                  x={0}
+                  y={-24}
+                  textAnchor="middle"
+                  alignmentBaseline="central"
+                  fontSize={18}
+                  fill="currentColor"
+                >
+                  0
+                </text>
+              </g>
+            </>
+          )}
+          <line
+            x1={xScale(value)}
+            x2={xScale(value)}
+            y1={0}
+            y2={boundsHeight}
+            stroke="currentColor"
+            strokeWidth={1}
+            strokeDasharray="2 2"
+          />
+          <g className="text-lollipop-value">
+            <text
+              x={xScale(value)}
+              y={-24}
+              textAnchor="middle"
+              alignmentBaseline="central"
+              fontSize={18}
+              fill="currentColor"
+            >
+              {value}
+            </text>
+          </g>
         </g>
-      </g>
-    ));
+      )), [xScale, boundsHeight]);
 
   return (
     <>
@@ -194,7 +198,8 @@ export const LollipopChartInner = ({
 
       {/* Tooltip */}
       <div
-        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2"
+        ref={tooltipContainerRef}
+        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2 w-full h-full"
         style={{
           marginLeft: MARGIN.left,
           marginTop: MARGIN.top,
@@ -209,15 +214,16 @@ export const LollipopChartInner = ({
                 }
               : null
           }
+          containerRef={tooltipContainerRef}
         >
           {hoveredElementData ? (
-            <>
+            <div className="p-2">
               <span className="text-sm">{hoveredElementData.value}</span>
               <span className="text-sm pl-2">
                 <Trans i18nKey={unitLabel} />
               </span>
               {/* <span className="text-sm">tc0</span> */}
-            </>
+            </div>
           ) : null}
         </ChartTooltip>
       </div>

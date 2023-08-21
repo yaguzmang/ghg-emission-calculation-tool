@@ -117,7 +117,7 @@ export function FormCombobox({
             <CommandEmpty className="py-6 text-center text-sm">
               {searchNotFoundLabel}
             </CommandEmpty>
-            <CommandGroup className="overflow-hidden p-0 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground">
+            <CommandGroup className="overflow-hidden p-0 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground max-h-[350px] overflow-y-scroll">
               {options.map((option) => (
                 <CommandItem
                   key={option.value}
