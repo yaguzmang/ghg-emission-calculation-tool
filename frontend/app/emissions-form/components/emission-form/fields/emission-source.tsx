@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -34,7 +34,9 @@ export default function EmissionSourceField({
 }: EmissionSourceFieldProps) {
   const { t } = useTranslation();
   const form = useFormContext<z.infer<typeof EmissionEntrySchema>>();
-
+  const [hasSelectedDefault, setHasSelectedDefault] = useState(
+    formType === 'create',
+  );
   const emissionSources =
     emissionCategoryWithFactors.emissionSourceGroups.flatMap(
       (emissionSourceGroup) => emissionSourceGroup.emissionSources,
@@ -42,10 +44,8 @@ export default function EmissionSourceField({
   const emissionEntrySourceId =
     emissionEntry?.attributes.emissionSource.data.id;
 
-  const [selectedEmissionSourceId, setSelectedEmissionSourceId] = useState<
-    string | null
-  >(
-    formType === 'edit'
+  const defaultSelectedSource =
+    emissionEntrySourceId && formType === 'edit'
       ? `${emissionEntrySourceId}-:-${
           emissionSources
             .find(
@@ -53,8 +53,24 @@ export default function EmissionSourceField({
             )
             ?.name?.toLowerCase() ?? ''
         }`
-      : null,
-  );
+      : '';
+
+  const [selectedEmissionSourceId, setSelectedEmissionSourceId] = useState<
+    string | null
+  >(formType === 'edit' ? defaultSelectedSource : null);
+
+  useEffect(() => {
+    if (!hasSelectedDefault && selectedEmissionSourceId !== null) {
+      onSourceChange(defaultSelectedSource);
+      setHasSelectedDefault(true);
+    }
+  }, [
+    selectedEmissionSourceId,
+    defaultSelectedSource,
+    hasSelectedDefault,
+    onSourceChange,
+  ]);
+
   const emissionSourcesSelectLabel =
     emissionCategoryWithFactors.emissionSourceLabel ??
     emissionCategoryWithFactors.emissionSourceGroups[0]?.emissionSourceLabel ??
