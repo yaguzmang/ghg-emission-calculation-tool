@@ -98,7 +98,10 @@ export function FormCombobox({
             </div>
           </button>
         </PopoverTrigger>
-        <PopoverContent className="w-[var(--radix-popover-trigger-width)] fade-in-80' rounded-xs border-none bg-select-content-popover p-0 text-text-regular shadow-light animate-in">
+        <PopoverContent
+          side="bottom"
+          className="w-[var(--radix-popover-trigger-width)] fade-in-80' rounded-xs border-none bg-select-content-popover p-0 text-text-regular shadow-light animate-in"
+        >
           <Command className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
             <div
               className="flex items-center border-b px-3"
