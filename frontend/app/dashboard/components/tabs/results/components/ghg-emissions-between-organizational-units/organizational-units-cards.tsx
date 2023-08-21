@@ -94,6 +94,7 @@ export function OrganizationalUnitsCards({
         normalizedTotalGHGEmissionsPerOrganizationUnit.normalizedOrgUnitsWithTotalEmissions.map(
           (normalizedTotalGHGEmissionsPerOrgUnit) => (
             <OrganizationalUnitCard
+              key={`org-unit-card-${normalizedTotalGHGEmissionsPerOrgUnit.id}`}
               title={normalizedTotalGHGEmissionsPerOrgUnit.name}
               primaryLabel={t(
                 'results.ghgEmissionsBetweenUnits.totalEmissions',

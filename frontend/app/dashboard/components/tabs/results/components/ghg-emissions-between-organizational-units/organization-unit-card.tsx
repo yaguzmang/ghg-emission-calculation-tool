@@ -34,19 +34,19 @@ export function OrganizationalUnitCard({
         </div>
         <div className="w-full mt-3">
           <div className="flex justify-between mx-5 sm:mx-7">
-            <div className="flex flex-col max-w-[150px] break-all">
+            <div className="flex flex-col max-w-[150px]">
               <span className="text-proportional-area-chart-primary">
                 <Icons.HalfCircle className="rotate-90" />
               </span>
               <span className="text-xs">{primaryLabel}</span>
-              <span className="font-bold text-lg ">
+              <span className="font-bold text-lg break-normal">
                 {primaryValue}
                 <span className="pl-1 text-xs font-normal">
                   <Trans i18nKey="results.ghgEmissionsBetweenUnits.tCO2e" />
                 </span>
               </span>
             </div>
-            <div className="flex flex-col max-w-[150px] break-all text-primary">
+            <div className="flex flex-col max-w-[150px] text-primary">
               <span className="text-proportional-area-chart-secondary">
                 <Icons.HalfCircle className="rotate-[-90deg]" />
               </span>

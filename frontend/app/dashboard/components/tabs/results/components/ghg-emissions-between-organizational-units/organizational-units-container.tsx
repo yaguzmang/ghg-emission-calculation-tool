@@ -36,8 +36,11 @@ export function GHGEmissionsBetweenOrganizationalUnitsContainer({
     const usedDividers = getUsedDividerValuesFromOrganizationUnits(
       organizationUnitsWithDividerValues.currentData ?? [],
     );
-    if (usedDividers.length > 0)
+    if (usedDividers.length > 0) {
       setSelectedOrganizationDividerId(usedDividers[0].id);
+    } else {
+      setSelectedOrganizationDividerId(0);
+    }
     return usedDividers;
   }, [organizationUnitsWithDividerValues.currentData]);
 
@@ -65,22 +68,22 @@ export function GHGEmissionsBetweenOrganizationalUnitsContainer({
             className="flex flex-col gap-2 items-end"
           >
             {usedOrganizationDividers.map((organizationDivider) => (
-                <ToggleGroupItem
-                  key={organizationDivider.id}
-                  value={organizationDivider.id.toString()}
-                  className="h-fit w-fit text-base"
-                >
-                  <span className="px-1 leading-tight">
-                    {t(
-                      'results.ghgEmissionsBetweenUnits.GHGEmissionsVsOrganizationDivider',
-                      {
-                        OrganizationDividerLabel:
-                          organizationDivider.attributes.label,
-                      },
-                    )}
-                  </span>
-                </ToggleGroupItem>
-              ))}
+              <ToggleGroupItem
+                key={organizationDivider.id}
+                value={organizationDivider.id.toString()}
+                className="h-fit w-fit text-base"
+              >
+                <span className="px-1 leading-tight">
+                  {t(
+                    'results.ghgEmissionsBetweenUnits.GHGEmissionsVsOrganizationDivider',
+                    {
+                      OrganizationDividerLabel:
+                        organizationDivider.attributes.label,
+                    },
+                  )}
+                </span>
+              </ToggleGroupItem>
+            ))}
             <ToggleGroupItem
               key="all-GHG-emission-vs-unit-emissions"
               value="0"
