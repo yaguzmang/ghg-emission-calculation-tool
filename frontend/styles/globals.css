@@ -17,6 +17,12 @@
     --lollipop-label: 0 0% 12%; /* #1F1F1F */
     --lollipop-line: 234 16% 63%; /* #9396B0 */
 
+    --bar-axis-label: 249 38% 28%; /* #342C61 */
+    --bar-label: 235 15% 32%; /* #45475E */
+
+    --proportional-area-chart-primary: 236 9% 32%; /* #4A4B58 */
+    --proportional-area-chart-secondary: 234 16% 63%; /* #9396B0 */
+
     --graph-tooltip: 0 0% 12%; /* #1F1F1F */
     --graph-tooltip-foreground: 0 0% 100%; /* #fff */
 
@@ -37,6 +43,14 @@
 
     --background: 240 23% 97%; /*  #F7F7FA */
     --foreground: 250 38% 27%; /* #342B60 */
+
+    --banner-primary: 250 38% 20%; /*  #272048 */
+    --banner-primary-foreground: 0 0% 100%; /* #fff */
+
+    --banner-secondary: 250 17% 45%; /* #676088 */
+    --banner-secondary-foreground: 0 0% 100%; /* #fff */
+
+    --banner-border: 249 38% 28%; /* #342C61 */
 
     --text-regular: 233 15% 33%; /* #484B62 */
     --text-regular-lighten: 232 9% 47%; /* #6E7184 */
