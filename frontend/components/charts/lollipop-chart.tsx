@@ -217,13 +217,13 @@ export const LollipopChartInner = ({
           containerRef={tooltipContainerRef}
         >
           {hoveredElementData ? (
-            <>
+            <div className="p-2">
               <span className="text-sm">{hoveredElementData.value}</span>
               <span className="text-sm pl-2">
                 <Trans i18nKey={unitLabel} />
               </span>
               {/* <span className="text-sm">tc0</span> */}
-            </>
+            </div>
           ) : null}
         </ChartTooltip>
       </div>

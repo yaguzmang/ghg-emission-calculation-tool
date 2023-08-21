@@ -57,6 +57,9 @@ module.exports = {
         'lollipop-label': 'hsl(var(--lollipop-label))',
         'lollipop-line': 'hsl(var(--lollipop-line))',
 
+        'bar-axis-label': 'hsl(var(--bar-axis-label))',
+        'bar-label': 'hsl(var(--bar-label))',
+
         'proportional-area-chart-primary':
           'hsl(var(--proportional-area-chart-primary))',
         'proportional-area-chart-secondary':

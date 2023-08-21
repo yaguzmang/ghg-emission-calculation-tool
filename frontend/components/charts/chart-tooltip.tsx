@@ -13,10 +13,14 @@ export interface ChartTooltipProps
   extends React.ButtonHTMLAttributes<HTMLDivElement> {
   interactionData: InteractionData | null;
   containerRef: RefObject<HTMLDivElement>;
+  xOffSet?: number;
+  yOffSet?: number;
 }
 export const ChartTooltip = ({
   interactionData,
   containerRef,
+  xOffSet = 0,
+  yOffSet = 0,
   className,
   children,
 }: ChartTooltipProps) => {
@@ -33,22 +37,19 @@ export const ChartTooltip = ({
 
       const finalXPos =
         interactionData.xPos + containerLeft > maxAllowedX
-          ? interactionData.xPos - tooltipWidth
-          : interactionData.xPos;
+          ? interactionData.xPos - tooltipWidth - xOffSet
+          : interactionData.xPos + xOffSet;
 
       tooltipRef.current.style.left = `${finalXPos}px`;
     }
-  }, [interactionData, containerRef]);
+  }, [interactionData, containerRef, xOffSet]);
 
   return interactionData ? (
     <div
       ref={tooltipRef}
-      className={cn(
-        'absolute bg-graph-tooltip translate-y-[10%] p-2',
-        className,
-      )}
+      className={cn('absolute bg-graph-tooltip translate-y-[10%]', className)}
       style={{
-        top: interactionData.yPos,
+        top: interactionData.yPos + yOffSet,
       }}
     >
       {children}

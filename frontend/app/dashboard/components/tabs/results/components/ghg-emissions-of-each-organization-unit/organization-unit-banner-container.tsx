@@ -30,7 +30,7 @@ export function OrganizationUnitBannerContainer({
     <div className="border-t">
       {emissionResults.currentData && (
         <h2 className="break-normal my-10 px-2 sm:px-8">
-          {t('results.GHGEmissionsOfEachUnit')}
+          {t('results.ghgEmissionsOfEachUnit')}
         </h2>
       )}
       <div className="flex flex-col gap-4">

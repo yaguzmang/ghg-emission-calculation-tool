@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { EmissionCategoriesLollipopChart } from './components/emission-categories-lollipop-chart';
 import { GHGEmissionsBetweenOrganizationalUnitsContainer } from './components/ghg-emissions-between-organizational-units/organizational-units-container';
+import { GHGEmissionsByCategoryAndOrganizationUnitContainer } from './components/ghg-emissions-by-category-and-organization-unit/ghg-emissions-by-category-and-organization-unit-container copy';
 import { OrganizationUnitBannerContainer } from './components/ghg-emissions-of-each-organization-unit/organization-unit-banner-container';
 
 import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
@@ -28,7 +29,7 @@ export function ResultsTabContent() {
   const selectedeportingPeriodId = useSelectedReportingPeriodId('results');
   const selectedOrganizationId = useSelectedOrganizationId('results');
   return (
-    <div className="h-full w-full flex-1 py-8 px-2 sm:px-8 gap-12">
+    <div className="h-full w-full flex-1 py-8 px-2 sm:px-8 gap-12 pb-48">
       <div className="flex flex-col gap-12">
         <div className="flex flex-wrap justify-between gap-8 ">
           <OrganizationPeriodForm section="results" />
@@ -71,6 +72,12 @@ export function ResultsTabContent() {
         />
         {selectedLocale && selectedLocale && (
           <OrganizationUnitBannerContainer
+            reportingPeriodId={selectedeportingPeriodId}
+            locale={selectedLocale}
+          />
+        )}
+        {selectedLocale && selectedeportingPeriodId && (
+          <GHGEmissionsByCategoryAndOrganizationUnitContainer
             reportingPeriodId={selectedeportingPeriodId}
             locale={selectedLocale}
           />

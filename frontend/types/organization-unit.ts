@@ -1,3 +1,4 @@
+import { EmissionCategoryTotalByEmissionType } from './emission-result';
 import { DividerValue } from './organization-divider';
 
 export type OrganizationUnit = {
@@ -67,3 +68,9 @@ export type NormalizedOrganizationUnitWithTotalGHGEmissionsAndDivider =
       totalGHGEmissionsPerDividerNormalized: number;
     };
   };
+
+export type OrganizationUnitTotalGHGEmissionsPerCategory = {
+  id: number;
+  name: string;
+  emissionsPerCategory: EmissionCategoryTotalByEmissionType[];
+};

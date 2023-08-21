@@ -132,7 +132,7 @@ export function OrganizationUnitBanner({
                     disabled={totalOrganizationUnitGHGEmissions === 0}
                   >
                     <span className="pr-2">
-                      {t('results.GHGEmissionsOfEachUnit.showDetails')}
+                      {t('results.ghgEmissionsOfEachUnit.showDetails')}
                     </span>
                     <Icons.ArrowsDownSmall className="h-2 w-2" />
                   </Button>
