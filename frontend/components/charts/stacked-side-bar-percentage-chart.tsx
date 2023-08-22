@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useRef, useState } from 'react';
-import { Trans,useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import useMeasure from 'react-use-measure';
 
 import * as d3 from 'd3';
@@ -69,101 +69,115 @@ const StackedSideBarPercentageChartInner = ({
     [boundsWidth],
   );
 
-  const axisLabels = useMemo(() => xScale.ticks(10).map((value, i) => (
-      <text
-        key={`axis-label-${value}`}
-        x={
-          MARGIN.left + xScale(value) + (i === 0 ? 8 : 0) + (i === 10 ? -5 : 0)
-        }
-        y={0}
-        textAnchor="middle"
-        alignmentBaseline="middle"
-        fontSize={fontSize}
-        fill="currentColor"
-      >
-        {`${value}%`}
-      </text>
-    )), [xScale]);
+  const axisLabels = useMemo(
+    () =>
+      xScale.ticks(10).map((value, i) => (
+        <text
+          key={`axis-label-${value}`}
+          x={
+            MARGIN.left +
+            xScale(value) +
+            (i === 0 ? 8 : 0) +
+            (i === 10 ? -5 : 0)
+          }
+          y={0}
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          fontSize={fontSize}
+          fill="currentColor"
+        >
+          {`${value}%`}
+        </text>
+      )),
+    [xScale],
+  );
 
-  const allBars = useMemo(() => data.map((d) => {
-      const titleY = yScale(d.title) ?? 0;
-      let xPosition = 0;
+  const allBars = useMemo(
+    () =>
+      data.map((d) => {
+        const titleY = yScale(d.title) ?? 0;
+        let xPosition = 0;
 
-      const totalSumValues = d.data.reduce(
-        (acc, entryData) => acc + entryData.value,
-        0,
-      );
-      return (
-        <g key={`bar-group-${d.title}`}>
-          <g className="text-bar-label font-bold">
-            <text
-              x={MARGIN.left}
-              y={titleY - titlePadding}
-              textAnchor="start"
-              alignmentBaseline="middle"
-              fontSize={fontSize}
-              fill="currentColor"
-            >
-              {d.title}
-            </text>
-          </g>
-          <g transform={`translate(${[MARGIN.left, titleY].join(',')})`}>
-            {d.data.map((entry, index) => {
-              const segmentWidth =
-                totalSumValues > 0
-                  ? (entry.value / totalSumValues) * boundsWidth
-                  : 0;
+        const totalSumValues = d.data.reduce(
+          (acc, entryData) => acc + entryData.value,
+          0,
+        );
+        return (
+          <g key={`bar-group-${d.title}`}>
+            <g className="text-bar-label font-bold">
+              <text
+                x={MARGIN.left}
+                y={titleY - titlePadding}
+                textAnchor="start"
+                alignmentBaseline="middle"
+                fontSize={fontSize}
+                fill="currentColor"
+              >
+                {d.title}
+              </text>
+            </g>
+            <g transform={`translate(${[MARGIN.left, titleY].join(',')})`}>
+              {d.data.map((entry, index) => {
+                const segmentWidth =
+                  totalSumValues > 0
+                    ? (entry.value / totalSumValues) * boundsWidth
+                    : 0;
 
-              const borderWidth = 1; // Width of the white border
-              const borderOffset = index > 0 ? borderWidth : 0; // Offset for border
+                const borderWidth = 1; // Width of the white border
+                const borderOffset = index > 0 ? borderWidth : 0; // Offset for border
 
-              const segment = (
-                <g
-                  key={`segment-${d.title}-${entry.label}`}
-                  onMouseMove={(e) => {
-                    const svgRect =
-                      tooltipContainerRef.current?.getBoundingClientRect();
-                    if (!svgRect) return;
+                const segment = (
+                  <g
+                    key={`segment-${d.title}-${entry.label}`}
+                    onMouseMove={(e) => {
+                      const svgRect =
+                        tooltipContainerRef.current?.getBoundingClientRect();
+                      if (!svgRect) return;
 
-                    const svgX = e.clientX - svgRect.left;
-                    const svgY = e.clientY - svgRect.top;
+                      const svgX = e.clientX - svgRect.left;
+                      const svgY = e.clientY - svgRect.top;
 
-                    setHoveredElementData({
-                      xPos: svgX,
-                      yPos: svgY,
-                      label: entry.label,
-                      value: entry.value,
-                      scope: entry.scope,
-                      percentage: (entry.value / totalSumValues) * 100,
-                    });
-                  }}
-                  onMouseLeave={() => setHoveredElementData(null)}
-                >
-                  {index > 0 && (
+                      setHoveredElementData({
+                        xPos: svgX,
+                        yPos: svgY,
+                        label: entry.label,
+                        value: entry.value,
+                        scope: entry.scope,
+                        percentage:
+                          totalSumValues > 0
+                            ? (entry.value / totalSumValues) * 100
+                            : 0,
+                      });
+                    }}
+                    onMouseLeave={() => setHoveredElementData(null)}
+                  >
+                    {index > 0 && (
+                      <rect
+                        x={xPosition - borderOffset} // Adjusted to add the border on the left
+                        y={0}
+                        width={borderWidth}
+                        height={barHeight}
+                        fill="white"
+                      />
+                    )}
                     <rect
-                      x={xPosition - borderOffset} // Adjusted to add the border on the left
+                      x={xPosition}
                       y={0}
-                      width={borderWidth}
+                      width={segmentWidth - borderOffset} // Adjusted for the border width
                       height={barHeight}
-                      fill="white"
+                      fill={entry.color || '#9396B0'}
                     />
-                  )}
-                  <rect
-                    x={xPosition}
-                    y={0}
-                    width={segmentWidth - borderOffset} // Adjusted for the border width
-                    height={barHeight}
-                    fill={entry.color || '#9396B0'}
-                  />
-                </g>
-              );
-              xPosition += segmentWidth;
-              return segment;
-            })}
+                  </g>
+                );
+                xPosition += segmentWidth;
+                return segment;
+              })}
+            </g>
           </g>
-        </g>
-      );
-    }), [data, boundsWidth, barHeight, yScale]);
+        );
+      }),
+    [data, boundsWidth, barHeight, yScale],
+  );
 
   return (
     <>
