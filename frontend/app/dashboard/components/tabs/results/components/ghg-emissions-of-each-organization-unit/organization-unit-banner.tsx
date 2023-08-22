@@ -143,7 +143,7 @@ export function OrganizationUnitBanner({
         </div>
         <AccordionContent className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           {totalOrganizationUnitGHGEmissions !== 0 && (
-            <div className="border-[0.5px] border-banner-border rounded-[2px] mt-[2px] w-full px-2 py-8 sm:px-8 h-fit flex flex-row flex-wrap md:flex-nowrap gap-2">
+            <div className="border-[0.5px] border-banner-border rounded-[2px] mt-[2px] w-full px-2 py-8 sm:px-8 h-fit flex flex-row flex-wrap lg:flex-nowrap gap-2">
               <div className="max-w-2xl w-full">
                 <OrganizationUnitEmissionsByScopeTable
                   organizationUnitId={organizationUnitEmissionResults.id}
@@ -153,7 +153,7 @@ export function OrganizationUnitBanner({
                   }
                 />
               </div>
-              <div className="w-full basis-full md:basis-auto">
+              <div className="w-full basis-full md:basis-auto hidden md:flex">
                 <OrganizationUnitEmissionCategoriesLollipopChart
                   heightSizeType="fit-content"
                   emissionsDataArray={emissionsDataArray}
