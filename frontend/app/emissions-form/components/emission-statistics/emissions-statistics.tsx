@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
+import { CategoryGHGEmissionsByOrganizationUnit } from './category-emissions-by-organization-unit';
+import { FormEmissionCategoriesLollipopChart } from './form-emission-categories-lollipop-chart';
+
 import AllCategoryEmissionsSummary from '@/components/emission-results/all-category-emissions-summary';
 import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -41,7 +44,23 @@ export default function EmissionsFormStatistics({
       />
 
       <div className="w-full mt-16">
+        <FormEmissionCategoriesLollipopChart
+          emissionCategoryId={emissionCategoryId}
+          reportingPeriodId={reportingPeriodId}
+          locale={locale}
+        />
+      </div>
+
+      <div className="w-full mt-16">
         <EmissionsByScopeTable
+          reportingPeriodId={reportingPeriodId}
+          locale={locale}
+        />
+      </div>
+
+      <div className="w-full mt-16">
+        <CategoryGHGEmissionsByOrganizationUnit
+          emissionCategoryId={emissionCategoryId}
           reportingPeriodId={reportingPeriodId}
           locale={locale}
         />

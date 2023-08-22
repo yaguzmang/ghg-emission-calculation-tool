@@ -24,6 +24,7 @@ type LollipopChartInnerProps = {
   data: LollipopEntry[];
   heightSizeType: 'container' | 'fit-content';
   unitLabel: string;
+  sort: boolean;
 };
 
 export const LollipopChartInner = ({
@@ -32,6 +33,7 @@ export const LollipopChartInner = ({
   data,
   heightSizeType,
   unitLabel,
+  sort,
 }: LollipopChartInnerProps) => {
   const tooltipContainerRef = useRef<HTMLDivElement>(null);
 
@@ -60,9 +62,11 @@ export const LollipopChartInner = ({
   >(null);
 
   const yScale = useMemo(() => {
-    const groups = data.sort((a, b) => b.value - a.value).map((d) => d.label);
+    const groups = sort
+      ? data.sort((a, b) => b.value - a.value).map((d) => d.label)
+      : data.map((d) => d.label);
     return d3.scaleBand().domain(groups).range([0, boundsHeight]).padding(1);
-  }, [data, boundsHeight]);
+  }, [data, boundsHeight, sort]);
 
   const xScale = useMemo(() => {
     const [, max] = d3.extent(data.map((d) => d.value));
@@ -244,12 +248,14 @@ type LollipopChartProps = {
   data: LollipopEntry[];
   unitLabel: string;
   heightSizeType: 'container' | 'fit-content';
+  sort?: boolean;
 };
 
 export function LollipopChart({
   data,
   heightSizeType,
   unitLabel,
+  sort = true,
 }: LollipopChartProps) {
   const [ref, bounds] = useMeasure();
 
@@ -272,6 +278,7 @@ export function LollipopChart({
             height={heightSizeType === 'container' ? bounds.height : 0}
             heightSizeType={heightSizeType}
             unitLabel={unitLabel}
+            sort={sort}
           />
         )}
       </div>
