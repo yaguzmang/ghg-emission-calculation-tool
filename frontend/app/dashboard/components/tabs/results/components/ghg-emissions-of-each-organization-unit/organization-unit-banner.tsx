@@ -19,6 +19,7 @@ import {
   calculateOrganizationUnitTotalEmissionsByCategoryAndEmissionType,
   calculateTotalGHGEmissionsOfOrganizationUnit,
 } from '@/lib/data/organizations-utils';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { cn } from '@/lib/utils';
 import {
   EmissionCategoryTotalByEmissionType,
@@ -111,7 +112,7 @@ export function OrganizationUnitBanner({
                       totalOrganizationUnitGHGEmissions === 0,
                   })}
                 >
-                  {totalOrganizationUnitGHGEmissions.toFixed(2)}
+                  {kgsToTons(totalOrganizationUnitGHGEmissions).toFixed(2)}
                 </span>
                 <span className="text-xs flex items-end">
                   <span className="pb-1">

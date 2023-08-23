@@ -7,6 +7,7 @@ import {
   LollipopChart,
   LollipopEntry,
 } from '@/components/charts/lollipop-chart';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { calculateTotalEmissionsOfEmissionCategory } from '@/lib/statistics/utils';
 import { useGetEmissionCategoriesWithEmissionsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
 import {
@@ -56,7 +57,7 @@ export function EmissionCategoriesLollipopChart({
 
           entriesArray.push({
             label: categoryTitle,
-            value: categoryTotalGHGEmissions,
+            value: kgsToTons(categoryTotalGHGEmissions),
             color: categoryColor,
           });
         },

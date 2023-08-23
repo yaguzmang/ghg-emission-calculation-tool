@@ -67,9 +67,7 @@ export function OrganizationalUnitsCards({
               primaryLabel={t(
                 'results.ghgEmissionsBetweenUnits.totalEmissions',
               )}
-              primaryValue={Number(
-                normalizedOrgUnit.totalGHGEmissions.toFixed(8),
-              )}
+              primaryValue={normalizedOrgUnit.totalGHGEmissions}
               primaryValueNormalized={
                 normalizedOrgUnit.totalGHGEmissionsNormalized
               }
@@ -77,11 +75,10 @@ export function OrganizationalUnitsCards({
                 'results.ghgEmissionsBetweenUnits.unitEmissions',
               )}
               secondaryLabelUnit={normalizedOrgUnit.organizationDivider.label}
-              secondaryValue={Number(
-                normalizedOrgUnit.organizationDivider.totalGHGEmissionsPerDivider.toFixed(
-                  8,
-                ),
-              )}
+              secondaryValue={
+                normalizedOrgUnit.organizationDivider
+                  .totalGHGEmissionsPerDivider
+              }
               secondaryValueNormalized={
                 normalizedOrgUnit.organizationDivider
                   .totalGHGEmissionsPerDividerNormalized
@@ -99,11 +96,9 @@ export function OrganizationalUnitsCards({
               primaryLabel={t(
                 'results.ghgEmissionsBetweenUnits.totalEmissions',
               )}
-              primaryValue={Number(
-                normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits.toFixed(
-                  8,
-                ),
-              )}
+              primaryValue={
+                normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits
+              }
               primaryValueNormalized={
                 normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits !==
                 0
@@ -113,11 +108,9 @@ export function OrganizationalUnitsCards({
               secondaryLabel={t(
                 'results.ghgEmissionsBetweenUnits.unitEmissions',
               )}
-              secondaryValue={Number(
-                normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissions.toFixed(
-                  8,
-                ),
-              )}
+              secondaryValue={
+                normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissions
+              }
               secondaryValueNormalized={
                 normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissionsNormalized
               }

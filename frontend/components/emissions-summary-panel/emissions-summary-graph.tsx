@@ -9,6 +9,7 @@ import {
   StackedSideBarPercentageChartWithTotalEntryData,
 } from '../charts/stacked-side-bar-percentage-chart-with-total';
 
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { EmissionCategoryFlattenWithEmissions } from '@/types/emission-category';
 
 interface EmissionsSummaryGraphProps {
@@ -46,22 +47,21 @@ export function EmissionsSummaryGraph({
         const activityEntry: StackedSideBarPercentageChartWithTotalEntryData = {
           label: t('dashboard.form.allGHGEmissions.activityEmission'),
           color: '#414546',
-          // isColorAClass: true,
-          value: categoryWithEmissions.emissions.direct,
+          value: kgsToTons(categoryWithEmissions.emissions.direct),
         };
         entryData.push(activityEntry);
 
         const upstreamEntry: StackedSideBarPercentageChartWithTotalEntryData = {
           label: t('dashboard.form.allGHGEmissions.upstreamEmission'),
           color: '#8A8A8A',
-          value: categoryWithEmissions.emissions.indirect,
+          value: kgsToTons(categoryWithEmissions.emissions.indirect),
         };
         entryData.push(upstreamEntry);
 
         const biogenicEntry: StackedSideBarPercentageChartWithTotalEntryData = {
           label: t('dashboard.form.allGHGEmissions.biogenicEmission'),
           color: '#1A1A1A',
-          value: categoryWithEmissions.emissions.biogenic,
+          value: kgsToTons(categoryWithEmissions.emissions.biogenic),
         };
         entryData.push(biogenicEntry);
 
@@ -78,7 +78,7 @@ export function EmissionsSummaryGraph({
         {
           label: t('dashboard.form.allGHGEmissions.activityEmission'),
           color: '#414546',
-          value: totalActivityEmissions,
+          value: kgsToTons(totalActivityEmissions),
         };
       totalEntryData.push(totalActivityEntry);
 
@@ -86,7 +86,7 @@ export function EmissionsSummaryGraph({
         {
           label: t('dashboard.form.allGHGEmissions.upstreamEmission'),
           color: '#8A8A8A',
-          value: totalUpstreamEmissions,
+          value: kgsToTons(totalUpstreamEmissions),
         };
       totalEntryData.push(totalUpstreamEntry);
 
@@ -94,7 +94,7 @@ export function EmissionsSummaryGraph({
         {
           label: t('dashboard.form.allGHGEmissions.biogenicEmission'),
           color: '#1A1A1A',
-          value: totalBiogenicEmissions,
+          value: kgsToTons(totalBiogenicEmissions),
         };
       totalEntryData.push(totalBiogenicEntry);
 
@@ -106,7 +106,7 @@ export function EmissionsSummaryGraph({
         totalActivityEmissions +
         totalUpstreamEmissions +
         totalBiogenicEmissions;
-      return [stackedSideBarPercentageEntries, totalEmissions];
+      return [stackedSideBarPercentageEntries, kgsToTons(totalEmissions)];
     }, [emissionCategoriesWithEmissions, t]);
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import { EmissionIconsByScope } from '@/components/ui/icons/icons';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { cn } from '@/lib/utils';
 import { EmissionCategoryTotalByEmissionType } from '@/types/emission-result';
 
@@ -80,7 +81,7 @@ export default function OrganizationUnitEmissionsByScopeTable({
                       totalScopeEmissionsPercentage === 0,
                   })}
                 >
-                  {totalScopeEmissions.toFixed(2)}
+                  {kgsToTons(totalScopeEmissions).toFixed(2)}
                 </th>
               </tr>
 
@@ -116,7 +117,9 @@ export default function OrganizationUnitEmissionsByScopeTable({
                       <span>{categoryTotalEmissionsPercentage.toFixed(2)}</span>
                     </td>
                     <td className="pt-4 pl-8">
-                      <span>{category.totalEmissions.toFixed(2)}</span>
+                      <span>
+                        {kgsToTons(category.totalEmissions).toFixed(2)}
+                      </span>
                     </td>
                   </tr>
                 );

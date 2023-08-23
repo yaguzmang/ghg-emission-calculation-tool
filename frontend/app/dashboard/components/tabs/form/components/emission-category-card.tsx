@@ -4,6 +4,7 @@ import { Trans } from 'react-i18next';
 import Link from 'next/link';
 
 import { EmissionIconsByScope } from '@/components/ui/icons/icons';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { calculateTotalEmissionsOfEmissionCategory } from '@/lib/statistics/utils';
 import { cn } from '@/lib/utils';
 import { useGetEmissionCategoriesWithEmissionsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
@@ -88,7 +89,7 @@ export function EmissionCategoryCard({
               'text-primary': categoryTotalEmissions > 0,
             })}
           >
-            {categoryTotalEmissions.toFixed(2)}
+            {kgsToTons(categoryTotalEmissions).toFixed(2)}
           </span>
           <span className="ml-4 w-min break-normal text-xs font-normal">
             <Trans i18nKey="dashboard.form.card.allGHGEmissions" />

@@ -1,6 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next';
 
 import { Icons } from '@/components/ui/icons/icons';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { getAccuracyReliability } from '@/lib/statistics/utils';
 import { cn } from '@/lib/utils';
 
@@ -63,7 +64,7 @@ export function EmissionsSummarySection({
               },
             )}
           >
-            {sectionEmissions.toFixed(2)}
+            {kgsToTons(sectionEmissions).toFixed(2)}
           </span>
           <span className="text-xs font-normal w-min">
             <Trans i18nKey="dashboard.form.emissionsSummary.tCO2e" />

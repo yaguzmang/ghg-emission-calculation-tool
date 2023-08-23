@@ -13,6 +13,7 @@ import { Button } from '../ui/button';
 import { EmissionsSummaryGraph } from './emissions-summary-graph';
 
 import { Icons } from '@/components/ui/icons/icons';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { cn } from '@/lib/utils';
 import { useGetEmissionCategoriesWithEmissionsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
 import { useGetEmissionsResultsByReportingPeriodQuery } from '@/redux/api/emission-results/emissionResultsApiSlice';
@@ -86,7 +87,7 @@ export function AllEmissionsSummarySection({
                   'text-emission-foreground-muted': totalGHGEmissions === 0,
                 })}
               >
-                {totalGHGEmissions.toFixed(2)}
+                {kgsToTons(totalGHGEmissions).toFixed(2)}
               </span>
               <span className="text-xs flex items-end">
                 <span className="pb-1">

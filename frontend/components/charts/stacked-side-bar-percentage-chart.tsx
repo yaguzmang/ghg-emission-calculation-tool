@@ -237,7 +237,7 @@ const StackedSideBarPercentageChartInner = ({
                     <Trans i18nKey={unitLabel} />
                   </span>
                   <span className="text-base ml-auto">
-                    {hoveredElementData.value}
+                    {hoveredElementData.value.toFixed(2)}
                   </span>
                 </div>
               </div>

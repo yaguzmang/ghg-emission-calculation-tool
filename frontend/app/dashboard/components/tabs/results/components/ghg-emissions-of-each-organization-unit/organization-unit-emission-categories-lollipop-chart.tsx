@@ -8,6 +8,7 @@ import {
   LollipopEntry,
 } from '@/components/charts/lollipop-chart';
 import { calculateTotalAllEmissionPerCategory } from '@/lib/data/organizations-utils';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { EmissionCategoryTotalByEmissionType } from '@/types/emission-result';
 
 type EmissionCategoriesLollipopChartProps = {
@@ -30,7 +31,7 @@ export function OrganizationUnitEmissionCategoriesLollipopChart({
       totalEmissionsPerCategory.forEach((emissionCategory) => {
         entriesArray.push({
           label: emissionCategory.title,
-          value: emissionCategory.totalEmissions,
+          value: kgsToTons(emissionCategory.totalEmissions),
           color: emissionCategory.color ?? null,
         });
       });

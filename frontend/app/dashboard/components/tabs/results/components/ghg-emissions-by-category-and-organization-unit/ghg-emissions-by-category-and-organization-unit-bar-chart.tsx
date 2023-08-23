@@ -12,6 +12,7 @@ import {
   calculateOrganizationUnitTotalEmissionsByCategoryAndEmissionType,
   calculateTotalAllEmissionPerCategory,
 } from '@/lib/data/organizations-utils';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { useGetEmissionsResultsByReportingPeriodQuery } from '@/redux/api/emission-results/emissionResultsApiSlice';
 import { OrganizationUnitTotalGHGEmissionsPerCategory } from '@/types/organization-unit';
 
@@ -86,7 +87,7 @@ export function GHGEmissionsByCategoryAndOrganizationUnitBarChart({
             const entry: StackedSideBarPercentageChartEntryData = {
               label: category.title,
               color: category.color,
-              value: category.totalEmissions,
+              value: kgsToTons(category.totalEmissions),
               scope: category.primaryScope,
             };
             entryData.push(entry);
