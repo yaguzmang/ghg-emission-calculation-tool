@@ -2,6 +2,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { getEmissionCategoryEntries } from '@/lib/data/utils';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import {
   calculateCategoryTotalBiogenicEmissions,
   calculateCategoryTotalGHGEmissions,
@@ -110,7 +111,7 @@ export default function AllCategoryEmissionsSummary({
               'text-primary-disabled-foreground': totalGHGEmissions === 0,
             })}
           >
-            {totalGHGEmissions.toFixed(2)}
+            {kgsToTons(totalGHGEmissions).toFixed(2)}
           </span>
         </div>
 
@@ -135,7 +136,7 @@ export default function AllCategoryEmissionsSummary({
               className="flex items-center justify-between text-text-regular text-lg"
             >
               <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
-              <span>{totalEntryEmissions.toFixed(2)}</span>
+              <span>{kgsToTons(totalEntryEmissions).toFixed(3)}</span>
             </div>
           );
         })}
@@ -151,7 +152,7 @@ export default function AllCategoryEmissionsSummary({
               'text-primary-disabled-foreground': totalBiogenicEmissions === 0,
             })}
           >
-            {totalBiogenicEmissions.toFixed(2)}
+            {kgsToTons(totalBiogenicEmissions).toFixed(2)}
           </span>
         </div>
 
@@ -177,7 +178,7 @@ export default function AllCategoryEmissionsSummary({
                 className="flex items-center justify-between text-text-regular text-lg"
               >
                 <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
-                <span>{totalEntryEmissions.toFixed(2)}</span>
+                <span>{kgsToTons(totalEntryEmissions).toFixed(3)}</span>
               </div>
             )
           );

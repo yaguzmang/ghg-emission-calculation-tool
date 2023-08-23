@@ -182,7 +182,9 @@ const SideBarPercentageChartInner = ({
           {hoveredElementData ? (
             <div className="flex flex-col p-2 gap-3 font-normal items-center">
               <div className="flex items-center gap-2">
-                <span className="text-base">{hoveredElementData.value}</span>
+                <span className="text-base">
+                  {hoveredElementData.value.toFixed(2)}
+                </span>
                 <span className="text-xs">
                   <Trans i18nKey={unitLabel} />
                 </span>
