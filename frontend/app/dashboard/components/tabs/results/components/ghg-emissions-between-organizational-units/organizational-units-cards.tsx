@@ -89,33 +89,34 @@ export function OrganizationalUnitsCards({
       {totalGHGEmissionsPerOrganizationUnit !== undefined &&
         normalizedTotalGHGEmissionsPerOrganizationUnit &&
         normalizedTotalGHGEmissionsPerOrganizationUnit.normalizedOrgUnitsWithTotalEmissions.map(
-          (normalizedTotalGHGEmissionsPerOrgUnit) => (
-            <OrganizationalUnitCard
-              key={`org-unit-card-${normalizedTotalGHGEmissionsPerOrgUnit.id}`}
-              title={normalizedTotalGHGEmissionsPerOrgUnit.name}
-              primaryLabel={t(
-                'results.ghgEmissionsBetweenUnits.totalEmissions',
-              )}
-              primaryValue={
-                normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits
-              }
-              primaryValueNormalized={
-                normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits !==
-                0
-                  ? 1
-                  : 0
-              }
-              secondaryLabel={t(
-                'results.ghgEmissionsBetweenUnits.unitEmissions',
-              )}
-              secondaryValue={
-                normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissions
-              }
-              secondaryValueNormalized={
-                normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissionsNormalized
-              }
-            />
-          ),
+          (normalizedTotalGHGEmissionsPerOrgUnit) =>
+            normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissions > 0 ? (
+              <OrganizationalUnitCard
+                key={`org-unit-card-${normalizedTotalGHGEmissionsPerOrgUnit.id}`}
+                title={normalizedTotalGHGEmissionsPerOrgUnit.name}
+                primaryLabel={t(
+                  'results.ghgEmissionsBetweenUnits.totalEmissions',
+                )}
+                primaryValue={
+                  normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits
+                }
+                primaryValueNormalized={
+                  normalizedTotalGHGEmissionsPerOrganizationUnit.totalGHGEmissionsAllUnits !==
+                  0
+                    ? 1
+                    : 0
+                }
+                secondaryLabel={t(
+                  'results.ghgEmissionsBetweenUnits.unitEmissions',
+                )}
+                secondaryValue={
+                  normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissions
+                }
+                secondaryValueNormalized={
+                  normalizedTotalGHGEmissionsPerOrgUnit.totalGHGEmissionsNormalized
+                }
+              />
+            ) : null,
         )}
     </div>
   );

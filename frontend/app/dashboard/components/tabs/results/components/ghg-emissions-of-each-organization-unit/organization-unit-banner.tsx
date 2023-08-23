@@ -71,7 +71,7 @@ export function OrganizationUnitBanner({
   }, [organizationUnitEmissionResults]);
 
   if (reportingPeriodId === undefined || locale === undefined) return null;
-  return (
+  return totalOrganizationUnitGHGEmissions ? (
     <Accordion type="single" collapsible>
       <AccordionItem
         value={`banner-item-${organizationUnitEmissionResults.id}`}
@@ -165,5 +165,5 @@ export function OrganizationUnitBanner({
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  );
+  ) : null;
 }
