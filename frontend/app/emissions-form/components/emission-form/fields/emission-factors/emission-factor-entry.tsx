@@ -144,7 +144,9 @@ export default function EmissionFactorEntry({
               </>
             ) : (
               <>
-                <span className="text-lg font-bold pl-4 truncate">{value}</span>
+                <span className="text-lg font-bold pl-4 truncate">
+                  {Number(Number(value).toFixed(4))}
+                </span>
                 <div className="flex items-center">
                   {isValueEdited && (
                     <TooltipProvider>

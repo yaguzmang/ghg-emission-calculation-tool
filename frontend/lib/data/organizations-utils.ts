@@ -228,7 +228,7 @@ export function calculateTotalAllEmissionPerCategory(
         const existingCategory = totalGHGEmissionsPerCategoryMap.get(
           category.id,
         );
-        totalGHGEmissionsOfCategory += (existingCategory?.totalEmissions ?? 0);
+        totalGHGEmissionsOfCategory += existingCategory?.totalEmissions ?? 0;
       }
       const totalGHGEmissionsPerCategoryObject = {
         ...category,

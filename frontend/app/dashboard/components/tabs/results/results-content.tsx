@@ -53,14 +53,14 @@ export function ResultsTabContent() {
           </div>
         </div>
         {selectedeportingPeriodId && selectedLocale && (
-          <div className="border border-primary rounded-[2px] px-2 py-8 sm:px-8 w-full h-fit flex flex-row flex-wrap md:flex-nowrap gap-2">
+          <div className="border border-primary rounded-[2px] px-2 py-8 sm:px-8 w-full h-fit flex flex-row flex-wrap lg:flex-nowrap gap-2">
             <div className="max-w-2xl w-full">
               <EmissionsByScopeTable
                 reportingPeriodId={selectedeportingPeriodId}
                 locale={selectedLocale}
               />
             </div>
-            <div className="w-full basis-full md:basis-auto">
+            <div className="w-full basis-full md:basis-auto hidden md:flex">
               <EmissionCategoriesLollipopChart heightSizeType="fit-content" />
             </div>
           </div>

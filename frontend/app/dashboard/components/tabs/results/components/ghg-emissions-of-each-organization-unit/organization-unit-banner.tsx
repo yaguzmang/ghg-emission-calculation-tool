@@ -19,6 +19,7 @@ import {
   calculateOrganizationUnitTotalEmissionsByCategoryAndEmissionType,
   calculateTotalGHGEmissionsOfOrganizationUnit,
 } from '@/lib/data/organizations-utils';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 import { cn } from '@/lib/utils';
 import {
   EmissionCategoryTotalByEmissionType,
@@ -111,7 +112,7 @@ export function OrganizationUnitBanner({
                       totalOrganizationUnitGHGEmissions === 0,
                   })}
                 >
-                  {totalOrganizationUnitGHGEmissions.toFixed(2)}
+                  {kgsToTons(totalOrganizationUnitGHGEmissions).toFixed(2)}
                 </span>
                 <span className="text-xs flex items-end">
                   <span className="pb-1">
@@ -143,7 +144,7 @@ export function OrganizationUnitBanner({
         </div>
         <AccordionContent className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           {totalOrganizationUnitGHGEmissions !== 0 && (
-            <div className="border-[0.5px] border-banner-border rounded-[2px] mt-[2px] w-full px-2 py-8 sm:px-8 h-fit flex flex-row flex-wrap md:flex-nowrap gap-2">
+            <div className="border-[0.5px] border-banner-border rounded-[2px] mt-[2px] w-full px-2 py-8 sm:px-8 h-fit flex flex-row flex-wrap lg:flex-nowrap gap-2">
               <div className="max-w-2xl w-full">
                 <OrganizationUnitEmissionsByScopeTable
                   organizationUnitId={organizationUnitEmissionResults.id}
@@ -153,7 +154,7 @@ export function OrganizationUnitBanner({
                   }
                 />
               </div>
-              <div className="w-full basis-full md:basis-auto">
+              <div className="w-full basis-full md:basis-auto hidden md:flex">
                 <OrganizationUnitEmissionCategoriesLollipopChart
                   heightSizeType="fit-content"
                   emissionsDataArray={emissionsDataArray}

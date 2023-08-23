@@ -4,6 +4,7 @@ import { Trans } from 'react-i18next';
 
 import { ProportionalSemiCirclesChart } from '@/components/charts/proportional-semi-circles-chart';
 import { Icons } from '@/components/ui/icons/icons';
+import { kgsToTons } from '@/lib/numbers.ts/conversion';
 
 type OrganizationalUnitCardProps = {
   title: string;
@@ -40,7 +41,7 @@ export function OrganizationalUnitCard({
               </span>
               <span className="text-xs">{primaryLabel}</span>
               <span className="font-bold text-lg break-normal">
-                {primaryValue}
+                {kgsToTons(primaryValue).toFixed(2)}
                 <span className="pl-1 text-xs font-normal">
                   <Trans i18nKey="results.ghgEmissionsBetweenUnits.tCO2e" />
                 </span>
@@ -51,7 +52,9 @@ export function OrganizationalUnitCard({
                 <Icons.HalfCircle className="rotate-[-90deg]" />
               </span>
               <span className="text-xs">{secondaryLabel}</span>
-              <span className="font-bold text-lg ">{secondaryValue}</span>
+              <span className="font-bold text-lg ">
+                {kgsToTons(secondaryValue).toFixed(2)}
+              </span>
               <span className="pl-1 text-xs font-normal break-normal">
                 <Trans i18nKey="results.ghgEmissionsBetweenUnits.tCO2e" />
                 {secondaryLabelUnit && ` / ${secondaryLabelUnit}`}

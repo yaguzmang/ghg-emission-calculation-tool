@@ -15,7 +15,7 @@ const searchParamsData = z.object({
   emissionCategoryId: z.coerce.number().int().positive(),
   reportingPeriodId: z.coerce.number().int().positive(),
   organizationId: z.coerce.number().int().positive(),
-  locale: z.coerce.string().min(2).max(2),
+  locale: z.coerce.string().min(2).max(5),
 });
 
 const validateSearchParamsData = (inputs: unknown) => {
