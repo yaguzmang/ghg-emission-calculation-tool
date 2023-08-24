@@ -45,6 +45,8 @@ type EmissionsFormProps = {
   reportingPeriodId: number;
   organizationId: number;
   emissionCategoryWithFactors: EmissionCategoryFlattenWithSourceGroups;
+  preSelectedOrganizationUnitId?: number | null;
+  onOrganizationUnitChange: (organizationId: number) => void;
   onApiSubmitSucess: () => void;
   onApiSubmitError: () => void;
   onCancel: () => void;
@@ -57,6 +59,8 @@ export default function EmissionsForm({
   formType,
   emissionEntry,
   emissionCategoryWithFactors,
+  preSelectedOrganizationUnitId = null,
+  onOrganizationUnitChange,
   onApiSubmitSucess,
   onApiSubmitError,
   onCancel,
@@ -141,6 +145,7 @@ export default function EmissionsForm({
           <>
             <OrganizationUnitField
               organizationId={organizationId}
+              onOrganizationUnitChange={onOrganizationUnitChange}
               formType={formType}
               emissionEntry={emissionEntry}
             />
@@ -167,6 +172,8 @@ export default function EmissionsForm({
           <>
             <OrganizationUnitField
               organizationId={organizationId}
+              preSelectedOrganizationUnitId={preSelectedOrganizationUnitId}
+              onOrganizationUnitChange={onOrganizationUnitChange}
               formType={formType}
               emissionEntry={emissionEntry}
             />

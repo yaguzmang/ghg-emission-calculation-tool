@@ -20,20 +20,25 @@ import { EmissionEntrySchema } from '@/types/emission-entry-form';
 
 interface OrganizationUnitFieldPropsCreate {
   formType: 'create';
+  preSelectedOrganizationUnitId: number | null;
   emissionEntry?: never;
 }
 
 interface OrganizationUnitFieldPropsEdit {
   formType: 'edit';
+  preSelectedOrganizationUnitId?: never;
   emissionEntry: EmissionEntryWithOrganizationUnitAndEmissionSource;
 }
 
 type OrganizationUnitFieldProps = {
   organizationId: number;
+  onOrganizationUnitChange: (organizationId: number) => void;
 } & (OrganizationUnitFieldPropsCreate | OrganizationUnitFieldPropsEdit);
 
 export default function OrganizationUnitField({
   organizationId,
+  preSelectedOrganizationUnitId,
+  onOrganizationUnitChange,
   formType,
   emissionEntry,
 }: OrganizationUnitFieldProps) {
@@ -51,14 +56,12 @@ export default function OrganizationUnitField({
       label: organizationUnit.attributes.name,
     })) ?? [];
   const emissionEntryOrganizationUnitId =
-    emissionEntry?.attributes.organizationUnit.data.id;
+    formType === 'edit'
+      ? emissionEntry?.attributes.organizationUnit.data.id
+      : preSelectedOrganizationUnitId ?? undefined;
   const [selectedOrganizationUnitId, setSelectedOrganizationUnitId] = useState<
     number | null
-  >(
-    formType === 'edit'
-      ? emissionEntry.attributes.organizationUnit.data.id
-      : null,
-  );
+  >(emissionEntryOrganizationUnitId ?? null);
 
   return (
     <div className="gap-4">
@@ -75,6 +78,7 @@ export default function OrganizationUnitField({
             onValueChange={(selectedValue: string) => {
               const newSelectedOrganizationUnitId = parseInt(selectedValue, 10);
               setSelectedOrganizationUnitId(newSelectedOrganizationUnitId);
+              onOrganizationUnitChange(newSelectedOrganizationUnitId);
               field.onChange(newSelectedOrganizationUnitId);
             }}
             value={
