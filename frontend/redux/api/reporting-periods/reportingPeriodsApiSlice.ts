@@ -1,7 +1,10 @@
 import { createEntityAdapter } from '@reduxjs/toolkit';
 
 import { apiSlice } from '@/redux/api/apiSlice';
-import { ReportingPeriod } from '@/types/reporting-period';
+import {
+  CreateReportingPeriodData,
+  ReportingPeriod,
+} from '@/types/reporting-period';
 
 const reportingPeriodsAdapter = createEntityAdapter();
 
@@ -23,13 +26,6 @@ export type ReportingPeriodsApiResponse = {
       };
     };
   };
-};
-
-export type CreateReportingPeriodData = {
-  organization: number;
-  name: string;
-  startDate: string;
-  endDate: string;
 };
 
 export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({

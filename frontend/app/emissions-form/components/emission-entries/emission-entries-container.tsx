@@ -65,6 +65,15 @@ export default function EmissionsEntriesContainer({
 
   const [isAddingNewEmissionOpen, setIsAddingNewEmissionOpen] = useState(false);
 
+  const [
+    latestSelectedOrganizationUnitId,
+    setLatestSelectedOrganizationUnitId,
+  ] = useState<number | null>(null);
+
+  const handleOrganizationUnitChange = (organizationId: number) => {
+    setLatestSelectedOrganizationUnitId(organizationId);
+  };
+
   return (
     <div className="flex flex-col">
       {dividedEmissionEntries !== null &&
@@ -76,6 +85,8 @@ export default function EmissionsEntriesContainer({
           organizationId={organizationId}
           formType="create"
           emissionCategoryWithFactors={emissionCategoryWithFactors}
+          preSelectedOrganizationUnitId={latestSelectedOrganizationUnitId}
+          onOrganizationUnitChange={handleOrganizationUnitChange}
           onApiSubmitSucess={() =>
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }
@@ -104,6 +115,7 @@ export default function EmissionsEntriesContainer({
                           emissionCategoryWithFactors
                         }
                         emissionEntry={emissionEntry}
+                        onOrganizationUnitChange={handleOrganizationUnitChange}
                       />
                     ))}
                     <div className="pt-8" />
@@ -137,6 +149,10 @@ export default function EmissionsEntriesContainer({
                   organizationId={organizationId}
                   formType="create"
                   emissionCategoryWithFactors={emissionCategoryWithFactors}
+                  preSelectedOrganizationUnitId={
+                    latestSelectedOrganizationUnitId
+                  }
+                  onOrganizationUnitChange={handleOrganizationUnitChange}
                   onApiSubmitSucess={() => setIsAddingNewEmissionOpen(false)}
                   onApiSubmitError={() => {}}
                   onCancel={() => setIsAddingNewEmissionOpen(false)}

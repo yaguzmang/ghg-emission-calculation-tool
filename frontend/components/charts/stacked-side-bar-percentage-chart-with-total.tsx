@@ -198,7 +198,7 @@ const StackedSideBarPercentageChartWithTotalInner = ({
           }
           containerRef={tooltipContainerRef}
           xOffSet={30}
-          yOffSet={30}
+          yOffSet={20}
         >
           {hoveredElementData !== null && (
             <div className="flex flex-col px-5 py-2 gap-6 font-normal min-w-[176px]">

@@ -6,46 +6,11 @@ import { z } from 'zod';
 
 import FormInput from '@/components/form/form-input';
 import { Button } from '@/components/ui/button';
-import {
-  CreateReportingPeriodData,
-  useCreateReportingPeriodMutation,
-} from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
+import { useCreateReportingPeriodMutation } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
 import { useAppDispatch } from '@/redux/store';
 import { SharedUIActions } from '@/redux/store/ui/shared';
 import { OrganizationAndReportingPeriodSection } from '@/redux/store/ui/shared/stateType';
-
-const ReportingPeriodSchema: z.ZodType<CreateReportingPeriodData> = z
-  .object({
-    // TODO: Add translations for error messages
-    organization: z.number().int().positive({
-      message: 'Please select an organization.',
-    }),
-    name: z
-      .string()
-      .min(3, {
-        message: 'The name must be at least 2 characters long.',
-      })
-      .max(100, {
-        message: 'The name must not exceed 100 characters.',
-      }),
-    startDate: z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
-      message: 'Please enter a valid date',
-    }),
-    endDate: z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
-      message: 'Please enter a valid date',
-    }),
-  })
-  .refine(
-    (data) => {
-      const startDate = Date.parse(data.startDate);
-      const endDate = Date.parse(data.endDate);
-      return startDate && endDate && endDate > startDate;
-    },
-    {
-      message: 'End date must be greater than start date.',
-      path: ['endDate'],
-    },
-  );
+import { ReportingPeriodSchema } from '@/types/reporting-period';
 
 interface CreateReportingPeriodFormProps {
   setFormVisible: (visibility: boolean) => void;
@@ -92,7 +57,11 @@ export function CreateReportingPeriodForm({
                   label={t('dashboard.form.reportingPeriod.name')}
                   className="bg-primary-foreground"
                   {...form.register('name')}
-                  errorMessage={form.formState.errors.name?.message}
+                  errorMessage={
+                    form.formState.errors.name?.message !== undefined
+                      ? t(form.formState.errors.name.message)
+                      : undefined
+                  }
                 />
               </div>
               <div className="min-w-[230px]">
@@ -102,7 +71,11 @@ export function CreateReportingPeriodForm({
                   label={t('dashboard.form.reportingPeriod.startDate')}
                   className="bg-primary-foreground"
                   {...form.register('startDate')}
-                  errorMessage={form.formState.errors.startDate?.message}
+                  errorMessage={
+                    form.formState.errors.startDate?.message !== undefined
+                      ? t(form.formState.errors.startDate?.message)
+                      : undefined
+                  }
                 />
               </div>
               <div className="min-w-[230px]">
@@ -112,7 +85,11 @@ export function CreateReportingPeriodForm({
                   label={t('dashboard.form.reportingPeriod.endDate')}
                   className="bg-primary-foreground"
                   {...form.register('endDate')}
-                  errorMessage={form.formState.errors.endDate?.message}
+                  errorMessage={
+                    form.formState.errors.endDate?.message !== undefined
+                      ? t(form.formState.errors.endDate?.message)
+                      : undefined
+                  }
                 />
               </div>
             </div>
@@ -120,7 +97,11 @@ export function CreateReportingPeriodForm({
               type="hidden"
               id="organization"
               value={organizationId ?? -1}
-              errorMessage={form.formState.errors.organization?.message}
+              errorMessage={
+                form.formState.errors.organization?.message !== undefined
+                  ? t(form.formState.errors.organization?.message)
+                  : undefined
+              }
               {...form.register('organization', { valueAsNumber: true })}
             />
             <div className="flex basis-full flex-row flex-wrap items-center justify-start gap-8 gap-y-8 md:justify-end">

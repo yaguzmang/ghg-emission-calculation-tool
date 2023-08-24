@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 import { EmissionEntryWithOrganizationUnitAndEmissionSource } from './emission-entry';
 
 export type ReportingPeriod = {
@@ -18,3 +20,42 @@ export type ReportingPeriodWithEmissionEntries = ReportingPeriod & {
     };
   };
 };
+
+export type CreateReportingPeriodData = {
+  organization: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+};
+
+export const ReportingPeriodSchema: z.ZodType<CreateReportingPeriodData> = z
+  .object({
+    organization: z.number().int().positive({
+      message: 'dashboard.form.reportingPeriod.organization.error.select',
+    }),
+    name: z
+      .string()
+      .min(3, {
+        message: 'dashboard.form.reportingPeriod.name.error.minLength',
+      })
+      .max(100, {
+        message: 'dashboard.form.reportingPeriod.name.error.maxLength',
+      }),
+    startDate: z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
+      message: 'dashboard.form.reportingPeriod.startDate.error.valid',
+    }),
+    endDate: z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
+      message: 'dashboard.form.reportingPeriod.endDate.error.valid',
+    }),
+  })
+  .refine(
+    (data) => {
+      const startDate = Date.parse(data.startDate);
+      const endDate = Date.parse(data.endDate);
+      return startDate && endDate && endDate > startDate;
+    },
+    {
+      message: 'dashboard.form.reportingPeriod.endDate.error.afterStartDate',
+      path: ['endDate'],
+    },
+  );

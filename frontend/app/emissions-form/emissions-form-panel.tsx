@@ -57,9 +57,14 @@ export default function EmissionsFormPanel({
   return (
     <div className="w-full flex flex-col px-4 pt-10 sm:px-12 max-w-[720px] xl:ml-auto">
       <div>
-        <span className="pr-2 text-secondary">
-          {t('dashboard.form.overview')}
-        </span>
+        <Link href="/dashboard#form">
+          <Button variant="link" size="fit">
+            <span className="pr-2 text-secondary text-base">
+              {t('dashboard.form.overview')}
+            </span>
+          </Button>
+        </Link>
+
         <span className="px-1 text-secondary">/</span>
 
         <span className="px-2 text-center text-primary-disabled-foreground">

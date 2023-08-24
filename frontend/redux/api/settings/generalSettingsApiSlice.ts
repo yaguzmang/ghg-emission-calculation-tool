@@ -8,6 +8,21 @@ export type GeneralSettingsApiResponse = {
       createdAt: string;
       updatedAt: string;
       locale: string;
+      termsOfServiceLink: {
+        id: number;
+        label: string;
+        url: string;
+      } | null;
+      userManualLink: {
+        id: number;
+        label: string;
+        url: string;
+      } | null;
+      landingPageLink: {
+        id: number;
+        label: string;
+        url: string;
+      } | null;
     };
   };
 };

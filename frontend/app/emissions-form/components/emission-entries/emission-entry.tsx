@@ -33,6 +33,7 @@ interface EmissionsEntryProps {
   organizationId: number;
   emissionEntry: EmissionEntryWithOrganizationUnitAndEmissionSource;
   emissionCategoryWithFactors: EmissionCategoryFlattenWithSourceGroups;
+  onOrganizationUnitChange: (organizationId: number) => void;
 }
 
 export default function EmissionsEntry({
@@ -40,6 +41,7 @@ export default function EmissionsEntry({
   organizationId,
   emissionCategoryWithFactors,
   emissionEntry,
+  onOrganizationUnitChange,
 }: EmissionsEntryProps) {
   const { t } = useTranslation();
 
@@ -158,6 +160,7 @@ export default function EmissionsEntry({
             formType="edit"
             emissionEntry={emissionEntry}
             emissionCategoryWithFactors={emissionCategoryWithFactors}
+            onOrganizationUnitChange={onOrganizationUnitChange}
             onApiSubmitSucess={handleUpdateSucess}
             onApiSubmitError={() => {}}
             onCancel={handleCancel}
