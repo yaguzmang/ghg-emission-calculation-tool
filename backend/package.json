@@ -22,6 +22,7 @@
     "@types/koa": "^2.13.6",
     "better-sqlite3": "8.0.1",
     "date-fns": "^2.30.0",
+    "papaparse": "^5.4.1",
     "strapi-plugin-config-sync": "^1.1.1",
     "yup": "^1.2.0"
   },
@@ -35,5 +36,8 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/papaparse": "^5.3.8"
+  }
 }
