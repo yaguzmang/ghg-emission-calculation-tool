@@ -114,6 +114,7 @@ export function CreateReportingPeriodForm({
                 variant="link"
                 className="font-bold text-primary hover:text-primary active:text-primary"
                 onClick={() => setFormVisible(false)}
+                type="button"
               >
                 <span>{t('forms.cancel')}</span>
               </Button>
