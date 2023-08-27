@@ -38,8 +38,23 @@ export function SiteHeader() {
           </div>
           <div className="mr-8 flex flex-1 items-center justify-end text-primary">
             <HeaderLanguageSelector />
-            <Button variant="icon" size="fit" className="ml-6">
-              <Icons.HelpCircleFilled />
+            <Button
+              variant="icon"
+              size="fit"
+              className="ml-6"
+              type="button"
+              asChild
+            >
+              <a
+                target="_blank"
+                href={
+                  generalSettings.currentData?.data.attributes.userManualLink
+                    ?.url
+                }
+                rel="noreferrer"
+              >
+                <Icons.HelpCircleFilled />
+              </a>
             </Button>
           </div>
         </div>
