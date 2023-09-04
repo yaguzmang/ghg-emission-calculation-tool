@@ -133,6 +133,7 @@ export function OrganizationPeriodForm({
           <Button
             className="min-w-[230px]"
             onClick={() => setNewPeriodFormIsVisible(true)}
+            type="button"
           >
             <span className="px-4 font-bold">
               {t('dashboard.form.startNewPeriod')}

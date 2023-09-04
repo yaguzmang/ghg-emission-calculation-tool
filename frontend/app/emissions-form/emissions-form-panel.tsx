@@ -58,7 +58,7 @@ export default function EmissionsFormPanel({
     <div className="w-full flex flex-col px-4 pt-10 sm:px-12 max-w-[720px] xl:ml-auto">
       <div>
         <Link href="/dashboard#form">
-          <Button variant="link" size="fit">
+          <Button variant="link" size="fit" type="button">
             <span className="pr-2 text-secondary text-base">
               {t('dashboard.form.overview')}
             </span>
@@ -132,7 +132,7 @@ export default function EmissionsFormPanel({
 
       <div className="mt-8">
         <Link href="/dashboard#form">
-          <Button variant="link" size="fit">
+          <Button variant="link" size="fit" type="button">
             {t('dashboard.form.emissionEntry.backToFormOverview')}
           </Button>
         </Link>

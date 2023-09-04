@@ -33,7 +33,7 @@ export const generalSettingsApiSlice = apiSlice.injectEndpoints({
       GeneralSettingsApiResponse,
       string
     >({
-      query: (locale) => `/settings-general?locale=${locale}`,
+      query: (locale) => `/settings-general?locale=${locale}&populate=*`,
       providesTags: ['GeneralSettings'],
     }),
   }),
