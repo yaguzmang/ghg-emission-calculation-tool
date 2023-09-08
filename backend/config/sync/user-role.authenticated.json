@@ -115,6 +115,9 @@
       "action": "api::settings-general.settings-general.find"
     },
     {
+      "action": "api::translation.translation.exportTranslations"
+    },
+    {
       "action": "api::translation.translation.find"
     },
     {

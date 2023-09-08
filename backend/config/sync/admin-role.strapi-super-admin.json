@@ -17,7 +17,7 @@
           "color",
           "quantityLabel"
         ],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -25,30 +25,12 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-category.emission-category",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::emission-category.emission-category",
-      "properties": {
-        "fields": [
-          "title",
-          "description",
-          "emissionGroup",
-          "emissionSources",
-          "primaryScope",
-          "emissionSourceLabel",
-          "color",
-          "quantityLabel"
-        ],
-        "locales": ["en", "fi"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
       "subject": "api::emission-category.emission-category",
       "properties": {
         "fields": [
@@ -61,7 +43,25 @@
           "color",
           "quantityLabel"
         ],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::emission-category.emission-category",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "emissionGroup",
+          "emissionSources",
+          "primaryScope",
+          "emissionSourceLabel",
+          "color",
+          "quantityLabel"
+        ],
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -169,7 +169,7 @@
       "subject": "api::emission-factor-datum.emission-factor-datum",
       "properties": {
         "fields": ["json", "dataset", "year"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -177,7 +177,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-factor-datum.emission-factor-datum",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -186,7 +186,7 @@
       "subject": "api::emission-factor-datum.emission-factor-datum",
       "properties": {
         "fields": ["json", "dataset", "year"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -195,7 +195,7 @@
       "subject": "api::emission-factor-datum.emission-factor-datum",
       "properties": {
         "fields": ["json", "dataset", "year"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -204,7 +204,7 @@
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -212,7 +212,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-group.emission-group",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -221,7 +221,7 @@
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -230,7 +230,7 @@
       "subject": "api::emission-group.emission-group",
       "properties": {
         "fields": ["title", "emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -239,7 +239,7 @@
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
         "fields": ["name", "emissionSourceLabel", "quantityLabel"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -247,7 +247,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -256,7 +256,7 @@
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
         "fields": ["name", "emissionSourceLabel", "quantityLabel"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -265,7 +265,7 @@
       "subject": "api::emission-source-group.emission-source-group",
       "properties": {
         "fields": ["name", "emissionSourceLabel", "quantityLabel"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -481,7 +481,7 @@
       "subject": "api::settings-dashboard.settings-dashboard",
       "properties": {
         "fields": ["emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -489,7 +489,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::settings-dashboard.settings-dashboard",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -498,7 +498,7 @@
       "subject": "api::settings-dashboard.settings-dashboard",
       "properties": {
         "fields": ["emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -507,7 +507,7 @@
       "subject": "api::settings-dashboard.settings-dashboard",
       "properties": {
         "fields": ["emissionCategories"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -524,7 +524,7 @@
           "landingPageLink.label",
           "landingPageLink.url"
         ],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -532,7 +532,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::settings-general.settings-general",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -549,7 +549,7 @@
           "landingPageLink.label",
           "landingPageLink.url"
         ],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -566,7 +566,7 @@
           "landingPageLink.label",
           "landingPageLink.url"
         ],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -575,7 +575,7 @@
       "subject": "api::translation.translation",
       "properties": {
         "fields": ["key", "translation"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -583,7 +583,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::translation.translation",
       "properties": {
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -592,7 +592,7 @@
       "subject": "api::translation.translation",
       "properties": {
         "fields": ["key", "translation"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
@@ -601,7 +601,7 @@
       "subject": "api::translation.translation",
       "properties": {
         "fields": ["key", "translation"],
-        "locales": ["en", "fi"]
+        "locales": ["en", "et"]
       },
       "conditions": []
     },
