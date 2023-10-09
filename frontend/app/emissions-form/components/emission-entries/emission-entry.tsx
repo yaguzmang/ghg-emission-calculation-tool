@@ -88,6 +88,7 @@ export default function EmissionsEntry({
                       variant="icon"
                       size="fit"
                       className={cn('text-black', { 'text-link': isEditing })}
+                      type="button"
                     >
                       <Icons.Trash className="text-black" />
                     </Button>
@@ -120,6 +121,7 @@ export default function EmissionsEntry({
                     variant="link"
                     size="fit"
                     className="font-bold text-popover-foreground hover:text-popover-foreground"
+                    type="button"
                   >
                     <span>{t('forms.cancel')}</span>
                   </Button>
@@ -130,6 +132,7 @@ export default function EmissionsEntry({
                       handleDeleteEntry();
                     }}
                     className="h-9 p-0"
+                    type="button"
                   >
                     <span className="px-5 text-sm py-2">
                       {t('dashboard.form.emissionEntry.deleteConfirm')}
@@ -148,6 +151,7 @@ export default function EmissionsEntry({
             setIsEditing((prevState) => !prevState);
           }}
           className={cn('text-black', { 'text-link': isEditing })}
+          type="button"
         >
           <Icons.Edit />
         </Button>
