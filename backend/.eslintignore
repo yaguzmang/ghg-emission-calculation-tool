@@ -116,3 +116,6 @@ build
 
 # Don't ignore data export
 !/data.tar.gz
+
+# Generated types
+types/generated
