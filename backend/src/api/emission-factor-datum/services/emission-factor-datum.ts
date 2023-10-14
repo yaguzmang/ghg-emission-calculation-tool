@@ -30,7 +30,7 @@ const emissionSourceValueSchema = yup.object({
 
 type JsonEmissionSourceValue = yup.InferType<typeof emissionSourceValueSchema>;
 
-interface Json {
+export interface Json {
   emission_sources: {
     [key: string]: JsonEmissionSourceValue;
   };
@@ -59,19 +59,19 @@ export default factories.createCoreService<
   async findOneByReportingPeriod(reportingPeriodId, params = {}) {
     // Determine emission factor dataset based on reporting period
 
-    const reportingPeriod: ReportingPeriod = await strapi.entityService.findOne(
+    const reportingPeriod = (await strapi.entityService?.findOne(
       "api::reporting-period.reporting-period",
       reportingPeriodId,
       {
         populate: { organization: { populate: ["emissionFactorDataset"] } },
       }
-    );
+    )) as ReportingPeriod | undefined;
 
     if (!reportingPeriod) {
       throw new NotFoundError("reporting period not found");
     }
 
-    const { organization, endDate: endDateString } = reportingPeriod;
+    const { organization, endDate: endDateValue } = reportingPeriod;
 
     if (!organization) {
       throw new ApplicationError(
@@ -89,25 +89,25 @@ export default factories.createCoreService<
 
     // Determine emission factor year based on the end date
 
+    const endDateString = String(endDateValue);
     const endDate = parse(endDateString, "y-MM-dd", new Date());
     const year = format(endDate, "y");
 
     // Find emission factor data that match the dataset and year
 
-    const emissionFactorData: EmissionFactorDatum[] =
-      await strapi.entityService.findMany(
-        "api::emission-factor-datum.emission-factor-datum",
-        {
-          filters: {
-            dataset: emissionFactorDataset,
-            year,
-          },
-          sort: { updatedAt: "desc" },
-          ...params,
-        }
-      );
+    const emissionFactorData = (await strapi.entityService?.findMany(
+      "api::emission-factor-datum.emission-factor-datum",
+      {
+        filters: {
+          dataset: emissionFactorDataset,
+          year,
+        },
+        sort: { updatedAt: "desc" },
+        ...params,
+      }
+    )) as EmissionFactorDatum[] | undefined;
 
-    if (emissionFactorData.length < 1) {
+    if (!emissionFactorData || emissionFactorData.length < 1) {
       throw new NotFoundError("emission factor data not found");
     }
 

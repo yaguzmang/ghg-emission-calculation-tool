@@ -90,34 +90,32 @@ export default factories.createCoreController(
       // 2. ordered emissionCategories, populated with emissionSources
       // 3. organization units
 
-      const getEmissionEntries = strapi
-        .service<EmissionEntryService>("api::emission-entry.emission-entry")
+      const getEmissionEntries: Promise<EmissionEntry[]> | undefined = strapi
+        .service("api::emission-entry.emission-entry")
         ?.findWithEmissions(reportingPeriodId);
 
       if (!getEmissionEntries)
         throw new ApplicationError("emission getter not available");
 
-      const getEmissionCategories = strapi
-        .service<EmissionCategoryService>(
-          "api::emission-category.emission-category"
-        )
-        ?.findOrdered(locale);
+      const getEmissionCategories: Promise<EmissionCategory[]> | undefined =
+        strapi
+          .service("api::emission-category.emission-category")
+          ?.findOrdered(locale);
 
       if (!getEmissionCategories)
         throw new ApplicationError("emission category getter not available");
 
-      const getReportingPeriod: Promise<ReportingPeriod | undefined> =
-        strapi.entityService.findOne(
-          "api::reporting-period.reporting-period",
-          reportingPeriodId,
-          {
-            populate: {
-              organization: {
-                populate: "organizationUnits",
-              },
+      const getReportingPeriod = strapi.entityService?.findOne(
+        "api::reporting-period.reporting-period",
+        reportingPeriodId,
+        {
+          populate: {
+            organization: {
+              populate: "organizationUnits",
             },
-          }
-        );
+          },
+        }
+      );
 
       const [emissionEntries, emissionCategories, reportingPeriod] =
         await Promise.all([

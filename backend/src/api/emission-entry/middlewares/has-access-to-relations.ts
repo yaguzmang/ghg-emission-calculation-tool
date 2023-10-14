@@ -3,7 +3,6 @@
  */
 
 import { Strapi } from "@strapi/strapi";
-import { AuthorizedService } from "../../api.types";
 
 const capitalize = (str: string): string => {
   if (str.length < 1) return str;
@@ -17,7 +16,7 @@ const apiNameToCamelCase = (apiName: string): string => {
   });
 };
 
-const apiNameToStrapiUid = (apiName: string): string => {
+const apiNameToStrapiUid = (apiName: string): `api::${string}.${string}` => {
   return `api::${apiName}.${apiName}`;
 };
 
@@ -50,7 +49,7 @@ export default (config, { strapi }: { strapi: Strapi }) => {
 
       if (
         !(await strapi
-          .service<AuthorizedService>(uid)
+          .service(uid)
           ?.isAllowedForUser(relationId, ctx.state.user.id))
       ) {
         return ctx.forbidden(`Forbidden "${camelCaseKey}"`);

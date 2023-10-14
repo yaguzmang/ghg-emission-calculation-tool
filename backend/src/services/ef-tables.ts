@@ -26,7 +26,7 @@ export const getEmissionFactorData = async (
 export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
   // Get dataset, year and locale by id
 
-  const entry = await strapi.entityService.findOne(
+  const entry = await strapi.entityService?.findOne(
     "api::emission-factor-datum.emission-factor-datum",
     id,
     { populate: "dataset" }
@@ -57,7 +57,7 @@ export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
 
   // Store emission factor data
 
-  await strapi.entityService.update(
+  await strapi.entityService?.update(
     "api::emission-factor-datum.emission-factor-datum",
     id,
     { data: { json: emissionFactorData } }

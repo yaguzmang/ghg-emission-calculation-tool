@@ -6,7 +6,6 @@ import { factories } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import { ServiceParams } from "../../api.types";
 import { EmissionCategory } from "..";
-import { DashboardSettings } from "../../settings-dashboard";
 
 export type EmissionCategoryService = {
   populateEmissionSources(emissionCategory: EmissionCategory): EmissionCategory;
@@ -25,7 +24,7 @@ export default factories.createCoreService<
    * @param params Additional params included in the request
    * @returns Promise<EmissionCategory>
    */
-  async findOne(id: string, params: ServiceParams) {
+  async findOne(id, params: ServiceParams) {
     const res = (await super.findOne(id, params)) as EmissionCategory | null;
 
     if (!res) return null;
@@ -54,7 +53,7 @@ export default factories.createCoreService<
       }
     }
 
-    return res;
+    return { ...res };
   },
 
   /**
@@ -101,23 +100,22 @@ export default factories.createCoreService<
    * @returns Promise<EmissionCategory>
    */
   async findOrdered(locale) {
-    const dashboardSettings: DashboardSettings | null =
-      await strapi.entityService.findMany(
-        "api::settings-dashboard.settings-dashboard",
-        {
-          locale,
-          populate: {
-            emissionCategories: {
-              populate: {
-                emissionSources: true,
-                localizations: {
-                  populate: ["emissionSources"],
-                },
+    const dashboardSettings = await strapi.entityService?.findMany(
+      "api::settings-dashboard.settings-dashboard",
+      {
+        locale,
+        populate: {
+          emissionCategories: {
+            populate: {
+              emissionSources: true,
+              localizations: {
+                populate: ["emissionSources"],
               },
             },
           },
-        }
-      );
+        },
+      }
+    );
 
     if (!dashboardSettings) return [];
 
@@ -126,10 +124,8 @@ export default factories.createCoreService<
     if (!emissionCategories || emissionCategories.length < 0) return [];
 
     return emissionCategories.map((category) => {
-      const populatedEmissionSources = strapi
-        .service<EmissionCategoryService>(
-          "api::emission-category.emission-category"
-        )
+      const populatedEmissionSources: EmissionCategory = strapi
+        .service("api::emission-category.emission-category")
         ?.populateEmissionSources(category);
 
       if (!populatedEmissionSources)

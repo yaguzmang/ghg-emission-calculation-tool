@@ -6,14 +6,12 @@ import { factories } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../../../services/utils";
-import { EmissionEntryService } from "../../emission-entry/services/emission-entry";
-import { Emissions } from "../../emission-entry";
-import { EmissionCategoryService } from "../services/emission-category";
+import { EmissionEntry, Emissions } from "../../emission-entry";
 import { EmissionCategory } from "..";
-import { EmissionFactorDatumService } from "../../emission-factor-datum/services/emission-factor-datum";
+import { Json } from "../../emission-factor-datum/services/emission-factor-datum";
 import { EmissionSourceGroup } from "../../emission-source-group";
 import { EmissionSource } from "../../emission-source";
-import { ReportingPeriodService } from "../../reporting-period/services/reporting-period";
+import { EmissionFactorDatum } from "../../emission-factor-datum";
 
 const { ValidationError, ApplicationError } = utils.errors;
 
@@ -37,11 +35,9 @@ export default factories.createCoreController(
 
         // Check access to reportingPeriod
 
-        const userHasAccesToReportingPeriod = await strapi
-          .service<ReportingPeriodService>(
-            "api::reporting-period.reporting-period"
-          )
-          ?.isAllowedForUser(reportingPeriod, ctx.state.user.id);
+        const userHasAccesToReportingPeriod: boolean = await strapi
+          .service("api::reporting-period.reporting-period")
+          .isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
           return ctx.forbidden();
@@ -49,36 +45,33 @@ export default factories.createCoreController(
 
         // Find emission category by id, populated with emission sources and emission source groups
 
-        const emissionCategory: EmissionCategory | null =
-          await strapi.entityService.findOne(
-            "api::emission-category.emission-category",
-            id,
-            {
-              populate: {
-                emissionSources: {
-                  populate: "emissionSourceGroup",
-                },
-                localizations: {
-                  populate: {
-                    emissionSources: {
-                      populate: {
-                        emissionSourceGroup: {
-                          populate: "localizations",
-                        },
+        const emissionCategory = (await strapi.entityService?.findOne(
+          "api::emission-category.emission-category",
+          id,
+          {
+            populate: {
+              emissionSources: {
+                populate: "emissionSourceGroup",
+              },
+              localizations: {
+                populate: {
+                  emissionSources: {
+                    populate: {
+                      emissionSourceGroup: {
+                        populate: "localizations",
                       },
                     },
                   },
                 },
               },
-            }
-          );
+            },
+          }
+        )) as EmissionCategory | undefined | null;
 
         if (!emissionCategory) return ctx.notFound();
 
-        const populatedEmissionCategory = strapi
-          .service<EmissionCategoryService>(
-            "api::emission-category.emission-category"
-          )
+        const populatedEmissionCategory: EmissionCategory | undefined = strapi
+          .service("api::emission-category.emission-category")
           ?.populateEmissionSources(emissionCategory);
 
         if (!populatedEmissionCategory)
@@ -88,21 +81,18 @@ export default factories.createCoreController(
 
         // Get emission factor data and validate it
 
-        const emissionFactorDatum = await strapi
-          .service<EmissionFactorDatumService>(
-            "api::emission-factor-datum.emission-factor-datum"
-          )
-          ?.findOneByReportingPeriod(reportingPeriod, {
-            locale: emissionCategory.locale,
-          });
+        const emissionFactorDatum: EmissionFactorDatum | undefined =
+          await strapi
+            .service("api::emission-factor-datum.emission-factor-datum")
+            ?.findOneByReportingPeriod(reportingPeriod, {
+              locale: emissionCategory.locale,
+            });
 
         if (!emissionFactorDatum)
           throw new ApplicationError("emission factor data could not be found");
 
-        const json = await strapi
-          .service<EmissionFactorDatumService>(
-            "api::emission-factor-datum.emission-factor-datum"
-          )
+        const json: Json | undefined = await strapi
+          .service("api::emission-factor-datum.emission-factor-datum")
           ?.validateJson(emissionFactorDatum?.json);
 
         if (!json) throw new ApplicationError("json could not be validated");
@@ -187,10 +177,8 @@ export default factories.createCoreController(
 
         // Check access to reportingPeriod
 
-        const userHasAccesToReportingPeriod = await strapi
-          .service<ReportingPeriodService>(
-            "api::reporting-period.reporting-period"
-          )
+        const userHasAccesToReportingPeriod: boolean | undefined = await strapi
+          .service("api::reporting-period.reporting-period")
           ?.isAllowedForUser(reportingPeriod, ctx.state.user.id);
 
         if (!userHasAccesToReportingPeriod) {
@@ -201,17 +189,15 @@ export default factories.createCoreController(
         // 1. emissionEntries for reportingPeriod and locale, populated with emissions
         // 2. ordered emissionCategories, populated with emissionSources
 
-        const getEmissionEntries = strapi
-          .service<EmissionEntryService>("api::emission-entry.emission-entry")
+        const getEmissionEntries: EmissionEntry[] | undefined = strapi
+          .service("api::emission-entry.emission-entry")
           ?.findWithEmissions(reportingPeriod, locale);
 
         if (!getEmissionEntries)
           throw new ApplicationError("emission getter not available");
 
-        const getEmissionCategories = strapi
-          .service<EmissionCategoryService>(
-            "api::emission-category.emission-category"
-          )
+        const getEmissionCategories: EmissionCategory[] | undefined = strapi
+          .service("api::emission-category.emission-category")
           ?.findOrdered(locale);
 
         if (!getEmissionCategories)

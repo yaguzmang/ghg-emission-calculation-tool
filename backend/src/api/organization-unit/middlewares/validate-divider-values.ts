@@ -8,26 +8,21 @@ import { Strapi } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../../../services/utils";
-import { Organization } from "../../organization";
-import { OrganizationUnit } from "..";
 
 const { ValidationError, ApplicationError } = utils.errors;
 
-const getUnitOrganization = async (
-  organizationUnitId: number
-): Promise<Organization | undefined> => {
-  const organizationUnit: OrganizationUnit | undefined =
-    await strapi.entityService.findOne(
-      "api::organization-unit.organization-unit",
-      organizationUnitId,
-      {
-        populate: {
-          organization: {
-            populate: "organizationDividers",
-          },
+const getUnitOrganization = async (organizationUnitId: number) => {
+  const organizationUnit = await strapi.entityService.findOne(
+    "api::organization-unit.organization-unit",
+    organizationUnitId,
+    {
+      populate: {
+        organization: {
+          populate: "organizationDividers",
         },
-      }
-    );
+      },
+    }
+  );
 
   return organizationUnit?.organization;
 };
@@ -76,10 +71,10 @@ export default (config, { strapi }: { strapi: Strapi }) => {
 
       // Check that each divider belongs to the organization
 
-      const organization: Organization | undefined = isPost
-        ? await strapi.entityService.findOne(
+      const organization = isPost
+        ? await strapi.entityService?.findOne(
             "api::organization.organization",
-            organizationId,
+            organizationId as number,
             {
               populate: "organizationDividers",
             }

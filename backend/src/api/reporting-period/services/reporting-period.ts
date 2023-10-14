@@ -15,7 +15,7 @@ export default factories.createCoreService<
     reportingPeriodId: number,
     userId: number
   ): Promise<boolean> {
-    const user = await strapi.entityService.findOne(
+    const user = await strapi.entityService?.findOne(
       "plugin::users-permissions.user",
       userId,
       {
@@ -24,12 +24,13 @@ export default factories.createCoreService<
       }
     );
 
-    const ownReportingPeriods = user.organizations.flatMap(
+    const ownReportingPeriods = user?.organizations?.flatMap(
       (org) => org.reportingPeriods
     );
 
-    return ownReportingPeriods.some(
-      (period) => period.id === reportingPeriodId
+    return (
+      ownReportingPeriods?.some((period) => period?.id === reportingPeriodId) ||
+      false
     );
   },
 }));

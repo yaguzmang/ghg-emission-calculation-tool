@@ -5,7 +5,6 @@
  */
 
 import { Strapi } from "@strapi/strapi";
-import { AuthorizedService } from "../api/api.types";
 
 /**
  * has-access middleware
@@ -17,8 +16,8 @@ export default (config, { strapi }: { strapi: Strapi }) => {
     const entryId = Number(ctx.params.id);
     const userId = ctx.state.user.id;
 
-    const isAllowed = await strapi
-      .service<AuthorizedService>(config.uid)
+    const isAllowed: boolean = await strapi
+      .service(config.uid)
       ?.isAllowedForUser(entryId, userId);
 
     if (!isAllowed) {
