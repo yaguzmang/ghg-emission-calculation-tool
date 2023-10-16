@@ -78,7 +78,7 @@
       },
       "tierExplanationLink": {
         "edit": {
-          "label": "tierExplanationLink",
+          "label": "Tier explanation link",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -150,7 +150,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "appName", "createdAt", "updatedAt"],
       "edit": [
         [
           {
@@ -182,7 +181,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "appName", "createdAt", "updatedAt"]
     }
   },
   "type": "object",
