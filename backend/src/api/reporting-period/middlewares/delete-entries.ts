@@ -8,7 +8,6 @@ import { Strapi } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../../../services/utils";
-import { EmissionEntry } from "../../emission-entry";
 
 const { ValidationError, ApplicationError } = utils.errors;
 
