@@ -24,6 +24,17 @@ export default factories.createCoreRouter(
       create: {
         middlewares: ["api::reporting-period.has-access-to-relations"],
       },
+      delete: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: {
+              uid: "api::reporting-period.reporting-period",
+            },
+          },
+          "api::reporting-period.delete-entries",
+        ],
+      },
     },
   }
 );
