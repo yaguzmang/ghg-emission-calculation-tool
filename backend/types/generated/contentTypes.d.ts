@@ -1343,6 +1343,12 @@ export interface ApiSettingsGeneralSettingsGeneral extends Schema.SingleType {
           localized: true;
         };
       }>;
+    tierExplanationLink: Attribute.Component<"generic.link"> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
