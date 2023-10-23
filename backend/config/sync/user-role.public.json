@@ -52,6 +52,12 @@
       "action": "api::translation.translation.findOne"
     },
     {
+      "action": "plugin::content-type-builder.content-types.getContentType"
+    },
+    {
+      "action": "plugin::content-type-builder.content-types.getContentTypes"
+    },
+    {
       "action": "plugin::i18n.locales.listLocales"
     },
     {

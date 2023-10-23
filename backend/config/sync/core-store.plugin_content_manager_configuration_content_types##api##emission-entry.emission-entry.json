@@ -149,6 +149,20 @@
           "sortable": false
         }
       },
+      "label": {
+        "edit": {
+          "label": "Label",
+          "description": "A free-form label to differentiate this emission entry from other entries",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "label",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -176,13 +190,43 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "edit": [
         [
           {
-            "name": "organizationUnit",
+            "name": "label",
             "size": 6
           },
           {
@@ -191,6 +235,10 @@
           }
         ],
         [
+          {
+            "name": "organizationUnit",
+            "size": 6
+          },
           {
             "name": "emissionSource",
             "size": 6
