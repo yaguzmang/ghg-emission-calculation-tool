@@ -1,3 +1,4 @@
+import type Strapi from "@strapi/types";
 import { Organization } from "./organization";
 
 export interface PolicyContext {
@@ -10,9 +11,9 @@ export interface PolicyContext {
 }
 
 export interface ApiServiceEntry {
-  id: number;
-  createdAt: string;
-  updatedAt: string;
+  id: number | `${number}`;
+  createdAt?: Strapi.EntityService.Params.Attribute.DateValue;
+  updatedAt?: Strapi.EntityService.Params.Attribute.DateValue;
 }
 
 export interface LocalizedApiServiceEntry extends ApiServiceEntry {

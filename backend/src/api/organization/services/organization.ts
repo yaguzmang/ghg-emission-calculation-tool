@@ -14,14 +14,14 @@ export default factories.createCoreService<
   OrganizationService
 >("api::organization.organization", ({ strapi }) => ({
   async findForUser(userId) {
-    const user = await strapi.entityService.findOne(
+    const user = await strapi.entityService?.findOne(
       "plugin::users-permissions.user",
       userId,
       {
         populate: { organizations: true },
       }
     );
-    return user.organizations.map((org) => org.id);
+    return user?.organizations?.map((org) => Number(org.id)) || [];
   },
 
   async isAllowedForUser(

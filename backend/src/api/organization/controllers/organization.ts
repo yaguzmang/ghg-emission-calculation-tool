@@ -4,7 +4,6 @@
 
 import { factories } from "@strapi/strapi";
 import utils from "@strapi/utils";
-import { OrganizationService } from "../services/organization";
 
 const { ApplicationError } = utils.errors;
 
@@ -15,8 +14,8 @@ export default factories.createCoreController(
       // List only the authenticated user's own organizations
 
       const { data, meta } = await super.find(ctx);
-      const ownOrganizationIds = await strapi
-        .service<OrganizationService>("api::organization.organization")
+      const ownOrganizationIds: number[] | undefined = await strapi
+        .service("api::organization.organization")
         ?.findForUser(ctx.state.user.id);
 
       if (!ownOrganizationIds)

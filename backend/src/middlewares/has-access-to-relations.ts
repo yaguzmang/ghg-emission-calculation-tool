@@ -8,7 +8,6 @@ import { Strapi } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../services/utils";
-import { AuthorizedService } from "../api/api.types";
 
 const { ValidationError } = utils.errors;
 
@@ -21,7 +20,10 @@ export default (config, { strapi }: { strapi: Strapi }) => {
         yup
           .object({
             key: yup.string().required(),
-            uid: yup.string().required(),
+            uid: yup
+              .string()
+              .matches(/^api::[a-z-]+.[a-z-]+$/)
+              .required(),
           })
           .required()
       )
@@ -47,8 +49,8 @@ export default (config, { strapi }: { strapi: Strapi }) => {
 
     await Promise.all(
       conf.relations.map(async ({ key, uid }) => {
-        const isAllowed = await strapi
-          .service<AuthorizedService>(uid)
+        const isAllowed: boolean | undefined = await strapi
+          .service(uid as `api::${string}.${string}`)
           ?.isAllowedForUser(data[key], ctx.state.user.id);
         if (!isAllowed) throw new ValidationError(`forbidden ${key}`);
       })

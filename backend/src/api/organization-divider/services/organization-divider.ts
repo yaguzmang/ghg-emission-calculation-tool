@@ -13,7 +13,7 @@ export default factories.createCoreService<
   OrganizationDividerService
 >("api::organization-divider.organization-divider", ({ strapi }) => ({
   async isAllowedForUser(organizationDividerId, userId) {
-    const user: User | undefined = await strapi.entityService.findOne(
+    const user = (await strapi.entityService?.findOne(
       "plugin::users-permissions.user",
       userId,
       {
@@ -21,7 +21,7 @@ export default factories.createCoreService<
           organizations: { populate: "organizationDividers" },
         },
       }
-    );
+    )) as User | null | undefined;
 
     if (!user?.organizations) return false;
 

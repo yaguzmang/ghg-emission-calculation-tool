@@ -6,7 +6,6 @@ import { Strapi } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import { validate } from "../../../services/utils";
-import { OrganizationService } from "../../organization/services/organization";
 
 const { ValidationError } = utils.errors;
 
@@ -25,8 +24,8 @@ export default (config, { strapi }: { strapi: Strapi }) => {
     if (ctx.request.body.data.emissionEntries)
       return ctx.forbidden("emissionEntries mutation forbidden");
 
-    const userHasAccessToOrganization = await strapi
-      .service<OrganizationService>("api::organization.organization")
+    const userHasAccessToOrganization: boolean | undefined = await strapi
+      .service("api::organization.organization")
       ?.isAllowedForUser(organization, ctx.state.user.id);
 
     if (!userHasAccessToOrganization)

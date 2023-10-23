@@ -3,9 +3,10 @@
  */
 
 import { factories } from "@strapi/strapi";
+import type Strapi from "@strapi/types";
 
 export interface TranslatableContentType {
-  uid: string;
+  uid: Strapi.Common.UID.ContentType;
   kind: string;
   attributes: {
     [key: string]: {
@@ -41,7 +42,7 @@ export type TranslatableEntry = TranslatableAttributes & {
 };
 
 export interface TranslatableEntryOutput {
-  uid: string;
+  uid: Strapi.Common.UID.ContentType;
   id: number;
   attributes: TranslatableAttributes;
 }
@@ -49,7 +50,7 @@ export interface TranslatableEntryOutput {
 export type TranslationService = {
   getTranslatableContentType(uid: string): TranslatableContentType | null;
   getTranslatableEntries(
-    uid: string,
+    uid: Strapi.Common.UID.ContentType,
     schema: TranslatableContentType
   ): Promise<TranslatableEntryOutput[]>;
 };
@@ -76,7 +77,11 @@ export default factories.createCoreService<
         .map(([key, { type }]) => [key, { type }])
     );
 
-    return { uid, kind, attributes: translatableAttributes };
+    return {
+      uid: uid as Strapi.Common.UID.ContentType,
+      kind,
+      attributes: translatableAttributes,
+    };
   },
 
   /**
@@ -87,8 +92,16 @@ export default factories.createCoreService<
    */
   async getTranslatableEntries(uid, schema) {
     const { fields, populate } = Object.entries(schema.attributes).reduce<{
-      fields: string[];
-      populate: string[];
+      // `strapi.entityService.findMany` is quite picky about the types of `fields` and `populate`.
+      // `string[]` is too generic and causes an error. Setting the types to `any` is possibly something
+      // I will regret later on but fixing it would've been quite a hassle given that Strapi doesn't
+      // yet provide TypeScript documentation for `entityService` (as of 10/2023). Contributions are
+      // welcome!
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      fields: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      populate: any;
     }>(
       ({ fields, populate }, [key, { type }]) => {
         if (type === "component")
@@ -98,11 +111,12 @@ export default factories.createCoreService<
       { fields: [], populate: [] }
     );
 
-    const entries: TranslatableEntry | TranslatableEntry[] =
-      await strapi.entityService.findMany(uid, {
-        fields,
-        populate,
-      });
+    const entries = (await strapi.entityService?.findMany(uid, {
+      fields,
+      populate,
+    })) as TranslatableEntry | TranslatableEntry[] | undefined | null;
+
+    if (!entries) return [];
 
     // Convert single types to array to enable mapping
     const entriesArr = Array.isArray(entries) ? entries : [entries];

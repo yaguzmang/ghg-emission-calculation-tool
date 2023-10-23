@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
+import type Strapi from "@strapi/types";
 import utils from "@strapi/utils";
 import * as yup from "yup";
 import Papa from "papaparse";
@@ -17,7 +18,7 @@ import {
 const { ApplicationError, ValidationError } = utils.errors;
 
 interface ExportableAttributes {
-  uid: string;
+  uid: Strapi.Common.UID.ContentType;
   id: number;
   attribute: string;
   value_en: string;
@@ -84,7 +85,7 @@ export default factories.createCoreController(
       );
 
       // For each translatable uid, collect each translatable attribute
-      const translatableUids = [
+      const translatableUids: Strapi.Common.UID.ContentType[] = [
         "api::emission-category.emission-category",
         "api::emission-group.emission-group",
         "api::emission-source-group.emission-source-group",
@@ -92,9 +93,10 @@ export default factories.createCoreController(
         "api::settings-general.settings-general",
       ];
 
-      const getTranslatableContentType = strapi.service<TranslationService>(
-        "api::translation.translation"
-      )?.getTranslatableContentType;
+      const getTranslatableContentType: TranslationService["getTranslatableContentType"] =
+        strapi.service(
+          "api::translation.translation"
+        )?.getTranslatableContentType;
 
       if (!getTranslatableContentType)
         throw new ApplicationError(
@@ -109,9 +111,8 @@ export default factories.createCoreController(
       );
 
       // Find all entries of each translatable content type, selecting/populating the translatable attributes
-      const getTranslatableEntries = strapi.service<TranslationService>(
-        "api::translation.translation"
-      )?.getTranslatableEntries;
+      const getTranslatableEntries: TranslationService["getTranslatableEntries"] =
+        strapi.service("api::translation.translation")?.getTranslatableEntries;
 
       if (!getTranslatableEntries)
         throw new ApplicationError(
