@@ -85,7 +85,8 @@
           "customEmissionFactorDirect.value",
           "customEmissionFactorDirect.source",
           "customEmissionFactorIndirect.value",
-          "customEmissionFactorIndirect.source"
+          "customEmissionFactorIndirect.source",
+          "label"
         ]
       },
       "conditions": [],
@@ -114,7 +115,8 @@
           "customEmissionFactorDirect.value",
           "customEmissionFactorDirect.source",
           "customEmissionFactorIndirect.value",
-          "customEmissionFactorIndirect.source"
+          "customEmissionFactorIndirect.source",
+          "label"
         ]
       },
       "conditions": [],
@@ -136,7 +138,8 @@
           "customEmissionFactorDirect.value",
           "customEmissionFactorDirect.source",
           "customEmissionFactorIndirect.value",
-          "customEmissionFactorIndirect.source"
+          "customEmissionFactorIndirect.source",
+          "label"
         ]
       },
       "conditions": [],

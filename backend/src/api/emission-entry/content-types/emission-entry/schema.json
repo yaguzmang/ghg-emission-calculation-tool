@@ -56,6 +56,9 @@
       "type": "component",
       "repeatable": false,
       "component": "emission-entry.custom-emission-factor"
+    },
+    "label": {
+      "type": "string"
     }
   }
 }

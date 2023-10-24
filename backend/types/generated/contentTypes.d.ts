@@ -815,6 +815,7 @@ export interface ApiEmissionEntryEmissionEntry extends Schema.CollectionType {
     customEmissionFactorBiogenic: Attribute.Component<"emission-entry.custom-emission-factor">;
     customEmissionFactorDirect: Attribute.Component<"emission-entry.custom-emission-factor">;
     customEmissionFactorIndirect: Attribute.Component<"emission-entry.custom-emission-factor">;
+    label: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
