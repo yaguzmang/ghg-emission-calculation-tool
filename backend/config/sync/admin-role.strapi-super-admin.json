@@ -570,7 +570,9 @@
           "userManualLink.label",
           "userManualLink.url",
           "landingPageLink.label",
-          "landingPageLink.url"
+          "landingPageLink.url",
+          "tierExplanationLink.label",
+          "tierExplanationLink.url"
         ],
         "locales": ["en", "et"]
       },
@@ -597,7 +599,9 @@
           "userManualLink.label",
           "userManualLink.url",
           "landingPageLink.label",
-          "landingPageLink.url"
+          "landingPageLink.url",
+          "tierExplanationLink.label",
+          "tierExplanationLink.url"
         ],
         "locales": ["en", "et"]
       },
@@ -615,7 +619,9 @@
           "userManualLink.label",
           "userManualLink.url",
           "landingPageLink.label",
-          "landingPageLink.url"
+          "landingPageLink.url",
+          "tierExplanationLink.label",
+          "tierExplanationLink.url"
         ],
         "locales": ["en", "et"]
       },
