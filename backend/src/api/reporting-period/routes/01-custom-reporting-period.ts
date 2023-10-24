@@ -15,5 +15,20 @@ export default {
         ],
       },
     },
+    {
+      method: "GET",
+      path: "/reporting-periods/:id/emission-entries/export",
+      handler: "reporting-period.exportEmissionEntries",
+      config: {
+        middlewares: [
+          {
+            name: "global::has-access",
+            config: {
+              uid: "api::reporting-period.reporting-period",
+            },
+          },
+        ],
+      },
+    },
   ],
 };

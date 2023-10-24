@@ -1,15 +1,16 @@
 {
   "info": {
-    "_postman_id": "d44a826f-336c-4ca4-b1fc-3b5815fd0608",
+    "_postman_id": "ad24efad-d6c2-463f-a4be-0c805cb8d3dd",
     "name": "TalTech GHG tool",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26836979"
   },
   "item": [
     {
       "name": "Strapi",
       "item": [
         {
-          "name": "App",
+          "name": "Public",
           "item": [
             {
               "name": "Emission category",
@@ -20,15 +21,19 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/1?populate=*",
+                      "raw": "http://localhost:1337/api/emission-categories/35?fields=id&populate=localizations",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "emission-categories", "1"],
+                      "path": ["api", "emission-categories", "35"],
                       "query": [
                         {
+                          "key": "fields",
+                          "value": "id"
+                        },
+                        {
                           "key": "populate",
-                          "value": "*"
+                          "value": "localizations"
                         }
                       ]
                     }
@@ -307,6 +312,27 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "Export translations",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/translations/export?as=csv",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "translations", "export"],
+                      "query": [
+                        {
+                          "key": "as",
+                          "value": "csv"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -387,7 +413,7 @@
           ]
         },
         {
-          "name": "Data",
+          "name": "Authenticated",
           "item": [
             {
               "name": "Organization",
@@ -494,6 +520,27 @@
                   "response": []
                 },
                 {
+                  "name": "Delete reporting period",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/9?force=true",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "reporting-periods", "9"],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
                   "name": "Get reporting periods",
                   "request": {
                     "method": "GET",
@@ -514,20 +561,20 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/emission-categories/3/with-emission-factors?reportingPeriod=1",
+                      "raw": "http://localhost:1337/api/emission-categories/1/with-emission-factors?reportingPeriod=2",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
                       "path": [
                         "api",
                         "emission-categories",
-                        "3",
+                        "1",
                         "with-emission-factors"
                       ],
                       "query": [
                         {
                           "key": "reportingPeriod",
-                          "value": "1"
+                          "value": "2"
                         }
                       ]
                     }
@@ -564,15 +611,42 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/reporting-periods/1/emissions?locale=en",
+                      "raw": "http://localhost:1337/api/reporting-periods/5/emissions?locale=en",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "reporting-periods", "1", "emissions"],
+                      "path": ["api", "reporting-periods", "5", "emissions"],
                       "query": [
                         {
                           "key": "locale",
                           "value": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get reporting period emission entries as CSV",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:1337/api/reporting-periods/5/emission-entries/export?as=csv",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": [
+                        "api",
+                        "reporting-periods",
+                        "5",
+                        "emission-entries",
+                        "export"
+                      ],
+                      "query": [
+                        {
+                          "key": "as",
+                          "value": "csv"
                         }
                       ]
                     }
@@ -866,11 +940,11 @@
                     "method": "GET",
                     "header": [],
                     "url": {
-                      "raw": "http://localhost:1337/api/organizations/5?populate=emissionFactorDataset",
+                      "raw": "http://localhost:1337/api/organizations/1?populate=emissionFactorDataset",
                       "protocol": "http",
                       "host": ["localhost"],
                       "port": "1337",
-                      "path": ["api", "organizations", "5"],
+                      "path": ["api", "organizations", "1"],
                       "query": [
                         {
                           "key": "populate",
@@ -1042,7 +1116,7 @@
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkwNzg0MjExLCJleHAiOjE2OTMzNzYyMTF9.6fsTefsCEIjYYNlyQiPyj6k_Ynu_Q_h55K7Y4J6CmIw",
+                "value": "{{jwt}}",
                 "type": "string"
               }
             ]
@@ -1065,13 +1139,17 @@
           ]
         },
         {
+          "name": "Admin",
+          "item": []
+        },
+        {
           "name": "Log in",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"identifier\": \"user1@example.com\",\n    \"password\": \"user1pw\"\n}",
+              "raw": "{\n    \"identifier\": \"{{username}}\",\n    \"password\": \"{{userpw}}\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1099,6 +1177,41 @@
               "host": ["localhost"],
               "port": "1337",
               "path": ["api", "i18n", "locales"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get content types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/api/content-type-builder/content-types",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["api", "content-type-builder", "content-types"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get content type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/api/content-type-builder/content-types/api::emission-category.emission-category",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": [
+                "api",
+                "content-type-builder",
+                "content-types",
+                "api::emission-category.emission-category"
+              ]
             }
           },
           "response": []

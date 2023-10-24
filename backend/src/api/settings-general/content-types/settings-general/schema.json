@@ -53,6 +53,16 @@
         }
       },
       "component": "generic.link"
+    },
+    "tierExplanationLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "generic.link"
     }
   }
 }

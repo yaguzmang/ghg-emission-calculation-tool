@@ -223,6 +223,7 @@
       }
     },
     "layouts": {
+      "list": ["id", "reportingPeriod", "organizationUnit", "emissionSource"],
       "edit": [
         [
           {
@@ -278,8 +279,7 @@
             "size": 12
           }
         ]
-      ],
-      "list": ["id", "reportingPeriod", "organizationUnit", "emissionSource"]
+      ]
     }
   },
   "type": "object",

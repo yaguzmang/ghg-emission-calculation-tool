@@ -1,4 +1,8 @@
 import * as yup from "yup";
+import Papa from "papaparse";
+import utils from "@strapi/utils";
+
+const { ApplicationError, ValidationError } = utils.errors;
 
 /**
  * Validate data against a schema
@@ -19,5 +23,20 @@ export const validate = async <S extends yup.Schema, E extends Error>(
   } catch (err) {
     const throwable = error ?? Error;
     throw new throwable(errorMessage || err.message);
+  }
+};
+
+/**
+ * Convert a JSON-compliant JavaScript array of objects to a specified data format
+ * @param input {object[]} And array of objects to convert
+ * @param format {string} The output format
+ * @returns {string} The converted output
+ */
+export const convertJsonTo = (input: object[], format: string): string => {
+  switch (format) {
+    case "csv":
+      return Papa.unparse(input);
+    default:
+      throw new ApplicationError(`unknown format ${format}`);
   }
 };
