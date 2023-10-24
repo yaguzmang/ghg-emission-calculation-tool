@@ -6,8 +6,7 @@ import { factories } from "@strapi/strapi";
 import type Strapi from "@strapi/types";
 import utils from "@strapi/utils";
 import * as yup from "yup";
-import Papa from "papaparse";
-import { validate } from "../../../services/utils";
+import { validate, convertJsonTo } from "../../../services/utils";
 import {
   TranslatableComponent,
   TranslatableContentType,
@@ -55,21 +54,6 @@ const convertEntryToExportableAttributes = (
     .filter((_): _ is ExportableAttributes => !!_);
 
   return output;
-};
-
-/**
- * Convert a JSON-compliant JavaScript array of objects to a specified data format
- * @param input {object[]} And array of objects to convert
- * @param format {string} The output format
- * @returns {string} The converted output
- */
-const convertJsonTo = (input: object[], format: string): string => {
-  switch (format) {
-    case "csv":
-      return Papa.unparse(input);
-    default:
-      throw new ApplicationError(`unknown format ${format}`);
-  }
 };
 
 export default factories.createCoreController(

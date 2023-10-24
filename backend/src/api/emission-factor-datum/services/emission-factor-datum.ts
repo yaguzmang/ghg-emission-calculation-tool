@@ -10,12 +10,14 @@ import { EmissionFactorDatum } from "..";
 import { ReportingPeriod } from "../../reporting-period";
 import { validate } from "../../../services/utils";
 
+const dataSourceSchema = yup.object({
+  description: yup.string(),
+  url: yup.string(),
+});
+
 const factorSchema = yup.object({
   value: yup.number(),
-  data_source: yup.object({
-    description: yup.string(),
-    url: yup.string(),
-  }),
+  data_source: dataSourceSchema,
 });
 
 const emissionSourceValueSchema = yup.object({
@@ -27,6 +29,8 @@ const emissionSourceValueSchema = yup.object({
     biogenic: factorSchema,
   }),
 });
+
+export type EmissionFactorDataSource = yup.InferType<typeof dataSourceSchema>;
 
 type JsonEmissionSourceValue = yup.InferType<typeof emissionSourceValueSchema>;
 

@@ -103,6 +103,9 @@
       "action": "api::reporting-period.reporting-period.delete"
     },
     {
+      "action": "api::reporting-period.reporting-period.exportEmissionEntries"
+    },
+    {
       "action": "api::reporting-period.reporting-period.find"
     },
     {

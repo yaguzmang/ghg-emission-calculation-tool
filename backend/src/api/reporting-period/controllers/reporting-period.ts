@@ -5,18 +5,20 @@
 import { factories } from "@strapi/strapi";
 import utils from "@strapi/utils";
 import * as yup from "yup";
-import { EmissionEntryService } from "../../emission-entry/services/emission-entry";
-import { EmissionCategoryService } from "../../emission-category/services/emission-category";
 import {
   EmissionEntry,
   EmissionsAndAccuracies,
   SingleEmissionsAndAccuracy,
 } from "../../emission-entry";
-import { validate } from "../../../services/utils";
-import { ReportingPeriod } from "..";
+import { convertJsonTo, validate } from "../../../services/utils";
 import { EmissionCategory } from "../../emission-category";
+import { EmissionFactorDatum } from "../../emission-factor-datum";
+import {
+  EmissionFactorDataSource,
+  Json,
+} from "../../emission-factor-datum/services/emission-factor-datum";
 
-const { ApplicationError, ValidationError } = utils.errors;
+const { ApplicationError, ValidationError, NotFoundError } = utils.errors;
 
 /**
  * Combine two SingleEmissionsAndAccuracy objects
@@ -338,6 +340,180 @@ export default factories.createCoreController(
       return {
         data: { totalEmissions, organizationUnits: unitsWithEmissions },
       };
+    },
+
+    async exportEmissionEntries(ctx): Promise<string> {
+      // Validate request
+      const { params, query } = await validate(
+        ctx,
+        yup.object({
+          params: yup.object({
+            id: yup.number().required(),
+          }),
+          query: yup.object({
+            as: yup.string().oneOf(["csv"]).required(),
+          }),
+        }),
+        ValidationError
+      );
+
+      const reportingPeriod = await strapi.entityService?.findOne(
+        "api::reporting-period.reporting-period",
+        params.id,
+        {
+          populate: {
+            emissionEntries: {
+              populate: {
+                organizationUnit: true,
+                emissionSource: {
+                  populate: {
+                    emissionCategory: {
+                      populate: {
+                        emissionGroup: true,
+                      },
+                    },
+                  },
+                },
+                customEmissionFactorDirect: true,
+                customEmissionFactorIndirect: true,
+                customEmissionFactorBiogenic: true,
+              },
+            },
+            organization: {
+              populate: {
+                emissionFactorDataset: true,
+              },
+            },
+          },
+        }
+      );
+
+      if (!reportingPeriod)
+        throw new NotFoundError("reportingPeriod not found");
+
+      if (!reportingPeriod.emissionEntries)
+        throw new ApplicationError("population of emissionEntries failed");
+
+      const datasetId = reportingPeriod.organization?.emissionFactorDataset?.id;
+
+      if (!datasetId) throw new NotFoundError("dataset not found");
+
+      const emissionFactorData: EmissionFactorDatum = await strapi
+        .service("api::emission-factor-datum.emission-factor-datum")
+        .findOneByReportingPeriod(reportingPeriod.id);
+      const json: Json = await strapi
+        .service("api::emission-factor-datum.emission-factor-datum")
+        .validateJson(emissionFactorData.json);
+
+      // For each emissionEntry, create a row
+
+      const rows = reportingPeriod.emissionEntries.map((emissionEntry) => {
+        const emissionSource = emissionEntry.emissionSource;
+        const emissionCategory = emissionSource?.emissionCategory;
+        const apiId = emissionSource?.apiId;
+        const jsonEmissionSourceValue = apiId
+          ? json.emission_sources[apiId]
+          : undefined;
+
+        const primaryScope = emissionCategory?.primaryScope;
+
+        const directEmissionFactor =
+          emissionEntry.customEmissionFactorDirect?.value ??
+          jsonEmissionSourceValue?.factors.direct.value;
+        const indirectEmissionFactor =
+          emissionEntry.customEmissionFactorIndirect?.value ??
+          jsonEmissionSourceValue?.factors.indirect.value;
+        const biogenicEmissionFactor =
+          emissionEntry.customEmissionFactorBiogenic?.value ??
+          jsonEmissionSourceValue?.factors.biogenic.value;
+
+        const quantity = emissionEntry.quantity;
+        const directEmissions =
+          (directEmissionFactor && quantity * directEmissionFactor) || 0;
+        const indirectEmissions =
+          (indirectEmissionFactor && quantity * indirectEmissionFactor) || 0;
+        const biogenicEmissions =
+          (biogenicEmissionFactor && quantity * biogenicEmissionFactor) || 0;
+
+        const scope1Emissions = (primaryScope === 1 && directEmissions) || 0;
+        const scope2Emissions = (primaryScope === 2 && directEmissions) || 0;
+        const scope3DirectEmissions =
+          (primaryScope === 3 && directEmissions) || 0;
+        const scope3Emissions = scope3DirectEmissions + indirectEmissions;
+
+        const formatSource = (
+          source: EmissionFactorDataSource | undefined
+        ): string => {
+          const description = source?.description;
+          const url = source?.url;
+
+          if (description && url) return `[${description}](${url})`;
+          if (description) return description;
+          if (url) return url;
+          return "";
+        };
+
+        return {
+          organization: reportingPeriod.organization?.name || "",
+          organizationUnit: emissionEntry.organizationUnit?.name || "",
+          reportingPeriodStartDate: reportingPeriod.startDate || "",
+          reportingPeriodEndDate: reportingPeriod.endDate || "",
+          primaryScope: emissionCategory?.primaryScope || "",
+          emissionGroup: emissionCategory?.emissionGroup?.title || "",
+          emissionCategory: emissionCategory?.title || "",
+          emissionSource: jsonEmissionSourceValue?.label || "",
+          tier: emissionEntry.tier,
+          quantity: emissionEntry.quantity,
+          unit: jsonEmissionSourceValue?.unit || "",
+          quantitySource: emissionEntry.quantitySource || "",
+
+          // Emissions
+          emissionsScope1: scope1Emissions,
+          emissionsScope2: scope2Emissions,
+          emissionsScope3: scope3Emissions,
+          emissionsBiogenic: biogenicEmissions,
+
+          // Default emission factors
+          defaultEmissionFactorDirectValue:
+            jsonEmissionSourceValue?.factors.direct.value || 0,
+          defaultEmissionFactorDirectSource: formatSource(
+            jsonEmissionSourceValue?.factors.direct.data_source
+          ),
+          defaultEmissionFactorIndirectValue:
+            jsonEmissionSourceValue?.factors.indirect.value || 0,
+          defaultEmissionFactorIndirectSource: formatSource(
+            jsonEmissionSourceValue?.factors.direct.data_source
+          ),
+          defaultEmissionFactorBiogenicValue:
+            jsonEmissionSourceValue?.factors.biogenic.value || 0,
+          defaultEmissionFactorBiogenicSource: formatSource(
+            jsonEmissionSourceValue?.factors.biogenic.data_source
+          ),
+
+          // Custom emission factors
+          customEmissionFactorDirectValue:
+            emissionEntry.customEmissionFactorDirect?.value || 0,
+          customEmissionFactorDirectSource:
+            emissionEntry.customEmissionFactorDirect?.source || "",
+          customEmissionFactorIndirectValue:
+            emissionEntry.customEmissionFactorIndirect?.value || 0,
+          customEmissionFactorIndirectSource:
+            emissionEntry.customEmissionFactorIndirect?.source || "",
+          customEmissionFactorBiogenicValue:
+            emissionEntry.customEmissionFactorBiogenic?.value || 0,
+          customEmissionFactorBiogenicSource:
+            emissionEntry.customEmissionFactorBiogenic?.source || "",
+        };
+      });
+
+      // Convert the row to the specified format
+      const format = query.as;
+      const output = convertJsonTo(rows, format);
+
+      ctx.attachment(
+        `emissions_${reportingPeriod.startDate}_${reportingPeriod.endDate}.${format}`
+      );
+      return output;
     },
   })
 );
