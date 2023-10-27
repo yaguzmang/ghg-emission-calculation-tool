@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import Markdown from 'react-markdown';
 
 import Link from 'next/link';
 
@@ -96,11 +96,11 @@ export default function EmissionsFormPanel({
             <Skeleton className="mt-1 inline-block h-3 w-10/12" />
           </>
         ) : (
-          <ReactMarkdown>
+          <Markdown>
             {emissionCategoryWithFactors.currentData?.description?.split(
               '\n',
             )[0] ?? ''}
-          </ReactMarkdown>
+          </Markdown>
         )}
       </div>
 
