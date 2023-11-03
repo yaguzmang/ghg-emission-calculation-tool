@@ -91,11 +91,11 @@ export default function AllCategoryEmissionsSummary({
       <span className="text-lg text-text-regular">
         {t('dashboard.form.emissionSummary.GHGEmissions')}
       </span>
-      <span className="text-lg text-text-regular ml-auto">
+      <span className="ml-auto text-lg text-text-regular">
         <Trans i18nKey="dashboard.form.emissionsSummary.tCO2e" />
       </span>
-      <div className="flex flex-col w-full">
-        <div className="flex items-center justify-between border-b-ring border-b pb-2 mb-4">
+      <div className="flex w-full flex-col">
+        <div className="mb-4 flex items-center justify-between border-b border-b-ring pb-2">
           {emissionCategoryWithFactors.isLoading ? (
             <Skeleton className="inline-block h-7 w-64" />
           ) : (
@@ -107,7 +107,7 @@ export default function AllCategoryEmissionsSummary({
           )}
 
           <span
-            className={cn('text-2xl leading-7 font-bold', {
+            className={cn('text-2xl font-bold leading-7', {
               'text-primary-disabled-foreground': totalGHGEmissions === 0,
             })}
           >
@@ -133,7 +133,7 @@ export default function AllCategoryEmissionsSummary({
           return (
             <div
               key={`${'emissionEntryTotalGHG'}-${emissionEntry.id}`}
-              className="flex items-center justify-between text-text-regular text-lg"
+              className="flex items-center justify-between text-lg text-text-regular"
             >
               <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
               <span>{kgsToTons(totalEntryEmissions).toFixed(3)}</span>
@@ -141,14 +141,14 @@ export default function AllCategoryEmissionsSummary({
           );
         })}
 
-        <div className="flex items-center justify-between border-b-ring border-b pb-2 mb-4 mt-16">
+        <div className="mb-4 mt-16 flex items-center justify-between border-b border-b-ring pb-2">
           <h4>
             {t('dashboard.form.emissionSummary.allCategoryBiogenicEmissions', {
               categoryTitle: emissionCategoryWithFactors.currentData?.title,
             })}
           </h4>
           <span
-            className={cn('text-2xl leading-7 font-bold', {
+            className={cn('text-2xl font-bold leading-7', {
               'text-primary-disabled-foreground': totalBiogenicEmissions === 0,
             })}
           >
@@ -175,7 +175,7 @@ export default function AllCategoryEmissionsSummary({
             totalEntryEmissions > 0 && (
               <div
                 key={`${'emissionEntryTotalBiogenic'}-${emissionEntry.id}`}
-                className="flex items-center justify-between text-text-regular text-lg"
+                className="flex items-center justify-between text-lg text-text-regular"
               >
                 <span>{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
                 <span>{kgsToTons(totalEntryEmissions).toFixed(3)}</span>

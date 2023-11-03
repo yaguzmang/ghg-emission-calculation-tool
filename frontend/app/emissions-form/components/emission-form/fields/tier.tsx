@@ -63,7 +63,7 @@ export default function TierField({
   }, [isSourceEEIO, emissionEntry?.attributes?.tier, form, formType]);
 
   return (
-    <div className="mt-10 flex justify-between flex-wrap gap-y-6">
+    <div className="mt-10 flex flex-wrap justify-between gap-y-6">
       <span className="text-sm font-bold">
         {t('dashboard.form.emissionEntry.accuracy')}
       </span>
@@ -147,7 +147,7 @@ export default function TierField({
       )}
 
       {form.formState?.errors?.tier?.message !== undefined && (
-        <span className="text-sm text-destructive basis-full">
+        <span className="basis-full text-sm text-destructive">
           {t(form.formState.errors.tier.message)}
         </span>
       )}

@@ -55,11 +55,11 @@ export default function EmissionsFormPanel({
     ];
 
   return (
-    <div className="w-full flex flex-col px-4 pt-10 sm:px-12 max-w-[720px] xl:ml-auto">
+    <div className="flex w-full max-w-[720px] flex-col px-4 pt-10 sm:px-12 xl:ml-auto">
       <div>
         <Link href="/dashboard#form">
           <Button variant="link" size="fit" type="button">
-            <span className="pr-2 text-secondary text-base">
+            <span className="pr-2 text-base text-secondary">
               {t('dashboard.form.overview')}
             </span>
           </Button>
@@ -88,7 +88,7 @@ export default function EmissionsFormPanel({
           </h1>
         )}
       </div>
-      <div className="mt-8 text-text-regular flex flex-col">
+      <div className="mt-8 flex flex-col text-text-regular">
         {isEmissionCategoryLoading ? (
           <>
             <Skeleton className="inline-block h-3 w-full" />

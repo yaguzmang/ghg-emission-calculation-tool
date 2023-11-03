@@ -65,7 +65,7 @@ export default function OrganizationUnitField({
 
   return (
     <div className="gap-4">
-      <span className="text-text-regular text-sm">
+      <span className="text-sm text-text-regular">
         {t('dashboard.form.emissionEntry.organizationUnit')}
       </span>
       <Controller

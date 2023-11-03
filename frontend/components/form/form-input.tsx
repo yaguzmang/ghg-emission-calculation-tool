@@ -21,12 +21,12 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
       errorMessage.length > 0;
     return (
       <>
-        <div className="overflow-auto m-0">
+        <div className="m-0 overflow-auto">
           {label !== null && (
-            <span className="text-sm float-left">{label}</span>
+            <span className="float-left text-sm">{label}</span>
           )}
           {secondaryLabel !== null && (
-            <span className="text-sm float-right">{secondaryLabel}</span>
+            <span className="float-right text-sm">{secondaryLabel}</span>
           )}
         </div>
         <Input

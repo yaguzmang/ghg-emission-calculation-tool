@@ -110,36 +110,36 @@ export function EmissionsSummaryGraph({
     }, [emissionCategoriesWithEmissions, t]);
 
   return (
-    <div className="bg-light flex flex-col w-full gap-12 py-0 px-2 sm:px-12">
-      <div className="flex justify-between items-center mt-10 flex-wrap gap-y-10">
-        <span className="text-lg text-primary font-bold">
+    <div className="flex w-full flex-col gap-12 bg-light px-2 py-0 sm:px-12">
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-y-10">
+        <span className="text-lg font-bold text-primary">
           {t('dashboard.form.allGHGEmissions.emissionBasedOnActivity')}
         </span>
-        <div className="flex flex-wrap gap-y-3 gap-x-8">
-          <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-x-8 gap-y-3">
+          <div className="flex items-center gap-2">
             <div
               className="h-5 w-[15px] rounded-[5px]"
               style={{ backgroundColor: '#414546' }}
             />
-            <span className="text-xs text-primary font-bold ">
+            <span className="text-xs font-bold text-primary ">
               <Trans i18nKey="dashboard.form.allGHGEmissions.activityTCO2e" />
             </span>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <div
               className="h-5 w-[15px] rounded-[5px]"
               style={{ backgroundColor: '#8A8A8A' }}
             />
-            <span className="text-xs text-primary font-bold ">
+            <span className="text-xs font-bold text-primary ">
               <Trans i18nKey="dashboard.form.allGHGEmissions.upstreamTCO2e" />
             </span>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <div
               className="h-5 w-[15px] rounded-[5px]"
               style={{ backgroundColor: '#1A1A1A' }}
             />
-            <span className="text-xs text-primary font-bold ">
+            <span className="text-xs font-bold text-primary ">
               <Trans i18nKey="dashboard.form.allGHGEmissions.biogenicTCO2e" />
             </span>
           </div>

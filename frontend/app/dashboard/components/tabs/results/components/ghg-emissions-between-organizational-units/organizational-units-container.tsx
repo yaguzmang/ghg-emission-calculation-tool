@@ -46,7 +46,7 @@ export function GHGEmissionsBetweenOrganizationalUnitsContainer({
 
   return (
     <div>
-      <div className="w-full flex justify-between flex-wrap bg-background px-2 sm:px-8 py-8 items-center shadow-md gap-y-8">
+      <div className="flex w-full flex-wrap items-center justify-between gap-y-8 bg-background px-2 py-8 shadow-md sm:px-8">
         <div className="max-w-[470px]">
           <h2 className="break-normal">
             {t('results.ghgEmissionsBetweenUnits')}
@@ -65,7 +65,7 @@ export function GHGEmissionsBetweenOrganizationalUnitsContainer({
                 ? selectedOrganizationDividerId.toString()
                 : undefined
             }
-            className="flex flex-col gap-2 items-end"
+            className="flex flex-col items-end gap-2"
           >
             {usedOrganizationDividers.map((organizationDivider) => (
               <ToggleGroupItem

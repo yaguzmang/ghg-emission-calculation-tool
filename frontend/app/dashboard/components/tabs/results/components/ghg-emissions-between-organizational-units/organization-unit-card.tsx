@@ -28,41 +28,41 @@ export function OrganizationalUnitCard({
   secondaryValueNormalized,
 }: OrganizationalUnitCardProps) {
   return (
-    <div className="w-full min-w-[320px] max-w-[400px] flex justify-between flex-wrap bg-transparent px-0 py-2 items-center">
-      <div className="flex flex-col w-full border border-gray-lighten">
-        <div className="w-full bg-gray-lighten py-4 px-6">
+    <div className="flex w-full min-w-[320px] max-w-[400px] flex-wrap items-center justify-between bg-transparent px-0 py-2">
+      <div className="flex w-full flex-col border border-gray-lighten">
+        <div className="w-full bg-gray-lighten px-6 py-4">
           <span className="text-lg font-bold">{title}</span>
         </div>
-        <div className="w-full mt-3">
-          <div className="flex justify-between mx-5 sm:mx-7">
-            <div className="flex flex-col max-w-[150px]">
+        <div className="mt-3 w-full">
+          <div className="mx-5 flex justify-between sm:mx-7">
+            <div className="flex max-w-[150px] flex-col">
               <span className="text-proportional-area-chart-primary">
                 <Icons.HalfCircle className="rotate-90" />
               </span>
               <span className="text-xs">{primaryLabel}</span>
-              <span className="font-bold text-lg break-normal">
+              <span className="break-normal text-lg font-bold">
                 {kgsToTons(primaryValue).toFixed(2)}
                 <span className="pl-1 text-xs font-normal">
                   <Trans i18nKey="results.ghgEmissionsBetweenUnits.tCO2e" />
                 </span>
               </span>
             </div>
-            <div className="flex flex-col max-w-[150px] text-primary">
+            <div className="flex max-w-[150px] flex-col text-primary">
               <span className="text-proportional-area-chart-secondary">
                 <Icons.HalfCircle className="rotate-[-90deg]" />
               </span>
               <span className="text-xs">{secondaryLabel}</span>
-              <span className="font-bold text-lg ">
+              <span className="text-lg font-bold ">
                 {kgsToTons(secondaryValue).toFixed(2)}
               </span>
-              <span className="pl-1 text-xs font-normal break-normal">
+              <span className="break-normal pl-1 text-xs font-normal">
                 <Trans i18nKey="results.ghgEmissionsBetweenUnits.tCO2e" />
                 {secondaryLabelUnit && ` / ${secondaryLabelUnit}`}
               </span>
             </div>
           </div>
         </div>
-        <div className="w-full h-[250px] bg-transparent mt-8 mb-5">
+        <div className="mb-5 mt-8 h-[250px] w-full bg-transparent">
           <ProportionalSemiCirclesChart
             normalizedValueTop={primaryValueNormalized}
             normalizedValueBottom={secondaryValueNormalized}

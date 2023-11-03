@@ -44,7 +44,7 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             : undefined
         }
       />
-      <h4 className="uppercase mt-9">{t('login.password')}</h4>
+      <h4 className="mt-9 uppercase">{t('login.password')}</h4>
       <FormInput
         id="password"
         type="password"
@@ -56,15 +56,15 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             : undefined
         }
       />
-      <div className="flex items-center mt-5">
+      <div className="mt-5 flex items-center">
         <FormInput
           type="checkbox"
           value=""
-          className="w-4 h-4 accent-secondary"
+          className="h-4 w-4 accent-secondary"
           {...form.register('termsOfService')}
         />
         <div className="flex items-center">
-          <span className="pl-2 text-secondary text-base">
+          <span className="pl-2 text-base text-secondary">
             {t('login.termsOfService.accept')}
           </span>
           <a
@@ -72,9 +72,10 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             href={
               generalSettings.currentData?.data.attributes.termsOfServiceLink
                 ?.url
-            } rel="noreferrer"
+            }
+            rel="noreferrer"
           >
-            <span className="pl-1 text-secondary text-base underline">
+            <span className="pl-1 text-base text-secondary underline">
               {
                 generalSettings.currentData?.data.attributes.termsOfServiceLink
                   ?.label
@@ -84,11 +85,11 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
         </div>
       </div>
       {form.formState?.errors?.termsOfService?.message !== undefined ? (
-        <span className="block text-destructive text-sm h-5 min-w-0">
+        <span className="block h-5 min-w-0 text-sm text-destructive">
           {t(form.formState.errors.termsOfService?.message)}
         </span>
       ) : null}
-      <span className="block text-destructive h-5 min-w-0">
+      <span className="block h-5 min-w-0 text-destructive">
         {error.length ? error : null}
       </span>
       <div className="mt-5">

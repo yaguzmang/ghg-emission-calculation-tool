@@ -85,8 +85,8 @@ export function CategoryGHGEmissionsByOrganizationUnit({
   }, [emissionResults.currentData, emissionCategoryId]);
 
   return (
-    <div className="w-full flex flex-col gap-4">
-      <span className="text-lg font-bold pl-[10px]">
+    <div className="flex w-full flex-col gap-4">
+      <span className="pl-[10px] text-lg font-bold">
         {t('dashboard.form.emissionSummary.allCategoryEmissionsOverUnit', {
           categoryTitle,
         })}

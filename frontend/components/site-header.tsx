@@ -29,7 +29,7 @@ export function SiteHeader() {
       <header className="top-0 z-40 w-full bg-primary drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <div className="ml-0 mr-0 flex h-10 items-center bg-primary-foreground">
           <div className="relative flex h-full min-w-[180px] items-center justify-center bg-green">
-            <h4 className="font-extrabold text-primary-foreground px-5">
+            <h4 className="px-5 font-extrabold text-primary-foreground">
               {appName}
             </h4>
             <div className="absolute top-full">

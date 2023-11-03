@@ -23,7 +23,7 @@ export default function EmissionsFormStatistics({
   const reportingPeriod = useGetReportingPeriodQuery(reportingPeriodId);
 
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex h-full w-full flex-col">
       <span className="text-lg text-text-regular">
         {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
           ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`
@@ -43,7 +43,7 @@ export default function EmissionsFormStatistics({
         locale={locale}
       />
 
-      <div className="w-full mt-16">
+      <div className="mt-16 w-full">
         <FormEmissionCategoriesLollipopChart
           emissionCategoryId={emissionCategoryId}
           reportingPeriodId={reportingPeriodId}
@@ -51,14 +51,14 @@ export default function EmissionsFormStatistics({
         />
       </div>
 
-      <div className="w-full mt-16">
+      <div className="mt-16 w-full">
         <EmissionsByScopeTable
           reportingPeriodId={reportingPeriodId}
           locale={locale}
         />
       </div>
 
-      <div className="w-full mt-16">
+      <div className="mt-16 w-full">
         <CategoryGHGEmissionsByOrganizationUnit
           emissionCategoryId={emissionCategoryId}
           reportingPeriodId={reportingPeriodId}

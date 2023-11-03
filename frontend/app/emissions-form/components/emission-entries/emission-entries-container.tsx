@@ -102,7 +102,7 @@ export default function EmissionsEntriesContainer({
                   key={unit.organizationUnit.id}
                   value={`item-${unit.organizationUnit.id}`}
                 >
-                  <AccordionTrigger className="text-text-regular-lighten text-sm px-2">
+                  <AccordionTrigger className="px-2 text-sm text-text-regular-lighten">
                     {unit.organizationUnit.attributes.name}
                   </AccordionTrigger>
                   <AccordionContent className="px-2">
@@ -128,10 +128,10 @@ export default function EmissionsEntriesContainer({
               variant="icon"
               size="fit"
               type="button"
-              className="text-primary mt-12 ml-auto"
+              className="ml-auto mt-12 text-primary"
               onClick={() => setIsAddingNewEmissionOpen(true)}
             >
-              <span className="text-lg font-bold pr-2">
+              <span className="pr-2 text-lg font-bold">
                 {t('dashboard.form.emissionEntry.addNewCategoryEmissions', {
                   categoryTitle:
                     originalEmissionCategoryId !== null

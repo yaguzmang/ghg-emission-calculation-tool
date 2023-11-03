@@ -65,9 +65,9 @@ export function AllEmissionsSummarySection({
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="emission-summary-graph">
-        <div className="flex flex-col w-full max-w-[1264px] bg-emission text-emission-foreground min-h-[5.5rem] justify-between px-5 py-4 rounded-[2px]">
-          <div className="flex flex-row justify-between items-center flex-wrap gap-4">
-            <div className="flex gap-2 items-center">
+        <div className="flex min-h-[5.5rem] w-full max-w-[1264px] flex-col justify-between rounded-[2px] bg-emission px-5 py-4 text-emission-foreground">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
               <span>
                 <Icons.DirectEmissions className="h-6 w-6" />
               </span>
@@ -89,7 +89,7 @@ export function AllEmissionsSummarySection({
               >
                 {kgsToTons(totalGHGEmissions).toFixed(2)}
               </span>
-              <span className="text-xs flex items-end">
+              <span className="flex items-end text-xs">
                 <span className="pb-1">
                   <Trans i18nKey="dashboard.form.emissionsSummary.tCO2e" />
                 </span>

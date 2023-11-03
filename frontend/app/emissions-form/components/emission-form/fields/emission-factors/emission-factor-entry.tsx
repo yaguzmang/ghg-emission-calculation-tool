@@ -64,11 +64,11 @@ export default function EmissionFactorEntry({
   };
 
   return (
-    <div className="w-full flex flex-col">
-      <div className="flex justify-between items-center mt-1 flex-wrap">
-        <span className="text-text-regular pt-5">{label}</span>
+    <div className="flex w-full flex-col">
+      <div className="mt-1 flex flex-wrap items-center justify-between">
+        <span className="pt-5 text-text-regular">{label}</span>
         <div className="flex flex-col">
-          <span className="text-text-regular ml-auto pr-4 h-5">
+          <span className="ml-auto h-5 pr-4 text-text-regular">
             {isValueEdited &&
               t(
                 'dashboard.form.emissionEntry.emissionFactors.factors.customized',
@@ -76,7 +76,7 @@ export default function EmissionFactorEntry({
           </span>
           <div
             className={cn(
-              'w-48 h-10 bg-light text-text-regular text-lg rounded-full flex justify-between items-center px-4 transition-all',
+              'flex h-10 w-48 items-center justify-between rounded-full bg-light px-4 text-lg text-text-regular transition-all',
               { 'bg-primary text-primary-foreground': isEditing },
             )}
           >
@@ -87,7 +87,7 @@ export default function EmissionFactorEntry({
                   type="number"
                   step="any"
                   lang="en"
-                  className="w-full bg-transparent font-bold outline-none pl-4 [appearance:none] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full bg-transparent pl-4 font-bold outline-none [appearance:none] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   value={value}
                   onWheel={(e) => e.currentTarget.blur()}
                   onChange={(e) => onValueEdit(emissionType, e.target.value)}
@@ -113,7 +113,7 @@ export default function EmissionFactorEntry({
                         type="button"
                         variant="icon"
                         size="fit"
-                        className="text-primary-foreground px-2"
+                        className="px-2 text-primary-foreground"
                         onClick={() => onUndoEdit(emissionType)}
                       >
                         <Icons.Undo />
@@ -134,7 +134,7 @@ export default function EmissionFactorEntry({
                   type="button"
                   variant="icon"
                   size="fit"
-                  className="text-primary-foreground px-2"
+                  className="px-2 text-primary-foreground"
                   onClick={() => {
                     handleSave();
                   }}
@@ -144,7 +144,7 @@ export default function EmissionFactorEntry({
               </>
             ) : (
               <>
-                <span className="text-lg font-bold pl-4 truncate">
+                <span className="truncate pl-4 text-lg font-bold">
                   {Number(Number(value).toFixed(4))}
                 </span>
                 <div className="flex items-center">
@@ -156,7 +156,7 @@ export default function EmissionFactorEntry({
                             type="button"
                             variant="icon"
                             size="fit"
-                            className={cn('text-primary px-2', {
+                            className={cn('px-2 text-primary', {
                               'text-primary-foreground': isEditing,
                             })}
                             onClick={() => onUndoEdit(emissionType)}
@@ -183,7 +183,7 @@ export default function EmissionFactorEntry({
                     type="button"
                     variant="icon"
                     size="fit"
-                    className="text-primary px-2"
+                    className="px-2 text-primary"
                     onClick={() => onOpenEdit(emissionType)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {

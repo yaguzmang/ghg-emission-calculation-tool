@@ -73,7 +73,7 @@ export function GHGEmissionsBetweenOrganizationalUnits({
   ]);
 
   return (
-    <div className="w-full px-0 sm:px-2 py-2">
+    <div className="w-full px-0 py-2 sm:px-2">
       {organizationDividerId === 0 ? (
         <OrganizationalUnitsCards
           totalGHGEmissionsPerOrganizationUnit={totalGHGEmissionsPerOrgUnit}

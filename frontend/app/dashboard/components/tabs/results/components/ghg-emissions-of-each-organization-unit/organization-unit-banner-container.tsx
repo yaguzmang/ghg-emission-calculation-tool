@@ -29,7 +29,7 @@ export function OrganizationUnitBannerContainer({
   return (
     <div className="border-t">
       {emissionResults.currentData && (
-        <h2 className="break-normal my-10 px-2 sm:px-8">
+        <h2 className="my-10 break-normal px-2 sm:px-8">
           {t('results.ghgEmissionsOfEachUnit')}
         </h2>
       )}

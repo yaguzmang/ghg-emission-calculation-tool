@@ -77,14 +77,14 @@ export function OrganizationUnitBanner({
         value={`banner-item-${organizationUnitEmissionResults.id}`}
       >
         <div className="flex h-full items-stretch">
-          <div className="hidden min-h-[88px] w-[240px] bg-banner-primary px-5 py-4 rounded-[2px] text-banner-primary-foreground sm:flex items-center self-stretch">
+          <div className="hidden min-h-[88px] w-[240px] items-center self-stretch rounded-[2px] bg-banner-primary px-5 py-4 text-banner-primary-foreground sm:flex">
             <span className="break-normal">
               {organizationUnitEmissionResults.name}
             </span>
           </div>
-          <div className="flex w-full max-w-[1264px] bg-banner-secondary text-emission-foreground min-h-[88px] justify-between px-5 py-4 rounded-[2px] items-center flex-wrap gap-4">
+          <div className="flex min-h-[88px] w-full max-w-[1264px] flex-wrap items-center justify-between gap-4 rounded-[2px] bg-banner-secondary px-5 py-4 text-emission-foreground">
             <div className="flex flex-col">
-              <div className="flex gap-2 items-center">
+              <div className="flex items-center gap-2">
                 <span>
                   <Icons.DirectEmissions className="h-6 w-6" />
                 </span>
@@ -99,13 +99,13 @@ export function OrganizationUnitBanner({
                 </span>
               </div>
 
-              <span className="break-normal ml-auto sm:hidden ">
+              <span className="ml-auto break-normal sm:hidden ">
                 {organizationUnitEmissionResults.name}
               </span>
             </div>
 
-            <div className="flex flex-col ml-auto">
-              <div className="flex gap-2 ml-auto">
+            <div className="ml-auto flex flex-col">
+              <div className="ml-auto flex gap-2">
                 <span
                   className={cn('text-2xl font-bold ', {
                     'text-emission-foreground-muted':
@@ -114,7 +114,7 @@ export function OrganizationUnitBanner({
                 >
                   {kgsToTons(totalOrganizationUnitGHGEmissions).toFixed(2)}
                 </span>
-                <span className="text-xs flex items-end">
+                <span className="flex items-end text-xs">
                   <span className="pb-1">
                     <Trans i18nKey="dashboard.form.emissionsSummary.tCO2e" />
                   </span>
@@ -144,8 +144,8 @@ export function OrganizationUnitBanner({
         </div>
         <AccordionContent className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           {totalOrganizationUnitGHGEmissions !== 0 && (
-            <div className="border-[0.5px] border-banner-border rounded-[2px] mt-[2px] w-full px-2 py-8 sm:px-8 h-fit flex flex-row flex-wrap lg:flex-nowrap gap-2">
-              <div className="max-w-2xl w-full">
+            <div className="mt-[2px] flex h-fit w-full flex-row flex-wrap gap-2 rounded-[2px] border-[0.5px] border-banner-border px-2 py-8 sm:px-8 lg:flex-nowrap">
+              <div className="w-full max-w-2xl">
                 <OrganizationUnitEmissionsByScopeTable
                   organizationUnitId={organizationUnitEmissionResults.id}
                   emissionsDataArray={emissionsDataArray}
@@ -154,7 +154,7 @@ export function OrganizationUnitBanner({
                   }
                 />
               </div>
-              <div className="w-full basis-full md:basis-auto hidden md:flex">
+              <div className="hidden w-full basis-full md:flex md:basis-auto">
                 <OrganizationUnitEmissionCategoriesLollipopChart
                   heightSizeType="fit-content"
                   emissionsDataArray={emissionsDataArray}

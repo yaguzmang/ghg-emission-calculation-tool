@@ -31,9 +31,7 @@ export function UserNavInfo() {
       <div className="flex-col">
         {isLoading && <Skeleton className="inline-block h-8 w-10" />}
         {!isLoading && sessionStatus === 'authenticated' && (
-          <p className="text-xs font-bold">
-              {userData?.currentData?.username}
-            </p>
+          <p className="text-xs font-bold">{userData?.currentData?.username}</p>
         )}
         {!isLoading && sessionStatus === 'unauthenticated' && (
           <button

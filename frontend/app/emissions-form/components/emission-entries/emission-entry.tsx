@@ -77,7 +77,7 @@ export default function EmissionsEntry({
 
   return (
     <div>
-      <div ref={entryRef} className="flex justify-between items-center my-6">
+      <div ref={entryRef} className="my-6 flex items-center justify-between">
         <Popover>
           <div className="flex items-center gap-5 text-text-regular-lighten">
             <TooltipProvider>
@@ -113,9 +113,9 @@ export default function EmissionsEntry({
               align="start"
               side="bottom"
               sideOffset={2}
-              className="bg-popover-menu border border-popover-menu-border rounded-[2px] shadow-sm p-0 h-fit"
+              className="h-fit rounded-[2px] border border-popover-menu-border bg-popover-menu p-0 shadow-sm"
             >
-              <div className="p-5 flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center justify-between p-5">
                 <PopoverClose asChild>
                   <Button
                     variant="link"
@@ -134,7 +134,7 @@ export default function EmissionsEntry({
                     className="h-9 p-0"
                     type="button"
                   >
-                    <span className="px-5 text-sm py-2">
+                    <span className="px-5 py-2 text-sm">
                       {t('dashboard.form.emissionEntry.deleteConfirm')}
                     </span>
                   </Button>
@@ -157,7 +157,7 @@ export default function EmissionsEntry({
         </Button>
       </div>
       {isEditing && (
-        <div className="border border-dotted px-2 sm:px-10 py-12">
+        <div className="border border-dotted px-2 py-12 sm:px-10">
           <EmissionsForm
             reportingPeriodId={reportingPeriodId}
             organizationId={organizationId}

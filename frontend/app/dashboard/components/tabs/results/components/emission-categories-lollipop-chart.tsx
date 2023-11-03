@@ -67,7 +67,7 @@ export function EmissionCategoriesLollipopChart({
   }, [emissionCategoriesWithEmissions.currentData]);
 
   return (
-    <div className="w-full h-full min-h-[300px] flex flex-col">
+    <div className="flex h-full min-h-[300px] w-full flex-col">
       <LollipopChart
         unitLabel={t('dashboard.form.emissionsSummary.tCO2e')}
         data={emissionCategoryLollipopEntries}
