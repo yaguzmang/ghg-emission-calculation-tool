@@ -88,7 +88,8 @@ export const sharedUISlice = createSlice({
           }
           if (state.selectedLocale === undefined) {
             const { locale } = payload;
-            state.selectedLocale = locale;
+            state.selectedLocale =
+              locale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string);
           }
         },
       )
