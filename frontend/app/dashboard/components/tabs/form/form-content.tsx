@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { EmissionCategoryCard } from './components/emission-category-card';
 
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
-import { OrganizationPeriodForm } from '@/components/organization-period-form/organization-period-form';
+import { OrganizationPeriodFormAccordion } from '@/components/organization-period-form/organization-period-form-accordion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetDashboardEmissionCategoriesByLocaleQuery } from '@/redux/api/settings/dashboardSettingsApiSlice';
 import {
@@ -26,9 +26,9 @@ export function FormTabContent() {
   );
 
   return (
-    <div className="h-full w-full flex-1 py-8 px-2 sm:px-8">
-      <div className="flex flex-wrap justify-between gap-8 ">
-        <OrganizationPeriodForm section="form" />
+    <div className="h-full w-full flex-1 px-2 py-8 sm:px-8">
+      <div className="flex w-full flex-wrap justify-between gap-8">
+        <OrganizationPeriodFormAccordion section="form" />
         <EmissionsSummaryPanel
           reportingPeriodId={selectedeportingPeriodId}
           locale={selectedLocale}
@@ -36,7 +36,7 @@ export function FormTabContent() {
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-4">
+      <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-4">
         {dashboardEmissionCategories === undefined ||
         isEmissionCategoriesLoading ||
         isEmissionCategoriesFetching
