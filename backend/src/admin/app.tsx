@@ -23,7 +23,7 @@ const PullDataButton = () => {
         method: "POST",
         headers: {
           "Custom-Endpoint-Secret":
-            process.env.STRAPI_ADMIN_CUSTOM_ENDPOINT_SECRET,
+            process.env.STRAPI_ADMIN_CUSTOM_ENDPOINT_SECRET || "",
         },
       }
     );
@@ -41,11 +41,12 @@ const PullDataButton = () => {
   };
 
   return (
-    uid === "api::emission-factor-datum.emission-factor-datum" && (
+    (uid === "api::emission-factor-datum.emission-factor-datum" && (
       <LinkButton onClick={handleClick} to="#" disabled={loading}>
         {loading ? "Loading..." : "Pull data from EF API"}
       </LinkButton>
-    )
+    )) ||
+    null
   );
 };
 
