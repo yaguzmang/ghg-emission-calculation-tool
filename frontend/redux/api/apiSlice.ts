@@ -18,6 +18,7 @@ const protectedEndpoints = [
   'getEmissionCategoryWithLocalizations',
   'deleteEmissionEntry',
   'getOrganizationUnitsWithDividerValuesByOrganization',
+  'deleteReportingPeriod',
 ];
 
 export const apiSlice = createApi({
