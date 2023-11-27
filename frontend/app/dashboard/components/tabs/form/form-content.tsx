@@ -2,7 +2,10 @@
 
 import { nanoid } from 'nanoid';
 
+import { DeletePeriodButton } from './components/delete-period-button';
 import { EmissionCategoryCard } from './components/emission-category-card';
+import { ExportEmissionsButton } from './components/export-emissions-button';
+import { ImportEmissionsButton } from './components/import-emissions-button copy';
 
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
 import { OrganizationPeriodFormAccordion } from '@/components/organization-period-form/organization-period-form-accordion';
@@ -29,6 +32,25 @@ export function FormTabContent() {
     <div className="h-full w-full flex-1 px-2 py-8 sm:px-8">
       <div className="flex w-full flex-wrap justify-between gap-8">
         <OrganizationPeriodFormAccordion section="form" />
+        <div className="flex w-full flex-wrap gap-5">
+          {selectedeportingPeriodId !== undefined && (
+            <ImportEmissionsButton
+              reportingPeriodId={selectedeportingPeriodId}
+             />
+          )}
+          {selectedeportingPeriodId !== undefined && (
+            <ExportEmissionsButton
+              reportingPeriodId={selectedeportingPeriodId}
+             />
+          )}
+          {selectedeportingPeriodId !== undefined && (
+            <div className="md:ml-auto">
+              <DeletePeriodButton
+                reportingPeriodId={selectedeportingPeriodId}
+               />
+            </div>
+          )}
+        </div>
         <EmissionsSummaryPanel
           reportingPeriodId={selectedeportingPeriodId}
           locale={selectedLocale}
