@@ -34,6 +34,7 @@ export type CreateEmissionEntryData = {
   organizationUnit: number;
   reportingPeriod: number;
   emissionSource: number;
+  label?: string;
   quantity: number;
   tier: number;
   quantitySource?: string;
@@ -48,6 +49,7 @@ export type UpdateEmissionEntryData = {
   emissionSource?: number;
   quantity?: number;
   tier?: number;
+  label?: string;
   quantitySource?: string;
   customEmissionFactorDirect?: CustomEmissionFactor | null;
   customEmissionFactorIndirect?: CustomEmissionFactor | null;

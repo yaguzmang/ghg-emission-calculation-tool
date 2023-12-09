@@ -9,6 +9,7 @@ import { z } from 'zod';
 
 import EmissionFactorsForm from './fields/emission-factors/emission-factors-form';
 import EmissionSourceField from './fields/emission-source';
+import LabelField from './fields/label';
 import OrganizationUnitField from './fields/organization-unit';
 import QuantityField from './fields/quantity';
 import QuantitySourceField from './fields/quantity-source';
@@ -140,6 +141,12 @@ export default function EmissionsForm({
           }
           {...form.register('reportingPeriod')}
         />
+
+        {formType === 'edit' ? (
+          <LabelField formType={formType} emissionEntry={emissionEntry} />
+        ) : (
+          <LabelField formType={formType} />
+        )}
 
         {formType === 'edit' ? (
           <>

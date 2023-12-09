@@ -37,6 +37,7 @@ export const EmissionEntrySchema: z.ZodType<CreateEmissionEntryData> = z.object(
       .positive({
         message: 'dashboard.form.emissionEntry.reportingPeriod.error.select',
       }),
+    label: z.string().optional(),
     emissionSource: z.coerce
       .number({
         invalid_type_error:
