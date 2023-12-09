@@ -116,3 +116,6 @@ build
 
 # Don't ignore data export
 !/data.tar.gz
+
+# Don't ignore sample CSVs
+!/data/csv-import/*.csv
