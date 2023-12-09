@@ -51,7 +51,7 @@ export function SiteHeader() {
                   generalSettings.currentData?.data.attributes.userManualLink
                     ?.url
                 }
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <Icons.HelpCircleFilled />
               </a>

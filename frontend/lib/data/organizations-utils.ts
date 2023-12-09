@@ -2,6 +2,7 @@ import {
   EmissionCategoryTotalByEmissionType,
   EmissionResults,
   EmissionResultsByOrganizationUnit,
+  EmissionResultsPerReportinPeriodId,
 } from '@/types/emission-result';
 import { OrganizationDivider } from '@/types/organization-divider';
 import {
@@ -54,6 +55,94 @@ export function calculateTotalGHGEmissionsOfOrganizationUnit(
   const totalGHGEmissions = scope1Emissions + scope2Emissions + scope3Emissions;
 
   return totalGHGEmissions;
+}
+export function calculateTotalGHGEmissionsFromResult(
+  totalEmissions: EmissionResults['totalEmissions'],
+): number {
+  const totalDirectEmissions = totalEmissions.scope1?.emissions ?? 0;
+  const totalIndirectEmissions = totalEmissions.scope2?.emissions ?? 0;
+  const totalValueChainEmissions = totalEmissions.scope3?.emissions ?? 0;
+
+  const totalGHGEmissions =
+    totalDirectEmissions + totalIndirectEmissions + totalValueChainEmissions;
+
+  return totalGHGEmissions;
+}
+
+export function getHighestTotalEmissionsOfResultsByReportingPeriodId(
+  emissionResultsById: EmissionResultsPerReportinPeriodId,
+): number | null {
+  const ids = Object.keys(emissionResultsById);
+
+  if (ids.length === 0) {
+    return null;
+  }
+
+  const highestTotalEmissions = ids.reduce((maxEmissions, currentId) => {
+    const currentResults = emissionResultsById[currentId];
+
+    if (currentResults !== 'loading' && currentResults !== 'error') {
+      const currentTotalEmissions = calculateTotalGHGEmissionsFromResult(
+        currentResults.totalEmissions,
+      );
+
+      return Math.max(maxEmissions, currentTotalEmissions);
+    }
+
+    return maxEmissions;
+  }, 0);
+
+  return highestTotalEmissions;
+}
+
+export function calculateTotalGHGEmissionsOfOrganizationUnitAndCategory(
+  emissionResults: EmissionResults,
+  organizationUnitId: number,
+  emissionCategoryId: number,
+): number {
+  const organizationUnit = emissionResults.organizationUnits.find(
+    (unit) => unit.id === organizationUnitId,
+  );
+
+  if (organizationUnit) {
+    const categoryEmissions = [
+      ...organizationUnit.emissions.scope1,
+      ...organizationUnit.emissions.scope2,
+      ...organizationUnit.emissions.scope3,
+    ];
+
+    const totalEmissions = categoryEmissions
+      .filter((emission) => emission.id === emissionCategoryId)
+      .reduce((sum, emission) => sum + emission.emissions, 0);
+
+    return totalEmissions;
+  }
+
+  return 0;
+}
+
+export function calculateTotalGHGEmissionsOfCategoryInAllUnits(
+  emissionResults: EmissionResults,
+  emissionCategoryId: number,
+): number {
+  const totalEmissions = emissionResults.organizationUnits.reduce(
+    (sum, unit) => {
+      const categoryEmissions = [
+        ...unit.emissions.scope1,
+        ...unit.emissions.scope2,
+        ...unit.emissions.scope3,
+      ];
+
+      const categoryTotal = categoryEmissions
+        .filter((emission) => emission.id === emissionCategoryId)
+        .reduce((categorySum, emission) => categorySum + emission.emissions, 0);
+
+      return sum + categoryTotal;
+    },
+    0,
+  );
+
+  return totalEmissions;
 }
 
 export function calculateTotalGHGEmissionsPerOrganizationUnit(

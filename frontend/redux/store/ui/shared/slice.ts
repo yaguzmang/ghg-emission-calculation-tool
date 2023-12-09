@@ -4,6 +4,8 @@ import { createSlice, Reducer } from '@reduxjs/toolkit';
 import {
   OrganizationAndReportingPeriodSection,
   SharedUIState,
+  TOTAL_ALL_EMISSIONS,
+  TOTAL_ORGANIZATION_ID,
 } from './stateType';
 
 import i18n from '@/i18n/i18n';
@@ -16,6 +18,9 @@ const initialState: SharedUIState = {
   selectedResultsOrganizationId: undefined,
   selectedResultsReportingPeriodId: undefined,
   selectedLocale: undefined,
+  selectedHomeOrganizationId: undefined,
+  selectedHomeOrganizationUnitId: TOTAL_ORGANIZATION_ID,
+  selectedHomeEmissionCategoryId: TOTAL_ALL_EMISSIONS,
 };
 
 export const sharedUISlice = createSlice({
@@ -36,6 +41,39 @@ export const sharedUISlice = createSlice({
           break;
         case 'results':
           state.selectedResultsOrganizationId = selectedOrganizationId;
+          break;
+        case 'home':
+          state.selectedHomeOrganizationId = selectedOrganizationId;
+          break;
+        default:
+      }
+    },
+    setSelectedOrganizationUnitId: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        selectedOrganizationUnitId: number | undefined;
+        section: OrganizationAndReportingPeriodSection;
+      }>,
+    ) => {
+      const { selectedOrganizationUnitId, section } = action.payload;
+      switch (section) {
+        case 'home':
+          state.selectedHomeOrganizationUnitId = selectedOrganizationUnitId;
+          break;
+        default:
+      }
+    },
+    setSelectedEmissionCategoryId: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        selectedEmissionCategoryId: number;
+        section: OrganizationAndReportingPeriodSection;
+      }>,
+    ) => {
+      const { selectedEmissionCategoryId, section } = action.payload;
+      switch (section) {
+        case 'home':
+          state.selectedHomeEmissionCategoryId = selectedEmissionCategoryId;
           break;
         default:
       }
@@ -84,6 +122,12 @@ export const sharedUISlice = createSlice({
             const { organizations } = payload;
             if (organizations !== undefined && organizations.length > 0) {
               state.selectedResultsOrganizationId = organizations[0].id;
+            }
+          }
+          if (state.selectedHomeOrganizationId === undefined) {
+            const { organizations } = payload;
+            if (organizations !== undefined && organizations.length > 0) {
+              state.selectedHomeOrganizationId = organizations[0].id;
             }
           }
           if (state.selectedLocale === undefined) {
