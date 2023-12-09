@@ -985,6 +985,36 @@
                   "response": []
                 },
                 {
+                  "name": "Validate CSV",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "type": "file",
+                          "src": "/Users/joonas/dev/avoin/ghg-emission-calculation-tool/backend/data/csv-import/3-correct-rows.csv"
+                        },
+                        {
+                          "key": "reportingPeriod",
+                          "value": "18",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries/csv/validate",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries", "csv", "validate"]
+                    }
+                  },
+                  "response": []
+                },
+                {
                   "name": "Get emission entries",
                   "request": {
                     "method": "GET",
