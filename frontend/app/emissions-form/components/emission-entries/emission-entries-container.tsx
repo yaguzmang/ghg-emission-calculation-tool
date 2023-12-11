@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EmissionsForm from '../emission-form/emissions-form';
-import EmissionsEntry from './emission-entry';
+import EmissionsEntriesTable from './emission-entries-table';
 
 import {
   Accordion,
@@ -106,18 +106,13 @@ export default function EmissionsEntriesContainer({
                     {unit.organizationUnit.attributes.name}
                   </AccordionTrigger>
                   <AccordionContent className="px-2">
-                    {unit.emissionEntries.map((emissionEntry) => (
-                      <EmissionsEntry
-                        key={`emissionEntryItem-${emissionEntry.id}`}
-                        reportingPeriodId={reportingPeriodId}
-                        organizationId={organizationId}
-                        emissionCategoryWithFactors={
-                          emissionCategoryWithFactors
-                        }
-                        emissionEntry={emissionEntry}
-                        onOrganizationUnitChange={handleOrganizationUnitChange}
-                      />
-                    ))}
+                    <EmissionsEntriesTable
+                      emissionEntries={unit.emissionEntries}
+                      reportingPeriodId={reportingPeriodId}
+                      organizationId={organizationId}
+                      emissionCategoryWithFactors={emissionCategoryWithFactors}
+                      onOrganizationUnitChange={handleOrganizationUnitChange}
+                    />
                     <div className="pt-8" />
                   </AccordionContent>
                 </AccordionItem>
