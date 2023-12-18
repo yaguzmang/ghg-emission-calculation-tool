@@ -6,6 +6,7 @@ import { DeletePeriodButton } from './components/delete-period-button';
 import { EmissionCategoryCard } from './components/emission-category-card';
 import { ExportEmissionsButton } from './components/export-emissions-button';
 import { ImportEmissionsButton } from './components/import-emissions-button';
+import { FileInfo } from './components/import-org-units-mapper/import-org-units-mapper-container';
 
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
 import { OrganizationPeriodFormAccordion } from '@/components/organization-period-form/organization-period-form-accordion';
@@ -51,6 +52,7 @@ export function FormTabContent() {
             </div>
           )}
         </div>
+        <FileInfo />
         <EmissionsSummaryPanel
           reportingPeriodId={selectedeportingPeriodId}
           locale={selectedLocale}

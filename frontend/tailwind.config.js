@@ -25,6 +25,8 @@ module.exports = {
     extend: {
       colors: {
         border: 'hsl(var(--border))',
+        'border-highlight': 'hsl(var(--border-highlight))',
+        file:'hsl(var(--file))',
         green: 'hsl(var(--green))',
         'gray-lighten': 'hsl(var(--gray-lighten))',
         overlay: 'hsl(var(--overlay))',
