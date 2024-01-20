@@ -15,6 +15,19 @@ import { validate } from "../../../services/utils";
 const { ValidationError, ApplicationError, UnauthorizedError, ForbiddenError } =
   utils.errors;
 
+const entrySchema = yup
+  .array()
+  .required()
+  .of(
+    yup.object({
+      organizationUnit: yup.string().required(),
+      emissionSource: yup.string().required(),
+      quantity: yup.number().required(),
+      tier: yup.number().required(),
+      quantitySource: yup.string().nullable(),
+    })
+  );
+
 export default factories.createCoreController(
   "api::emission-entry.emission-entry",
   ({ strapi }) => ({
@@ -65,20 +78,7 @@ export default factories.createCoreController(
 
       if (errors.length > 0) throw new ValidationError(errors.toString());
 
-      const dataSchema = yup
-        .array()
-        .required()
-        .of(
-          yup.object({
-            organizationUnit: yup.string().required(),
-            emissionSource: yup.string().required(),
-            quantity: yup.number().required(),
-            tier: yup.number().required(),
-            quantitySource: yup.string().nullable(),
-          })
-        );
-
-      const validatedData = await validate(data, dataSchema, ValidationError);
+      const validatedData = await validate(data, entrySchema, ValidationError);
 
       const organizationUnits = new Set(
         validatedData.map((_) => _.organizationUnit)
@@ -115,6 +115,18 @@ export default factories.createCoreController(
         data: populatedData,
         organizationUnitKeys: [...organizationUnits],
       };
+    },
+
+    async batchCreate(ctx) {
+      const res = await Promise.allSettled(
+        ctx.request.body.map((payload) => {
+          return strapi.entityService?.create(
+            "api::emission-entry.emission-entry",
+            payload
+          );
+        })
+      );
+      return res;
     },
   })
 );

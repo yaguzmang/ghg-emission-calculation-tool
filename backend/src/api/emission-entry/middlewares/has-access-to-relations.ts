@@ -3,6 +3,11 @@
  */
 
 import { Strapi } from "@strapi/strapi";
+import utils from "@strapi/utils";
+import type { Context, Next } from "koa";
+import "koa-body"; // for module augmentation
+
+const { ValidationError } = utils.errors;
 
 const capitalize = (str: string): string => {
   if (str.length < 1) return str;
@@ -21,38 +26,48 @@ const apiNameToStrapiUid = (apiName: string): `api::${string}.${string}` => {
 };
 
 export default (config, { strapi }: { strapi: Strapi }) => {
-  return async (ctx, next) => {
-    if (!ctx.request.body.data) {
-      // Missing data payload will be caught by validator
-      return await next();
+  return async (ctx: Context, next: Next) => {
+    if (!ctx.request.body) {
+      throw new ValidationError("Empty body");
     }
 
-    const requiredRelations = ["organization-unit", "reporting-period"];
+    const body = Array.isArray(ctx.request.body)
+      ? ctx.request.body
+      : [ctx.request.body];
 
-    for (const key of requiredRelations) {
-      const camelCaseKey = apiNameToCamelCase(key);
-      const relationId = ctx.request.body.data[camelCaseKey];
-
-      // Require the relation when creating a new entry.
-      if (ctx.method === "POST" && !relationId) {
-        return ctx.badRequest(
-          `Missing "${camelCaseKey}" payload in the request body`
-        );
+    for (const payload of body) {
+      if (!payload.data) {
+        // Missing data payload will be caught by validator
+        return await next();
       }
 
-      // Bypass checks if not updating this relation.
-      if (ctx.method === "PUT" && !relationId) {
-        continue;
-      }
+      const requiredRelations = ["organization-unit", "reporting-period"];
 
-      const uid = apiNameToStrapiUid(key);
+      for (const key of requiredRelations) {
+        const camelCaseKey = apiNameToCamelCase(key);
+        const relationId = payload.data[camelCaseKey];
 
-      if (
-        !(await strapi
-          .service(uid)
-          ?.isAllowedForUser(relationId, ctx.state.user.id))
-      ) {
-        return ctx.forbidden(`Forbidden "${camelCaseKey}"`);
+        // Require the relation when creating a new entry.
+        if (ctx.method === "POST" && !relationId) {
+          return ctx.badRequest(
+            `Missing "${camelCaseKey}" payload in the request body`
+          );
+        }
+
+        // Bypass checks if not updating this relation.
+        if (ctx.method === "PUT" && !relationId) {
+          continue;
+        }
+
+        const uid = apiNameToStrapiUid(key);
+
+        if (
+          !(await strapi
+            .service(uid)
+            ?.isAllowedForUser(relationId, ctx.state.user.id))
+        ) {
+          return ctx.forbidden(`Forbidden '${camelCaseKey}' ${relationId}`);
+        }
       }
     }
 

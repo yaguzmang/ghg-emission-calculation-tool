@@ -1,19 +1,23 @@
 {
   "name": "backend",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
   "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
+    "cs": "config-sync",
+    "develop": "strapi develop",
     "export": "strapi export --file data --no-encrypt",
-    "import": "strapi import --file data.tar.gz",
-    "lint": "eslint .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "cs": "config-sync"
+    "import": "strapi import --file data.tar.gz",
+    "lint": "eslint .",
+    "start": "strapi start",
+    "strapi": "strapi"
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.14.6",
@@ -27,18 +31,14 @@
     "strapi-plugin-config-sync": "^1.1.1",
     "yup": "^1.2.0"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "13224dda-7d39-465e-a4ab-1e4b99df44bf"
+  "devDependencies": {
+    "@types/papaparse": "^5.3.8"
   },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@types/papaparse": "^5.3.8"
+  "strapi": {
+    "uuid": "13224dda-7d39-465e-a4ab-1e4b99df44bf"
   }
 }
