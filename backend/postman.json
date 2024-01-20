@@ -967,7 +967,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 5,\n        \"reportingPeriod\": 5,\n        \"emissionSource\": 11,\n        \"quantity\": 100,\n        \"tier\": 3\n    }\n}",
+                      "raw": "{\n    \"data\": {\n        \"organizationUnit\": 19,\n        \"reportingPeriod\": 18,\n        \"emissionSource\": 413,\n        \"quantity\": 100,\n        \"tier\": 3\n    }\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -980,6 +980,30 @@
                       "host": ["localhost"],
                       "port": "1337",
                       "path": ["api", "emission-entries"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Batch create emission entries",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n    {\n        \"data\": {\n            \"organizationUnit\": 19,\n            \"reportingPeriod\": 18,\n            \"emissionSource\": 465,\n            \"quantity\": 100,\n            \"tier\": 3\n        }\n    },\n    {\n        \"data\": {\n            \"organizationUnit\": 18,\n            \"reportingPeriod\": 18,\n            \"emissionSource\": 462,\n            \"quantity\": 101,\n            \"tier\": 2\n        }\n    }\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:1337/api/emission-entries/batch",
+                      "protocol": "http",
+                      "host": ["localhost"],
+                      "port": "1337",
+                      "path": ["api", "emission-entries", "batch"]
                     }
                   },
                   "response": []
