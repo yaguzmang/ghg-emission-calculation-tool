@@ -32,7 +32,9 @@ export default factories.createCoreController(
   "api::emission-entry.emission-entry",
   ({ strapi }) => ({
     async importCSV(ctx: Context) {
+      console.log("in controller");
       const userId = Number(ctx.state.user?.id);
+      console.log("userID:", userId);
       if (Number.isNaN(userId))
         throw new UnauthorizedError("Missing or invalid authorization");
 
@@ -49,6 +51,8 @@ export default factories.createCoreController(
         ValidationError
       );
 
+      console.log("validation passed");
+
       if (
         !(await (
           strapi.service(
@@ -57,6 +61,8 @@ export default factories.createCoreController(
         ).isAllowedForUser(reportingPeriodId, userId))
       )
         throw new ForbiddenError("Forbidden reporting period");
+
+      console.log(`reportingPeriod ${reportingPeriodId} allowed`);
 
       const files = ctx.request.files?.file;
 
@@ -79,6 +85,8 @@ export default factories.createCoreController(
       if (errors.length > 0) throw new ValidationError(errors.toString());
 
       const validatedData = await validate(data, entrySchema, ValidationError);
+
+      console.log("validatedData:", validatedData);
 
       const organizationUnits = new Set(
         validatedData.map((_) => _.organizationUnit)

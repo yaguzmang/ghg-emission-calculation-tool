@@ -28,6 +28,11 @@ export default factories.createCoreService<
       (org) => org.reportingPeriods
     );
 
+    console.log(
+      "ownReportingPeriods",
+      ownReportingPeriods?.map((_) => _?.id)
+    );
+
     return (
       ownReportingPeriods?.some((period) => period?.id === reportingPeriodId) ||
       false
