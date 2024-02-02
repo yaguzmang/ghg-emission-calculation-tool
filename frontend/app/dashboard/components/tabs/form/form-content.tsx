@@ -1,12 +1,14 @@
 'use client';
 
+import { useState } from 'react';
+
 import { nanoid } from 'nanoid';
 
 import { DeletePeriodButton } from './components/delete-period-button';
 import { EmissionCategoryCard } from './components/emission-category-card';
 import { ExportEmissionsButton } from './components/export-emissions-button';
 import { ImportEmissionsButton } from './components/import-emissions-button';
-import { FileInfo } from './components/import-org-units-mapper/import-org-units-mapper-container';
+import { ImportOrganizationUnitsFileMapper } from './components/import-org-units-mapper/import-org-units-mapper-container';
 
 import { EmissionsSummaryPanel } from '@/components/emissions-summary-panel/emissions-summary-panel';
 import { OrganizationPeriodFormAccordion } from '@/components/organization-period-form/organization-period-form-accordion';
@@ -29,6 +31,12 @@ export function FormTabContent() {
     selectedLocale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
   );
 
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleImportFileSelected = (file: File) => {
+    setFile(file);
+  };
+
   return (
     <div className="h-full w-full flex-1 px-2 py-8 sm:px-8">
       <div className="flex w-full flex-wrap justify-between gap-8">
@@ -36,6 +44,7 @@ export function FormTabContent() {
         <div className="flex w-full flex-wrap gap-5">
           {selectedeportingPeriodId !== undefined && (
             <ImportEmissionsButton
+              onImportFileSelected={handleImportFileSelected}
               reportingPeriodId={selectedeportingPeriodId}
             />
           )}
@@ -52,7 +61,13 @@ export function FormTabContent() {
             </div>
           )}
         </div>
-        <FileInfo />
+        {selectedeportingPeriodId !== undefined && file !== null && (
+          <ImportOrganizationUnitsFileMapper
+            reportingPeriodId={selectedeportingPeriodId}
+            onChangeFile={handleImportFileSelected}
+            file={file}
+          />
+        )}
         <EmissionsSummaryPanel
           reportingPeriodId={selectedeportingPeriodId}
           locale={selectedLocale}

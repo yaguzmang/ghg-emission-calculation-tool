@@ -1,79 +1,123 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { ChangeFileButton } from './change-file-button';
+import { OrganizationUnitsMapper } from './org-units-mapper';
+import { UploadMappedEmissions } from './upload-mapped-emissions';
+
 import { Button } from '@/components/ui/button';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { cn } from '@/lib/utils';
+import useValidateCsvEntries from '@/redux/api/emission-entries/validateCsvEntriesHook';
 
-// interface ImportEmissionsButtonProps {
-//   // reportingPeriodId: number;
-// }
+interface ImportOrganizationUnitsFileMapperProps {
+  reportingPeriodId: number;
+  file: File;
+  onChangeFile: (file: File) => void;
+}
 
-export function FileInfo() {
+export function ImportOrganizationUnitsFileMapper({
+  reportingPeriodId,
+  file,
+  onChangeFile,
+}: ImportOrganizationUnitsFileMapperProps) {
   const { t } = useTranslation();
+
+  const [{ data, loading, error, progress, resetState }, triggerUpload] =
+    useValidateCsvEntries({ file, reportingPeriodId });
+
+  const isFileValidatedSuccessfully =
+    !loading && data && !error && progress === 100;
+
+  const upLoadFile = useCallback(async () => {
+    await triggerUpload();
+  }, [triggerUpload]);
+
+  const handleChangeFile = (file: File) => {
+    resetState();
+    onChangeFile(file);
+  };
+
+  const [mappedOrganizationIds, setMappedOrganizationIds] = useState<
+    Record<string, number>
+  >({});
+
+  const handleMappedOrganizationIdsChange = (
+    organizationUnitKey: string,
+    organizationUnitId: number,
+  ) => {
+    setMappedOrganizationIds((prevState) => ({
+      ...prevState,
+      [organizationUnitKey]: organizationUnitId,
+    }));
+  };
 
   return (
     <div className="flex w-full max-w-3xl flex-col rounded-[4px] border-2 border-border-highlight px-2 py-8 sm:px-8 lg:px-12">
       <div className="self-center justify-self-center">
-        <span className="text-text-regular-lighten">Max file size</span>
-      </div>
-      <div className="flex flex-col gap-y-3 rounded-[5px] border bg-file px-2 py-4 sm:px-8">
-        <span className="font-bold text-black">File name.xls</span>
-        <div className="h-[3px] w-full bg-secondary" />
-      </div>
-      <div className="self-center justify-self-center">
-        <Button
-          variant="link"
-          className="text-base hover:no-underline focus:no-underline"
-        >
-          Remove file
-        </Button>
-      </div>
-      <div className="my-4 self-center justify-self-center">
-        <span className="text-base text-black">
-          Match organization unit’s names with your Admin’s created names. The
-          names in the drop down menu will be the ones shown in the too.
+        <span className="text-text-regular-lighten">
+          {t('dashboard.form.import.mapper.file.maxSize')}
         </span>
       </div>
-
-      <div className="flex flex-wrap gap-y-4 rounded-[5px] bg-file px-2 py-4 text-black sm:px-8">
-        <div className="flex flex-1 flex-col gap-y-3">
-          <span className="text-xs">Name in excel</span>
-          <span className="text-sm font-bold text-secondary">
-            Organization unit A
+      <div className="flex flex-col gap-y-3 rounded-[5px] border bg-file px-2 py-4 sm:px-8">
+        <span
+          className={cn('font-bold text-black', {
+            'text-destructive': error !== null && error.length > 0,
+          })}
+        >
+          {file.name}
+        </span>
+        <div className="h-[3px] w-full">
+          <div
+            className="h-full bg-secondary"
+            style={{ width: `${progress ?? 0}%` }}
+          />
+        </div>
+        {isFileValidatedSuccessfully && (
+          <span>
+            {t('dashboard.form.import.mapper.file.validatedSuccessfully')}
           </span>
-        </div>
-        <div className="flex flex-1 justify-around">
-          <div className="flex flex-col gap-y-1 justify-self-center">
-            <span className="text-xs">Choose organization name *</span>
-            <Select key={-1} onValueChange={() => {}} value="">
-              <SelectTrigger className="w-[230px] bg-white">
-                <SelectValue
-                  placeholder={t('dashboard.home.compare.chooseOrganization')}
-                />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {/* {organizationSelectOptions.map((option) => ( */}
-                  <SelectItem
-                    key="option.value"
-                    value="option.value.toString()"
-                  >
-                    option.label
-                  </SelectItem>
-                  {/* ))} */}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+        )}
       </div>
+      {error === null && !isFileValidatedSuccessfully && (
+        <div className="self-center justify-self-center">
+          <Button
+            variant="link"
+            className="text-base hover:no-underline focus:no-underline"
+            type="button"
+            onClick={upLoadFile}
+            disabled={loading}
+          >
+            {t('dashboard.form.import.mapper.file.validate')}
+          </Button>
+        </div>
+      )}
+      {((error !== null && error.length > 0) ||
+        isFileValidatedSuccessfully) && (
+        <div className="self-center justify-self-center">
+          <ChangeFileButton
+            disabled={loading}
+            onFileSelected={handleChangeFile}
+          />
+        </div>
+      )}
+      {error && (
+        <span className="font-bold text-destructive">{`${t(
+          'common.error',
+        )}: ${error}`}</span>
+      )}
+      {data && (
+        <>
+          <OrganizationUnitsMapper
+            data={data}
+            mappedOrganizationIds={mappedOrganizationIds}
+            onChangeMappedOrganizationIds={handleMappedOrganizationIdsChange}
+          />
+          <UploadMappedEmissions
+            data={data}
+            mappedOrganizationIds={mappedOrganizationIds}
+          />
+        </>
+      )}
     </div>
   );
 }

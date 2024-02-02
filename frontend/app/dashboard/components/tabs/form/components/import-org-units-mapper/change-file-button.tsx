@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
 
-interface ImportEmissionsButtonProps {
-  reportingPeriodId: number;
-  onImportFileSelected: (file: File) => void;
+interface ChangeFileButtonProps {
+  disabled?: boolean;
+  onFileSelected: (file: File) => void;
 }
 
-export function ImportEmissionsButton({
-  reportingPeriodId,
-  onImportFileSelected,
-}: ImportEmissionsButtonProps) {
+export function ChangeFileButton({
+  disabled,
+  onFileSelected,
+}: ChangeFileButtonProps) {
   const { t } = useTranslation();
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -21,30 +21,32 @@ export function ImportEmissionsButton({
     const selectedFile = event.target.files?.[0];
 
     if (selectedFile) {
-      onImportFileSelected(selectedFile);
+      onFileSelected(selectedFile);
     }
   };
 
   const handleButtonClick = () => {
-    // Trigger the click event of the file input when the button is clicked
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
       fileInputRef.current.click();
     }
   };
 
   return (
     <div>
-      <Button onClick={handleButtonClick}>
-        {reportingPeriodId !== undefined && (
-          <span className="px-4">{t('dashboard.form.importEmissions')}</span>
-        )}
+      <Button
+        variant="link"
+        className="text-base hover:no-underline focus:no-underline"
+        type="button"
+        onClick={handleButtonClick}
+        disabled={disabled}
+      >
+        {t('dashboard.form.import.mapper.file.change')}
       </Button>
       {/* Hidden file input */}
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: 'none' }}
+        className="hidden"
         onChange={handleFileInputChange}
         id="fileInput"
         name="file"
