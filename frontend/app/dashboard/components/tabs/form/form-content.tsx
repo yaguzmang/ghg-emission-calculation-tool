@@ -33,7 +33,7 @@ export function FormTabContent() {
 
   const [file, setFile] = useState<File | null>(null);
 
-  const handleImportFileSelected = (file: File) => {
+  const handleImportFileSelected = (file: File | null) => {
     setFile(file);
   };
 

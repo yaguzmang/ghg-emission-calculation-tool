@@ -12,7 +12,7 @@ import useValidateCsvEntries from '@/redux/api/emission-entries/validateCsvEntri
 interface ImportOrganizationUnitsFileMapperProps {
   reportingPeriodId: number;
   file: File;
-  onChangeFile: (file: File) => void;
+  onChangeFile: (file: File | null) => void;
 }
 
 export function ImportOrganizationUnitsFileMapper({
@@ -25,6 +25,8 @@ export function ImportOrganizationUnitsFileMapper({
   const [{ data, loading, error, progress, resetState }, triggerUpload] =
     useValidateCsvEntries({ file, reportingPeriodId });
 
+  const [fileUploadedSuccessfully, setFileUploadedSuccessfully] =
+    useState<boolean>(false);
   const isFileValidatedSuccessfully =
     !loading && data && !error && progress === 100;
 
@@ -35,6 +37,15 @@ export function ImportOrganizationUnitsFileMapper({
   const handleChangeFile = (file: File) => {
     resetState();
     onChangeFile(file);
+  };
+
+  const handleCancel = () => {
+    resetState();
+    onChangeFile(null);
+  };
+
+  const handleUploadSuccess = () => {
+    setFileUploadedSuccessfully(true);
   };
 
   const [mappedOrganizationIds, setMappedOrganizationIds] = useState<
@@ -51,6 +62,26 @@ export function ImportOrganizationUnitsFileMapper({
     }));
   };
 
+  if (fileUploadedSuccessfully) {
+    return (
+      <div className="flex w-full max-w-3xl flex-col rounded-[4px] border-2 border-border-highlight px-2 py-8 sm:px-8 lg:px-12">
+        <div className="self-center justify-self-center">
+          <span className="text-text-regular-lighten">
+            {t('dashboard.form.import.success')}
+          </span>
+        </div>
+        <Button
+          variant="link"
+          className="text-base hover:no-underline focus:no-underline"
+          type="button"
+          onClick={() => onChangeFile(null)}
+          disabled={loading}
+        >
+          {t('dashboard.form.import.mapper.file.validate')}
+        </Button>
+      </div>
+    );
+  }
   return (
     <div className="flex w-full max-w-3xl flex-col rounded-[4px] border-2 border-border-highlight px-2 py-8 sm:px-8 lg:px-12">
       <div className="self-center justify-self-center">
@@ -78,7 +109,7 @@ export function ImportOrganizationUnitsFileMapper({
           </span>
         )}
       </div>
-      {error === null && !isFileValidatedSuccessfully && (
+      {!isFileValidatedSuccessfully && (
         <div className="self-center justify-self-center">
           <Button
             variant="link"
@@ -115,6 +146,8 @@ export function ImportOrganizationUnitsFileMapper({
           <UploadMappedEmissions
             data={data}
             mappedOrganizationIds={mappedOrganizationIds}
+            onCancel={handleCancel}
+            onSuccess={handleUploadSuccess}
           />
         </>
       )}

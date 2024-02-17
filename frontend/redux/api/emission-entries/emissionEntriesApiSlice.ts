@@ -1,5 +1,7 @@
 import { createEntityAdapter } from '@reduxjs/toolkit';
 
+import { EmissionDataItemsArray } from './validateCsvEntriesHook';
+
 import { apiSlice } from '@/redux/api/apiSlice';
 import { EmissionEntryWithOrganizationUnitAndEmissionSource } from '@/types/emission-entry';
 import { ReportingPeriodWithEmissionEntries } from '@/types/reporting-period';
@@ -55,6 +57,19 @@ export type UpdateEmissionEntryData = {
   customEmissionFactorIndirect?: CustomEmissionFactor | null;
   customEmissionFactorBiogenic?: CustomEmissionFactor | null;
 };
+
+export type BatchCreateEmissionEntriesApiResponse = {
+  status: string;
+  value: {
+    id: number;
+    quantity: number;
+    tier: number;
+    quantitySource: string | null;
+    label: string | null;
+    createdAt: string;
+    updatedAt: string;
+  };
+}[];
 
 export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -127,6 +142,21 @@ export const emissionEntriesApiSlice = apiSlice.injectEndpoints({
         { type: 'EmissionsResults' },
       ],
     }),
+    batchCreateEmissionEntries: builder.mutation<
+      BatchCreateEmissionEntriesApiResponse,
+      EmissionDataItemsArray
+    >({
+      query: (data) => ({
+        url: `/emission-entries/batch`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: [
+        { type: 'EmissionEntry', id: 'LIST' },
+        { type: 'EmissionCategoryWithEmissions', id: 'LIST' },
+        { type: 'EmissionsResults' },
+      ],
+    }),
   }),
 });
 
@@ -135,4 +165,5 @@ export const {
   useCreateEmissionEntryMutation,
   useUpdateEmissionEntryMutation,
   useDeleteEmissionEntryMutation,
+  useBatchCreateEmissionEntriesMutation,
 } = emissionEntriesApiSlice;

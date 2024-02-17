@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react';
 
-import { getSession } from 'next-auth/react';
 import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
 export type EmissionDataItem = {
-  quantitySource: string | null;
+  quantitySource?: string | null;
+  label?: string | null;
   tier: number;
   quantity: number;
   organizationUnit: string;
   emissionSource: number;
   reportingPeriod: number;
 };
+
+export type EmissionDataItemMapped = Omit<
+  EmissionDataItem,
+  'organizationUnit'
+> & { organizationUnit: number };
+
+export type EmissionDataItemsArray = {
+  data: EmissionDataItemMapped;
+}[];
 
 export type ValidateCSVResponse = {
   data: EmissionDataItem[];
@@ -69,6 +79,7 @@ const useValidateCsvEntries = ({
       });
       setData(response.data);
       setError(null);
+      // eslint-disable-next-line
     } catch (error: any) {
       const reponseError = error.response?.data?.error?.message;
       setError(
