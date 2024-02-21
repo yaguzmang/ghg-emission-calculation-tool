@@ -76,11 +76,7 @@ export function DashboardTabs() {
                 {t('dashboard.home')}
               </span>
             </TabsTrigger>
-            <UserWalkthrough
-              isButton
-              step={UserWalkthroughStep.welcome}
-              side="right"
-            >
+            <UserWalkthrough isButton step={UserWalkthroughStep.welcome}>
               <TabsTrigger
                 value={DashboardTab.inventory}
                 className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:shadow-none md:min-w-[180px] md:px-0"

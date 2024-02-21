@@ -74,7 +74,6 @@ export default function EmissionsFormPanel({
 
         <UserWalkthrough
           isButton={false}
-          side="right"
           step={UserWalkthroughStep.formInformation}
         >
           <span className="px-2 text-center text-primary-disabled-foreground">

@@ -29,7 +29,6 @@ export default function EmissionsFormStatistics({
       <span className="text-lg text-text-regular">
         <UserWalkthrough
           isButton={false}
-          side="left"
           step={UserWalkthroughStep.formStatisticsInformation}
         >
           {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
