@@ -30,6 +30,15 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
     resolver: zodResolver(LoginSchema),
   });
 
+  const testingEmail =
+    t('testing.email') === 'testing.email' ? '' : t('testing.email');
+
+  const testingPassword =
+    t('testing.password') === 'testing.password' ? '' : t('testing.password');
+
+  const isTestingUserEnabled =
+    testingEmail.length > 0 && testingPassword.length > 0;
+
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <h4 className="uppercase">{t('login.email')}</h4>
@@ -92,6 +101,32 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
       <span className="block h-5 min-w-0 text-destructive">
         {error.length ? error : null}
       </span>
+      <div className="flex flex-col">
+        <Button type="button" variant="link" size="fit" className="py-0">
+          <a
+            href="mailto:support@ghg.ee?subject=GHG Emission Inventory Tool account request"
+            className="px-0 font-bold"
+          >
+            {t('login.needAnAccount')}
+          </a>
+        </Button>
+
+        {isTestingUserEnabled && (
+          <Button
+            type="button"
+            variant="link"
+            size="fit"
+            className="mt-2 px-0 py-0"
+            onClick={() => {
+              form.setValue('email', testingEmail);
+              form.setValue('password', testingPassword);
+              form.handleSubmit(onSubmit)();
+            }}
+          >
+            <span className="px-0 font-bold">{t('login.withTestAccount')}</span>
+          </Button>
+        )}
+      </div>
       <div className="mt-5">
         <Button type="submit" disabled={isLoading}>
           <span className="px-4 font-bold">{t('login')}</span>

@@ -1,11 +1,14 @@
 import type { Draft, PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, Reducer } from '@reduxjs/toolkit';
 
+import { LocalStorageEntities, RootState } from '../../RootState';
 import {
+  DashboardTab,
   OrganizationAndReportingPeriodSection,
   SharedUIState,
   TOTAL_ALL_EMISSIONS,
   TOTAL_ORGANIZATION_ID,
+  UserWalkthroughStep,
 } from './stateType';
 
 import i18n from '@/i18n/i18n';
@@ -17,10 +20,24 @@ const initialState: SharedUIState = {
   selectedFormReportingPeriodId: undefined,
   selectedResultsOrganizationId: undefined,
   selectedResultsReportingPeriodId: undefined,
-  selectedLocale: undefined,
+  selectedLocale: 'et',
   selectedHomeOrganizationId: undefined,
   selectedHomeOrganizationUnitId: TOTAL_ORGANIZATION_ID,
   selectedHomeEmissionCategoryId: TOTAL_ALL_EMISSIONS,
+  dashboardTab: undefined,
+  userWalkthrough: { enabled: true, step: UserWalkthroughStep.welcome },
+};
+
+export const persistSharedUiState = (state: SharedUIState) => {
+  const rootState: RootState = {
+    ui: {
+      shared: state,
+    },
+  };
+  window?.localStorage?.setItem(
+    LocalStorageEntities.uiState,
+    JSON.stringify(rootState),
+  );
 };
 
 export const sharedUISlice = createSlice({
@@ -47,6 +64,7 @@ export const sharedUISlice = createSlice({
           break;
         default:
       }
+      persistSharedUiState(state);
     },
     setSelectedOrganizationUnitId: (
       state: Draft<SharedUIState>,
@@ -62,6 +80,7 @@ export const sharedUISlice = createSlice({
           break;
         default:
       }
+      persistSharedUiState(state);
     },
     setSelectedEmissionCategoryId: (
       state: Draft<SharedUIState>,
@@ -77,6 +96,7 @@ export const sharedUISlice = createSlice({
           break;
         default:
       }
+      persistSharedUiState(state);
     },
     setSelectedReportingPeriodId: (
       state: Draft<SharedUIState>,
@@ -95,6 +115,7 @@ export const sharedUISlice = createSlice({
           break;
         default:
       }
+      persistSharedUiState(state);
     },
     setSelectedLocale: (
       state: Draft<SharedUIState>,
@@ -105,6 +126,37 @@ export const sharedUISlice = createSlice({
       const { locale } = action.payload;
       state.selectedLocale = locale;
       i18n.changeLanguage(locale);
+      persistSharedUiState(state);
+    },
+    setDashboardTab: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        tab: DashboardTab;
+      }>,
+    ) => {
+      const { tab } = action.payload;
+      state.dashboardTab = tab;
+      persistSharedUiState(state);
+    },
+    setUserWalkthroughStep: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        step: UserWalkthroughStep;
+      }>,
+    ) => {
+      const { step } = action.payload;
+      state.userWalkthrough = { ...state.userWalkthrough, step };
+      persistSharedUiState(state);
+    },
+    setUserWalkthroughEnabled: (
+      state: Draft<SharedUIState>,
+      action: PayloadAction<{
+        enabled: boolean;
+      }>,
+    ) => {
+      const { enabled } = action.payload;
+      state.userWalkthrough = { ...state.userWalkthrough, enabled };
+      persistSharedUiState(state);
     },
   },
   extraReducers: (builder) => {
@@ -134,7 +186,11 @@ export const sharedUISlice = createSlice({
             const { locale } = payload;
             state.selectedLocale =
               locale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string);
+            i18n.changeLanguage(
+              locale ?? (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as string),
+            );
           }
+          persistSharedUiState(state);
         },
       )
       .addMatcher(
@@ -153,6 +209,7 @@ export const sharedUISlice = createSlice({
               state.selectedResultsReportingPeriodId = reportingPeriods[0].id;
             }
           }
+          persistSharedUiState(state);
         },
       );
   },

@@ -26,7 +26,7 @@ export function EmissionsComparerChartsContainer() {
 
   return (
     <div className="flex flex-col gap-7">
-      {reportingPeriods.currentData !== undefined ? (
+      {reportingPeriods.currentData !== undefined && (
         <EmissionsComparerCharts
           reportingPeriods={reportingPeriods.currentData
             .slice()
@@ -39,9 +39,8 @@ export function EmissionsComparerChartsContainer() {
           emissionCategoryId={selectedEmissionCategoryId}
           locale={selectedLocale}
         />
-      ) : (
-        <p>{t('api.loading.generic')}</p>
       )}
+      {reportingPeriods.isLoading && <p>{t('api.loading.generic')}</p>}
     </div>
   );
 }

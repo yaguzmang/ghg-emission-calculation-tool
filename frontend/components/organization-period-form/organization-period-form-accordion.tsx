@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from '@radix-ui/react-accordion';
 
+import { UserWalkthrough } from '../user-walkthrough/user-walkthrough';
+
 import { OrganizationPeriodForm } from '@/components/organization-period-form/organization-period-form';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons/icons';
@@ -18,7 +20,10 @@ import {
   useSelectedOrganizationId,
   useSelectedReportingPeriodId,
 } from '@/redux/store/ui/shared';
-import { OrganizationAndReportingPeriodSection } from '@/redux/store/ui/shared/stateType';
+import {
+  OrganizationAndReportingPeriodSection,
+  UserWalkthroughStep,
+} from '@/redux/store/ui/shared/stateType';
 
 interface OrganizationPeriodFormAccordionProps {
   section: OrganizationAndReportingPeriodSection;
@@ -73,22 +78,27 @@ export function OrganizationPeriodFormAccordion({
               </h4>
             </div>
             <div className="ml-auto flex gap-x-2 pl-4 pr-2 text-black sm:flex-col">
-              <AccordionTrigger
-                asChild
-                className="transition-all hover:underline [&[data-state=open]>svg]:rotate-180"
+              <UserWalkthrough
+                isButton
+                step={UserWalkthroughStep.openPeriodSettings}
               >
-                <Button
-                  type="button"
-                  variant="icon"
-                  size="fit"
-                  className="text-black hover:text-black/90 active:text-black"
+                <AccordionTrigger
+                  asChild
+                  className="transition-all hover:underline [&[data-state=open]>svg]:rotate-180"
                 >
-                  <span className="pr-2">
-                    {t('dashboard.form.periodSettings')}
-                  </span>
-                  <Icons.ArrowsDownSmall className="h-2 w-2" />
-                </Button>
-              </AccordionTrigger>
+                  <Button
+                    type="button"
+                    variant="icon"
+                    size="fit"
+                    className="text-black hover:text-black/90 active:text-black"
+                  >
+                    <span className="pr-2">
+                      {t('dashboard.form.periodSettings')}
+                    </span>
+                    <Icons.ArrowsDownSmall className="h-2 w-2" />
+                  </Button>
+                </AccordionTrigger>
+              </UserWalkthrough>
             </div>
           </div>
         </div>

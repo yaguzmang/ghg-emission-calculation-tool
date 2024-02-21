@@ -21,6 +21,7 @@ const protectedEndpoints = [
   'deleteReportingPeriod',
   'getEmissionsResultsByReportingPeriodList',
   'batchCreateEmissionEntries',
+  'getEmissionFactorDataByDatasetIdAndLocale',
 ];
 
 export const apiSlice = createApi({
@@ -52,6 +53,7 @@ export const apiSlice = createApi({
     'EmissionsResults',
     'EmissionCategory',
     'OrganizationDivider',
+    'EmissionFactorData',
   ],
   endpoints: () => ({}),
 });

@@ -38,7 +38,7 @@ export function ResultsTabContent() {
             locale={selectedLocale}
             includeAccuracy
           />
-          <div className="-mt-4 ml-auto">
+          <div className="ml-auto mt-4">
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="link" size="fit" type="button">

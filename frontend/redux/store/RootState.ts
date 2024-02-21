@@ -5,3 +5,7 @@ export type RootState = {
     shared: SharedUIState;
   };
 };
+
+export enum LocalStorageEntities {
+  uiState = 'uiState',
+}

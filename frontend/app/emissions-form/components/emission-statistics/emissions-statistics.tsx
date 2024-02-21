@@ -6,7 +6,9 @@ import { FormEmissionCategoriesLollipopChart } from './form-emission-categories-
 import AllCategoryEmissionsSummary from '@/components/emission-results/all-category-emissions-summary';
 import EmissionsByScopeTable from '@/components/emission-results/emissions-by-scope-table';
 import { Skeleton } from '@/components/ui/skeleton';
+import { UserWalkthrough } from '@/components/user-walkthrough/user-walkthrough';
 import { useGetReportingPeriodQuery } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
+import { UserWalkthroughStep } from '@/redux/store/ui/shared/stateType';
 
 interface EmissionsFormStatisticsProps {
   emissionCategoryId: number;
@@ -25,16 +27,22 @@ export default function EmissionsFormStatistics({
   return (
     <div className="flex h-full w-full flex-col">
       <span className="text-lg text-text-regular">
-        {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
-          ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`
-          : reportingPeriod.isFetching && (
-              <Skeleton className="inline-block h-full w-64" />
-            )}
-        {reportingPeriod.isError && (
-          <h4 className="text-destructive">
-            {t('api.error.reportingPeriodGeneric')}
-          </h4>
-        )}
+        <UserWalkthrough
+          isButton={false}
+          side="left"
+          step={UserWalkthroughStep.formStatisticsInformation}
+        >
+          {reportingPeriod.currentData !== undefined && !reportingPeriod.isError
+            ? `${reportingPeriod.currentData.attributes.name} - ${reportingPeriod.currentData.attributes.startDate} - ${reportingPeriod.currentData.attributes.endDate}`
+            : reportingPeriod.isFetching && (
+                <Skeleton className="inline-block h-full w-64" />
+              )}
+          {reportingPeriod.isError && (
+            <h4 className="text-destructive">
+              {t('api.error.reportingPeriodGeneric')}
+            </h4>
+          )}
+        </UserWalkthrough>
       </span>
 
       <AllCategoryEmissionsSummary

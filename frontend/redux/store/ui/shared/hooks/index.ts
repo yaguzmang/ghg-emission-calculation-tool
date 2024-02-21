@@ -1,4 +1,8 @@
-import { OrganizationAndReportingPeriodSection } from '../stateType';
+import {
+  DashboardTab,
+  OrganizationAndReportingPeriodSection,
+  UserWalkthroughState,
+} from '../stateType';
 
 import { useAppSelector } from '@/redux/store';
 
@@ -58,3 +62,9 @@ export const useSelectedReportingPeriodId = (
 
 export const useSelectedLocale = (): string | undefined =>
   useAppSelector((state) => state.ui?.shared.selectedLocale);
+
+export const useDashboardTab = (): DashboardTab | undefined =>
+  useAppSelector((state) => state.ui?.shared.dashboardTab);
+
+export const useUserWalkthrough = (): UserWalkthroughState | undefined =>
+  useAppSelector((state) => state.ui?.shared.userWalkthrough);
