@@ -60,7 +60,7 @@ export default function EmissionsByScopeTable({
       (emissionResults.currentData.totalEmissions.scope3.emissions ?? 0);
   }
   return (
-    <table className="table-auto w-full text-right">
+    <table className="w-full table-auto text-right">
       <thead>
         <tr className="text-lg text-text-regular">
           <th aria-label="Emission type" />
@@ -85,9 +85,9 @@ export default function EmissionsByScopeTable({
             : 0;
           return (
             <React.Fragment key={emissionScopeKey}>
-              <tr className="border-b-ring border-b">
+              <tr className="border-b border-b-ring">
                 <th
-                  className={cn('text-left pb-2', {
+                  className={cn('pb-2 text-left', {
                     'pt-10': scopeIndex > 0,
                   })}
                 >
@@ -101,7 +101,7 @@ export default function EmissionsByScopeTable({
                   </h4>
                 </th>
                 <th
-                  className={cn('pb-2 text-2xl leading-7 font-normal', {
+                  className={cn('pb-2 text-2xl font-normal leading-7', {
                     'pt-10': scopeIndex > 0,
                     'text-primary-disabled-foreground':
                       totalScopeEmissionsPercentage === 0,
@@ -110,7 +110,7 @@ export default function EmissionsByScopeTable({
                   {totalScopeEmissionsPercentage.toFixed(2)}
                 </th>
                 <th
-                  className={cn('pb-2 text-2xl leading-7 font-bold pl-8', {
+                  className={cn('pb-2 pl-8 text-2xl font-bold leading-7', {
                     'pt-10': scopeIndex > 0,
                     'text-primary-disabled-foreground':
                       totalScopeEmissionsPercentage === 0,
@@ -127,7 +127,7 @@ export default function EmissionsByScopeTable({
 
                 return (
                   <tr className="text-text-regular" key={category.title}>
-                    <td className="text-left flex items-center gap-2 pt-4">
+                    <td className="flex items-center gap-2 pt-4 text-left">
                       <span
                         style={{
                           // Style is needed here because tailwind only loads colors that are present in the code.
@@ -148,7 +148,7 @@ export default function EmissionsByScopeTable({
                     <td className="pt-4">
                       <span>{categoryTotalEmissionsPercentage.toFixed(2)}</span>
                     </td>
-                    <td className="pt-4 pl-8">
+                    <td className="pl-8 pt-4">
                       <span>
                         {kgsToTons(category.totalEmissions).toFixed(2)}
                       </span>

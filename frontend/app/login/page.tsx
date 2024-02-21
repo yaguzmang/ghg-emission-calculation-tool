@@ -46,22 +46,22 @@ export default function Login() {
   };
 
   return (
-    <main className="relative mx-2 mt-10 sm:mx-12 flex justify-center">
+    <main className="relative mx-2 mt-10 flex justify-center sm:mx-12">
       <div className="mt-6 w-full max-w-[1328px]">
         <Tabs value="login" className="relative mr-auto w-full">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex w-full items-center justify-between">
             <TabsList className="w-full justify-start rounded-none bg-transparent p-0">
               <TabsTrigger
                 value="login"
-                className="relative justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:shadow-none w-full md:px-0"
+                className="relative w-full justify-start rounded-none border-b-[3px] border-b-transparent bg-transparent px-4 py-0 text-2xl font-semibold text-primary shadow-none data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:shadow-none md:px-0"
               >
                 <span className="pb-2 uppercase md:pl-2">{t('login')}</span>
               </TabsTrigger>
             </TabsList>
           </div>
-          <div className="flex min-h-[350px] bg-white shadow-strong w-full">
+          <div className="flex min-h-[350px] w-full bg-white shadow-strong">
             <TabsContent value="login" className="h-full w-full">
-              <div className="py-14 px-4 sm:px-14 h-full w-full">
+              <div className="h-full w-full px-4 py-14 sm:px-14">
                 <LoginForm
                   onSubmit={onSubmitHandler}
                   error={error}

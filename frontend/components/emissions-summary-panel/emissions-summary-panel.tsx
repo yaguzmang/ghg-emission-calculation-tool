@@ -72,7 +72,7 @@ export function EmissionsSummaryPanel({
       {emissionResults.isError && (
         <div className="mr-0 basis-full text-destructive">{errorMessage}</div>
       )}
-      <div className="flex flex-col gap-5 w-full">
+      <div className="flex w-full flex-col gap-5">
         <AllEmissionsSummarySection
           reportingPeriodId={reportingPeriodId}
           locale={locale}

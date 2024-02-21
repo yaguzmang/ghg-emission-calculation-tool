@@ -11,20 +11,12 @@ module.exports = {
     container: {
       center: true,
       padding: '2rem',
-      screens: {
-        xs: { max: '768px' },
-        // => @media (max-width: 768px) { ... }
-        sm: { min: '769px', max: '1024px' },
-        // => @media (min-width: 769px and max-width: 1024px) { ... }
-        md: { min: '1025px', max: '1366px' },
-        // => @media (min-width: 1025px and max-width: 1366px) { ... }
-        lg: { min: '1367px' },
-        // => @media (min-width: 1367px) { ... }
-      },
     },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
+        'border-highlight': 'hsl(var(--border-highlight))',
+        file: 'hsl(var(--file))',
         green: 'hsl(var(--green))',
         'gray-lighten': 'hsl(var(--gray-lighten))',
         overlay: 'hsl(var(--overlay))',

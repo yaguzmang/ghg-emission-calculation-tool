@@ -1,17 +1,34 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
+
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { HeaderLanguageSelector } from './header-language-selector';
 import { UserNavInfo } from './user-nav-info';
 
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons/icons';
+import {
+  ArrowReadMore,
+  Popover,
+  PopoverContentReadMore,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { useGetGeneralSettingsByLocaleQuery } from '@/redux/api/settings/generalSettingsApiSlice';
-import { useSelectedLocale } from '@/redux/store/ui/shared';
+import { useAppDispatch } from '@/redux/store';
+import { SharedUIActions, useSelectedLocale } from '@/redux/store/ui/shared';
+import {
+  DashboardTab,
+  UserWalkthroughStep,
+} from '@/redux/store/ui/shared/stateType';
 
 export function SiteHeader() {
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const pathname = usePathname();
   const noSiteHeaderRoutes = ['/emissions-form'];
   const shouldRenderHeader =
@@ -24,12 +41,23 @@ export function SiteHeader() {
   );
 
   const appName = generalSettings?.currentData?.data?.attributes?.appName;
+
+  const handleStartWalkthrough = () => {
+    dispatch(
+      SharedUIActions.setUserWalkthroughStep({
+        step: UserWalkthroughStep.welcome,
+      }),
+    );
+    dispatch(SharedUIActions.setUserWalkthroughEnabled({ enabled: true }));
+    router.push(`/dashboard#${DashboardTab.inventory}`);
+  };
+
   return (
     shouldRenderHeader && (
       <header className="top-0 z-40 w-full bg-primary drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <div className="ml-0 mr-0 flex h-10 items-center bg-primary-foreground">
           <div className="relative flex h-full min-w-[180px] items-center justify-center bg-green">
-            <h4 className="font-extrabold text-primary-foreground px-5">
+            <h4 className="px-5 font-extrabold text-primary-foreground">
               {appName}
             </h4>
             <div className="absolute top-full">
@@ -38,24 +66,30 @@ export function SiteHeader() {
           </div>
           <div className="mr-8 flex flex-1 items-center justify-end text-primary">
             <HeaderLanguageSelector />
-            <Button
-              variant="icon"
-              size="fit"
-              className="ml-6"
-              type="button"
-              asChild
-            >
-              <a
-                target="_blank"
-                href={
-                  generalSettings.currentData?.data.attributes.userManualLink
-                    ?.url
-                }
-                rel="noreferrer"
-              >
-                <Icons.HelpCircleFilled />
-              </a>
-            </Button>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="icon"
+                  size="fit"
+                  className="ml-6"
+                  type="button"
+                >
+                  <Icons.HelpCircleFilled />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContentReadMore side="bottom" sideOffset={12}>
+                <button
+                  type="button"
+                  className="px-2"
+                  onClick={() => handleStartWalkthrough()}
+                >
+                  {t('walkthrough.start')}
+                </button>
+
+                <ArrowReadMore />
+              </PopoverContentReadMore>
+            </Popover>
           </div>
         </div>
         <div className="ml-0 mr-0 flex h-16 items-center">

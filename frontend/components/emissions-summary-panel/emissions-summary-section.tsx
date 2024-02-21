@@ -46,19 +46,19 @@ export function EmissionsSummarySection({
     };
 
   return (
-    <div className="flex flex-col w-full max-w-[400px] px-5 py-4 rounded-[2px] bg-emission text-emission-foreground">
-      <div className="flex flex-row flex-wrap justify-between gap-4 gap-y-8 w-full">
+    <div className="flex w-full max-w-[400px] flex-col rounded-[2px] bg-emission px-5 py-4 text-emission-foreground">
+      <div className="flex w-full flex-row flex-wrap justify-between gap-4 gap-y-8">
         <div className="flex flex-row">
           {iconsBySectionType[sectionType]}
-          <span className="w-min min-w-min break-normal text-sm font-bold uppercase ml-2 align-top">
+          <span className="ml-2 w-min min-w-min break-normal align-top text-sm font-bold uppercase">
             {titlesBySectionType[sectionType]}
           </span>
         </div>
 
-        <div className="grid gap-3 items-center grid-cols-[min-content_1fr]">
+        <div className="grid grid-cols-[min-content_1fr] items-center gap-3">
           <span
             className={cn(
-              'text-[1.75rem] font-bold leading-9 tracking-widest text-right',
+              'text-right text-[1.75rem] font-bold leading-9 tracking-widest',
               {
                 'text-emission-foreground-muted': sectionEmissions === 0,
               },
@@ -66,12 +66,12 @@ export function EmissionsSummarySection({
           >
             {kgsToTons(sectionEmissions).toFixed(2)}
           </span>
-          <span className="text-xs font-normal w-min">
+          <span className="w-min text-xs font-normal">
             <Trans i18nKey="dashboard.form.emissionsSummary.tCO2e" />
           </span>
           <span
             className={cn(
-              'text-[1.75rem] font-bold leading-9 tracking-widest text-right',
+              'text-right text-[1.75rem] font-bold leading-9 tracking-widest',
               {
                 'text-emission-foreground-muted': sectionEmissions === 0,
               },
@@ -79,19 +79,19 @@ export function EmissionsSummarySection({
           >
             {sectionEmissionsPercentage.toFixed(2)}
           </span>
-          <span className="text-xs font-normal w-min whitespace-nowrap">
+          <span className="w-min whitespace-nowrap text-xs font-normal">
             {t('dashboard.form.emissionsSummary.percentOfAll')}
           </span>
         </div>
       </div>
       {typeof accuracy === 'number' && (
-        <div className="w-full flex flex-col">
+        <div className="flex w-full flex-col">
           <span className="text-xs">
             {t('dashboard.form.emissionsSummary.accuracyOfResults')}
           </span>
           <div
             className={cn(
-              'h-[10px] w-full bg-emission-secondary rounded-full mt-1 flex',
+              'mt-1 flex h-[10px] w-full rounded-full bg-emission-secondary',
               { 'justify-start': accuracyReliability === 'low' },
               { 'justify-center': accuracyReliability === 'medium' },
               { 'justify-end': accuracyReliability === 'high' },
@@ -99,7 +99,7 @@ export function EmissionsSummarySection({
           >
             <div
               className={cn(
-                'h-full w-24 rounded-full text-[8px] flex flex-col items-center justify-center align-middle text-center',
+                'flex h-full w-24 flex-col items-center justify-center rounded-full text-center align-middle text-[8px]',
                 {
                   hidden:
                     accuracyReliability === null || sectionEmissions === 0,

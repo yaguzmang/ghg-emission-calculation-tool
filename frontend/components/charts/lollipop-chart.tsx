@@ -143,7 +143,7 @@ export const LollipopChartInner = ({
         .map((value, i) => (
           <g
             key={`lollipop-grid-group-${value}`}
-            className="text-lollipop-line font-normal"
+            className="font-normal text-lollipop-line"
           >
             {i === 0 && (
               <>
@@ -211,7 +211,7 @@ export const LollipopChartInner = ({
       {/* Tooltip */}
       <div
         ref={tooltipContainerRef}
-        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2 w-full h-full"
+        className="pointer-events-none absolute left-0 top-0 h-full w-full translate-y-2 text-graph-tooltip-foreground"
         style={{
           marginLeft: MARGIN.left,
           marginTop: MARGIN.top,
@@ -234,7 +234,7 @@ export const LollipopChartInner = ({
               <span className="text-sm">
                 {hoveredElementData.value.toFixed(2)}
               </span>
-              <span className="text-sm pl-2">
+              <span className="pl-2 text-sm">
                 <Trans i18nKey={unitLabel} />
               </span>
             </div>
@@ -262,7 +262,7 @@ export function LollipopChart({
 
   return (
     <>
-      <span className="text-lg text-text-regular mr-auto ml-7 py-[1px]">
+      <span className="ml-7 mr-auto py-[1px] text-lg text-text-regular">
         <Trans i18nKey={unitLabel} />
       </span>
       <div

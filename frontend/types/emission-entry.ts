@@ -7,7 +7,8 @@ export type EmissionEntryWithCustomEmissionFactors = {
   attributes: {
     quantity: number;
     tier: number;
-    quantitySource: null;
+    label: string | null;
+    quantitySource: string | null;
     createdAt: string;
     updatedAt: string;
     customEmissionFactorDirect: CustomEmissionFactor | null;
@@ -21,7 +22,8 @@ export type EmissionEntry = {
   attributes: {
     quantity: number;
     tier: number;
-    quantitySource: null;
+    label: string | null;
+    quantitySource: string | null;
     createdAt: string;
     updatedAt: string;
   };
@@ -32,6 +34,7 @@ export type EmissionEntryWithOrganizationUnitAndEmissionSource = {
   attributes: {
     quantity: number;
     tier: number;
+    label: string | null;
     quantitySource: string | null;
     createdAt: string;
     updatedAt: string;

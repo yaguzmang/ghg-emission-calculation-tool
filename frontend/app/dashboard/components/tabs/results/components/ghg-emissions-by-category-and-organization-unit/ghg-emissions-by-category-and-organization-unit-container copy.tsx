@@ -17,7 +17,7 @@ export function GHGEmissionsByCategoryAndOrganizationUnitContainer({
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="w-full flex justify-between flex-wrap bg-background px-2 sm:px-8 py-8 items-center shadow-md gap-y-8">
+      <div className="flex w-full flex-wrap items-center justify-between gap-y-8 bg-background px-2 py-8 shadow-md sm:px-8">
         <div className="max-w-[550px]">
           <h2 className="break-normal">
             {t('results.ghgEmissionsByCategoryOverUnit')}

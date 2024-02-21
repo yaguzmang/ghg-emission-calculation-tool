@@ -2,15 +2,23 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 
 import FormInput from '@/components/form/form-input';
 import { Button } from '@/components/ui/button';
+import { useGetEmissionFactorDataByDatasetIdAndLocaleQuery } from '@/redux/api/emission-factor-data/emissionFactorDatasetApiSlice';
+import { useGetEmissionFactorDatasetByOrganizationQuery } from '@/redux/api/emission-factor-dataset/emissionFactorDatasetApiSlice';
 import { useCreateReportingPeriodMutation } from '@/redux/api/reporting-periods/reportingPeriodsApiSlice';
 import { useAppDispatch } from '@/redux/store';
-import { SharedUIActions } from '@/redux/store/ui/shared';
+import {
+  SharedUIActions,
+  useSelectedLocale,
+  useSelectedOrganizationId,
+} from '@/redux/store/ui/shared';
 import { OrganizationAndReportingPeriodSection } from '@/redux/store/ui/shared/stateType';
-import { ReportingPeriodSchema } from '@/types/reporting-period';
+import {
+  CreateReportingPeriodData,
+  ReportingPeriodSchema,
+} from '@/types/reporting-period';
 
 interface CreateReportingPeriodFormProps {
   setFormVisible: (visibility: boolean) => void;
@@ -27,11 +35,8 @@ export function CreateReportingPeriodForm({
   const dispatch = useAppDispatch();
   const [createReportingPeriod, createReportingPeriodState] =
     useCreateReportingPeriodMutation();
-  const form = useForm<z.infer<typeof ReportingPeriodSchema>>({
-    resolver: zodResolver(ReportingPeriodSchema),
-  });
 
-  async function onSubmit(data: z.infer<typeof ReportingPeriodSchema>) {
+  async function onSubmit(data: CreateReportingPeriodData) {
     const result = await createReportingPeriod(data);
     if (!('error' in result) && result.data) {
       dispatch(
@@ -43,6 +48,39 @@ export function CreateReportingPeriodForm({
       setFormVisible(false);
     }
   }
+
+  const selectedOrganizationId = useSelectedOrganizationId(section);
+
+  const selectedLocale = useSelectedLocale();
+
+  const emissionFactorDatasets = useGetEmissionFactorDatasetByOrganizationQuery(
+    selectedOrganizationId ?? 0,
+    { skip: selectedOrganizationId === undefined },
+  );
+
+  const organizationHasDataSet =
+    emissionFactorDatasets.currentData !== null &&
+    selectedOrganizationId !== undefined;
+
+  const datasetId = emissionFactorDatasets.currentData?.id;
+
+  const emissionFactorData = useGetEmissionFactorDataByDatasetIdAndLocaleQuery(
+    { datasetId: datasetId ?? 0, locale: selectedLocale ?? '' },
+    { skip: datasetId === undefined || selectedLocale === undefined },
+  );
+
+  const availableYears =
+    emissionFactorData.currentData
+      ?.map((item) => parseInt(item.attributes.year, 10))
+      .sort()
+      .reverse() ?? [];
+
+  const form = useForm<CreateReportingPeriodData>({
+    resolver: zodResolver(ReportingPeriodSchema(availableYears)),
+  });
+
+  const datasetHasAvailableYears =
+    emissionFactorData.currentData !== undefined && availableYears.length > 0;
 
   return (
     <div className="flex w-full flex-row flex-wrap gap-8">
@@ -90,6 +128,11 @@ export function CreateReportingPeriodForm({
                       ? t(form.formState.errors.endDate?.message)
                       : undefined
                   }
+                  max={
+                    availableYears.length > 0
+                      ? `${Math.max(...availableYears)}-12-31`
+                      : undefined
+                  }
                 />
               </div>
             </div>
@@ -104,6 +147,39 @@ export function CreateReportingPeriodForm({
               }
               {...form.register('organization', { valueAsNumber: true })}
             />
+            <div className="mr-auto flex flex-col md:ml-auto md:mr-0">
+              {emissionFactorDatasets.currentData?.attributes?.apiName !==
+                undefined && (
+                <span className="ml-auto">
+                  {t('common.dataset')}: &quot;
+                  <span className="font-bold">
+                    {emissionFactorDatasets.currentData?.attributes.apiName}
+                  </span>
+                  &quot;
+                </span>
+              )}
+              <span className="ml-auto">
+                {datasetHasAvailableYears && (
+                  <>
+                    {t('dashboard.form.reportingPeriod.availableYears')}:
+                    <span className="font-bold">
+                      {' '}
+                      {availableYears.join(', ')}
+                    </span>
+                  </>
+                )}
+                {organizationHasDataSet &&
+                  !datasetHasAvailableYears &&
+                  !emissionFactorData.isLoading &&
+                  !emissionFactorData.isUninitialized && (
+                    <span className="break-normal font-bold text-destructive">
+                      {t(
+                        'dashboard.form.reportingPeriod.error.noAvailableDataInDataset',
+                      )}
+                    </span>
+                  )}
+              </span>
+            </div>
             <div className="flex basis-full flex-row flex-wrap items-center justify-start gap-8 gap-y-8 md:justify-end">
               {createReportingPeriodState.isError && (
                 <span className="break-normal font-bold text-destructive">
@@ -120,11 +196,20 @@ export function CreateReportingPeriodForm({
               </Button>
               <Button
                 type="submit"
-                disabled={createReportingPeriodState.isLoading}
+                disabled={
+                  createReportingPeriodState.isLoading ||
+                  !organizationHasDataSet ||
+                  !datasetHasAvailableYears
+                }
               >
                 <span className="px-4 font-bold">{t('forms.save')}</span>
               </Button>
             </div>
+            {!organizationHasDataSet && !emissionFactorDatasets.isLoading && (
+              <span className="ml-auto break-normal font-bold text-destructive">
+                {t('dashboard.form.reportingPeriod.error.noDatasetAvailable')}
+              </span>
+            )}
           </div>
         </form>
       </div>

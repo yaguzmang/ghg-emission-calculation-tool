@@ -17,7 +17,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { Skeleton } from '@/components/ui/skeleton';
+import { UserWalkthrough } from '@/components/user-walkthrough/user-walkthrough';
 import { useGetEmissionCategoriesWithFactorsQuery } from '@/redux/api/emission-categories/emissionCategoriesApiSlice';
+import {
+  DashboardTab,
+  UserWalkthroughStep,
+} from '@/redux/store/ui/shared/stateType';
 
 interface EmissionsFormProps {
   emissionCategoryId: number;
@@ -55,11 +60,11 @@ export default function EmissionsFormPanel({
     ];
 
   return (
-    <div className="w-full flex flex-col px-4 pt-10 sm:px-12 max-w-[720px] xl:ml-auto">
+    <div className="flex w-full max-w-[720px] flex-col px-4 pt-10 sm:px-12 xl:ml-auto">
       <div>
-        <Link href="/dashboard#form">
+        <Link href={`/dashboard#${DashboardTab.inventory}`}>
           <Button variant="link" size="fit" type="button">
-            <span className="pr-2 text-secondary text-base">
+            <span className="pr-2 text-base text-secondary">
               {t('dashboard.form.overview')}
             </span>
           </Button>
@@ -67,13 +72,19 @@ export default function EmissionsFormPanel({
 
         <span className="px-1 text-secondary">/</span>
 
-        <span className="px-2 text-center text-primary-disabled-foreground">
-          {isEmissionCategoryLoading ? (
-            <Skeleton className="inline-block h-3 w-16" />
-          ) : (
-            emissionCategoryWithFactors.currentData?.title
-          )}
-        </span>
+        <UserWalkthrough
+          isButton={false}
+          side="right"
+          step={UserWalkthroughStep.formInformation}
+        >
+          <span className="px-2 text-center text-primary-disabled-foreground">
+            {isEmissionCategoryLoading ? (
+              <Skeleton className="inline-block h-3 w-16" />
+            ) : (
+              emissionCategoryWithFactors.currentData?.title
+            )}
+          </span>
+        </UserWalkthrough>
       </div>
 
       <div className="mt-8 flex items-center">
@@ -88,7 +99,8 @@ export default function EmissionsFormPanel({
           </h1>
         )}
       </div>
-      <div className="mt-8 text-text-regular flex flex-col">
+
+      <div className="mt-8 flex flex-col text-text-regular">
         {isEmissionCategoryLoading ? (
           <>
             <Skeleton className="inline-block h-3 w-full" />
@@ -131,7 +143,7 @@ export default function EmissionsFormPanel({
       )}
 
       <div className="mt-8">
-        <Link href="/dashboard#form">
+        <Link href={`/dashboard#${DashboardTab.inventory}`}>
           <Button variant="link" size="fit" type="button">
             {t('dashboard.form.emissionEntry.backToFormOverview')}
           </Button>

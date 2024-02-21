@@ -9,6 +9,7 @@ import { z } from 'zod';
 
 import EmissionFactorsForm from './fields/emission-factors/emission-factors-form';
 import EmissionSourceField from './fields/emission-source';
+import LabelField from './fields/label';
 import OrganizationUnitField from './fields/organization-unit';
 import QuantityField from './fields/quantity';
 import QuantitySourceField from './fields/quantity-source';
@@ -142,6 +143,12 @@ export default function EmissionsForm({
         />
 
         {formType === 'edit' ? (
+          <LabelField formType={formType} emissionEntry={emissionEntry} />
+        ) : (
+          <LabelField formType={formType} />
+        )}
+
+        {formType === 'edit' ? (
           <>
             <OrganizationUnitField
               organizationId={organizationId}
@@ -260,7 +267,7 @@ export default function EmissionsForm({
             </PopoverContentReadMore>
           </Popover>
         </div>
-        <div className="mt-8 flex justify-between flex-wrap items-center gap-y-6">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-y-6">
           <Button
             type="button"
             variant="link"
@@ -271,7 +278,7 @@ export default function EmissionsForm({
             {formType === 'edit' ? t('forms.cancelChanges') : t('forms.cancel')}
           </Button>
           <Button type="submit" disabled={createEmissionEntryState.isLoading}>
-            <span className="text-lg font-bold px-4">
+            <span className="px-4 text-lg font-bold">
               {formType === 'edit'
                 ? t('forms.saveChanges')
                 : t('dashboard.form.emissionEntry.saveEmission')}
@@ -279,12 +286,12 @@ export default function EmissionsForm({
           </Button>
         </div>
         {createEmissionEntryState.isError && (
-          <span className="break-normal font-bold text-destructive ml-auto mt-2">
+          <span className="ml-auto mt-2 break-normal font-bold text-destructive">
             {t('api.error.genericWhileCreatingEmissionEntry')}
           </span>
         )}
         {updateEmissionEntryState.isError && (
-          <span className="break-normal font-bold text-destructive ml-auto mt-2">
+          <span className="ml-auto mt-2 break-normal font-bold text-destructive">
             {t('api.error.genericWhileEditingEmissionEntry')}
           </span>
         )}

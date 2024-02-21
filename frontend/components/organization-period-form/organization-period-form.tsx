@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { UserWalkthrough } from '../user-walkthrough/user-walkthrough';
 import { CreateReportingPeriodForm } from './create-reporting-period-form';
 
 import { Button } from '@/components/ui/button';
@@ -20,7 +21,10 @@ import {
   useSelectedOrganizationId,
   useSelectedReportingPeriodId,
 } from '@/redux/store/ui/shared';
-import { OrganizationAndReportingPeriodSection } from '@/redux/store/ui/shared/stateType';
+import {
+  OrganizationAndReportingPeriodSection,
+  UserWalkthroughStep,
+} from '@/redux/store/ui/shared/stateType';
 
 interface OrganizationPeriodFormProps {
   section: OrganizationAndReportingPeriodSection;
@@ -130,15 +134,17 @@ export function OrganizationPeriodForm({
             </SelectContent>
           </Select>
           <h4 className="uppercase">{t('dashboard.form.or')}</h4>
-          <Button
-            className="min-w-[230px]"
-            onClick={() => setNewPeriodFormIsVisible(true)}
-            type="button"
-          >
-            <span className="px-4 font-bold">
-              {t('dashboard.form.startNewPeriod')}
-            </span>
-          </Button>
+          <UserWalkthrough isButton step={UserWalkthroughStep.startAPeriod}>
+            <Button
+              className="min-w-[230px]"
+              onClick={() => setNewPeriodFormIsVisible(true)}
+              type="button"
+            >
+              <span className="px-4 font-bold">
+                {t('dashboard.form.startNewPeriod')}
+              </span>
+            </Button>
+          </UserWalkthrough>
         </div>
       </div>
 

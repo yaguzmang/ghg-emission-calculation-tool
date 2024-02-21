@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EmissionsForm from '../emission-form/emissions-form';
-import EmissionsEntry from './emission-entry';
+import EmissionsEntriesTable from './emission-entries-table';
 
 import {
   Accordion,
@@ -102,22 +102,17 @@ export default function EmissionsEntriesContainer({
                   key={unit.organizationUnit.id}
                   value={`item-${unit.organizationUnit.id}`}
                 >
-                  <AccordionTrigger className="text-text-regular-lighten text-sm px-2">
+                  <AccordionTrigger className="px-2 text-sm text-text-regular-lighten">
                     {unit.organizationUnit.attributes.name}
                   </AccordionTrigger>
                   <AccordionContent className="px-2">
-                    {unit.emissionEntries.map((emissionEntry) => (
-                      <EmissionsEntry
-                        key={`emissionEntryItem-${emissionEntry.id}`}
-                        reportingPeriodId={reportingPeriodId}
-                        organizationId={organizationId}
-                        emissionCategoryWithFactors={
-                          emissionCategoryWithFactors
-                        }
-                        emissionEntry={emissionEntry}
-                        onOrganizationUnitChange={handleOrganizationUnitChange}
-                      />
-                    ))}
+                    <EmissionsEntriesTable
+                      emissionEntries={unit.emissionEntries}
+                      reportingPeriodId={reportingPeriodId}
+                      organizationId={organizationId}
+                      emissionCategoryWithFactors={emissionCategoryWithFactors}
+                      onOrganizationUnitChange={handleOrganizationUnitChange}
+                    />
                     <div className="pt-8" />
                   </AccordionContent>
                 </AccordionItem>
@@ -128,10 +123,10 @@ export default function EmissionsEntriesContainer({
               variant="icon"
               size="fit"
               type="button"
-              className="text-primary mt-12 ml-auto"
+              className="ml-auto mt-12 text-primary"
               onClick={() => setIsAddingNewEmissionOpen(true)}
             >
-              <span className="text-lg font-bold pr-2">
+              <span className="pr-2 text-lg font-bold">
                 {t('dashboard.form.emissionEntry.addNewCategoryEmissions', {
                   categoryTitle:
                     originalEmissionCategoryId !== null

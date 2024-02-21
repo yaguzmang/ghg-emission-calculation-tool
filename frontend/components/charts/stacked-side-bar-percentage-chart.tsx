@@ -104,7 +104,7 @@ const StackedSideBarPercentageChartInner = ({
         );
         return (
           <g key={`bar-group-${d.title}`}>
-            <g className="text-bar-label font-bold">
+            <g className="font-bold text-bar-label">
               <text
                 x={MARGIN.left}
                 y={titleY - titlePadding}
@@ -193,7 +193,7 @@ const StackedSideBarPercentageChartInner = ({
       {/* Tooltip */}
       <div
         ref={tooltipContainerRef}
-        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2 w-full h-full"
+        className="pointer-events-none absolute left-0 top-0 h-full w-full translate-y-2 text-graph-tooltip-foreground"
         style={{
           marginLeft: MARGIN.left,
           marginTop: MARGIN.top,
@@ -213,8 +213,8 @@ const StackedSideBarPercentageChartInner = ({
           yOffSet={10}
         >
           {hoveredElementData ? (
-            <div className="flex flex-col p-2 gap-3 font-normal">
-              <div className="text-base flex items-center gap-1">
+            <div className="flex flex-col gap-3 p-2 font-normal">
+              <div className="flex items-center gap-1 text-base">
                 <span>
                   {hoveredElementData.scope !== undefined &&
                     EmissionIconsByScope[
@@ -223,7 +223,7 @@ const StackedSideBarPercentageChartInner = ({
                 </span>
                 <span className="">{hoveredElementData.label}</span>
               </div>
-              <div className="text-base flex items-center justify-between gap-12 px-2">
+              <div className="flex items-center justify-between gap-12 px-2 text-base">
                 <div className="flex flex-col">
                   <span className="text-xs">
                     {t('results.ghgEmissionsByCategoryOverUnit.percentOfAll')}
@@ -233,10 +233,10 @@ const StackedSideBarPercentageChartInner = ({
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs ml-auto">
+                  <span className="ml-auto text-xs">
                     <Trans i18nKey={unitLabel} />
                   </span>
-                  <span className="text-base ml-auto">
+                  <span className="ml-auto text-base">
                     {hoveredElementData.value.toFixed(2)}
                   </span>
                 </div>
@@ -263,7 +263,7 @@ export function StackedSideBarPercentageChart({
   const [ref, bounds] = useMeasure();
 
   return (
-    <div ref={ref} className="relative w-full h-content">
+    <div ref={ref} className="h-content relative w-full">
       {bounds.width > 0 && (
         <StackedSideBarPercentageChartInner
           data={data}

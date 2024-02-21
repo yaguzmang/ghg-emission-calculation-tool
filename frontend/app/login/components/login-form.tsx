@@ -30,6 +30,15 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
     resolver: zodResolver(LoginSchema),
   });
 
+  const testingEmail =
+    t('testing.email') === 'testing.email' ? '' : t('testing.email');
+
+  const testingPassword =
+    t('testing.password') === 'testing.password' ? '' : t('testing.password');
+
+  const isTestingUserEnabled =
+    testingEmail.length > 0 && testingPassword.length > 0;
+
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <h4 className="uppercase">{t('login.email')}</h4>
@@ -44,7 +53,7 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             : undefined
         }
       />
-      <h4 className="uppercase mt-9">{t('login.password')}</h4>
+      <h4 className="mt-9 uppercase">{t('login.password')}</h4>
       <FormInput
         id="password"
         type="password"
@@ -56,15 +65,15 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             : undefined
         }
       />
-      <div className="flex items-center mt-5">
+      <div className="mt-5 flex items-center">
         <FormInput
           type="checkbox"
           value=""
-          className="w-4 h-4 accent-secondary"
+          className="h-4 w-4 accent-secondary"
           {...form.register('termsOfService')}
         />
         <div className="flex items-center">
-          <span className="pl-2 text-secondary text-base">
+          <span className="pl-2 text-base text-secondary">
             {t('login.termsOfService.accept')}
           </span>
           <a
@@ -72,9 +81,10 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
             href={
               generalSettings.currentData?.data.attributes.termsOfServiceLink
                 ?.url
-            } rel="noreferrer"
+            }
+            rel="noreferrer"
           >
-            <span className="pl-1 text-secondary text-base underline">
+            <span className="pl-1 text-base text-secondary underline">
               {
                 generalSettings.currentData?.data.attributes.termsOfServiceLink
                   ?.label
@@ -84,13 +94,39 @@ export function LoginForm({ onSubmit, error, isLoading }: LoginFormProps) {
         </div>
       </div>
       {form.formState?.errors?.termsOfService?.message !== undefined ? (
-        <span className="block text-destructive text-sm h-5 min-w-0">
+        <span className="block h-5 min-w-0 text-sm text-destructive">
           {t(form.formState.errors.termsOfService?.message)}
         </span>
       ) : null}
-      <span className="block text-destructive h-5 min-w-0">
+      <span className="block h-5 min-w-0 text-destructive">
         {error.length ? error : null}
       </span>
+      <div className="flex flex-col">
+        <Button type="button" variant="link" size="fit" className="py-0">
+          <a
+            href="mailto:support@ghg.ee?subject=GHG Emission Inventory Tool account request"
+            className="px-0 font-bold"
+          >
+            {t('login.needAnAccount')}
+          </a>
+        </Button>
+
+        {isTestingUserEnabled && (
+          <Button
+            type="button"
+            variant="link"
+            size="fit"
+            className="mt-2 px-0 py-0"
+            onClick={() => {
+              form.setValue('email', testingEmail);
+              form.setValue('password', testingPassword);
+              form.handleSubmit(onSubmit)();
+            }}
+          >
+            <span className="px-0 font-bold">{t('login.withTestAccount')}</span>
+          </Button>
+        )}
+      </div>
       <div className="mt-5">
         <Button type="submit" disabled={isLoading}>
           <span className="px-4 font-bold">{t('login')}</span>

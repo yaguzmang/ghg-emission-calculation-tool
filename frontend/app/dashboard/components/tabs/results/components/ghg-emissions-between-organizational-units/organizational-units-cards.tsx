@@ -57,7 +57,7 @@ export function OrganizationalUnitsCards({
   }, [totalGHGEmissionsPerOrganizationUnit]);
 
   return (
-    <div className="flex flex-wrap gap-6 items-center">
+    <div className="flex flex-wrap items-center gap-6">
       {organizationUnitsTotalEmissionsAndDividers !== undefined &&
         normalizedOrganizationUnitsTotalEmissionsAndDividers.map(
           (normalizedOrgUnit) => (

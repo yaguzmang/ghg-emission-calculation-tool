@@ -126,7 +126,7 @@ const StackedSideBarPercentageChartWithTotalInner = ({
               fill="white"
             />
 
-            <g className="text-bar-label font-bold">
+            <g className="font-bold text-bar-label">
               <text
                 x={MARGIN.left}
                 y={titleY - titlePadding}
@@ -185,7 +185,7 @@ const StackedSideBarPercentageChartWithTotalInner = ({
       {/* Tooltip */}
       <div
         ref={tooltipContainerRef}
-        className="absolute top-0 left-0 pointer-events-none text-graph-tooltip-foreground translate-y-2 w-full h-full"
+        className="pointer-events-none absolute left-0 top-0 h-full w-full translate-y-2 text-graph-tooltip-foreground"
       >
         <ChartTooltip
           interactionData={
@@ -201,13 +201,13 @@ const StackedSideBarPercentageChartWithTotalInner = ({
           yOffSet={20}
         >
           {hoveredElementData !== null && (
-            <div className="flex flex-col px-5 py-2 gap-6 font-normal min-w-[176px]">
+            <div className="flex min-w-[176px] flex-col gap-6 px-5 py-2 font-normal">
               {hoveredElementData.data.map((entry) => (
                 <div key={`tooltip-sbpct-${entry.label}`}>
-                  <div className="text-base flex items-center gap-1 mr-auto">
+                  <div className="mr-auto flex items-center gap-1 text-base">
                     <span>{entry.label}</span>
                   </div>
-                  <div className="flex justify-between w-full mt-2">
+                  <div className="mt-2 flex w-full justify-between">
                     <div className="flex flex-col">
                       <span className="text-xs">
                         {t('dashboard.form.allGHGEmissions.percentOfTotal')}
@@ -221,10 +221,10 @@ const StackedSideBarPercentageChartWithTotalInner = ({
                       </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-xs ml-auto">
+                      <span className="ml-auto text-xs">
                         <Trans i18nKey={unitLabel} />
                       </span>
-                      <span className="text-base ml-auto">
+                      <span className="ml-auto text-base">
                         {entry.value.toFixed(2)}
                       </span>
                     </div>

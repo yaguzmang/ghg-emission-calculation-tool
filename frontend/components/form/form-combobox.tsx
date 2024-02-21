@@ -101,7 +101,7 @@ export function FormCombobox({
         <PopoverContent
           side="bottom"
           avoidCollisions={false}
-          className="w-[var(--radix-popover-trigger-width)] fade-in-80' rounded-xs border-none bg-select-content-popover p-0 text-text-regular shadow-light animate-in"
+          className="fade-in-80' w-[var(--radix-popover-trigger-width)] rounded-xs border-none bg-select-content-popover p-0 text-text-regular shadow-light animate-in"
         >
           <Command className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
             <div
@@ -118,7 +118,7 @@ export function FormCombobox({
             <CommandEmpty className="py-6 text-center text-sm">
               {searchNotFoundLabel}
             </CommandEmpty>
-            <CommandGroup className="overflow-hidden p-0 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground max-h-[350px] overflow-y-scroll">
+            <CommandGroup className="[&_[cmdk-group-heading]]:text-muted-foreground max-h-[350px] overflow-hidden overflow-y-scroll p-0 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium">
               {options.map((option) => (
                 <CommandItem
                   key={option.value}
@@ -142,7 +142,7 @@ export function FormCombobox({
                       )}
                     />
                   </div>
-                  <span className="pr-4 overflow-hidden text-ellipsis whitespace-nowrap">
+                  <span className="overflow-hidden text-ellipsis whitespace-nowrap pr-4">
                     {option.label}
                   </span>
                 </CommandItem>

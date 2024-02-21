@@ -75,7 +75,7 @@ export const ProportionalSemiCirclesChart = ({
   const [ref, bounds] = useMeasure();
 
   return (
-    <div ref={ref} className="w-full h-full">
+    <div ref={ref} className="h-full w-full">
       {bounds.width > 0 && bounds.height > 0 && (
         <ProportionalSemiCirclesChartInner
           normalizedValueTop={normalizedValueTop}

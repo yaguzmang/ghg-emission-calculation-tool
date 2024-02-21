@@ -63,6 +63,9 @@
     --popover-menu-border: 240 16% 94%; /* #EDEDF2*/
 
     --border: 240 16% 87%; /* #DADAE4 */
+    --border-highlight: 189 60% 56%; /* #4DBED2 */
+
+    --file: 240 14% 99%; /* #FBFBFC */
 
     --select-item-hover: 240 15% 94%; /* #ECECF1 */
     --select-content-popover: 0 0% 100%; /* #fff */

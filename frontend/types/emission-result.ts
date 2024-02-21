@@ -40,3 +40,7 @@ export type EmissionCategoryTotalByEmissionType = Omit<
   emissionType: 'scope1' | 'scope2' | 'scope3' | 'biogenic';
   totalEmissions: number;
 };
+
+export type EmissionResultsPerReportinPeriodId = {
+  [key: string]: EmissionResults | 'loading' | 'error';
+};

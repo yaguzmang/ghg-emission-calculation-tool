@@ -203,8 +203,8 @@ export default function EmissionFactorsForm({
   };
 
   return (
-    <div className="w-full flex flex-col">
-      <span className="text-sm font-bold basis-full">
+    <div className="flex w-full flex-col">
+      <span className="basis-full text-sm font-bold">
         {t('dashboard.form.emissionEntry.emissionFactors')}
       </span>
       {formState.errors.organizationUnit?.message?.toString()}

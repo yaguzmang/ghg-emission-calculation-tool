@@ -1,0 +1,4 @@
+organizationUnit,emissionSource,quantity,tier,quantitySource
+Building 1,Aircraft_aviation_gasoline_AVGAS_100LL_l,1230,0,data source
+Building 1,Estonian_grid_electricity,18000,1,other data source
+Building 2,Estonian_grid_electricity,9860,2,

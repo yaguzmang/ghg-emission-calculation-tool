@@ -72,6 +72,18 @@ export const reportingPeriodsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'ReportingPeriod', id: 'LIST' }],
     }),
+    deleteReportingPeriod: builder.mutation<{ data: ReportingPeriod }, number>({
+      query: (reportingPeriodId) => ({
+        url: `/reporting-periods/${reportingPeriodId}?force=true`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [
+        { type: 'ReportingPeriod', id: 'LIST' },
+        { type: 'EmissionEntry', id: 'LIST' },
+        { type: 'EmissionCategoryWithEmissions', id: 'LIST' },
+        { type: 'EmissionsResults' },
+      ],
+    }),
   }),
 });
 
@@ -79,4 +91,5 @@ export const {
   useGetReportingPeriodsByOrganizationQuery,
   useCreateReportingPeriodMutation,
   useGetReportingPeriodQuery,
+  useDeleteReportingPeriodMutation,
 } = reportingPeriodsApiSlice;
