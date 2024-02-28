@@ -199,7 +199,7 @@ export default function EmissionsEntry({
         onClick={() => {
           setIsEditing((prevState) => !prevState);
         }}
-        className={cn('text-black', { 'text-link': isEditing })}
+        className={cn('text-black ', { 'text-link': isEditing })}
         type="button"
       >
         <Icons.Edit className="h-4 w-4" />
