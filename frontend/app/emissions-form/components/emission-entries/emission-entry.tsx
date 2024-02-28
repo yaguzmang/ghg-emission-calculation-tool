@@ -202,7 +202,7 @@ export default function EmissionsEntry({
         className={cn('text-black ', { 'text-link': isEditing })}
         type="button"
       >
-        <Icons.Edit className="h-4 w-4" />
+        <Icons.Edit className="h-4 w-4 " />
       </Button>
       {isEditing && (
         <div className="col-span-full w-full border border-dotted px-2 py-12 sm:px-10">
