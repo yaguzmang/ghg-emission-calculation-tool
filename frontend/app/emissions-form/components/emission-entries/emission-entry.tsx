@@ -112,10 +112,14 @@ export default function EmissionsEntry({
               <span className="break-words font-bold leading-none">
                 {emissionEntry.attributes.label}
               </span>
-              <span className="break-words leading-tight ">{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
+              <span className="break-words leading-tight ">
+                {emissionSource?.label}
+              </span>
             </div>
           ) : (
-            <span className="break-words text-text-regular-lighten">{`${emissionSource?.label} (${emissionSource?.unit})`}</span>
+            <span className="break-words text-text-regular-lighten">
+              {emissionSource?.label}
+            </span>
           )}
         </PopoverAnchor>
 
