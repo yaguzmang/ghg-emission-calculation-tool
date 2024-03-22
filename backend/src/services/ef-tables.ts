@@ -4,6 +4,7 @@ import * as yup from "yup";
 import estoniaDefault2022En from "../../data/ef-tables/estonia-default_2022_en.json";
 import estoniaDefault2022Fi from "../../data/ef-tables/estonia-default_2022_fi.json";
 import { validate } from "./utils";
+import axios from "axios";
 
 const data = {
   "estonia-default": {
@@ -19,13 +20,14 @@ export const getEmissionFactorData = async (
   year: string,
   locale: string
 ) => {
-  const res: unknown = await data[dataset]?.[year]?.[locale];
+  const url = `${process.env.EMISSION_FACTORS_API_BASE_URL}/${year}/${dataset}?language=${locale}`;
+  const efApiResponse = await axios.get(url);
+  const res: unknown = efApiResponse.data;
   return res;
 };
 
 export const pullEmissionFactorData = async (id: number, strapi: Strapi) => {
   // Get dataset, year and locale by id
-
   const entry = await strapi.entityService?.findOne(
     "api::emission-factor-datum.emission-factor-datum",
     id,
